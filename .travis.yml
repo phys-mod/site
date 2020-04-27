@@ -9,7 +9,7 @@ install:
   - pip install -U pip
   - pip install pipenv
   - pipenv install # set up the environment
-  - curl -sfL https://install.goreleaser.com/github.com/ValeLint/vale.sh | sh -s v2.1.0 # install vale
+  - pip install sphinx_rtd_theme
   - export PATH="./bin:$PATH"
 script:
   - skip # Travis requires a `script` property, but we do not need it
