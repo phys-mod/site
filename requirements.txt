@@ -1,2 +1,6 @@
+ipykernel
 sphinx
 nbsphinx
+numpy
+scipy
+matplotlib

@@ -18,8 +18,8 @@
 # -- Project information -----------------------------------------------------
 
 project = 'phys-mod'
-copyright = '2020, Pacome Delva'
-author = 'Pacome Delva'
+copyright = '2020, P. Delva'
+author = 'P. Delva'
 
 # The full version, including alpha/beta/rc tags
 release = '0.1'
@@ -33,7 +33,10 @@ master_doc = 'index'
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
+    'nbsphinx',
+    'sphinx.ext.mathjax',
 ]
+
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -63,3 +66,9 @@ html_theme = 'sphinx_rtd_theme'
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
 html_static_path = ['_static']
+
+html_theme_options = {
+    "collapse_navigation" : False
+}
+
+nbsphinx_allow_errors = True
