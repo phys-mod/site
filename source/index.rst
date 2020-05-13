@@ -78,23 +78,61 @@ d'objectifs à atteindre et d'évaluations:
    :maxdepth: 1
    :caption: Les bases de Python
 
-   sequences/python-base/contenu
-   notebooks/python-base/prise-en-main.ipynb
-   notebooks/python-base/listes-python.ipynb
-   notebooks/python-base/fonctions-modules.ipynb
-   notebooks/python-base/module-numpy.ipynb
-   notebooks/python-base/fonctions-numpy.ipynb
-   notebooks/python-base/module-matplotlib.ipynb
+   sequences/01-python-base/contenu
+   notebooks/01-python-base/prise-en-main.ipynb
+   notebooks/01-python-base/listes-python.ipynb
+   notebooks/01-python-base/fonctions-modules.ipynb
+   notebooks/01-python-base/module-numpy.ipynb
+   notebooks/01-python-base/fonctions-numpy.ipynb
+   notebooks/01-python-base/module-matplotlib.ipynb
 
 .. toctree::
    :maxdepth: 1
    :caption: Python intermédiaire
 
-   sequences/python-intermediaire/contenu
+   sequences/02-python-intermediaire/contenu
 
 .. toctree::
    :maxdepth: 1
-   :caption: La démarche de modélisation en physique
+   :caption: La démarche de modélisation
+
+   sequences/03-demarche-de-modelisation/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Suites et relations de récurrence
+
+   sequences/04-suites-relations-recurrence/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Ajuster un modèle
+
+   sequences/05-ajustement-modele/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Dérivation et intégration
+
+   sequences/06-derivation-integration/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Équations différentielles linéaire
+
+   sequences/07-equations-differentielles/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Équations non-linéaires
+
+   sequences/08-equations-non-lineaires/contenu
+
+.. toctree::
+   :maxdepth: 1
+   :caption: Projet en équipe
+
+   sequences/09-projet-equipe/contenu
 
 
 
