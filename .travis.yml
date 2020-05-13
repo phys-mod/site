@@ -8,6 +8,8 @@ python:
 install:
   - sudo apt-get install pandoc
   - pip install -U pip
+  - pip install sphinx sphinx_rtd_theme nbsphinx IPython jupyter_client ipykernel
+  - pip install matplotlib numpy pandas
   - pip install pipenv
   - pipenv install  # set up the environment
 #  - pipenv install matplotlib numpy pandas
