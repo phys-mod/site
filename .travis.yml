@@ -1,10 +1,10 @@
-dist: xenial # needed to use python 3.7
+#dist: xenial # needed to use python 3.7
 language: python
 branches:
   only:
     - master
 python:
-  - 3.7
+  - 3.6
 install:
   - pip install -r requirements.txt
   - sudo apt-get install pandoc
