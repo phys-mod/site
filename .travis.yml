@@ -6,11 +6,14 @@ branches:
 python:
   - 3.7
 install:
+  - sudo apt-get install pandoc
   - pip install -U pip
   - pip install pipenv
-  - pipenv install # set up the environment
-  - pip install sphinx_rtd_theme
-  - pip install pandoc
+  - pipenv install  # set up the environment
+#  - pipenv install matplotlib numpy pandas
+#  - pip install sphinx sphinx_rtd_theme nbsphinx IPython jupyter_client ipykernel
+#  - pip install matplotlib numpy pandas
+#  - pip install sphinx_rtd_theme
   - export PATH="./bin:$PATH"
 script:
   - skip # Travis requires a `script` property, but we do not need it
