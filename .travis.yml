@@ -4,7 +4,7 @@ branches:
   only:
     - master
 python:
-  - 3.6.9
+  - 3.6
 install:
   - pip install -r requirements.txt
   - sudo apt-get install pandoc
@@ -17,11 +17,11 @@ jobs:
   include:
     - stage: build and test # This stage builds and lints in parallel
       name: Build
-      script: travis-sphinx build -s ./source # build the docs
+      script: make html # build the docs
     - stage: deploy
       name: Deploy to GitHub Pages
       if: (NOT type IN (pull_request)) AND (branch = master) # only deploy if merging on master
-      script: travis-sphinx build -s ./source # build the docs
+      script: make html
       deploy:
         provider: pages # deploy on github pages
         skip_cleanup: true
