@@ -6,6 +6,19 @@
 Modélisation Numérique en Physique
 ==================================
 
+.. image:: https://travis-ci.org/phys-mod/site.svg?branch=master
+    :target: https://travis-ci.org/phys-mod/site
+
+.. image:: https://readthedocs.org/projects/phys-mod/badge/?version=latest
+   :target: https://phys-mod.readthedocs.io/en/latest/?badge=latest
+   :alt: Documentation Status
+
+.. image:: https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey.svg
+   :target: https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr
+
+.. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
+   :target: https://saythanks.io/to/pacome.delva@sorbonne-universite.fr
+
 La `modélisation <https://fr.wikipedia.org/wiki/Mod%C3%A9lisation>`_ des phénomènes physiques implique souvent
 la résolution de systèmes d'équations complexes qui
 nécessitent l'utilisation de **méthodes d'analyse numérique**. L'acquisition, la manipulation et
