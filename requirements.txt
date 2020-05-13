@@ -1,3 +1,10 @@
+sphinx
+sphinx_rtd_theme
+travis-sphinx
+nbsphinx
+IPython
+jupyter_client
+ipykernel
 matplotlib
 numpy
 pandas
