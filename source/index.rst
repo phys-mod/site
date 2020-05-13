@@ -79,11 +79,11 @@ d'objectifs à atteindre et d'évaluations:
    :caption: Les bases de Python
 
    sequences/python-base/contenu
-   notebooks/python-base/prise-en-main.ipynb
-   notebooks/python-base/listes-python.ipynb
-   notebooks/python-base/fonctions-modules.ipynb
-   notebooks/python-base/module-numpy.ipynb
-   notebooks/python-base/fonctions-numpy.ipynb
+..   notebooks/python-base/prise-en-main.ipynb
+..   notebooks/python-base/listes-python.ipynb
+..   notebooks/python-base/fonctions-modules.ipynb
+..   notebooks/python-base/module-numpy.ipynb
+..   notebooks/python-base/fonctions-numpy.ipynb
    notebooks/python-base/module-matplotlib.ipynb
 
 .. toctree::
