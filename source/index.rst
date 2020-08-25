@@ -104,6 +104,10 @@ d'objectifs à atteindre et d'évaluations:
    :caption: Python intermédiaire
 
    sequences/02-python-intermediaire/contenu
+   notebooks/02-python-intermediaire/dictionnaires-pandas.ipynb
+   notebooks/02-python-intermediaire/logique-filtrage.ipynb
+   notebooks/02-python-intermediaire/iteration.ipynb
+   notebooks/02-python-intermediaire/fonctions.ipynb
 
 .. toctree::
    :maxdepth: 1
