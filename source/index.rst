@@ -108,6 +108,7 @@ d'objectifs à atteindre et d'évaluations:
    notebooks/02-python-intermediaire/logique-filtrage.ipynb
    notebooks/02-python-intermediaire/iteration.ipynb
    notebooks/02-python-intermediaire/fonctions.ipynb
+   notebooks/02-python-intermediaire/entrees-sorties.ipynb
 
 .. toctree::
    :maxdepth: 1
