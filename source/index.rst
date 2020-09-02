@@ -115,6 +115,8 @@ d'objectifs à atteindre et d'évaluations:
    :caption: La démarche de modélisation
 
    sequences/03-demarche-de-modelisation/contenu
+   notebooks/03-modelisation/acceleration-constante.ipynb
+   notebooks/03-modelisation/exercices.ipynb
 
 .. toctree::
    :maxdepth: 1
