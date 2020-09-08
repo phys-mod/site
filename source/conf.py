@@ -60,6 +60,7 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 # html_theme = 'alabaster'
+# html_theme = 'sphinx_book_theme'
 html_theme = 'sphinx_rtd_theme'
 
 # Add any paths that contain custom static files (such as style sheets) here,

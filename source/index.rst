@@ -115,8 +115,9 @@ d'objectifs à atteindre et d'évaluations:
    :caption: La démarche de modélisation
 
    sequences/03-demarche-de-modelisation/contenu
-   notebooks/03-modelisation/acceleration-constante.ipynb
-   notebooks/03-modelisation/exercices.ipynb
+   notebooks/03-demarche-de-modelisation/acceleration-constante.ipynb
+   notebooks/03-demarche-de-modelisation/exercices.ipynb
+   sequences/03-demarche-de-modelisation/exoplanetes-kepler
 
 .. toctree::
    :maxdepth: 1
