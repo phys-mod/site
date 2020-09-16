@@ -19,73 +19,46 @@ Modélisation Numérique en Physique
 .. image:: https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg
    :target: https://saythanks.io/to/pacome.delva@sorbonne-universite.fr
 
-La `modélisation <https://fr.wikipedia.org/wiki/Mod%C3%A9lisation>`_ des phénomènes physiques implique souvent
-la résolution de systèmes d'équations complexes qui
-nécessitent l'utilisation de **méthodes d'analyse numérique**. L'acquisition, la manipulation et
-l'interprétation des **données** provenant d'expériences ou d'observations physiques nécessitent aussi souvent
-l'outil informatique. De manière générale, la `simulation numérique
-<https://fr.wikipedia.org/wiki/Simulation_informatique>`_ est un outil puissant pour comprendre et
-prédire les phénomènes.
+Modèles et données
+------------------
 
-Dans ce cours vous développerez les **compétences de programmation et de modélisation** nécessaires à la résolution
-de problèmes de physique variés. Nous utiliserons le langage Python, qui est utilisé dans de nombreuses
+Les modèles sont des *constructions mentales* qui forment la base des
+raisonnements du physicien. Ils sont construits à partir des théories physiques pour décrire un
+phénomène ou une situation particulière.
+
+En physique la conception des modèles, ou `modélisation <https://fr.wikipedia.org/wiki/Mod%C3%A9lisation>`_, est souvent
+mise en oeuvre à l'aide des mathématiques et de l'informatique dans des `simulations numériques
+<https://fr.wikipedia.org/wiki/Simulation_informatique>`_. La simulation numérique est un outil puissant pour *comprendre et
+prédire les phénomènes*. Elle intervient dans de nombreux domaines de la recherche et de l'industrie.
+
+Les simulations numériques doivent se nourrir et être confrontées à l'expérience. Cela nécessite *l'acquisition, la manipulation et
+l'interprétation des données* provenant d'expériences ou d'observations physiques. Cette science est souvent appelée
+`science des données <https://fr.wikipedia.org/wiki/Science_des_donn%C3%A9es>`_.
+
+Résumé du cours
+---------------
+
+Dans la première partie du cours vous développerez les **compétences de programmation et de modélisation** nécessaires à la résolution
+de problèmes de physique variés. Vous apprendrez de manière active et autonome, à l'aide de diverses activités comme des exercices et
+mini-projets, accompagnés par vos enseignants et camarades.
+
+Nous utiliserons le langage Python qui est utilisé dans de nombreuses
 disciplines aussi bien dans le privé que dans le milieu académique. Les applications qui illustreront le cours
-s'appuieront sur des modèles et des notions de physique générale, en
-`optique géométrique <https://fr.wikipedia.org/wiki/Optique_g%C3%A9om%C3%A9trique>`_,
-`électrocinétique <https://fr.wikipedia.org/wiki/%C3%89lectrocin%C3%A9tique>`_,
-`mécanique <https://fr.wikipedia.org/wiki/M%C3%A9canique_(science)>`_,
-et `thermodynamique <https://fr.wikipedia.org/wiki/Thermodynamique>`_.
-Nous verrons aussi que les compétences de modélisation peuvent servir dans beaucoup
-d'autres champs que la physique.
+s'appuieront sur des modèles et des notions de physique générale.
 
-Pédagogie
----------
-
-Ce cours est concu comme un enseignement actif et hybride: il s'effectue en face d'un ordinateur en travaillant sur
-les activités proposées. Il donne une importance égale au travail personnel et en
-présence d'un enseignant. Les activités proposées comprennent des supports de cours variés, des exercices corrigés, des quizzs
-d'auto-évaluation, des résolutions de problème ainsi qu'un projet en équipe.
-
-Dans un premier temps, nous verrons l'essentiel du langage Python pour acquérir des compétences de `science des
-données <https://fr.wikipedia.org/wiki/Science_des_donn%C3%A9es>`_ (en anglais
-`data science <https://en.wikipedia.org/wiki/Data_science>`_). Nous verrons ensuite différents modèles utilisés
-en physique numérique au travers d'applications concrètes, comment tracer et visualiser des données sous formes de
-graphiques, et utiliser et concevoir des algorithmes et des outils de calcul numérique. Enfin, nous terminerons
-avec un projet numérique effectué en équipe et en autonomie.
-
-Le cours est organisée en plusieurs séquences pédagogiques. Chaque séquence propose une liste d'activités,
-d'objectifs à atteindre et d'évaluations:
-
-+-----+-----------------------------------------------+
-| 1   | Les bases de Python                           |
-+-----+-----------------------------------------------+
-| 2   | Python intermédiaire                          |
-+-----+-----------------------------------------------+
-| 3   | La démarche de modélisation en physique       |
-+-----+-----------------------------------------------+
-| 4   | Suites et relations de récurrence             |
-+-----+-----------------------------------------------+
-| 5   | Ajuster un modèle aux données expérimentales  |
-+-----+-----------------------------------------------+
-| 6   | Dérivation et intégration numérique           |
-+-----+-----------------------------------------------+
-| 7   | Systèmes d'équations différentielles linéaire |
-+-----+-----------------------------------------------+
-| 8   | Systèmes d'équations non-linéaires            |
-+-----+-----------------------------------------------+
-| 9   | Projet en équipe                              |
-+-----+-----------------------------------------------+
-
-
+Dans la deuxième partie du cours vous développerez un **projet en équipe**. Cela demande des compétences d'organisation,
+de relationnel et de communication. Vous serez autonomes aussi bien pour le choix du sujet que pour sa réalisation.
+Cependant vous serez suivi et conseillé de près par votre enseignant.
 
 .. toctree::
    :maxdepth: 1
-   :caption: Informations sur le cours
+   :caption: Informations générales
 
+   cours-info/pedagogie
    cours-info/competences
+   cours-info/deroulement
    cours-info/evaluation
    cours-info/installation
-   cours-info/ressources
 
 .. toctree::
    :maxdepth: 1
