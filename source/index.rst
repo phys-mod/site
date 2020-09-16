@@ -50,6 +50,10 @@ Dans la deuxième partie du cours vous développerez un **projet en équipe**. C
 de relationnel et de communication. Vous serez autonomes aussi bien pour le choix du sujet que pour sa réalisation.
 Cependant vous serez suivi et conseillé de près par votre enseignant.
 
+.. admonition:: Transparents
+
+    :download:`Transparents d'introduction au cours (PDF) <./cours-info/cours_intro.pdf>`
+
 .. toctree::
    :maxdepth: 1
    :caption: Informations générales
