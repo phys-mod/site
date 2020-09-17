@@ -22,6 +22,9 @@ Modélisation Numérique en Physique
 Modèles et données
 ------------------
 
+   | "Essentially, all models are wrong, but some are useful."
+   | *George E. P. Box, statistician, 1919–2013.*
+
 Les modèles sont des *constructions mentales* qui forment la base des
 raisonnements du physicien. Ils sont construits à partir des théories physiques pour décrire un
 phénomène ou une situation particulière.
@@ -101,6 +104,9 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Suites et relations de récurrence
 
    sequences/04-suites-relations-recurrence/contenu
+   notebooks/04-suites-relations-recurrence/comprehension-listes-recursion.ipynb
+   notebooks/04-suites-relations-recurrence/exercices.ipynb
+   sequences/04-suites-relations-recurrence/logistique
 
 .. toctree::
    :maxdepth: 1

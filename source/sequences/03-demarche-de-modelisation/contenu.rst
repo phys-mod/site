@@ -17,7 +17,7 @@ Avant la première séance de la semaine:
 Séance 1
 --------
   1. Faire le calepin de cours sur le `Modèle de l’accélération constante`__
-  2. Faire les `exercices`__
+  2. Faire les *exercices*  (`correction du calepin`__)
 
 __ ../../notebooks/03-demarche-de-modelisation/acceleration-constante.ipynb
 __ ../../notebooks/03-demarche-de-modelisation/exercices.ipynb
