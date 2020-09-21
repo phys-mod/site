@@ -9,7 +9,7 @@ de système chaotique.
 
 A faire à la maison
 -------------------
-  - Faire le calepin de cours sur les *Compréhensions de listes et la récursion* (`correction du calepin`__)
+  - Faire le calepin de cours *Compréhensions de listes et récursion* (`correction du calepin`__)
 
 __ ../../notebooks/04-suites-relations-recurrence/comprehension-listes-recursion.ipynb
 
