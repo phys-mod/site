@@ -55,11 +55,11 @@ présente un comportement chaotique.
 
 A faire à la maison
 -------------------
-poly sur les suites ?
+Faire le calepin de cours *Représentation graphique d'une série mathématique* (`voir sur le site <../../notebooks/04-suites-relations-recurrence/serie-graphique.ipynb>`_).
 
 Comportement de la suite
 ------------------------
-Comme `dans le cours <../../notebooks/04-suites-relations-recurrence/comprehension-listes-recursion.ipynb#Représentation-graphique-d'une-série-mathématique>`_, représenter de façon graphique le comportement de la suite
+Comme expliqué dans le cours *Représentation graphique d'une série mathématique*, représenter de façon graphique le comportement de la suite
 pour :math:`r=2.5` et :math:`x_0=0.1`. La suite tend-elle vers une limite finie?
 
 Choisir d'autres valeurs de :math:`r` comprises entre 2.5 et 4. Que constatez-vous ?

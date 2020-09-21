@@ -106,6 +106,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    sequences/04-suites-relations-recurrence/contenu
    notebooks/04-suites-relations-recurrence/comprehension-listes-recursion.ipynb
    notebooks/04-suites-relations-recurrence/exercices.ipynb
+   notebooks/04-suites-relations-recurrence/serie-graphique.ipynb
    sequences/04-suites-relations-recurrence/logistique
 
 .. toctree::

@@ -21,8 +21,10 @@ __ ../../notebooks/04-suites-relations-recurrence/exercices.ipynb
 
 Séance 2
 --------
-  - Faire le `mini-projet sur les exoplanètes`__. Le compte-rendu est à déposer dans Moodle.
+Avant la séance 2, à la maison, vous devez faire le calepin de cours *Représentation graphique d'une série mathématique* (`voir sur le site`__).
+Vous aller ensuite réaliser le `mini-projet sur l'équation logistique`__. Le compte-rendu est à déposer dans Moodle.
 
+__ ../../notebooks/04-suites-relations-recurrence/serie-graphique.ipynb
 __ ./logistique.rst
 
 Trello
