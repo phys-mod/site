@@ -57,6 +57,10 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
 
     :download:`Transparents d'introduction au cours (PDF) <./cours-info/cours_intro.pdf>`
 
+.. admonition:: Présentation
+
+    :download:`Vidéo d'introduction au cours (MP4) <https://share.obspm.fr/index.php/s/39CAxczNYbieHDz>`
+
 .. toctree::
    :maxdepth: 1
    :caption: Informations générales
