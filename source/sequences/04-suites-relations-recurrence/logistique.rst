@@ -2,22 +2,23 @@
 Mini-projet: un exemple de système chaotique
 ============================================
 
-La particularité d'un système chaotique est de présenter un sensibilité extrème à ses conditions initiales. Cela signifie qu'une
+Une des particularités d'un système chaotique est de présenter une sensibilité extrême à ses conditions initiales. Cela signifie qu'une
 perturbation, aussi faible soit-elle, sur la condition initiale d'un système dynamique, aura une conséquence importante sur son évolution
 temporelle. C'est ce comportement que l'on va illustrer dans ce notebook.
 
-Pour être précis, nous parlons içi de chaos déterministe, c'est-à-dire du comportement chaotique d'un système dynamique dont les équations
-du mouvement sont déterministes: pour une même conditions initiale, le système évoluera toujours de la même manière. L'évolution chaotique
+Pour être précis, nous parlons ici de chaos déterministe, c'est-à-dire du comportement chaotique d'un système dynamique dont les équations
+du mouvement sont déterministes: pour une même condition initiale idéale, le système évoluera toujours de la même manière. L'évolution chaotique
 d'un système ne tient donc pas à la complexité des équations, la multiplicité des variables, ou encore à l'introduction de paramètres
 définis de manière aléatoire, mais bien à la sensibilité extrème aux conditions initiales.
 
-Le système chaotique le plus largement connu est l'équation logistique. C'est une équation extrèmement simple... même si l'apparition d'un
-comportement chaotique ne peut résulter que de non linéarités. Cette équation est celle qui régit l'évolution d'une population, disons des
-lapins. Leur reproduction conduit à faire croitre leur nombre, mais la quantité limité de nourriture va limiter cette croissance.
+Le système chaotique le plus largement connu est l'équation logistique. C'est une équation extrêmement simple... même si l'apparition d'un
+comportement chaotique ne peut résulter que de non linéarités. Cette équation est celle qui régit l'évolution d'une population,
+par exemple celle de certains poissons. Leur reproduction conduit à faire croitre leur nombre, mais la quantité limité de nourriture va
+limiter cette croissance.
 
 Présentation mathématique du problème
 -------------------------------------
-On note :math:`n_i` la population de lapin l'année :math:`i`, et :math:`\alpha` le nombre de petits par portée (une par an). Alors, :math:`n_{i+1} = \alpha n_i`. Si :math:`\alpha` est une constante, alors, on obtiendra l'année :math:`p`
+On note :math:`n_i` la population de poissons l'année :math:`i`, et :math:`\alpha` le nombre de petits par portée (une par an). Alors, :math:`n_{i+1} = \alpha n_i`. Si :math:`\alpha` est une constante, alors, on obtiendra l'année :math:`p`
 
 .. math::
     n_p = \alpha^p n_0
@@ -51,7 +52,7 @@ dont le seul paramètre est donc :math:`r`. Nous allons voir que suivant les val
 .. math::
     x_{i+1} = f(x_i)
 
-présente un comportement chaotique.
+présente un comportement chaotique. :math:`r` est compris entre 1 et 4.
 
 A faire à la maison
 -------------------
@@ -89,7 +90,7 @@ Exposant de Lyapunov
 --------------------
 Nous avons dit plus haut que le caractère chaotique d'un système dynamique tient à la manière dont une différence, aussi petite soit-elle,
 sur deux conditions initiales va pouvoir conduire à une divergence sévère de leur comportement asymptotique. Mathématiquement, cela
-signifie que la distance entre ces deux conditions initiales va augmenter de manière séculaire.
+signifie que la distance entre ces deux solutions va augmenter de manière exponentielle.
 
 On cherche une forme en
 
@@ -98,10 +99,10 @@ On cherche une forme en
 
 de cette croissance, sachant qu'elle va dépendre de la valeur de :math:`r`. Lorsque :math:`\lambda` est une fonction à valeur négative, la
 suite associée à l'équation logistique est convergente. A l'inverse, pour les valeurs positives de :math:`\lambda`, la suite diverge.
-Cette divergence peut se traduire de plusieurs manière. Comme vous l'avez vu sur le diagramme de bifurcation, suivant les valeurs de
+Cette divergence peut se traduire de plusieurs manières. Comme vous l'avez vu sur le diagramme de bifurcation, suivant les valeurs de
 :math:`r`, on peut avoir 1, 2, 4 ou plus limites à la suite des :math:`x_i`.
 
-La manière de calculer cet exposant est due à Laeksandr Lyapunov (1857-1918). L'expression de :math:`\lambda(r)` est
+La manière de calculer cet exposant est due à Aleksander Lyapunov (1857-1918). L'expression de :math:`\lambda(r)` est
 
 .. math::
     \lambda = \lim\limits_{n \rightarrow \infty} \frac{1}{n} \sum_{i=0}^{n-1} \log | f^{\prime} (x_i)|
