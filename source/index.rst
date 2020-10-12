@@ -124,6 +124,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Dérivation et intégration
 
    sequences/06-derivation-integration/contenu
+   notebooks/06-derivation-integration/derivation-integration-cours.ipynb
 
 .. toctree::
    :maxdepth: 1
