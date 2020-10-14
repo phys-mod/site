@@ -7,7 +7,7 @@ Déroulement de la séquence
 Déroulement de la séquence
 ==========================
 
-La troisième séquence est une introduction à la démarche de modélisation numérique. Vous commencerez par lire un
+La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par lire un
 article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accéleration
 constante, avec un cours et des exercices. Votre premier mini-projet concerne les exoplanètes. Vous y appliquerez
 les concepts et notions appris pendant les 2 premières semaines.
@@ -15,6 +15,8 @@ les concepts et notions appris pendant les 2 premières semaines.
 A faire à la maison
 -------------------
 Avant la première séance de la semaine:
+
+Avant la deuxième séance de la semaine, lire l'article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>` et répondre aux questions suivantes: 
 
 
 Séance 1
