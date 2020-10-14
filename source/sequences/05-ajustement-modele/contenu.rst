@@ -3,10 +3,6 @@ Déroulement de la séquence
 ==========================
 
 
-==========================
-Déroulement de la séquence
-==========================
-
 La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par lire un
 article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accéleration
 constante, avec un cours et des exercices. Votre premier mini-projet concerne les exoplanètes. Vous y appliquerez
