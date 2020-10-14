@@ -16,7 +16,9 @@ A faire à la maison
 -------------------
 Avant la première séance de la semaine:
 
-Avant la deuxième séance de la semaine, lire `l'article suivant  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ et répondre aux questions suivantes: 
+Avant la deuxième séance de la semaine, lire `l'article suivant  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_. 
+
+Répondez ensuite aux questions suivantes: 
 
 
 Séance 1
