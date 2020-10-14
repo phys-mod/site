@@ -16,29 +16,12 @@ A faire à la maison
 -------------------
 Avant la première séance de la semaine:
 
-  1. Lire l'article :download:`The Role of Models in Physics Instruction <./The Role of Models in Physics Instruction.pdf>`
-  2. Réaliser le `questionnaire sur la démarche de modélisation <https://moodle-sciences.upmc.fr/moodle-2020/mod/quiz/view.php?id=47945>`_
 
 Séance 1
 --------
-  1. Faire le calepin de cours sur le `Modèle de l’accélération constante`__
-  2. Faire les *exercices*  (`correction du calepin`__)
-
-__ ../../notebooks/03-demarche-de-modelisation/acceleration-constante.ipynb
-__ ../../notebooks/03-demarche-de-modelisation/exercices.ipynb
-
-Pour l'exercice sur les ondes gravitationnelles, vous aurez besoin des fichier suivant:
-
-  - :download:`données de l'exercice 3 <../../notebooks/03-demarche-de-modelisation/gw.dat>`
-  - :download:`modèle de l'exercice 3 <../../notebooks/03-demarche-de-modelisation/gw_model.dat>`
 
 Séance 2
 --------
-Avant la séance 2, à la maison, vous devez `préparer la physique du mini-projet`__. Vous aller ensuite réaliser le
-`mini-projet sur les exoplanètes`__ pendant la deuxième séance. Le compte-rendu est à déposer dans Moodle.
-
-__ ./exoplanetes-kepler.rst#A-la-maison
-__ ./exoplanetes-kepler.rst
 
 Trello
 ------
