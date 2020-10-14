@@ -29,6 +29,9 @@ Séance 1
 
 Séance 2
 --------
+On va au cours de cette scéance réaliser le `mini-projet sur le réchauffement climatique`__. Le compte-rendu est à déposer dans Moodle.
+
+__ ./rechauffement_climatique.rst
 
 Trello
 ------
