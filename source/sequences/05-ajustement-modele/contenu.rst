@@ -19,9 +19,9 @@ Avant la première séance de la semaine:
 Avant la deuxième séance de la semaine, lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_. 
 
 Répondez ensuite aux questions suivantes: 
-- Que signifie les sigles IPCC et RCP?
-- Qu'appelle-t-on des "radiatives forcing"?
-- Décrivez en quelques phrases la manière dont les volcans et l'activités solaires ont influencé la température sur Terre au cours des 50 dernières années d'après cet article. 
+ - Que signifie les sigles IPCC et RCP?
+ - Qu'appelle-t-on des "radiatives forcing"?
+ - Décrivez en quelques phrases la manière dont les volcans et l'activités solaires ont influencé la température sur Terre au cours des 50 dernières années d'après cet article. 
 
 
 Séance 1
