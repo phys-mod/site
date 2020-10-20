@@ -10,22 +10,33 @@ les concepts et notions appris pendant les 2 premières semaines.
 
 A faire à la maison
 -------------------
+
 Avant la première séance de la semaine:
 
-Avant la deuxième séance de la semaine, lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_. 
+  - Faire le calepin de cours *Ajuster un modèle aux données* (:download:`télécharger le calepin <../../_static/etu-ajustement-modele.zip>`) (`correction du calepin`__)
 
-Répondez ensuite aux questions suivantes: 
+__ ../../notebooks/05-ajustement-modele/ajustement-modele.ipynb
+
+
+Avant la deuxième séance de la semaine:
+lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_.
+
+Répondez ensuite aux questions suivantes:
+
  - Que signifient les sigles IPCC et RCP?
  - Qu'appelle-t-on des *"radiatives forcing"*?
- - Décrivez en quelques phrases la manière dont les volcans et l'activités solaires ont influencé la température sur Terre au cours des 50 dernières années d'après cet article. 
+ - Décrivez en quelques phrases la manière dont les volcans et l'activités solaires ont influencé la température sur Terre au cours des 50 dernières années d'après cet article.
 
 
 Séance 1
 --------
+  - Faire les *exercices*  (`correction du calepin`__)
+
+__ ../../notebooks/05-ajustement-modele/exercices.ipynb
 
 Séance 2
 --------
-On va au cours de cette scéance réaliser le `mini-projet sur le réchauffement climatique`__. Le compte-rendu est à déposer dans Moodle.
+On va au cours de cette séance réaliser le `mini-projet sur le réchauffement climatique`__. Le compte-rendu est à déposer dans Moodle.
 
 __ ./rechauffement_climatique.rst
 

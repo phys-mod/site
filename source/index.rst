@@ -118,6 +118,9 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Ajuster un modèle
 
    sequences/05-ajustement-modele/contenu
+   notebooks/05-ajustement-modele/ajustement-modele.ipynb
+   notebooks/05-ajustement-modele/exercices.ipynb
+   sequences/05-ajustement-modele/rechauffement_climatique.rst
 
 .. toctree::
    :maxdepth: 1
@@ -125,6 +128,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
 
    sequences/06-derivation-integration/contenu
    notebooks/06-derivation-integration/derivation-integration-cours.ipynb
+   notebooks/06-derivation-integration/derivation-integration-exercices.ipynb
 
 .. toctree::
    :maxdepth: 1
