@@ -3,22 +3,20 @@ Déroulement de la séquence
 ==========================
 
 
-La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par lire un
-article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accéleration
-constante, avec un cours et des exercices. Votre premier mini-projet concerne les exoplanètes. Vous y appliquerez
-les concepts et notions appris pendant les 2 premières semaines.
+La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonction (linéaire, exponentielle, sinusoide...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique. 
 
 A faire à la maison
 -------------------
 
 Avant la première séance de la semaine:
 
-  - Faire le calepin de cours *Ajuster un modèle aux données* (:download:`télécharger le calepin <../../_static/etu-ajustement-modele.zip>`) (`correction du calepin`__)
+  - Faire le calepin de cours *Ajuster un modèle aux données* (:download:`télécharger le calepin <../../_static/etu-ajustement-modele.ipynb>`) (`correction du calepin`__)
 
 __ ../../notebooks/05-ajustement-modele/ajustement-modele.ipynb
 
 
 Avant la deuxième séance de la semaine:
+
 lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_.
 
 Répondez ensuite aux questions suivantes:
