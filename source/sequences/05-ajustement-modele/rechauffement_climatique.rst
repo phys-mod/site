@@ -25,14 +25,14 @@ La seconde problématique sera de montrer que l'effet observé est significatif,
 
 **2. Lien avec l'activité solaire**
 
-En 1991, Eigil Friis-Christense, chercheur à l'Université Technique du Danemark, a corrélé l'augmentation de l'activité solaire au réchauffement climatique dans `cet article <https://www.researchgate.net/publication/6065360_Length_of_the_Solar_Cycle_An_Indicator_of_Solar_Activity_Closely_Associated_with_Climate>`, argument régulièrement mis en avant depuis par les climatosceptiques.
+En 1991, Eigil Friis-Christense, chercheur à l'Université Technique du Danemark, a corrélé l'augmentation de l'activité solaire au réchauffement climatique dans `cet article <https://www.researchgate.net/publication/6065360_Length_of_the_Solar_Cycle_An_Indicator_of_Solar_Activity_Closely_Associated_with_Climate>`_, argument régulièrement mis en avant depuis par les climatosceptiques.
  
 Un mécanisme invoqué pour expliquer corrélation est les suivant: une plus forte activité solaire ferait croître le champ magnétique solaire, quidévirait le flux de rayons cosmiques arrivant sur Terre. Ces rayons cosmiques étant suceptible d'influencer la formation de nuages dans l'atmosphère terrestre (mécanismes d'ionsation et de condensation étant lies), une activité solaire plus forte réduirait la couverture nuageuse, et donc *l'albedo* (réflexion des rayons solaires par les nuages), entrainant finalement une augmentation des températures de l'air.
 
 **On vous propose d'étudier cette hypothèse, en cherchant si l'irradiance solaire mesurée est corrélée au réchauffement mis en évidence dans la première partie du projet.** 
 
-Pour cela vous utiliserez des données d'observations directes des taches solaires, dont le nombre est fortement corrélé à l'irradiance solaire. Celle ci en est déduite par une méthode de regression (encore!) baptisée EMPIRE. Les données de la période 1947-2016 sont accessibles `au lien suivant <https://www2.mps.mpg.de/projects/sun-climate/data.html>`.
+Pour cela vous utiliserez des données d'observations directes des taches solaires, dont le nombre est fortement corrélé à l'irradiance solaire. Celle ci en est déduite par une méthode de regression (encore!) baptisée EMPIRE. Les données de la période 1947-2016 sont accessibles `au lien suivant <https://www2.mps.mpg.de/projects/sun-climate/data.html>`_.
  
-**Suggestion n°3** On pourra appliquer un traitement semblable à celui des données de température, avec un calcul de moyenne annuelle et un ajustement sinusoidal. On pourra choisir pour celui-ci les mêmes tranches décennales que pour les températures afin de faciliter la comparaison entre les deux jeux de données.  
+**Suggestion n°3** On pourra appliquer un traitement semblable à celui déjàeffectué sur les données de température, avec un ajustement sinusoidal des données moyennées sur une année. On pourra choisir d'effectuer cet ajustement sur les mêmes tranches décennales que pour les températures afin de faciliter la comparaison entre les deux jeux de données.  
  
 .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
