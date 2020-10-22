@@ -18,7 +18,7 @@ On va travailler pour répondre à ces deux questions sur les relevés de tempé
 **1. Mise en évidence du réchauffement climatique**
 
 La première problématique à laquelle vous serez confrontés sera de faire apparaitre un effet faible et lent (on voit dans la figure ci-dessus que le réchauffement est de l'ordre de 1°C sur les 30 dernières dernières années) à l'échelle des données (amplitudes de fluctuations quotidiennes ou saisonnières dix fois supérieures typiquement).
-La seconde problématique sera de montrer que l'effet observé est significatif, c'est qu'il est exclu que cette augmentation des températures corresponde à une fluctuation statistique.
+La seconde problématique sera de montrer que l'effet observé est significatif, c'est à dire que cette augmentation des températures ne correspond pas à une fluctuation statistique.
 
 **Suggestion n°1:** les fluctuations à court terme (<quelques jours) devraient pouvoir être fortement atténuées en calculant les moyennes de températures par tranche mensuelle. 
 
@@ -26,5 +26,11 @@ La seconde problématique sera de montrer que l'effet observé est significatif,
 
 **2. Lien avec l'activité solaire**
 
+ En 1991, Eigil Friis-Christense, chercheur à l'Université Technique du Danemark, a corrélé l'augmentation de l'activité solaire au réchauffement climatique (cf https://www.researchgate.net/publication/6065360_Length_of_the_Solar_Cycle_An_Indicator_of_Solar_Activity_Closely_Associated_with_Climate), argument régulièrement msi en avant depuis par les climatosceptiques.
+ 
+Un mécanisme invoqué pour cette corrélation est qu'une plus forte activité solaire correspondrait à un chammp magnétique plus fort, qui réduirait le flux de rayons cosmiques arrivant sur Terre. La couverture nuageuse en serait réduite (car moins d'ionisation de l'atmosphère, et donc moins de condensation), et l'albedo (réflexion des rayons solaires par les nuages) diminuerait d'autant, entrainant un réchauffement.
 
+On vous propose d'étudier cette hypothèse, en cherchant si la radiation solaire mesurée est corrélée au réchauffement mis en évidence dans la première partie du projet. Pour cela on va utiliser des données d'observations directes des taches solaires, dont le nombre est fortement corrélé à l'irradiance solaire. Celle ci en est déduite par une méthode de regression (encore!) baptisée EMPIRE. Les données de la période 1947-2016 sont accessibles sur https://www2.mps.mpg.de/projects/sun-climate/data.html.
+ 
+ 
 .. |copy|   unicode:: U+000A9 .. COPYRIGHT SIGN
