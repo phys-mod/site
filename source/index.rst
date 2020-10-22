@@ -119,7 +119,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
 
    sequences/05-ajustement-modele/contenu
    notebooks/05-ajustement-modele/ajustement-modele.ipynb
-   notebooks/05-ajustement-modele/exercices.ipynb
+   notebooks/05-ajustement-modele/exercices_v2.ipynb
    sequences/05-ajustement-modele/rechauffement_climatique.rst
 
 .. toctree::
