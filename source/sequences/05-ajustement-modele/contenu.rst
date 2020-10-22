@@ -30,7 +30,7 @@ Séance 1
 --------
   - Faire les *exercices*  (`correction du calepin`__)
 
-__ ../../notebooks/05-ajustement-modele/exercices.ipynb
+__ ../../notebooks/05-ajustement-modele/exercices_v2.ipynb
 
 Séance 2
 --------
