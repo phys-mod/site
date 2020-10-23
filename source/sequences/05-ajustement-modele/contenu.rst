@@ -28,9 +28,9 @@ Répondez ensuite aux questions suivantes:
 
 Séance 1
 --------
-  - Faire les *exercices*  (`correction du calepin`__)
+  - Faire les *exercices* (:download:`télécharger le calepin <../../_static/exercices-etu.ipynb>`) (`correction du calepin`__)
 
-__ ../../notebooks/05-ajustement-modele/exercices-etu.ipynb
+__ ../../notebooks/05-ajustement-modele/exercices_v2.ipynb
 
 Séance 2
 --------
