@@ -118,8 +118,8 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Ajuster un modèle
 
    sequences/05-ajustement-modele/contenu
-   notebooks/05-ajustement-modele/ajustement-modele.ipynb
-   notebooks/05-ajustement-modele/exercices_v2.ipynb
+   notebooks/05-ajustement-modele/etu-ajustement-modele.ipynb
+   notebooks/05-ajustement-modele/exercices-etu.ipynb
    sequences/05-ajustement-modele/rechauffement_climatique.rst
 
 .. toctree::
