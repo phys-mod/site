@@ -31,7 +31,7 @@ Un mécanisme invoqué pour expliquer corrélation est les suivant: une plus for
 
 **On vous propose d'étudier cette hypothèse, en cherchant si l'irradiance solaire mesurée est corrélée au réchauffement mis en évidence dans la première partie du projet.** 
 
-Pour cela vous utiliserez des données d'observations directes des taches solaires, dont le nombre est fortement corrélé à l'irradiance solaire. Celle ci en est déduite par une méthode de regression (encore!) baptisée EMPIRE. Les données de la période 1947-2016 sont accessibles `au lien suivant <https://www2.mps.mpg.de/projects/sun-climate/data.html>`_.
+Pour cela vous utiliserez des données d'observations directes des taches solaires, dont le nombre est fortement corrélé à l'irradiance solaire. Celle ci en est déduite par une méthode de regression (encore!) baptisée EMPIRE. Les données de la période 1947-2016 de l'iradiance solaire (Total Solar Irradiance, TSI) sont accessibles `au lien suivant <https://www2.mps.mpg.de/projects/sun-climate/data.html>`_.
  
 **Suggestion n°3** On pourra appliquer un traitement semblable à celui déjàeffectué sur les données de température, avec un ajustement sinusoidal des données moyennées sur une année. On pourra choisir d'effectuer cet ajustement sur les mêmes tranches décennales que pour les températures afin de faciliter la comparaison entre les deux jeux de données.  
  
