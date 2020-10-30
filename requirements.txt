@@ -8,3 +8,4 @@ matplotlib
 numpy
 pandas
 pygments == 2.6.1
+simpy

@@ -129,6 +129,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    sequences/06-derivation-integration/contenu
    notebooks/06-derivation-integration/derivation-integration-cours.ipynb
    notebooks/06-derivation-integration/derivation-integration-exercices.ipynb
+   notebooks/06-derivation-integration/Digue2.ipynb
 
 .. toctree::
    :maxdepth: 1
