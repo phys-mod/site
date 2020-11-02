@@ -23,7 +23,7 @@ __ ../../notebooks/06-derivation-integration/Digue2.ipynb
 
 Séance 1
 --------
-  - Faire les *exercices*  (:download:`télécharger le calepin <../../notebooks/06-derivation-integration/etu-derivation-integration-exercices.zip>`) (`correction du calepin`__)
+  - Faire les *exercices*  (:download:`télécharger le calepin <../../notebooks/06-derivation-integration/etu-derivation-integration-exercices.ipynb.zip>`) (`correction du calepin`__)
 
 __ ../../notebooks/06-derivation-integration/derivation-integration-exercices.ipynb
 
