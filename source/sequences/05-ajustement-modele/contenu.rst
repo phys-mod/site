@@ -3,13 +3,7 @@ Déroulement de la séquence
 ==========================
 
 
-<<<<<<< HEAD
-La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par lire un
-article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accéleration
-constante, avec un cours et des exercices. Le mini-projet traite du réchauffement climatique.
-=======
-La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonction (linéaire, exponentielle, sinusoide...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique. 
->>>>>>> 4f4759cd5b91daef0c5c2d362bd1feb75e14e406
+La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonction (linéaire, exponentielle, sinusoide...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique.
 
 A faire à la maison
 -------------------

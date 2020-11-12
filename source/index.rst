@@ -118,7 +118,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Ajuster un modèle
 
    sequences/05-ajustement-modele/contenu
-   notebooks/05-ajustement-modele/etu-ajustement-modele.ipynb
+   notebooks/05-ajustement-modele/ajustement-modele.ipynb
    notebooks/05-ajustement-modele/exercices-etu.ipynb
    sequences/05-ajustement-modele/rechauffement_climatique.rst
 
@@ -136,12 +136,18 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Équations différentielles linéaire
 
    sequences/07-equations-differentielles/contenu
+   notebooks/07-equations-differentielles/edo_cours.ipynb
+   notebooks/07-equations-differentielles/edo_exercices.ipynb
+   notebooks/07-equations-differentielles/pendule
 
 .. toctree::
    :maxdepth: 1
    :caption: Équations non-linéaires
 
    sequences/08-equations-non-lineaires/contenu
+   notebooks/08-equations-non-lineaires/zeros-cours.ipynb
+   notebooks/08-equations-non-lineaires/zeros-exercice.ipynb
+   notebooks/08-equations-non-lineaires/projet-alben.ipynb
 
 .. toctree::
    :maxdepth: 1
