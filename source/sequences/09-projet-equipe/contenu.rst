@@ -13,7 +13,7 @@ Le projet se fait en binôme.
     Ce qui compte dans ce projet n'est pas tant le contenu que la façon dont il va se dérouler. C'est le moment
     d'acquérir des compétences d'organisation, de relationnel et de communication.
 
-Le projet se déroule en trois phases:
+Le projet se déroule en trois phases (voir le calendrier en bas de page):
 
 - **Planification:** lors de la Semaine 1, il faudra choisir votre binôme, le sujet et la problématique, ainsi que planifier et répartir les tâches de votre projet
 - **Mise en oeuvre:** une fois les tâches bien définies, vous les réaliserez lors des Semaines 2 et 3. On peut pendant cette phase modifier les tâches si on se rend compte qu'il en manque ou qu'elles ne sont pas adaptées.
@@ -118,3 +118,11 @@ Communication (sur 15)
     - grille d'évaluation pour l'oral
 Contenu (sur 15)
     - note du compte-rendu avec la même grille d'évaluation que pour les mini-projets
+
+Calendrier
+==========
+- Semaine 1: semaine du 30/11/2020
+- Semaine 2: semaine du 07/12/2020
+- Semaine 3: semaine du 14/12/2020
+- Semaine 4: semaine du 04/01/2021
+- Semaine 5: semaine du 11/01/2021
