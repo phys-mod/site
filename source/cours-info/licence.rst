@@ -23,12 +23,11 @@ Crédits
 Ce cours a été préparé par des enseignant-chercheurs de Sorbonne Université:
 
 - **Pacôme DELVA**: mise en place du site web et gestion, conception, relecture, intégration de l'ensemble du cours et gestion de l'équipe de développement. Création des séquences *Les bases de Python*, *Python intermédiaire* et *La démarche de modélisation*.
-- **Johan BISCARAS**: création de la séquence *Dérivation et intégration*.
-- **Olivier MARTINEAU** et **Andrea CIARDI**: création de la séquence *Ajuster un modèle*.
-- **Nicolas RAMBAUX**: création de la séquence *Equations non-linéaires*.
+- **Johan BISCARAS**: création de la séquence *Dérivation et intégration* et relecture.
+- **Olivier MARTINEAU** et **Andrea CIARDI**: création de la séquence *Ajuster un modèle* et relecture.
+- **Nicolas RAMBAUX**: création de la séquence *Equations non-linéaires* et relecture.
 - **Roch SMETS**: création de la séquence *Suites et relations de récurrence*.
-- **Dirk STRATMANN** et **Philippe SINDZINGRE**: Création de la séquence *Equations différentielles linéaires*. Le mini-projet est une adaptation *
-d'un problème préparé par Julien AUBLIN.
+- **Dirk STRATMANN** et **Philippe SINDZINGRE**: Création de la séquence *Equations différentielles linéaires*. Le mini-projet est une adaptation d'un problème préparé par Julien AUBLIN.
 
 Références
 ----------
