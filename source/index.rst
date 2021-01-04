@@ -70,6 +70,7 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    cours-info/deroulement
    cours-info/evaluation
    cours-info/installation
+   cours-info/licence
 
 .. toctree::
    :maxdepth: 1
