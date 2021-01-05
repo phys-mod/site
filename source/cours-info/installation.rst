@@ -6,10 +6,10 @@ Jupyter Notebooks
 `Jupyter <https://jupyter.org/>`_ permet de réaliser des calepins ou notebooks, c’est-à-dire des
 programmes contenant à la fois du texte et du code informatique. Ces
 calepins sont utilisés en science des données pour explorer et analyser des
-données. Vous pouvez télécharger les calepins de l’UE des 4 premières semaines en une fois
+données. Vous pouvez télécharger les calepins de l’UE en une fois
 avec le lien suivant:
 
-:download:`Télécharger les calepins des 4 premières semaines <../notebooks/calepins-etu.zip>`
+:download:`Télécharger tous les calepins de l'UE <../notebooks/calepins-etu.zip>`
 
 Pour travailler sur les calepins en `salle informatique Capsule <https://lutes.upmc.fr/bdl-ext.php>`_, il faut:
 
