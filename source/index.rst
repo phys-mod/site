@@ -77,31 +77,31 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Les bases de Python
 
    sequences/01-python-base/contenu
-   notebooks/01-python-base/prise-en-main.ipynb
-   notebooks/01-python-base/listes-python.ipynb
-   notebooks/01-python-base/fonctions-modules.ipynb
-   notebooks/01-python-base/module-numpy.ipynb
-   notebooks/01-python-base/fonctions-numpy.ipynb
-   notebooks/01-python-base/module-matplotlib.ipynb
+   notebooks/01-python-base/01-prise-en-main.ipynb
+   notebooks/01-python-base/02-listes-python.ipynb
+   notebooks/01-python-base/03-fonctions-modules.ipynb
+   notebooks/01-python-base/04-module-numpy.ipynb
+   notebooks/01-python-base/05-fonctions-numpy.ipynb
+   notebooks/01-python-base/06-module-matplotlib.ipynb
 
 .. toctree::
    :maxdepth: 1
    :caption: Python intermédiaire
 
    sequences/02-python-intermediaire/contenu
-   notebooks/02-python-intermediaire/dictionnaires-pandas.ipynb
-   notebooks/02-python-intermediaire/logique-filtrage.ipynb
-   notebooks/02-python-intermediaire/iteration.ipynb
-   notebooks/02-python-intermediaire/fonctions.ipynb
-   notebooks/02-python-intermediaire/entrees-sorties.ipynb
+   notebooks/02-python-intermediaire/01-dictionnaires-pandas.ipynb
+   notebooks/02-python-intermediaire/02-logique-filtrage.ipynb
+   notebooks/02-python-intermediaire/03-iteration.ipynb
+   notebooks/02-python-intermediaire/04-fonctions.ipynb
+   notebooks/02-python-intermediaire/05-entrees-sorties.ipynb
 
 .. toctree::
    :maxdepth: 1
    :caption: La démarche de modélisation
 
    sequences/03-demarche-de-modelisation/contenu
-   notebooks/03-demarche-de-modelisation/acceleration-constante.ipynb
-   notebooks/03-demarche-de-modelisation/exercices.ipynb
+   notebooks/03-demarche-de-modelisation/01-acceleration-constante.ipynb
+   notebooks/03-demarche-de-modelisation/02-exercices.ipynb
    sequences/03-demarche-de-modelisation/exoplanetes-kepler
 
 .. toctree::
@@ -109,9 +109,9 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Suites et relations de récurrence
 
    sequences/04-suites-relations-recurrence/contenu
-   notebooks/04-suites-relations-recurrence/comprehension-listes-recursion.ipynb
-   notebooks/04-suites-relations-recurrence/exercices.ipynb
-   notebooks/04-suites-relations-recurrence/serie-graphique.ipynb
+   notebooks/04-suites-relations-recurrence/01-comprehension-listes-recursion.ipynb
+   notebooks/04-suites-relations-recurrence/02-exercices.ipynb
+   notebooks/04-suites-relations-recurrence/03-serie-graphique.ipynb
    sequences/04-suites-relations-recurrence/logistique
 
 .. toctree::
@@ -119,8 +119,8 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Ajuster un modèle
 
    sequences/05-ajustement-modele/contenu
-   notebooks/05-ajustement-modele/ajustement-modele.ipynb
-   notebooks/05-ajustement-modele/exercices-etu.ipynb
+   notebooks/05-ajustement-modele/01-ajustement-modele.ipynb
+   notebooks/05-ajustement-modele/02-exercices.ipynb
    sequences/05-ajustement-modele/rechauffement_climatique.rst
 
 .. toctree::
