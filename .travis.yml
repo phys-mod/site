@@ -1,8 +1,8 @@
 #dist: xenial # needed to use python 3.7
 language: python
-branches:
-  only:
-    - master
+#branches:
+#  only:
+#    - master
 python:
   - 3.6
 install:
