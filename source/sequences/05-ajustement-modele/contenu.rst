@@ -12,7 +12,7 @@ Avant la première séance de la semaine:
 
   - Faire le calepin de cours *Ajuster un modèle aux données* (:download:`télécharger le calepin <../../_static/etu-ajustement-modele.ipynb>`) (`correction du calepin`__)
 
-__ ../../notebooks/05-ajustement-modele/ajustement-modele.ipynb
+__ ../../notebooks/05-ajustement-modele/01-ajustement-modele.ipynb
 
 
 Avant la deuxième séance de la semaine:
@@ -28,9 +28,9 @@ Répondez ensuite aux questions suivantes:
 
 Séance 1
 --------
-  - Faire les *exercices* (:download:`télécharger le calepin <../../_static/exercices-etu.ipynb>`) (`correction du calepin`__)
+  - Faire les *exercices* (`correction du calepin`__)
 
-__ ../../notebooks/05-ajustement-modele/exercices_v2.ipynb
+__ ../../notebooks/05-ajustement-modele/02-exercices.ipynb
 
 Séance 2
 --------

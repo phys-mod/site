@@ -17,7 +17,7 @@ A faire à la maison
   1. Faire le 1er calepin *Dictionnaires et Pandas* dans le bureau virtuel (`correction du calepin`__)
   2. Si j'ai un problème, demander de l'aide sur le `Forum Moodle`__
 
-__ ../../notebooks/02-python-intermediaire/dictionnaire-python.ipynb
+__ ../../notebooks/02-python-intermediaire/01-dictionnaire-python.ipynb
 __ https://moodle-sciences.upmc.fr/moodle-2020/course/view.php?id=2841
 
 A faire en séance
@@ -29,10 +29,10 @@ Pendant les 2 séances de la semaine, vous ferez le reste des calepins:
   3. Fonctions (`correction du calepin`__)
   4. Entrées-sorties (`correction du calepin`__)
 
-__ ../../notebooks/02-python-intermediaire/logique-filtrage.ipynb
-__ ../../notebooks/02-python-intermediaire/iteration.ipynb
-__ ../../notebooks/02-python-intermediaire/fonctions.ipynb
-__ ../../notebooks/02-python-intermediaire/entrees-sorties.ipynb
+__ ../../notebooks/02-python-intermediaire/02-logique-filtrage.ipynb
+__ ../../notebooks/02-python-intermediaire/03-iteration.ipynb
+__ ../../notebooks/02-python-intermediaire/04-fonctions.ipynb
+__ ../../notebooks/02-python-intermediaire/05-entrees-sorties.ipynb
 
 Trello
 ------

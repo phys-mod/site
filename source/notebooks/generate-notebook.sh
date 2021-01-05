@@ -7,6 +7,7 @@ for rep in ./0*; do
 	mkdir -p $eturep
 	# remove solution cells from notebooks
 	cd $rep
+	cp *.png *.jpg ../$eturep 2>/dev/null
 	for file in ./*.ipynb; do
 		etufile=etu-`expr substr ${file} 3 200`
 		echo convert $file to $etufile

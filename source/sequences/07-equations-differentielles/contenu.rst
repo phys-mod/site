@@ -11,21 +11,21 @@ A faire à la maison
 
 Avant la première séance de la semaine:
 
-  - Faire le calepin de cours *Equations différentielles ordinaires* (:download:`télécharger le calepin <../../notebooks/07-equations-differentielles/etu-edo_cours.zip>`) (`correction du calepin`__)
+  - Faire le calepin de cours *Equations différentielles ordinaires* (`correction du calepin`__)
 
-__ ../../notebooks/07-equations-differentielles/edo_cours.ipynb
+__ ../../notebooks/07-equations-differentielles/01-edo_cours.ipynb
 
 Séance 1
 --------
-  - Faire les *exercices*  (:download:`télécharger le calepin <../../notebooks/07-equations-differentielles/etu-edo_exercices.zip>`) (`correction du calepin`__)
+  - Faire les *exercices* (`correction du calepin`__)
 
-__ ../../notebooks/07-equations-differentielles/edo_exercices.ipynb
+__ ../../notebooks/07-equations-differentielles/02-edo_exercices.ipynb
 
 Séance 2
 --------
 On va au cours de cette séance réaliser le `mini-projet sur le pendule`__. Le compte-rendu est à déposer dans Moodle.
 
-__ ../../notebooks/07-equations-differentielles/pendule.ipynb
+__ ../../notebooks/07-equations-differentielles/03-pendule.ipynb
 
 Trello
 ------

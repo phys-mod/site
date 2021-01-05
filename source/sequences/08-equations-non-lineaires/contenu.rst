@@ -11,15 +11,15 @@ A faire à la maison
 
 Avant la première séance de la semaine:
 
-  - Faire la partie **La méthode de dichotomie** du calepin de cours (:download:`télécharger le calepin <../../notebooks/08-equations-non-lineaires/etu-zeros-cours.zip>`) (`correction du calepin`__)
+  - Faire la partie **La méthode de dichotomie** du calepin de cours (`correction du calepin`__)
 
-__ ../../notebooks/08-equations-non-lineaires/zeros-cours.ipynb
+__ ../../notebooks/08-equations-non-lineaires/01-zeros-cours.ipynb
 
 Séance 1
 --------
-  - Faire les *exercices*  (:download:`télécharger le calepin <../../notebooks/08-equations-non-lineaires/etu-zeros-exercice.zip>`) (`correction du calepin`__)
+  - Faire les *exercices* (`correction du calepin`__)
 
-__ ../../notebooks/08-equations-non-lineaires/zeros-exercice.ipynb
+__ ../../notebooks/08-equations-non-lineaires/02-zeros-exercice.ipynb
 
 Séance 2
 --------
@@ -27,7 +27,7 @@ On va au cours de cette séance réaliser le `mini-projet sur le modèle de bifu
 Il faut préparer la première partie du problème à la maison.
 Le compte-rendu est à déposer dans Moodle.
 
-__ ../../notebooks/08-equations-non-lineaires/projet-alben.ipynb
+__ ../../notebooks/08-equations-non-lineaires/03-projet-alben.ipynb
 
 Trello
 ------

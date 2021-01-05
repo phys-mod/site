@@ -11,27 +11,27 @@ A faire à la maison
 
 Avant la première séance de la semaine:
 
-  - Faire le calepin de cours *Dérivation et intégration numérique* (:download:`télécharger le calepin <../../notebooks/06-derivation-integration/etu-derivation-integration-cours.zip>`) (`correction du calepin`__)
+  - Faire le calepin de cours *Dérivation et intégration numérique* (`correction du calepin`__)
 
-__ ../../notebooks/06-derivation-integration/derivation-integration-cours.ipynb
+__ ../../notebooks/06-derivation-integration/01-derivation-integration-cours.ipynb
 
 Avant la deuxième séance de la semaine:
 
   - préparer le `mini-projet sur les digues`__.
 
-__ ../../notebooks/06-derivation-integration/Digue2.ipynb
+__ ../../notebooks/06-derivation-integration/03-Digue.ipynb
 
 Séance 1
 --------
-  - Faire les *exercices*  (:download:`télécharger le calepin <../../notebooks/06-derivation-integration/etu-derivation-integration-exercices.ipynb.zip>`) (`correction du calepin`__)
+  - Faire les *exercices* (`correction du calepin`__)
 
-__ ../../notebooks/06-derivation-integration/derivation-integration-exercices.ipynb
+__ ../../notebooks/06-derivation-integration/02-derivation-integration-exercices.ipynb
 
 Séance 2
 --------
 On va au cours de cette séance réaliser le `mini-projet sur les digues`__. Le compte-rendu est à déposer dans Moodle.
 
-__ ../../notebooks/06-derivation-integration/digue2.ipynb
+__ ../../notebooks/06-derivation-integration/03-Digue.ipynb
 
 Trello
 ------

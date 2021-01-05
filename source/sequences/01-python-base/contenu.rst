@@ -22,7 +22,7 @@ A faire à la maison
 
 __ ../../cours-info/installation.rst#Trello
 __ ../../cours-info/installation.rst#Jupyter-Notebooks
-__ ../../notebooks/01-python-base/prise-en-main.ipynb
+__ ../../notebooks/01-python-base/01-prise-en-main.ipynb
 __ ../../cours-info/installation.rst#Jupyter-Notebooks
 __ https://moodle-sciences.upmc.fr/moodle-2020/course/view.php?id=2841
 
@@ -36,11 +36,11 @@ Pendant les 2 séances de la semaine, vous ferez le reste des calepins:
   4. Les fonctions de Numpy (`correction du calepin`__)
   5. Le module Matplotlib (`correction du calepin`__)
 
-__ ../../notebooks/01-python-base/listes-python.ipynb
-__ ../../notebooks/01-python-base/fonctions-modules.ipynb
-__ ../../notebooks/01-python-base/module-numpy.ipynb
-__ ../../notebooks/01-python-base/fonctions-numpy.ipynb
-__ ../../notebooks/01-python-base/module-matplotlib.ipynb
+__ ../../notebooks/01-python-base/02-listes-python.ipynb
+__ ../../notebooks/01-python-base/03-fonctions-modules.ipynb
+__ ../../notebooks/01-python-base/04-module-numpy.ipynb
+__ ../../notebooks/01-python-base/05-fonctions-numpy.ipynb
+__ ../../notebooks/01-python-base/06-module-matplotlib.ipynb
 
 Trello
 ------

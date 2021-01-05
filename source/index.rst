@@ -137,18 +137,18 @@ Cependant vous serez suivi et conseillé de près par votre enseignant.
    :caption: Équations différentielles linéaire
 
    sequences/07-equations-differentielles/contenu
-   notebooks/07-equations-differentielles/edo_cours.ipynb
-   notebooks/07-equations-differentielles/edo_exercices.ipynb
-   notebooks/07-equations-differentielles/pendule
+   notebooks/07-equations-differentielles/01-edo_cours.ipynb
+   notebooks/07-equations-differentielles/02-edo_exercices.ipynb
+   notebooks/07-equations-differentielles/03-pendule.ipynb
 
 .. toctree::
    :maxdepth: 1
    :caption: Équations non-linéaires
 
    sequences/08-equations-non-lineaires/contenu
-   notebooks/08-equations-non-lineaires/zeros-cours.ipynb
-   notebooks/08-equations-non-lineaires/zeros-exercice.ipynb
-   notebooks/08-equations-non-lineaires/projet-alben.ipynb
+   notebooks/08-equations-non-lineaires/01-zeros-cours.ipynb
+   notebooks/08-equations-non-lineaires/02-zeros-exercice.ipynb
+   notebooks/08-equations-non-lineaires/03-projet-alben.ipynb
 
 .. toctree::
    :maxdepth: 1
