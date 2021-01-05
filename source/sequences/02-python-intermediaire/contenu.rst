@@ -17,7 +17,7 @@ A faire à la maison
   1. Faire le 1er calepin *Dictionnaires et Pandas* dans le bureau virtuel (`correction du calepin`__)
   2. Si j'ai un problème, demander de l'aide sur le `Forum Moodle`__
 
-__ ../../notebooks/02-python-intermediaire/01-dictionnaire-python.ipynb
+__ ../../notebooks/02-python-intermediaire/01-dictionnaire-pandas.ipynb
 __ https://moodle-sciences.upmc.fr/moodle-2020/course/view.php?id=2841
 
 A faire en séance

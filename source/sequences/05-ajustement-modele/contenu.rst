@@ -10,7 +10,7 @@ A faire à la maison
 
 Avant la première séance de la semaine:
 
-  - Faire le calepin de cours *Ajuster un modèle aux données* (:download:`télécharger le calepin <../../_static/etu-ajustement-modele.ipynb>`) (`correction du calepin`__)
+  - Faire le calepin de cours *Ajuster un modèle aux données* (`correction du calepin`__)
 
 __ ../../notebooks/05-ajustement-modele/01-ajustement-modele.ipynb
 
