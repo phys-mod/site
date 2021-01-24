@@ -12,7 +12,7 @@ A faire à la maison
 Avant la première séance de la semaine:
 
   1. Lire l'article :download:`The Role of Models in Physics Instruction <./The Role of Models in Physics Instruction.pdf>`
-  2. Réaliser le `questionnaire sur la démarche de modélisation <https://moodle-sciences.upmc.fr/moodle-2020/mod/quiz/view.php?id=47945>`_
+  2. Réaliser le *questionnaire sur la démarche de modélisation* sur Moodle
 
 Séance 1
 --------

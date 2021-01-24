@@ -103,22 +103,6 @@ Exemples de sujets
 - mouvements dans le système solaire
 - manoeuvres s'un satellite artificiel
 
-Evaluation du projet (sur 60)
-=============================
-
-Organisation (15)
-    - L'organisation des tâches sur le Trello est bien définie
-    - le sujet et la problématique sont bien définis en amont du projet
-    - Le calendrier avec les 3 phases est bien suivi
-Relationnel (15)
-    - l'attribution des tâches est bien définie
-    - les rendez-vous hebdomadaires sont bien préparés
-    - vous savez demander et trouver de l'aide de façon judicieuse
-Communication (sur 15)
-    - grille d'évaluation pour l'oral
-Contenu (sur 15)
-    - note du compte-rendu avec la même grille d'évaluation que pour les mini-projets
-
 Calendrier
 ==========
 - Semaine 1: semaine du 30/11/2020

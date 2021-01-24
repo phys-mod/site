@@ -15,16 +15,14 @@ A faire à la maison
 -------------------
   1. `Créer mon compte Trello <https://trello.com/fr/signup>`_
   2. `Créer le tableau de gestion de mon apprentissage`__
-  3. Choisir un outil pour la prise de note
-  4. `Télécharger les calepins de l'UE`__ dans mon environnement Capsule, grâce au `bureau virtuel de Capsule`__
+  3. Choisir une modalité pour la prise de note
+  4. `Télécharger les calepins de l'UE`__ dans mon environnement Capsule, grâce au bureau virtuel de Capsule
   5. Faire le 1er calepin *Première prise en main de Python* dans le bureau virtuel (`correction du calepin`__)
-  6. Si j'ai un problème, demander de l'aide sur le `Forum Moodle`__
+  6. Si j'ai un problème, demander de l'aide sur le Forum Moodle
 
 __ ../../cours-info/installation.rst#Trello
 __ ../../cours-info/installation.rst#Jupyter-Notebooks
 __ ../../notebooks/01-python-base/01-prise-en-main.ipynb
-__ ../../cours-info/installation.rst#Jupyter-Notebooks
-__ https://moodle-sciences.upmc.fr/moodle-2020/course/view.php?id=2841
 
 A faire en séance
 -----------------

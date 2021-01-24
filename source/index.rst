@@ -53,11 +53,11 @@ Dans la deuxième partie du cours vous développerez un **projet en équipe**. C
 de relationnel et de communication. Vous serez autonomes aussi bien pour le choix du sujet que pour sa réalisation.
 Cependant vous serez suivi et conseillé de près par votre enseignant.
 
-.. admonition:: Transparents
+.. (admonition:: Transparents
 
     :download:`Transparents d'introduction au cours (PDF) <./cours-info/cours_intro.pdf>`
 
-.. admonition:: Présentation
+.. (admonition:: Présentation
 
     :download:`Vidéo d'introduction au cours (MP4) <https://share.obspm.fr/index.php/s/39CAxczNYbieHDz>`
 
