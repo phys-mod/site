@@ -5,7 +5,7 @@ Description du projet
 Les trois phases du projet
 ==========================
 Le but du projet est d'aborder un problème de modélisation numérique. Il conduira à la production d'un compte-rendu
-du même type que les mini-projets sur un sujet libre, ainsi qu'à une présentation orale du projet.
+du même type que les mini-projets, sur un sujet libre, ainsi qu'à une présentation orale du projet.
 Le projet se fait en binôme.
 
 .. note::
@@ -13,11 +13,11 @@ Le projet se fait en binôme.
     Ce qui compte dans ce projet n'est pas tant le contenu que la façon dont il va se dérouler. C'est le moment
     d'acquérir des compétences d'organisation, de relationnel et de communication.
 
-Le projet se déroule en trois phases (voir le calendrier en bas de page):
+Le projet se déroule en trois phases (voir le calendrier en bas de page) :
 
-- **Planification:** lors de la Semaine 1, il faudra choisir votre binôme, le sujet et la problématique, ainsi que planifier et répartir les tâches de votre projet
-- **Mise en oeuvre:** une fois les tâches bien définies, vous les réaliserez lors des Semaines 2 et 3. On peut pendant cette phase modifier les tâches si on se rend compte qu'il en manque ou qu'elles ne sont pas adaptées.
-- **Synthèse et évaluation:** en Semaine 4 il faudra synthétiser votre travail de recherche sous la forme d'un compte-rendu et d'une présentation orale. En Semaine 5 aura lieu la restitution orale du projet devant votre groupe.
+- **Planification :** lors de la Semaine 1, il faudra choisir votre binôme, le sujet et la problématique, ainsi que planifier et répartir les tâches de votre projet
+- **Mise en œuvre :** une fois les tâches bien définies, vous les réaliserez lors des Semaines 2 et 3. On peut pendant cette phase modifier les tâches si on se rend compte qu'il en manque ou qu'elles ne sont pas adaptées.
+- **Synthèse et évaluation :** en Semaine 4, il faudra synthétiser votre travail de recherche sous la forme d'un compte-rendu et d'une présentation orale. En Semaine 5 aura lieu la restitution orale du projet devant votre groupe.
 
 Le déroulement de ce projet se rapproche du fonctionnement d'un projet de recherche. Comme dans un projet
 de recherche, il est possible de s'inspirer et de reprendre des codes et des modules python développés par d'autres personnes et trouvés
@@ -32,7 +32,7 @@ Suivi de l'enseignant
 =====================
 Au cours du projet vous serez suivi et aidé par votre enseignant. Chaque semaine, vous aurez un rendez-vous avec lui
 afin de rendre compte des tâches effectuées, et demander de l'aide. Vous pouvez aussi demander de l'aide en dehors
-de ces rendez-vous planifiés: par email, sur le forum moodle, par messagerie moodle, etc...
+de ces rendez-vous planifiés : par email, sur le forum moodle, par messagerie moodle, etc.
 
 Une séance de travail est à planifier chaque semaine (S1 à S4) avec votre enseignant.
 Cela peut se dérouler pendant les heures prévues pour l'UE dans l'emploi du temps, ou en
@@ -41,17 +41,17 @@ dehors de ces heures si votre enseignant est d'accord et disponible.
 .. note::
 
     Si jamais vous avez un problème bloquant ou retardant l'avancée de votre projet, qu'il soit technique ou d'une autre
-    nature (maladie, problème relationnel, familial, etc...), il est de votre responsabilité de prévenir votre enseignant,
+    nature (maladie, problème relationnel, familial, etc), il est de votre responsabilité de prévenir votre enseignant,
     le responsable de l'UE, ou toute autre personne pouvant vous aider.
 
 Planification du projet (S1)
 ============================
-Lors de la Semaine 1 vous devez réaliser les tâches suivantes:
+Lors de la Semaine 1 vous devez réaliser les tâches suivantes :
 
-- **choix de l'équipe:** en binôme, ou en trinôme pour les groupes impairs.
-- **choix et nom du projet:** le sujet est libre. Si vous ne trouvez pas il y a des suggestions plus bas.
-- **choix de la problématique:** quel est le modèle à mettre en oeuvre (objets, interactions, système, lois mathématique, algorithme numérique à mettre en oeuvre). Votre enseignant peut vous aider à savoir si la réalisation de votre projet est réaliste.
-- **définition des étapes de résolution**, de consolidation: définir une liste des tâches et la réprésenter sur Trello, attribuer les tâches aux membres de l'équipe
+- **choix de l'équipe :** en binôme, ou en trinôme pour les groupes impairs.
+- **choix et nom du projet :** le sujet est libre. Si vous ne trouvez pas il y a des suggestions plus bas.
+- **choix de la problématique :** quel est le modèle à mettre en œuvre (objets, interactions, système, lois mathématiques, algorithme numérique à mettre en œuvre). Votre enseignant peut vous aider à savoir si la réalisation de votre projet est réaliste.
+- **définition des étapes de résolution**, de consolidation : définir une liste des tâches et la réprésenter sur Trello, attribuer les tâches aux membres de l'équipe
 
 Une fois les étapes précédentes réalisées, vous devez envoyer la description de votre projet à votre enseignant.
 
@@ -65,10 +65,10 @@ réelles. Il est même possible de trouver des expériences simples à faire à 
     importe autant voire plus que le contenu.
 
 
-Mise en oeuvre du projet (S2-3)
+Mise en œuvre du projet (S2-3)
 ===============================
 Pendant les semaines S2 et S3 vous réaliserez votre projet. Pour un binôme cela représente environ une trentaine d'heures
-de travail cumulé. N'oubliez pas:
+de travail cumulées. N'oubliez pas :
 
 - de programmer la réunion de travail hebdomadaire avec votre enseignant
 - d'actualiser les tâches de votre Trello
@@ -76,7 +76,7 @@ de travail cumulé. N'oubliez pas:
 
 Synthèse et évaluation du projet (S4-5)
 =======================================
-Pendant la Semaine 4 il est temps de synthétiser votre travail avec les productions suivantes:
+Pendant la Semaine 4 il est temps de synthétiser votre travail avec les productions suivantes :
 
 - Un compte-rendu sous la forme d'un calepin Jupyter Notebook, du même type que ceux réalisés pour les mini-projets
 - Un exposé en vue d’une présentation orale
@@ -101,12 +101,12 @@ Exemples de sujets
 - Collisions (billard, cratète d'impact, ...)
 - jeu vidéo avec pygame
 - mouvements dans le système solaire
-- manoeuvres s'un satellite artificiel
+- manœuvres s'un satellite artificiel
 
 Calendrier
 ==========
-- Semaine 1: semaine du 30/11/2020
-- Semaine 2: semaine du 07/12/2020
-- Semaine 3: semaine du 14/12/2020
-- Semaine 4: semaine du 04/01/2021
-- Semaine 5: semaine du 11/01/2021
+- Semaine 1 : semaine du 05/04/2021
+- Semaine 2 : semaine du 12/04/2021
+- Semaine 3 : semaine du 03/05/2021
+- Semaine 4 : semaine du 10/05/2021
+- Semaine 5 : semaine du 17/05/2021
