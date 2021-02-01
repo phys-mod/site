@@ -11,11 +11,11 @@ aux exercices. Afin de vous auto-évaluer, les corrections sont disponibles sur 
 Pendant que vous réalisez ces calepins, vous prendrez note des nouvelles notions et fonctions apprises,
 de la façon qui vous convient le mieux. Ces notes sont essentielles pour pouvoir programmer de façon efficace.
 
-A faire à la maison
+À faire à la maison
 -------------------
   1. `Créer mon compte Trello <https://trello.com/fr/signup>`_
   2. `Créer le tableau de gestion de mon apprentissage`__
-  3. Choisir une modalité pour la prise de note
+  3. Choisir une modalité pour la prise de notes
   4. `Télécharger les calepins de l'UE`__ dans mon environnement Capsule, grâce au bureau virtuel de Capsule
   5. Faire le 1er calepin *Première prise en main de Python* dans le bureau virtuel (`correction du calepin`__)
   6. Si j'ai un problème, demander de l'aide sur le Forum Moodle
@@ -24,7 +24,7 @@ __ ../../cours-info/installation.rst#Trello
 __ ../../cours-info/installation.rst#Jupyter-Notebooks
 __ ../../notebooks/01-python-base/01-prise-en-main.ipynb
 
-A faire en séance
+À faire en séance
 -----------------
 Pendant les 2 séances de la semaine, vous ferez le reste des calepins:
 
@@ -48,7 +48,7 @@ vous noterez les calepins réalisés dans votre tableau de tâches Trello.
 Objectifs d'apprentissage
 -------------------------
 Une fois les tâches de cette semaine effectuées, vous aurez acquis la compétence de science des données niveau 1.
-En détail, vous saurez:
+En détail, vous saurez :
 
 - décrire, affecter, manipuler, déterminer et convertir les différents **types de variables**
 - décrire et utiliser les **opérateurs spécifiques** à chaque type de variable

@@ -2,11 +2,11 @@
 Déroulement de la séquence
 ==========================
 
-La sixième séquence est une introduction à la dérivation et l'intégration numérique. Vous commencerez par faire
-le cours sur l'intégration et la dérivation numérique, puis vous ferez les exercices.
+La sixième séquence est une introduction à la dérivation et l'intégration numériques. Vous commencerez par faire
+le cours sur l'intégration et la dérivation numériques, puis vous ferez les exercices.
 Dans le mini-projet vous calculerez la forme optimale d'une digue.
 
-A faire à la maison
+À faire à la maison
 -------------------
 
 Avant la première séance de la semaine:

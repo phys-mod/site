@@ -3,27 +3,27 @@ Déroulement de la séquence
 ==========================
 
 
-La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonction (linéaire, exponentielle, sinusoide...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique.
+La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonctions (linéaire, exponentielle, sinusoïde...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique.
 
-A faire à la maison
+À faire à la maison
 -------------------
 
-Avant la première séance de la semaine:
+Avant la première séance de la semaine :
 
   - Faire le calepin de cours *Ajuster un modèle aux données* (`correction du calepin`__)
 
 __ ../../notebooks/05-ajustement-modele/01-ajustement-modele.ipynb
 
 
-Avant la deuxième séance de la semaine:
+Avant la deuxième séance de la semaine :
 
 lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_.
 
-Répondez ensuite aux questions suivantes:
+Répondez ensuite aux questions suivantes :
 
- - Que signifient les sigles IPCC et RCP?
- - Qu'appelle-t-on des *"radiatives forcing"*?
- - Décrivez en quelques phrases la manière dont les volcans et l'activités solaires ont influencé la température sur Terre au cours des 50 dernières années d'après cet article.
+ - Que signifient les sigles IPCC et RCP ?
+ - Qu'appelle-t-on des *"radiative forcings"* ?
+ - Décrivez en quelques phrases la manière dont les volcans et l'activité solaire ont influencé la température sur Terre au cours des 50 dernières années d'après cet article.
 
 
 Séance 1

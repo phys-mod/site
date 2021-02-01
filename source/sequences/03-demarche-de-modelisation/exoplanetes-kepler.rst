@@ -1,5 +1,5 @@
 ========================
-Mini-projet: exoplanètes
+Mini-projet : exoplanètes
 ========================
 Le but du problème est d'illustrer la troisième loi de Kepler pour les
 `exoplanètes <https://fr.wikipedia.org/wiki/Exoplan%C3%A8te>`_.
@@ -8,7 +8,7 @@ Le but du problème est d'illustrer la troisième loi de Kepler pour les
 
 |copy| CC BY 4.0. ESO/M. Kornmesser
 
-A la maison
+À la maison
 -----------
 Démontrer la loi de Kepler pour un satellite géostationnaire:
 
@@ -23,10 +23,10 @@ Vous vous aiderez du polycopié de l'UE LU1MEPY2: section 2.6.1 (:download:`tél
 
 Modèle
 ------
-Les différents systèmes d'exoplanètes gravitent autour d'étoiles de masse différentes. La constante :math:`k` de la loi
+Les différents systèmes d'exoplanètes gravitent autour d'étoiles de masses différentes. La constante :math:`k` de la loi
 de Kepler est donc différente pour chaque système d'exoplanètes. Vous allez illustrer une version statistique de la
 loi de Kepler, en calculant la moyenne de
-:math:`k` pour votre échantillon d'exoplanète. La loi s'écrit:
+:math:`k` pour votre échantillon d'exoplanètes. La loi s'écrit :
 
 .. math::
   T^2 = <k> R^3 ,
@@ -61,7 +61,7 @@ Vous allez utiliser une représentation graphique afin d'illustrer la loi de Kep
 Pour cela, il faut représenter sur un graphique à la fois les données et le modèle.
 Vous prendrez un soin particulier pour que le graphique soit lisible et compréhensible.
 
-Voici un exemple de réprésentation graphique:
+Voici un exemple de représentation graphique :
 
 .. image:: ./exoplanets.png
 
@@ -82,7 +82,7 @@ de cellule de texte:
 
   une formule latex $k=2$
 
-Vous trouverez un formulaire détaillé du `formatage des cellules texte ici
+Vous trouverez un formulaire détaillé du `formatage des cellules de texte ici
 <(https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>`_.
 
 Vous rendrez votre compte-rendu dans l'activité devoir correspondante de Moodle. Si votre compte-rendu

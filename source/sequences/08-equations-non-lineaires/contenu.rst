@@ -3,10 +3,10 @@ Déroulement de la séquence
 ==========================
 
 La huitième séquence est une introduction à la recherche des zéros d'une fonction. Vous commencerez par faire
-le cours sur les méthode de dichotomie et de Newton-Raphson, puis vous ferez l'exercice sur les modes propres de vibration d’un diapason.
-Dans le mini-projet vous travaillerez sur le modèle de bifurcation d'Alben.
+le cours sur les méthodes de dichotomie et de Newton-Raphson, puis vous ferez l'exercice sur les modes propres de vibration d’un diapason.
+Dans le mini-projet, vous travaillerez sur le modèle de bifurcation d'Alben.
 
-A faire à la maison
+À faire à la maison
 -------------------
 
 Avant la première séance de la semaine:
