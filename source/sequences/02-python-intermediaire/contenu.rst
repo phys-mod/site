@@ -12,6 +12,14 @@ Cette deuxième séquence contient 5 calepins, réalisables en ~1h chacun.
 Pendant que vous réalisez ces calepins, vous prendrez note des nouvelles notions et fonctions apprises.
 Ces notes sont essentielles pour pouvoir programmer de façon efficace.
 
+A télécharger
+-------------
+Faire click droit "enregistrer la cible du lien sous..." pour télecharger ces fichiers :
+
+  - :download:`Fichier exoplanets.dat <../../notebooks/02-python-intermediaire/exoplanets.dat>`
+  - :download:`Fichier verne-lune.txt <../../notebooks/02-python-intermediaire/verne-lune.txt>`
+  - :download:`Fichier banksy.txt <../../notebooks/02-python-intermediaire/banksy.txt>`
+
 A faire à la maison
 -------------------
   1. Faire le 1er calepin *Dictionnaires et Pandas* dans le bureau virtuel (`correction du calepin`__)
