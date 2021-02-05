@@ -2,12 +2,12 @@
 Déroulement de la séquence
 ==========================
 
-Dans la quatrième séquence, nous allons explorer les concepts de suite et de récurrence. Nous verrons d'abord de nouvelles façon de
+Dans la quatrième séquence, nous allons explorer les concepts de suite et de récurrence. Nous verrons d'abord de nouvelles façons de
 construire des listes avec les compréhensions de liste, et les fonctions récursives. Vous appliquerez ces nouvelles notions et celles
 apprises les 2 premières semaines pendant les exercices. Enfin, dans le mini-projet vous allez étudier l'équation logistique, un exemple
 de système chaotique.
 
-A faire à la maison
+À faire à la maison
 -------------------
   - Faire le calepin de cours *Compréhensions de listes et récursion* (`correction du calepin`__)
 

@@ -6,12 +6,12 @@ La septième séquence est une introduction à la résolution des équation diff
 le cours sur la méthode d'Euler, puis vous ferez les exercices.
 Dans le mini-projet vous travaillerez sur le pendule.
 
-A faire à la maison
+À faire à la maison
 -------------------
 
 Avant la première séance de la semaine:
 
-  - Faire le calepin de cours *Equations différentielles ordinaires* (`correction du calepin`__)
+  - Faire le calepin de cours *Équations différentielles ordinaires* (`correction du calepin`__)
 
 __ ../../notebooks/07-equations-differentielles/01-edo_cours.ipynb
 

@@ -59,7 +59,7 @@ Le projet en équipe est évalué sur les critères suivants:
 .. warning::
 
     **Le projet en équipe doit être un travail original**. De nombreux projets sont disponibles sur internet.
-    Si il s'avère que vous avez fait un copier-coller d'un projet existant, vous serez convoqué à un conseil disciplinaire.
+    S'il s'avère que vous avez fait un copier-coller d'un projet existant, vous serez convoqué à un conseil disciplinaire.
     La conclusion d'un conseil disciplinaire peut être l'exclusion de tout diplôme universitaire pour un certain nombre d'années.
 
 Seconde chance

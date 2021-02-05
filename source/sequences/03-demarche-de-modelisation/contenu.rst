@@ -3,11 +3,11 @@ Déroulement de la séquence
 ==========================
 
 La troisième séquence est une introduction à la démarche de modélisation numérique. Vous commencerez par lire un
-article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accéleration
+article en anglais sur la modélisation en physique, puis vous verrez un exemple avec le modèle de l'accélération
 constante, avec un cours et des exercices. Votre premier mini-projet concerne les exoplanètes. Vous y appliquerez
 les concepts et notions appris pendant les 2 premières semaines.
 
-A faire à la maison
+À faire à la maison
 -------------------
 Avant la première séance de la semaine:
 
@@ -22,7 +22,7 @@ Séance 1
 __ ../../notebooks/03-demarche-de-modelisation/01-acceleration-constante.ipynb
 __ ../../notebooks/03-demarche-de-modelisation/02-exercices.ipynb
 
-Pour l'exercice sur les ondes gravitationnelles, vous aurez besoin des fichier suivant:
+Pour l'exercice sur les ondes gravitationnelles, vous aurez besoin des fichiers suivants :
 
   - :download:`données de l'exercice 3 <../../notebooks/03-demarche-de-modelisation/gw.dat>`
   - :download:`modèle de l'exercice 3 <../../notebooks/03-demarche-de-modelisation/gw_model.dat>`
