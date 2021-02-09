@@ -14,33 +14,33 @@ Ainsi, nous partageons ouvertement tous les supports de cours, et les calepins J
 Nous vous demandons également de citer les auteurs de ces documents.
 
 Nous apprécions également la collaboration et les idées sur la manière d'améliorer les documents de ces pages.
-Contactez-nous par `email <pacome.delva@sorbonne-universite.fr>`_ ou faite un *fork* du projet sur **GitHub**.
+Contactez-nous par `email <pacome.delva@sorbonne-universite.fr>`_ ou faites un *fork* du projet sur **GitHub**.
 
 **Ce cours est distribué sous licence** comme expliqué plus bas.
 
 Crédits
 -------
-Ce cours a été préparé par des enseignant-chercheurs de Sorbonne Université:
+Ce cours a été préparé par des enseignants-chercheurs de Sorbonne Université :
 
-- **Pacôme DELVA**: mise en place du site web et gestion, conception, relecture, intégration de l'ensemble du cours et gestion de l'équipe de développement. Création des séquences *Les bases de Python*, *Python intermédiaire* et *La démarche de modélisation*.
-- **Johan BISCARAS**: création de la séquence *Dérivation et intégration* et relecture.
-- **Olivier MARTINEAU** et **Andrea CIARDI**: création de la séquence *Ajuster un modèle* et relecture.
-- **Nicolas RAMBAUX**: création de la séquence *Equations non-linéaires* et relecture.
-- **Roch SMETS**: création de la séquence *Suites et relations de récurrence*.
-- **Dirk STRATMANN** et **Philippe SINDZINGRE**: Création de la séquence *Equations différentielles linéaires*. Le mini-projet est une adaptation d'un problème préparé par Julien AUBLIN.
+- **Pacôme DELVA** : mise en place du site web et gestion, conception, relecture, intégration de l'ensemble du cours et gestion de l'équipe de développement. Création des séquences *Les bases de Python*, *Python intermédiaire* et *La démarche de modélisation*.
+- **Johan BISCARAS** : création de la séquence *Dérivation et intégration* et relecture.
+- **Olivier MARTINEAU** et **Andrea CIARDI** : création de la séquence *Ajuster un modèle* et relecture.
+- **Nicolas RAMBAUX** : création de la séquence *Équations non-linéaires* et relecture.
+- **Roch SMETS** : création de la séquence *Suites et relations de récurrence*.
+- **Dirk STRATMANN** et **Philippe SINDZINGRE** : Création de la séquence *Équations différentielles linéaires*. Le mini-projet est une adaptation d'un problème préparé par Julien AUBLIN.
 
 Références
 ----------
 Ce cours s'est inspiré de plusieurs références de qualité disponibles sur internet, que vous pouvez explorer pour aller plus loin
 dans votre apprentissage:
 
-- `GeoPython <https://geo-python.github.io/site/>`_: concepts de base de la programmation en Python pour la science des données.
-- `Pensez en Python <https://allen-downey.developpez.com/livres/python/pensez-python/>`_: pour maîtriser la science et l'art de la programmation informatique.
-- `Zestes de savoir <https://zestedesavoir.com/tutoriels/954/notions-de-python-avancees/>`_: notions de Python avancées.
-- `Real Python <https://realpython.com/>`_: des tutoriels sur des notions avancées.
-- `Datacamp <https://www.datacamp.com/>`_: des tutoriels sur pleins de langages différents (payant).
-- `PyMan <https://physics.nyu.edu/pine/pymanual/html/pymanMaster.html>`_: introduction to Python for science.
-- `Programming for Computations <https://hplgit.github.io/prog4comp/doc/pub/p4c-sphinx-Python/index.html>`_: a gentle introduction to numerical simulations with Python.
+- `GeoPython <https://geo-python.github.io/site/>`_ : concepts de base de la programmation en Python pour la science des données.
+- `Pensez en Python <https://allen-downey.developpez.com/livres/python/pensez-python/>`_ : pour maîtriser la science et l'art de la programmation informatique.
+- `Zestes de savoir <https://zestedesavoir.com/tutoriels/954/notions-de-python-avancees/>`_ : notions de Python avancées.
+- `Real Python <https://realpython.com/>`_ : des tutoriels sur des notions avancées.
+- `Datacamp <https://www.datacamp.com/>`_ : des tutoriels sur plein de langages différents (payants).
+- `PyMan <https://physics.nyu.edu/pine/pymanual/html/pymanMaster.html>`_ : *introduction to Python for science*.
+- `Programming for Computations <https://hplgit.github.io/prog4comp/doc/pub/p4c-sphinx-Python/index.html>`_ : *a gentle introduction to numerical simulations with Python*.
 
 Licence
 -------
@@ -51,7 +51,7 @@ Licence
 Tout le matériel pédagogique est disponible sous licence **Creative Commons Attribution - Pas d’Utilisation Commerciale - Partage dans les Mêmes Conditions 4.0 International (CC BY-NC-SA 4.0)** .
 Lire la `licence complète <https://creativecommons.org/licenses/by-nc-sa/4.0/legalcode.fr>`_.
 
-En bref voici une version plus lisible:
+En bref voici une version plus lisible :
 
 Vous êtes autorisé à
 ~~~~~~~~~~~~~~~~~~~~
@@ -64,11 +64,11 @@ L'Offrant ne peut retirer les autorisations concédées par la licence tant que 
 Selon les conditions suivantes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
- - **Attribution** - Vous devez créditer_ l'Oeuvre, intégrer un lien vers la licence et indiquer_ si des modifications ont été effectuées à l'Oeuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Oeuvre.
- - **Pas d'Utilisation Commerciale** - Vous n'êtes pas autorisé à faire un usage commercial de cette Oeuvre, tout ou partie du matériel la composant.
- - **ShareAlike** - Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l'Oeuvre originale, vous devez diffuser l'Oeuvre modifiée dans les même conditions, c'est à dire avec la même licence avec laquelle l'Oeuvre originale a été diffusée.
+ - **Attribution** - Vous devez créditer_ l'Œuvre, intégrer un lien vers la licence et indiquer_ si des modifications ont été effectuées à l'Œuvre. Vous devez indiquer ces informations par tous les moyens raisonnables, sans toutefois suggérer que l'Offrant vous soutient ou soutient la façon dont vous avez utilisé son Œuvre.
+ - **Pas d'Utilisation Commerciale** - Vous n'êtes pas autorisé à faire un usage commercial de cette Œuvre, tout ou partie du matériel la composant.
+ - **ShareAlike** - Dans le cas où vous effectuez un remix, que vous transformez, ou créez à partir du matériel composant l'Œuvre originale, vous devez diffuser l'Œuvre modifiée dans les mêmes conditions, c'est-à-dire avec la même licence avec laquelle l'Œuvre originale a été diffusée.
 
-**Pas de restrictions complémentaires** - Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Oeuvre dans les conditions décrites par la licence.
+**Pas de restrictions complémentaires** - Vous n'êtes pas autorisé à appliquer des conditions légales ou des mesures techniques qui restreindraient légalement autrui à utiliser l'Œuvre dans les conditions décrites par la licence.
 
 Notes
 ~~~~~
@@ -81,8 +81,8 @@ Aucune garantie n'est donnée. Il se peut que la licence ne vous donne pas toute
 
     .. _créditer:
 
-    **Droits et crédits**: Dans la mesure du possible, vous devez donner le nom du créateur et des personnes à attribuer, une notice explicative des droits et crédits, une notice de non-responsabilité et un lien vers le matériel.
+    **Droits et crédits** : Dans la mesure du possible, vous devez donner le nom du créateur et des personnes à attribuer, une notice explicative des droits et crédits, une notice de non-responsabilité et un lien vers le matériel.
 
     .. _indiquer:
 
-    **Indiquer les changements**: Avec la version 4.0, vous devez indiquer si vous avez modifié le matériel et conserver les indications sur les modifications précédentes.
+    **Indiquer les changements** : Avec la version 4.0, vous devez indiquer si vous avez modifié le matériel et conserver les indications sur les modifications précédentes.
