@@ -82,13 +82,8 @@ de cellule de texte:
 
   une formule latex $k=2$
 
-<<<<<<< HEAD
-Vous trouverez un formulaire détaillé du `formatage des cellules texte ici
-<https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>`_.
-=======
 Vous trouverez un formulaire détaillé du `formatage des cellules de texte ici
-<(https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>`_.
->>>>>>> e58504798e58da70c90a4d61ed9fe5e627b3793c
+<https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet>`_.
 
 Vous rendrez votre compte-rendu dans l'activité devoir correspondante de Moodle. Si votre compte-rendu
 comporte une partie rédigée à la main, vous devrez la scanner (par exemple avec une application de votre téléphone
