@@ -10,7 +10,7 @@ Le but du problème est d'illustrer la troisième loi de Kepler pour les
 
 À la maison
 -----------
-Démontrer la loi de Kepler pour un satellite géostationnaire:
+Démontrer la loi de Kepler pour un satellite géostationnaire :
 
 .. math::
   T^2 = k R^3 ,
@@ -19,7 +19,7 @@ où :math:`T` et :math:`R` sont respectivement la période de révolution du sat
 corps central, et :math:`k=\dfrac{4\pi^2}{GM}`, avec :math:`G` la constante de la gravitation et :math:`M` la masse
 du corps central.
 
-Vous vous aiderez du polycopié de l'UE LU1MEPY2: section 2.6.1 (:download:`télécharger le pdf du cours <chapitre-2_13022020.pdf>`).
+Vous vous aiderez du polycopié de l'UE LU1MEPY2 : section 2.6.1 (:download:`télécharger le pdf du cours <chapitre-2_13022020.pdf>`).
 
 Modèle
 ------
@@ -29,13 +29,13 @@ loi de Kepler, en calculant la moyenne de
 :math:`k` pour votre échantillon d'exoplanètes. La loi s'écrit :
 
 .. math::
-  T^2 = <k> R^3 ,
+  T^2 = \langle k \rangle R^3 ,
 
-où :math:`<k>` est la moyenne des constantes :math:`k` calculées pour chaque exoplanète.
+où :math:`\langle k \rangle` est la moyenne des constantes :math:`k` calculées pour chaque exoplanète.
 
 Données
 -------
-Vous pouvez extraire les données du site `Exoplanets Data Explorer`_ (bouton *Export* en haut à gauche), ou bien du site
+Vous pouvez extraire les données du site `Exoplanets Data Explorer`_ (bouton *Export* en haut à droite), ou bien du site
 `Nasa Exoplanet Archive`_, plus complet (bouton *Download Table*).
 
 .. _Exoplanets Data Explorer: http://exoplanets.org/table
@@ -71,7 +71,7 @@ Vous rendrez un compte-rendu sous la forme d'un Jupyter Notebook (et d'une parti
 Vous apporterez un
 soin particulier à la rédaction, à l'explication de la résolution du problème, et à l'explication du script (code commenté).
 Pour cela, vous ferez différentes sections et vous utiliserez des cellules de texte dans le notebook. Voici un exemple
-de cellule de texte:
+de cellule de texte :
 
 .. code-block::
 

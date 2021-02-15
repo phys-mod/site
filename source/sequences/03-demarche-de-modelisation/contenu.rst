@@ -9,7 +9,7 @@ les concepts et notions appris pendant les 2 premières semaines.
 
 À faire à la maison
 -------------------
-Avant la première séance de la semaine:
+Avant la première séance de la semaine :
 
   1. Lire l'article :download:`The Role of Models in Physics Instruction <./The Role of Models in Physics Instruction.pdf>`
   2. Réaliser le *questionnaire sur la démarche de modélisation* sur Moodle
@@ -29,7 +29,7 @@ Pour l'exercice sur les ondes gravitationnelles, vous aurez besoin des fichiers 
 
 Séance 2
 --------
-Avant la séance 2, à la maison, vous devez `préparer la physique du mini-projet`__. Vous aller ensuite réaliser le
+Avant la séance 2, à la maison, vous devez `préparer la physique du mini-projet`__. Vous allez ensuite réaliser le
 `mini-projet sur les exoplanètes`__ pendant la deuxième séance. Le compte-rendu est à déposer dans Moodle.
 
 __ ./exoplanetes-kepler.rst#A-la-maison
