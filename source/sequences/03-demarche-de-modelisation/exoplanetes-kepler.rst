@@ -1,6 +1,6 @@
-========================
+=========================
 Mini-projet : exoplanètes
-========================
+=========================
 Le but du problème est d'illustrer la troisième loi de Kepler pour les
 `exoplanètes <https://fr.wikipedia.org/wiki/Exoplan%C3%A8te>`_.
 
@@ -73,7 +73,7 @@ soin particulier à la rédaction, à l'explication de la résolution du problè
 Pour cela, vous ferez différentes sections et vous utiliserez des cellules de texte dans le notebook. Voici un exemple
 de cellule de texte :
 
-.. code-block::
+.. code-block:: rst
 
   # Section 1
   ## Sous-section 1

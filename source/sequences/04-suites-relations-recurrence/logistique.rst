@@ -1,6 +1,6 @@
-============================================
+=============================================
 Mini-projet : un exemple de système chaotique
-============================================
+=============================================
 
 Une des particularités d'un système chaotique est de présenter une sensibilité extrême à ses conditions initiales. Cela signifie qu'une
 perturbation, aussi faible soit-elle, sur la condition initiale d'un système dynamique aura une conséquence importante sur son évolution

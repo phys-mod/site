@@ -92,7 +92,7 @@ présentation vous seront données ultérieurement.
     sera selectionné par tout le monde.
 
 Exemples de sujets
-=================
+==================
 - entrée d’un météoroı̈de dans l’atmosphère terrestre
 - propagation d’une épidémie
 - Automate cellulaire “jeu de la vie”

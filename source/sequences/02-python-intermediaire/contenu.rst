@@ -16,7 +16,7 @@ Ces notes sont essentielles pour pouvoir programmer de façon efficace.
 -------------
 Faire clique droit "enregistrer la cible du lien sous..." pour télecharger ces fichiers :
 
-  - :download:`Fichier exoplanets.dat <../../notebooks/02-python-intermediaire/exoplanets.dat>`
+  - :download:`Fichier exoplanets.csv <../../notebooks/02-python-intermediaire/exoplanets.csv>`
   - :download:`Fichier verne-lune.txt <../../notebooks/02-python-intermediaire/verne-lune.txt>`
   - :download:`Fichier banksy.txt <../../notebooks/02-python-intermediaire/banksy.txt>`
 
