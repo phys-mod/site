@@ -13,12 +13,12 @@ définis de manière aléatoire, mais bien à la sensibilité extrême aux condi
 
 Le système chaotique le plus largement connu est l'équation logistique. C'est une équation extrêmement simple... même si l'apparition d'un
 comportement chaotique ne peut résulter que de non-linéarités. Cette équation est celle qui régit l'évolution d'une population,
-par exemple celle de certains poissons. Leur reproduction conduit à faire croître leur nombre, mais la quantité limité de nourriture va
+par exemple celle de certains poissons. Leur reproduction conduit à faire croître leur nombre, mais la quantité limitée de nourriture va
 limiter cette croissance.
 
 Présentation mathématique du problème
 -------------------------------------
-On note :math:`n_i` la population de poissons l'année :math:`i`, et :math:`\alpha` le nombre de petits par portée (une par an). Alors, :math:`n_{i+1} = \alpha n_i`. Si :math:`\alpha` est une constante, alors, on obtiendra l'année :math:`p`
+On suppose que cette dynamique décrit correctement une population de lapins. On note :math:`n_i` la population de lapins l'année :math:`i`, et :math:`\alpha` le nombre de petits par portée (une par an). Alors, :math:`n_{i+1} = \alpha n_i`. Si :math:`\alpha` est une constante, alors, on obtiendra l'année :math:`p`
 
 .. math::
     n_p = \alpha^p n_0
@@ -74,12 +74,12 @@ Pour cela, vous allez prendre un grand nombre de valeurs de :math:`r` comprises 
 chaque valeur de :math:`r`, calculez les 1000 premiers termes de la suite, et gardez uniquement les 100 derniers termes. Si la limite est
 bien définie, ces 100 derniers termes devraient être très semblables, ce qui n'est pas toujours le cas.
 
-Vous aller créer un diagramme de bifurcation. Pour cela il faut tracer sur un graphique:
+Vous allez créer un diagramme de bifurcation. Pour cela il faut tracer sur un graphique :
 
 - pour une valeur de :math:`r` donnée en abscisses, tracer les 100 derniers termes de la suite en ordonnée (avec des petits points)
 - répéter cette opération pour toutes les valeurs de :math:`r` choisies
 
-Vous devriez obtenir un diagramme qui ressemble à:
+Vous devriez obtenir un diagramme qui ressemble à :
 
 .. image:: ./diagramme_bifurcation.png
 
