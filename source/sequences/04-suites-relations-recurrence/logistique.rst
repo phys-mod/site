@@ -56,11 +56,11 @@ présente un comportement chaotique. :math:`r` est compris entre 1 et 4.
 
 À faire à la maison
 -------------------
-Faire le calepin de cours *Représentation graphique d'une série mathématique* (`voir sur le site <../../notebooks/04-suites-relations-recurrence/serie-graphique.ipynb>`_).
+Faire le calepin de cours *Représentation graphique d'une suite mathématique* (`voir sur le site <../../notebooks/04-suites-relations-recurrence/suite-graphique.ipynb>`_).
 
 Comportement de la suite
 ------------------------
-Comme expliqué dans le cours *Représentation graphique d'une série mathématique*, représenter de façon graphique le comportement de la suite
+Comme expliqué dans le cours *Représentation graphique d'une suite mathématique*, représenter de façon graphique le comportement de la suite
 pour :math:`r=2.5` et :math:`x_0=0.1`. La suite tend-elle vers une limite finie ?
 
 Choisir d'autres valeurs de :math:`r` comprises entre 2.5 et 4. Que constatez-vous ?

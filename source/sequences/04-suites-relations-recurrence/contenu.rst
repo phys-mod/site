@@ -21,10 +21,10 @@ __ ../../notebooks/04-suites-relations-recurrence/02-exercices.ipynb
 
 Séance 2
 --------
-Avant la séance 2, à la maison, vous devez faire le calepin de cours *Représentation graphique d'une série mathématique* (`voir sur le site`__).
+Avant la séance 2, à la maison, vous devez faire le calepin de cours *Représentation graphique d'une suite mathématique* (`voir sur le site`__).
 Vous aller ensuite réaliser le `mini-projet sur l'équation logistique`__. Le compte-rendu est à déposer dans Moodle.
 
-__ ../../notebooks/04-suites-relations-recurrence/03-serie-graphique.ipynb
+__ ../../notebooks/04-suites-relations-recurrence/03-suite-graphique.ipynb
 __ ./logistique.rst
 
 Trello
