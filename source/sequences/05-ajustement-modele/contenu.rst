@@ -3,7 +3,7 @@ Déroulement de la séquence
 ==========================
 
 
-La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonctions (linéaire, exponentielle, sinusoïde...). Le mini-projet illustrera ces concepts via des données liées au réchauffement climatique.
+La cinquième séquence est une introduction à l'ajustement d'un modèle à des données expérimentales. Vous commencerez par faire quelques exercices illustrant le principe d'ajustement par moindres carrés de plusieures types de fonctions (linéaire, exponentielle, sinusoïde, *etc*.) Le mini-projet illustrera ces concepts *via* des données liées au réchauffement climatique.
 
 À faire à la maison
 -------------------
@@ -17,7 +17,7 @@ __ ../../notebooks/05-ajustement-modele/01-ajustement-modele.ipynb
 
 Avant la deuxième séance de la semaine :
 
-lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_.
+  - Lire `cet article  <https://www.carbonbrief.org/analysis-why-scientists-think-100-of-global-warming-is-due-to-humans>`_ sur le site de `Carbon Brief  <https://en.wikipedia.org/wiki/Carbon_Brief>`_.
 
 Répondez ensuite aux questions suivantes :
 
