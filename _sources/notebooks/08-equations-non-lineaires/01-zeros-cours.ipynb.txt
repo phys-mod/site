@@ -1,0 +1,559 @@
+{
+ "cells": [
+  {
+   "source": [
+    "# Recherche des zéros d'une fonction"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Numbering the equations"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "%%javascript\n",
+    "MathJax.Hub.Config({\n",
+    "    TeX: { equationNumbers: { autoNumber: \"AMS\" } }\n",
+    "});"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "import matplotlib.cm as cm\n",
+    "\n",
+    "from matplotlib.ticker import NullFormatter  # useful for `logit` scale\n",
+    "# Set common figure parameters:\n",
+    "newparams = {'figure.figsize': (10, 8),\n",
+    "             'lines.linewidth': 1.5, 'lines.markersize': 10,\n",
+    "             'font.size': 14}\n",
+    "plt.rcParams.update(newparams)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Two times\n",
+    "# Set common figure parameters:\n",
+    "from matplotlib.ticker import NullFormatter  # useful for `logit` scale\n",
+    "newparams = {'figure.figsize': (10, 8),\n",
+    "             'lines.linewidth': 1.5, 'lines.markersize': 10,\n",
+    "             'font.size': 14}\n",
+    "plt.rcParams.update(newparams)"
+   ]
+  },
+  {
+   "source": [
+    "# Définition des fonctions"
+   ],
+   "cell_type": "code",
+   "metadata": {},
+   "execution_count": null,
+   "outputs": []
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def dichotomie0 (f,a,b,epsilon): \n",
+    "# Méthode de dichotomie avec un critère de convergence sur f(x)\n",
+    "    \n",
+    "    if (f(a)*f(b) >= 0):\n",
+    "        print(\"Pas de 0 dans l'intervalle [\",a,\";\",b,\"]\")\n",
+    "        return float('NaN')  # None\n",
+    "    else:\n",
+    "        x1 = a\n",
+    "        x2 = b\n",
+    "        x = 0.5*(x1+x2)\n",
+    "        while abs(f(x))>epsilon:\n",
+    "            if f(x1)*f(x) < 0:\n",
+    "                x2 = x\n",
+    "            else:\n",
+    "                x1 = x\n",
+    "            x = 0.5*(x1+x2)    \n",
+    "    return x\n",
+    "\n",
+    "def dichotomie (f,a,b,epsilon,cmax): \n",
+    "# Méthode de dichotomie améliorée avec la prise en compte d'un compteur \n",
+    "# et un critère de convergence sur x\n",
+    "    \n",
+    "    if f(a)*f(b) >= 0:\n",
+    "        print(\"Pas de 0 dans l'intervalle [\",a,\";\",b,\"]\")\n",
+    "        return float('NaN')  # None #\n",
+    "    else:\n",
+    "        compteur = 0\n",
+    "\n",
+    "        x1 = a\n",
+    "        x2 = b\n",
+    "        x = 0.5*(x1+x2)\n",
+    "        while x2-x1>epsilon:\n",
+    "            compteur=compteur+1\n",
+    "            if compteur > cmax:\n",
+    "                print(\"Limite du compteur atteinte\")\n",
+    "                break\n",
+    "            if f(x1)*f(x) < 0:\n",
+    "                x2 = x\n",
+    "            else:\n",
+    "                x1 = x\n",
+    "            x = 0.5*(x1+x2)    \n",
+    "        #print(f\"Résultat obtenu en {compteur:3d} itérations (cmax={cmax:3d}).\")\n",
+    "    return x, compteur\n",
+    "\n",
+    "\n",
+    "\n",
+    "def newton_raphson0(f,fprime,x,eps):\n",
+    "    y = f(x)     \n",
+    "    while ( abs(y) > eps ):\n",
+    "        x = x - y/fprime(x);\n",
+    "        y = f(x)\n",
+    "    return x;\n",
+    "\n",
+    "\n",
+    "def newton_raphson(f,fprime,x,eps,cmax):\n",
+    "# Newton_Raphson amélioré avec la prise en compte du compteur.\n",
+    "    compteur = 0\n",
+    "    y = f(x)    \n",
+    "    while ( abs(y) > eps and compteur < cmax):\n",
+    "        compteur=compteur+1\n",
+    "        x = x - y/fprime(x);\n",
+    "        y = f(x)\n",
+    "    return x, compteur;\n",
+    "\n",
+    "#if cmax < 100:\n",
+    "#    print(\"la solution est xxx et le nombre d'itération vaut xxx\")\n",
+    "#else:\n",
+    "#    print(\"Limite du compteur atteinte\")\n",
+    "\n",
+    "\n",
+    "def newton_raphson2(f,x,eps,cmax):\n",
+    "# Newton_Raphson amélioré avec la prise en compte du compteur.\n",
+    "    compteur = 0\n",
+    "    y, dy = f(x)     \n",
+    "    while ( abs(y) > eps and compteur < cmax):\n",
+    "        compteur=compteur+1\n",
+    "        x = x - y/dy;\n",
+    "        y, dy = f(x)\n",
+    "    return x, compteur;"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Introduction \n",
+    "\n",
+    "Ce chapitre aborde le problème de trouver les solutions d'une équation numériquement. Ces problèmes apparaissent souvent en physique dans les problèmes d'optimisation ou bien de calcul d'équilibre physique et dans certains algorithmes numériques telle que la méthode numérique implicite pour la résolution d'une équation différentielle ordinaire. À une dimension, le problème peut toujours se mettre sous la forme suivante :\n",
+    "\\begin{equation}\n",
+    "f(x) = 0 \n",
+    "\\end{equation}\n",
+    "où $f$ est une fonction et $x$ est la (ou les) valeur(s) que l'on recherche. Ce sont les racines ou zéro de la fonction $f$. Il existe plusieurs méthodes numériques pour résoudre ce problème et ce chapitre traitera de deux méthodes classiques : la méthode de dichotomie et la méthode de Newton-Raphson. \n",
+    "\n",
+    "Ce problème se généralise à N-dimensions avec $n$ fonctions de $n$ variables sous la forme suivante :\n",
+    "\\begin{eqnarray}\n",
+    "f_0(x_0, x_1, ..., x_n) =  0 \\nonumber \\\\\n",
+    "f_1(x_0, x_1, ..., x_n) =  0 \\nonumber  \\\\\n",
+    "...  = 0 \\\\\n",
+    "f_n(x_0, x_1, ..., x_n) =  0 \\nonumber  \\\\\n",
+    "\\end{eqnarray}\n",
+    "ou sous forme vectorielle\n",
+    "\\begin{equation}\n",
+    "\\mathbf f(\\mathbf x) = \\mathbf 0. \n",
+    "\\end{equation}\n",
+    "Cependant, le problème devient alors bien plus compliqué à résoudre qu'à une seule dimension car il n'est plus possible d'encadrer la solution de manière efficace comme pour la méthode de dichotomie. Cependant, la méthode de Newton-Raphson se généralise facilement à N-dimensions.  \n",
+    "\n",
+    "\n",
+    "\n"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## La méthode de dichotomie (à la maison)\n",
+    "\n",
+    "### Présentation de la méthode  \n",
+    "\n",
+    "La méthode de dichotomie consiste à choisir un intervalle qui contient une unique solution, puis à encadrer cette solution en divisant l'intervalle en deux parties égales (d'où le nom de la méthode) et en sélectionnant l'intervalle contenant la solution. Ces étapes sont répétées jusqu'à atteindre la solution suivant un critère de convergence. L'avantage de cette méthode est que l'algorithme converge toujours vers la solution, à condition qu'il n'y ait qu'une seule et unique solution dans l'intervalle de départ. \n",
+    "\n",
+    "Cette méthode repose sur le principe que la fonction change de signe au passage par la racine. Ainsi, pour un intervalle $[a,b]$ contenant la racine, le produit $f(a)f(b)$ est négatif. On divise l'intervalle en deux parties égales en posant $c = \\frac{a+b}{2}$. Si le produit  $f(a)f(c)$ est négatif alors la racine est dans l'intervalle $[a,c]$, sinon la racine est dans l'intervalle $[c,b]$. Puis, on itére le processus jusqu'à un seuil de précision défini préalablement. Cette précision peut être soit sur la valeur de $x$, la racine, et les itérations stoppent lorsque la longueur de l'intervalle est inférieure à la précision $\\epsilon$: $(b-a) < \\epsilon $. Soit sur la proximité de $|f(x)|$ du zéro et le critère est de la forme $|f(x)| < \\epsilon$.  \n",
+    "\n",
+    "L'algorithme pourra s'écrire ainsi :  \n",
+    "- soit un intervalle initial $[a,b]$ contenant une unique racine de la fonction $f$. \n",
+    "- On divise l'intervalle en deux $c = \\frac{a+b}{2}$.  \n",
+    "- On calcule $f(a)f(c)$ et on détermine son signe. Si il est négatif alors l'intervalle suivant est $[a,c]$ sinon se sera $[c,b]$. \n",
+    "- On itère le processus et le critère de sortie est défini par $(b-a) < \\epsilon $ ou $|f(x)| < \\epsilon$. \n",
+    "\n",
+    "\n",
+    "Pour s'assurer que l'intervalle initial contient une seule et unique solution, on peut par exemple tracer la courbe. Il faut alors se méfier de la représentation graphique et notamment de la discrétisation utilisée pour tracer la courbe, surtout si celle-ci présente un fort gradient.   \n",
+    "\n",
+    "La figure ci-dessous illustre la méthode :\n",
+    "\n",
+    "![\"figure dichotomie\"](dichotomie.png)\n",
+    "\n",
+    "*Fig. 1: Méthode de dichotomie*"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercices\n",
+    "\n",
+    "On prendra comme critère de convergence une précision de $\\epsilon = 10^{-8}$ sur la détermination de la racine. \n",
+    "\n",
+    "**1)** Ecrire une fonction *dichotomie* qui contient l'algorithme de dichotomie et dont les paramètres d'entrés sont une fonction, a, b, les bornes de l'intervalle et eps pour $\\epsilon$. La fonction retourne la valeur de la racine. \n",
+    "\n",
+    "**2)** Nous allons nous assurer que l'algorithme est écrit correctement en résolvant des équations dont on connait les solutions. Vous pouvez tester par exemple : \n",
+    "$$ f(x) = \\cos{x} $$\n",
+    "$$ f(x) = x^2 - 4 $$\n",
+    "\n",
+    "**3)** Introduire un compteur dans la fonction *dichotomie*.  \n",
+    "\n",
+    "**4)** Maintenant, nous pouvons résoudre l’équation suivante \n",
+    "$$ \\cos{x} = x \\;\\;\\; \\textrm{soit} \\;\\;\\;  f (x) = x − \\cos{x} =0 $$ \n",
+    "\n",
+    "Tracer la fonction f sur l’intervalle `[0; 3]` et sur une feuille papier, dessinez quelques unes des étapes successives de l’algorithme de la dichotomie. \n",
+    "\n",
+    "Donner le résultat et le nombre d'itération pour la fonction $f$ avec une précision de $10^{-8}$. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Fonctions tests\n",
+    "def f1(x):\n",
+    "    f1 = np.cos(x)\n",
+    "    return f1\n",
+    "\n",
+    "def f2(x):\n",
+    "    f2 = x**2 - 4\n",
+    "    return f2\n",
+    "\n",
+    "def f3(x):\n",
+    "    f3 = x - np.cos(x)\n",
+    "    return f3\n"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "#from matplotlib import rc\n",
+    "#rc('font',**{'family':'sans-serif','sans-serif':['Helvetica']})\n",
+    "## for Palatino and other serif fonts use:\n",
+    "#rc('font',**{'family':'serif','serif':['Palatino']})\n",
+    "#rc('text', usetex=True)\n",
+    "\n",
+    "x =  np.linspace(-1,4, num=500)\n",
+    "y1 = f1(x)\n",
+    "y2 = f2(x)\n",
+    "y3 = f3(x)\n",
+    "\n",
+    "plt.xlabel(\"Axe des X\")\n",
+    "plt.ylabel(\"Y\")\n",
+    "plt.plot(x,y1,label=r'$\\cos{(x)}=0$')\n",
+    "plt.plot(x,y2,label=r'$x^2-2=0$')\n",
+    "plt.plot(x,y3,label=r'$\\cos{(x)}=x$')\n",
+    "\n",
+    "plt.plot(x,0*y1,'-r')\n",
+    "plt.grid(True)\n",
+    "plt.xlim(min(x), max(x))\n",
+    "plt.ylim(min(y3), max(y3))\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Fonctions tests\n",
+    "eps = 1.e-8\n",
+    "cmax=100\n",
+    "\n",
+    "# test sans solution car mauvais choix d'intervalle\n",
+    "a = 0.1 ; b = 0.4\n",
+    "x0=dichotomie0(f1,a,b,eps)\n",
+    "print(f\"La racine avec la méthode de dichotomie est {x0:22.15e} \")\n",
+    "\n",
+    "a = 0; b = 2\n",
+    "x0, compteur =dichotomie(f1,a,b,eps,cmax)\n",
+    "print(f\"La racine obtenue en {compteur:3d} itérations par \" + \\\n",
+    "      f\"la méthode de dichotomie est {x0:12.8e} \")  # si on veut un résultat à 10-8 comment imprimer? \n",
+    "\n",
+    "\n",
+    "a=0 ; b=3.6\n",
+    "x0, compteur =dichotomie(f2,a,b,eps,cmax)\n",
+    "print(f\"La racine obtenue en {compteur:3d} itérations par \" + \\\n",
+    "      f\"la méthode de dichotomie est {x0:12.8e} \")  \n",
+    "\n",
+    "a=0 ; b=3\n",
+    "x0, compteur =dichotomie(f3,0,3,eps,cmax)\n",
+    "print(f\"La racine obtenue en {compteur:3d} itérations par \" + \\\n",
+    "      f\"la méthode de dichotomie est {x0:12.8e} \")  "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## La méthode de Newton-Raphson\n",
+    "\n",
+    "### Présentation de la méthode \n",
+    "\n",
+    "La méthode de Newton-Raphson est une méthode classique à une dimension qui se généralise très bien à N-dimensions. D'un point de vue géométrique, cette méthode consiste à prolonger la tangente de la fonction $f$ à un point $x_i$ et à chercher son interesection avec l'axe des ordonnées en zéro. Ce point d'intersection est alors pris comme nouveau point de départ de la recherche $x_{i+1}$ et ainsi de suite jusqu'à ce que la fonction se rapproche suffisament du zéro. D'un point de vue algébrique, cette méthode repose sur le développement de Taylor. La fonction est approximée autour de $x_0$ au premier ordre par \n",
+    "\\begin{equation}\n",
+    "f(x) = f(x_0) + f'(x_0)(x-x_0)\n",
+    "\\end{equation}\n",
+    "et donc $ f(x) =0$ implique que \n",
+    "\\begin{equation}\n",
+    "x = x_0 - \\frac{f(x_0)}{f'(x_0)} \n",
+    "\\end{equation}\n",
+    "comme la fonction n'est a priori pas linéaire, il faut alors itérer le processus :\n",
+    "\\begin{equation}\n",
+    " x_{i+1} = x_i - \\frac{f(x_i)}{f'(x_i)}. \n",
+    "\\end{equation}\n",
+    "Comme précédemment, la condition d'arrêt porte soit sur la solution $x$ soit sur la fonction $f(x)$. Cependant, contrairement au cas de la méthode de dichotomie, cette méthode recquiert le calcul de la dérivée de la fonction $f'(x)$ et d'une seule condition de départ le $x_0$.\n",
+    "\n",
+    "Cette méthode bien qu'elle soit très efficace car sa convergence est plus rapide que la méthode de dichotomie, recèle de nombreux pièges qu'il faut connaître et reconnaître :\n",
+    "- le cas où la dérivée est très petite ou bien s'annulle. Le point itéré sera alors projeté loin du point de départ et l'approximation linéaire ne sera plus valide,  \n",
+    "- l'existence de plusieurs zéros. Dans ce cas, cette méthode ne permet pas de choisir le zéro désiré à moins de contraindre la solution sur un intervalle pré-défini,\n",
+    "- un cas où la fonction présente une courbure bien particulière et qui implique que l'algorithme se retrouve dans un cycle et donc ne converge pas. \n",
+    "\n",
+    "Pour éviter ces différents problèmes, il est conseillé de \n",
+    "- stopper l'algorithme lorsque celui-ci diverge, le plus simple est d'imposer un nombre maximum d'itération.\n",
+    "- préparer le problème par une analyse graphique et en calculant le comportement de la fonction aux asymptotes,\n",
+    "- parfois il est judicieux de reformuler le problème pour éliminer une racine. \n",
+    "\n",
+    "Si la dérivée analytique n'est pas calculable, on peut toujours la calculer numériquement par la méthode des différences finies. Cependant, dans ce cas la méthode converge beaucoup moins rapidement. \n",
+    "\n",
+    "La figure ci-dessous illustre la méthode :\n",
+    "\n",
+    "![\"figure dichotomie\"](newton.png)\n",
+    "\n",
+    "*Fig. 2: Méthode de Newton-Raphson*"
+   ]
+  },
+  {
+   "source": [
+    "### Exercices\n",
+    "\n",
+    "On prendra comme critère de convergence une précision de $10^{-8}$ sur la détermination de la racine $(x^*)$. \n",
+    "\n",
+    "\n",
+    "**1)** Tester la méthode de Newton-Raphson avec la fonction $f (x) = \\sin{x}$ et le point de départ $x_0 = 0.1$.\n",
+    "Faites de même avec $x_0 = 1.55$, que constatez-vous et expliquez. \n",
+    "\n",
+    "**2)** Maintenant, on compare la vitesse de convergence entre la méthode de dichotomie et la méthode de Newton-Raphson pour la fonction :\n",
+    "$$ f(x) = \\sin{x} $$\n",
+    "\n",
+    "avec $x0=0.1$. \n",
+    "\n",
+    "Enfin, on testera sur la méthode de Newton-Raphson, $$ f(x) = \\sin{x} $$ avec $x0=1.55$\n",
+    "et enfin :\n",
+    "$$ f(x) = \\frac{1}{2} - \\tanh{(x-1)} $$"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Fonction test f(x)=sin(x)\n",
+    "def sinf(x):\n",
+    "    y = np.sin(x)\n",
+    "    return y\n",
+    "\n",
+    "def cosf(x):\n",
+    "    y = np.cos(x)\n",
+    "    return y\n",
+    "\n",
+    "x =  np.linspace(-1,10, num=500)\n",
+    "y = sinf(x)\n",
+    "\n",
+    "plt.xlabel(\"Axe des X\")\n",
+    "plt.ylabel(\"Y\")\n",
+    "plt.plot(x,y)\n",
+    "plt.plot(x,0*y,'-r')\n",
+    "plt.grid(True)\n",
+    "plt.xlim(min(x), max(x))\n",
+    "plt.ylim(min(y)-0.1, max(y)+0.1)\n",
+    "\n",
+    "plt.plot(0.1,sinf(0.1),'or')\n",
+    "plt.plot(1.55,sinf(1.55),'or')\n",
+    "\n",
+    "idx = np.argwhere(np.diff(np.sign(y - 0))).flatten()\n",
+    "plt.plot(x[idx], y[idx], 'og')\n",
+    "\n",
+    "\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "scrolled": true,
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "eps = 1e-4\n",
+    "\n",
+    "a = -0.1\n",
+    "b =  0.1 \n",
+    "x0, compteur_d = dichotomie(sinf,a,b,eps,cmax)\n",
+    "x1, compteur_n = newton_raphson(sinf,cosf,b,eps,cmax)\n",
+    "print(f\"La racine avec la méthode de dichotomie est {x0:22.15e} et {x1:22.15e} avec la méthode de Newton \")\n",
+    "print(f\"Compteur pour la méthode de dichotomie : {compteur_d:d}\")\n",
+    "print(f\"Itération pour la méthode de newton    : {compteur_n:d}\")\n",
+    "print(\"\")\n",
+    "\n",
+    "a=-0.1\n",
+    "b=1.55\n",
+    "x0,compteur_d=dichotomie(sinf,a,b,eps,cmax)\n",
+    "x1,compteur_n=newton_raphson(sinf,cosf,b,eps,cmax)\n",
+    "print(f\"La racine avec la méthode de dichotomie est {x0:22.15e} et {x1:22.15e}\" \\\n",
+    "      +f\" avec la méthode de Newton. La racine {x1:22.15e} est un multiple de pi. Le rapport vaut {int(x1/np.pi):d}\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Fonction test f(x)=sin(x)\n",
+    "def tanhf(x):\n",
+    "    y = 0.5 - np.tanh(x-1)\n",
+    "    return y\n",
+    "\n",
+    "def dtanhf(x):\n",
+    "    y = -1./np.cosh(x-1)**2\n",
+    "    return y\n",
+    "\n",
+    "\n",
+    "x =  np.linspace(-1,10, num=500)\n",
+    "y = tanhf(x)\n",
+    "\n",
+    "plt.xlabel(\"Axe des X\")\n",
+    "plt.ylabel(\"Y\")\n",
+    "plt.plot(x,y)\n",
+    "plt.plot(x,0*y,'-r')\n",
+    "plt.grid(True)\n",
+    "plt.xlim(min(x), max(x))\n",
+    "plt.ylim(min(y), max(y))\n",
+    "\n",
+    "idx = np.argwhere(np.diff(np.sign(y - 0))).flatten()\n",
+    "plt.plot(x[idx], y[idx], 'og')\n",
+    "\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "a=0 ; b=2\n",
+    "x0,compteur=dichotomie(tanhf,a,b,eps,cmax)\n",
+    "x1,compteur=newton_raphson(tanhf,dtanhf,b,eps,cmax)\n",
+    "print(f\"La racine avec la méthode de dichotomie est {x0:22.15e} et {x1:22.15e}  avec la méthode de Newton \")\n",
+    "\n",
+    "b = 3\n",
+    "x1,compteur=newton_raphson(tanhf,dtanhf,b,eps,cmax)\n",
+    "print(f\"La racine avec la méthode de dichotomie est {x0:22.15e} et {x1:22.15e}  avec la méthode de Newton \")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Références\n",
+    "\n",
+    "Depondt, Physique Numérique\n",
+    "\n",
+    "Press et al, Numerical Recipes"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9-final"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

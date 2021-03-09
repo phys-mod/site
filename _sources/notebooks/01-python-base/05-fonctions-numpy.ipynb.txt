@@ -1,0 +1,744 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Les fonctions de Numpy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Créer des tableaux Numpy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "De nombreuses fonctions de Numpy sont dédiées à la construction de tableaux multidimensionnels. La [liste complète des fonctions](https://docs.scipy.org/doc/numpy/reference/routines.array-creation.html) pour la création de tableaux peut se trouver dans la documentation Numpy. Attention à bien choisir la documentation appropriée à votre version de Numpy, accessible avec :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Importation du module Numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "print(np.__version__)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## La fonction `arrayInfo`\n",
+    "\n",
+    "Nous allons créer une fonction pour afficher les informations relatives aux tableaux Numpy, même si nous verrons plus tard la syntaxe de création d'une fonction personnelle."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def arrayInfo(array_name):\n",
+    "    \"\"\"prints out the content, shape, dimensions and data type of an array\"\"\"\n",
+    "    print(\"-----\")\n",
+    "    print(array_name)\n",
+    "    print(\"shape: \", array_name.shape)\n",
+    "    print(\"number of dimensions :\", array_name.ndim)\n",
+    "    print(\"datatype: \", array_name.dtype)\n",
+    "    print(\"-----\")\n",
+    "    return"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous pouvons alors utiliser cette fonction comme une fonction Python pour obtenir des informations sur un tableau:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création d'un tableau Numpy\n",
+    "A = np.array([[3, 5, 9],\n",
+    "            [4, 6, -2]])\n",
+    "\n",
+    "# Utilisation de la fonction arrayInfo\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Uns et zeros\n",
+    "\n",
+    "Voici quelques fonctions utiles pour créer des tableaux préremplis :\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`empty(shape)` | retourne un tableau de forme donnée\n",
+    "`ones(shape)` | retourne un tableau rempli de 1 de forme donnée\n",
+    "`zeros(shape)` | retourne un tableau rempli de 0 de forme donnée"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Par exemple, créons un tableau `A` avec 3 lignes et 4 colonnes rempli de 1 :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.ones((3, 4))\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On rappelle que la forme du tableau (*shape*) s'écrit sous la forme d'un *tuple* (voir Le module Numpy). Ici le *tuple* définit le nombre d'éléments dans chacune des dimensions du tableau : 3 éléments dans la dimension 0 (lignes), et 4 éléments dans la dimension 1 (colonnes), c’est-à-dire un tableau avec 3 lignes et 4 colonnes.\n",
+    "\n",
+    "On remarque que le type des éléments du tableau est par défaut `float64`, c'est-à-dire des réels. Si nous voulons un type différent, il faut ajouter l'argument `dtype` à la fonction :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.ones((3, 4), dtype='int64')\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Maintenant, créons un tableau à une dimension avec 5 éléments tous égaux à zéro. Pour cela, il faut se souvenir comment écrire un *tuple* avec 1 seul élément :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.zeros((5,))\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La fonction `empty()` permet de créer un tableau rapidement. Mais attention, ce tableau n'est pas vide, contrairement à ce que le nom de la fonction laisse entendre :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.empty((3, 3))\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut tester la vitesse d'exécution des différentes fonctions avec la commande `%timeit` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# %timeit np.zeros((1000, 1000))\n",
+    "# %timeit np.empty((1000, 1000))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Créer un tableau `A` de dimension 1, contenant 7 éléments tous égaux à $4.2$ avec la fonction `ones()`. Afficher les attributs du tableau avec la fonction `arrayInfo()`\n",
+    "2. Créer un tableau vide B avec la fonction `empty()`, de même forme que A, sans écrire explicitement de *tuple* en argument de la fonction"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 1\n",
+    "A = np.ones((7,)) * 4.2\n",
+    "arrayInfo(A)\n",
+    "\n",
+    "# 2\n",
+    "B = np.empty(A.shape)\n",
+    "arrayInfo(B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Intervalles et pas\n",
+    "\n",
+    "Voici quelques fonctions utiles pour créer des tableaux dans un intervalle donné :\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`arange()` | valeurs régulièrement espacées pour un pas donné\n",
+    "`linspace()` | valeurs régulièrement espacées pour un nombre d'éléments donné\n",
+    "`logspace()` | valeurs régulièrement espacées sur une échelle logarithmique pour un nombre d'éléments donné\n",
+    "\n",
+    "La fonction `linspace()` est utile pour générer des tableaux avec des valeurs définies sur un intervalle donné. Par exemple, pour générer un tableau avec 15 valeurs dans l'intervalle `[−4, 4]` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.linspace(-4., 4, 15)\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les deux premiers arguments de la fonction sont les bornes inférieure et supérieure, et le troisième argument est le nombre d'éléments du tableau. Si le nombre de points est omis, la fonction `linspace()` utilisera la valeur par défaut de 50 points, ce que l'on peut vérifier dans l'aide de python :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# help(np.linspace)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il arrive souvent que l'on veuille créer un tableau avec non pas un nombre d'éléments donné à l'avance, mais un *pas* donné à l'avance. Le *pas* est l'intervalle entre 2 éléments. Si l'intervalle entre n'importe quels 2 éléments consécutifs reste le même, on parle alors de *pas fixe* ou de *pas constant*.\n",
+    "\n",
+    "Voici une petite routine qui permet de créer un tableau d'éléments compris entre 2 bornes connues à l'avance et un pas fixe :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Paramètres\n",
+    "start = -1.0   # borne inférieure\n",
+    "end = 2.0       # borne supérieure\n",
+    "step = 0.1      # pas\n",
+    "\n",
+    "# Création du tableau\n",
+    "interval = end - start                     # intervalle\n",
+    "num_points = int(interval / step) + 1      # nombre d'éléments\n",
+    "g = np.linspace(start, end, num_points)    # taleau\n",
+    "\n",
+    "# Attributs du tableau\n",
+    "arrayInfo(g)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Pourquoi dans la routine précédente le nombre de points est donné par `int(interval / step) + 1` ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La fonction `arange()` génère des valeurs dans l'intervalle semi-ouvert [début, fin[ avec un pas donné. Cependant, il est conseillé de ne pas l'utiliser avec un pas non entier, car le résultat n'est pas toujours cohérent avec la définition. Par exemple :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(np.arange(7.8, 8.4, 0.05))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "inclut l'élément 8.4 au lieu de l'exclure.\n",
+    "\n",
+    "Par défaut la fonction `arange()` va générer des valeurs entières si tous les arguments d'entrée sont des nombres entiers. De plus, si le pas est omis, la fonction `arange()` utilisera le pas par de défaut de 1.\n",
+    "\n",
+    "On peut donc l'utiliser à la place de la fonction `range()` pour générer un tableau Numpy d'entier :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.arange(-3, 5)\n",
+    "\n",
+    "# est équivalent à :\n",
+    "B = np.array(list(range(-3, 5)))\n",
+    "\n",
+    "arrayInfo(A)\n",
+    "arrayInfo(B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "En vous aidant de l'aide de la fonction `logspace()`, créer le tableau Numpy contenant toutes les puissances de $10$ depuis $10^{-4}$ à $10^{5}$, puis affichez les attributs du tableau avec arrayInfo."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# help(np.logspace)\n",
+    "A = np.logspace(-4, 5, 10)\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Manipulation de tableau\n",
+    "\n",
+    "Voici quelques fonction utiles pour manipuler les tableaux Numpy. [La liste complète](https://numpy.org/doc/stable/reference/routines.array-manipulation.html) est dans la documentation Numpy.\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`reshape()` | donne une forme différente au tableau sans changer ses éléments\n",
+    "`t.flatten()` | retourne une copie 1D du tableau\n",
+    "`t.T()` | transposée du tableau\n",
+    "`concatenate()` | joindre plusieurs tableaux\n",
+    "`append()` | ajoute des valeurs à la fin du tableau\n",
+    "`unique()` | trouve les éléments uniques du tableau\n",
+    "`flip()` | inverse l'ordre des éléments"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voici quelques exemples d'utilisation de ces fonctions :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# tableau de forme (2, 4)\n",
+    "A = np.array([[2, 7, 9, 1],\n",
+    "            [-3, 4, 0, 2]])\n",
+    "arrayInfo(A)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# reformer en tableau de forme (4, 2)\n",
+    "B = np.reshape(A, (4, 2))\n",
+    "arrayInfo(B)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Attention, on voit que c'est différent de la transposée\n",
+    "C = A.T\n",
+    "arrayInfo(C)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut joindre 2 tableaux suivant un axe donné, ici la première dimension, ou dimension 0 (lignes), avec la fonction `append()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.array([[1, 2], [3, 4]])\n",
+    "B = np.array([[5, 6]])\n",
+    "D = np.append(A, B, axis = 0)\n",
+    "\n",
+    "arrayInfo(D)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Si on veut joindre plusieurs tableaux ensemble, il faut les *concaténer* avec la fonction `concatenate()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "C = np.array([[7, 8], [9, 10], [11, 12]])\n",
+    "D = np.concatenate((A, B, C), axis = 0)\n",
+    "\n",
+    "arrayInfo(D)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Un peu de tri\n",
+    "\n",
+    "Il peut être utile de trier un tableau Numpy. Reprenons les tableaux de la leçon précédente donnant les nombres d'habitants et les superficies des 8 villes les plus peuplées de France en 2017 :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "noms = np.array(['Paris', 'Marseille', 'Lyon', 'Toulouse', 'Nice', 'Nantes', 'Montpellier', 'Strasbourg'])\n",
+    "nombre_habitants = np.array([2187526, 863310, 516092, 479553, 340017, 309346, 285121, 280966])\n",
+    "superficie = np.array([105.40, 240.62, 47.87, 118.30, 71.92, 65.19, 56.88, 78.26]) # km**2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous voyons que les tableaux sont triés suivant la donnée du nombre d'habitants, du plus grand au plus petit. On aimerait trier les données des villes suivant la donnée de la superficie en ordre décroissant. On peut utiliser les fonctions `sort()` et `flip()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "superficie_sort = np.sort(superficie)         # tri par défaut dans l'ordre croissant\n",
+    "superficie_sort = np.flip(superficie_sort)    # inverse l'ordre du tri\n",
+    "print(superficie_sort)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Si on obtient bien un tableau trié dans le bon ordre pour les superficies, les tableaux contenant les nombres d'habitants et les noms de ville n'ont pas été triés, et on ne sait pas dans quel ordre les trier pour qu'ils correspondent au nouvel ordre du tableau donnant les superficies.\n",
+    "\n",
+    "Pour résoudre ce problème, on va utiliser un *masque d'indices* grâce à la fonction `argsort()`. Cette fonction retourne non pas le tableau trié, mais le tableau d'indices qui permet de trier le tableau. On peut alors utiliser ce *masque d'indices* en indice pour trier les autres tableaux :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "mask = np.argsort(superficie)   # retourne le masque d'indices pour trier le tableau dans l'ordre croissant\n",
+    "mask = np.flip(mask)            # inverse l'ordre du masque pour obtenir un ordre décroissant\n",
+    "\n",
+    "# Application du masque sur les 3 tableaux\n",
+    "noms_sort = noms[mask]\n",
+    "nombre_habitants_sort = nombre_habitants[mask]\n",
+    "superficie_sort = superficie[mask]\n",
+    "\n",
+    "# Affichage des tableaux triés\n",
+    "print(noms_sort)\n",
+    "print(nombre_habitants_sort)\n",
+    "print(superficie_sort)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Quelle est la date ?\n",
+    "\n",
+    "Afin de manipuler simplement des dates, Numpy a un type de données `datetime64`. On peut alors utiliser les fonctions vues plus haut sur ce nouveau type de données.\n",
+    "\n",
+    "Pour créer une date on utilise alors la fonction `datetime()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "date = np.datetime64('2020-09-21')\n",
+    "print(\"La date est :\", date)\n",
+    "print(\"L'année est :\", np.datetime64(date, 'Y'))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut créer simplement des tableaux de dates avec la fonction `arange()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "dates = np.arange('2020-09', '2020-10', dtype = 'datetime64[D]') \n",
+    "print(\"Dates de septembre 2020 :\\n\", dates) \n",
+    "print(\"La date est en septembre :\", date in dates)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ou encore calculer des durées :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "dur = np.datetime64('2021-01-09') - np.datetime64('2020-09-21')\n",
+    "print(\"No. de jours :\", dur) \n",
+    "print(\"No. de semaines :\", np.timedelta64(dur, 'W')) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ou encore trier un tableau de dates :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "a = np.array(['2018-01-19', '2017-05-06', '2021-11-25'], dtype = 'datetime64') \n",
+    "print(\"Dates triées :\", np.sort(a))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "**Pour aller plus loin**\n",
+    "\n",
+    "Le type `datetime64` de Numpy est similaire au type `datetime` de Python. On peut trouver les références [pour Numpy ici](https://numpy.org/doc/stable/reference/arrays.datetime.html#arrays-dtypes-dateunits), et [pour Python ici](https://docs.python.org/3/library/datetime.html#datetime-objects).\n",
+    "\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Les fonctions mathématiques\n",
+    "\n",
+    "La force de Numpy est d'avoir de nombreuses fonctions mathématiques prédéfinies que l'on peut utiliser avec comme argument des tableaux Numpy. La plupart de ces fonctions sont vectorisées, c'est-à-dire qu'elles fonctionnent avec des tableaux multidimensionnels, de la même manière que lorsque l'on a utilisé les opérateurs arithmétiques.\n",
+    "\n",
+    "Voici une liste non exhaustive de fonctions classées par thème. La [liste complète](https://numpy.org/doc/stable/reference/routines.math.html) est dans l'aide de Numpy.\n",
+    "\n",
+    "fonctions | Numpy\n",
+    "--|--\n",
+    "Trigonométrique| `sin()`, `cos()`, `tan()`, `degrees()`, `radians()`\n",
+    "Somme, produit | `prod()`, `sum()`\n",
+    "Exponentielle et logarithme | `exp()`, `log()`, `log10`\n",
+    "Autres | `sqrt()`, `fabs()`, `maximum()`, `minimum()`\n",
+    "\n",
+    "Ces fonctions appartiennent au module Numpy, il ne faut donc pas oublier d'écrire `np.func()` pour les appeler."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Un oscillateur amorti en régime libre à une dimension, lorsque le taux d'amortissement $\\xi$ est faible, se déplace suivant l'équation\n",
+    "$$ x(t) = C e^{-\\xi\\omega_0 t} \\sin(\\omega_d t+\\phi) $$\n",
+    "avec $x$ la position, $t$ le temps, et $\\omega_d=\\omega_0\\sqrt{1-\\xi^2}$. Vous prendrez comme valeurs : $C=1~\\mathrm{m}$, $\\xi=0.1$, $\\omega_0=1~\\mathrm{s}^{-1}$ et $\\phi=0.2~\\mathrm{rad}$.\n",
+    "\n",
+    "1. Créer le tableau Numpy `t` contenant 50 valeurs de $t$ entre 0 et 10.\n",
+    "2. Calculer alors le tableau Numpy `x` contenant les valeurs de $x$ pour les valeurs correspondantes du tableau `t`, grâce à une unique expression\n",
+    "3. Afficher le tableau des positions"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Paramètres\n",
+    "C = 1       # m\n",
+    "xi = 0.1    # sans unités\n",
+    "w0 = 1      # s**-1\n",
+    "phi = 0.2   # radians\n",
+    "\n",
+    "# Tableau des temps\n",
+    "t = np.linspace(0, 10, 50) # s\n",
+    "\n",
+    "# Tableau correspondant des positions\n",
+    "x = C * np.exp(-xi * w0 * t) * np.sin(w0 * np.sqrt(1 - xi ** 2) * t + phi)\n",
+    "\n",
+    "# Affichage des positions\n",
+    "print(x)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

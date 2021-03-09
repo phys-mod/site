@@ -1,0 +1,774 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Le module NumPy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Le tableau NumPy"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "L'objet de base du [module NumPy](https://numpy.org/) est un tableau à $N$ dimensions (*ndarray*), que l'on appelera simplement tableau par la suite. Le plus simple pour créer un tableau est de convertir une liste en tableau. Pour cela, il faut utiliser la fonction `array()` du module NumPy :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# importation du module NumPy avec un alias np\n",
+    "import numpy as np\n",
+    "\n",
+    "# création de la liste\n",
+    "ma_liste = [2.2, 6.1, 9.6, 1.3, 56.8, 8.0]\n",
+    "\n",
+    "# création du tableau NumPy\n",
+    "mon_tableau = np.array(ma_liste)\n",
+    "\n",
+    "# affichage du tableau et de son type\n",
+    "print(mon_tableau)\n",
+    "print(type(mon_tableau))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons une nouvelle classe (ou type d'objet, c'est équivalent) : le `numpy.ndarray`, ou tableau NumPy. Comme toute classe, il a des fonctions (appelées \"méthodes\") et des opérateurs associés.\n",
+    "\n",
+    "En Python, un objet a des attributs (des variables internes) auxquels on peut accéder en écrivant le nom de l'objet, suivi d'un point et du nom de l'attribut. Voici la liste des attributs d'un tableau NumPy :\n",
+    "\n",
+    "attribut | description\n",
+    "--|--\n",
+    "t.ndim | nombre de dimensions\n",
+    "t.shape | taille du tableau dans chaque dimension\n",
+    "t.size | nombre total d'éléments\n",
+    "t.dtype | type des éléments du tableau"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Regardons quelques attributs de `mon_tableau` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# attribut nombre de dimensions (ndim)\n",
+    "mon_tableau.ndim"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# attribut taille (size)\n",
+    "mon_tableau.size"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# attribut forme (shape) -> résultat sous la forme d'un tuple\n",
+    "mon_tableau.shape"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "**tuple**\n",
+    "\n",
+    "Un [tuple](https://docs.python.org/fr/3/library/stdtypes.html#tuple) est un [type de données séquentiel](https://docs.python.org/fr/3/library/stdtypes.html#sequence-types-list-tuple-range) comme les listes. Cependant, alors que les listes sont muables (modifiables), les tuples sont immuables (non modifiables). On peut créer un tuple comme une liste, mais en utilisant une paire de parenthèses plutôt que des crochets. Pour différencier un tuple à un élément d'une simple paire de parenthèses, on ajoute une virgule après le chiffre, par exemple `a = (2,)`.\n",
+    "\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# attribut type des éléments (dtype)\n",
+    "mon_tableau.dtype"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "**dtype**\n",
+    "\n",
+    "Numpy contient un nombre de types numériques beaucoup plus important que les types natifs de Python. De plus, il est possible de créer facilement de nouveaux types de données structurées. C'est pourquoi NumPy est adpaté au calcul scientifique. Le type par défaut d'un réel lorsque l'on crée un tableau est `float64`. Ce type est équivalent (en précision) au type `float` natif de Python. 64 bits correspond à la place que prend un scalaire en mémoire. On peut trouver une [liste des types natifs de NumPy](https://numpy.org/doc/1.18/reference/arrays.scalars.html#arrays-scalars-built-in).\n",
+    "\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "La liste suivante contient le nombre d'habitants des 8 villes de France les plus peuplées : Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Strasbourg et Montpellier ([chiffres INSEE 2012](https://fr.wikipedia.org/wiki/Liste_des_communes_de_France_les_plus_peupl%C3%A9es#Communes_de_plus_de_30_000_habitants))"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "nombre_habitants = [2240621, 852516, 496343, 453317, 343629, 291604, 274394, 268456]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. Importer le module `numpy` sans alias.\n",
+    "2. Créer un tableau NumPy `np_nombre_habitants` à partir de la liste `nombre_habitants`.\n",
+    "3. Afficher le tableau créé et son attribut dtype."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# importer le module NumPy\n",
+    "import numpy\n",
+    "\n",
+    "# création du tableau NumPy\n",
+    "np_nombre_habitants = numpy.array(nombre_habitants)\n",
+    "\n",
+    "# afficher le tableau et son attribut dtype\n",
+    "print(np_nombre_habitants)\n",
+    "print(np_nombre_habitants.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Opérations sur les tableaux\n",
+    "Un grand intérêt des tableaux NumPy par rapport aux listes Python est la possibilité de les utiliser dans des expressions avec des opérateurs arithmétiques.\n",
+    "\n",
+    "Les opérateurs arithmétiques que l'on a vus pour les types scalaires en Python (addition, soustraction, multiplication, etc) s'appliquent **terme à terme** sur les tableaux.\n",
+    "\n",
+    "Par exemple, si on multiplie un tableau par un scalaire, chaque élément du tableau est multiplié :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# création du tableau\n",
+    "mon_tableau = np.array([2.2, 6.0, 9.6])\n",
+    "\n",
+    "# multiplication par un scalaire\n",
+    "print(0.5 * mon_tableau)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut aussi utiliser des opérateurs arithmétiques dans des expressions avec **des tableaux de même forme**. Les opérations sont alors effectuées **terme à terme** : le 1er élément du 1er tableau avec le 1er élément du 2ème tableaux, etc."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# création de 2 tableaux\n",
+    "A = np.array([0, 5, 3])\n",
+    "B = np.array([2, 5, 1])\n",
+    "\n",
+    "# addition terme à terme\n",
+    "print(A + B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut former des expressions avec des tableaux de types numériques différents. Le résultat correspond alors au type le plus général ou le plus précis (propriété appelée *upcasting*). \n",
+    "\n",
+    "Par exemple, si on multiplie un tableau d'entiers avec un tableau de réels :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# création d'un tableau de réels\n",
+    "A = np.array([0.0, 5.0, 3.0], dtype='float64')\n",
+    "\n",
+    "# création d'un tableau d'entiers\n",
+    "B = np.array([2, 5, 1], dtype='int64')\n",
+    "\n",
+    "# multiplication terme à terme\n",
+    "C = A * B\n",
+    "\n",
+    "# type des éléments du tableau résultant\n",
+    "print(C.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Reprenons le tableau `np_nombre_habitants`, donnant le nombre d'habitants des 8 villes de France les plus peuplées (Paris, Marseille, Lyon, Toulouse, Nice, Nantes, Strasbourg et Montpellier). On définit un tableau donnant la superficie de ces mêmes ville (en $\\mathrm{km}^2$), dans le même ordre :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np_superficie = np.array([105.40, 240.62, 47.87, 118.30, 71.92, 65.19, 78.26, 56.88]) # km**2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. Calculer la densité de population de chaque ville en nombre d'habitants par $\\mathrm{km}^2$. Affecter le résultat à une variable `np_densite` et afficher le résultat. Note : une seule expression sur une seule ligne est nécessaire pour effectuer le calcul.\n",
+    "2. Quel est le type des éléments du tableau `np_densité` (attribut dtype) ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# calcul de la densité de population (hab/km**2)\n",
+    "np_densité = np_nombre_habitants / np_superficie\n",
+    "\n",
+    "# afficher le résultat\n",
+    "print(np_densité)\n",
+    "\n",
+    "# attribut dtype du résultat\n",
+    "print(np_densité.dtype)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Indexation et tranche\n",
+    "Comme pour les listes, on peut utiliser les opérateurs indexation `[]` et tranche `[m:n]` avec les tableaux Numpy.\n",
+    "\n",
+    "Rappelons les règles d'indexation :\n",
+    "\n",
+    "- toute expression entière peut être utilisée comme indice\n",
+    "- si un indice a une valeur négative, il compte en sens inverse, à partir de la fin de la liste\n",
+    "- si vous essayez de lire ou d'écrire un élément qui n'existe pas, vous obtenez une erreur"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# création du tableau\n",
+    "A = np.array([4, 6, 1, 23, 3, 8, 9])\n",
+    "\n",
+    "# sélection de l'élément d'indice 3\n",
+    "print(A[3])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-warning\">\n",
+    "\n",
+    "**Attention**\n",
+    "\n",
+    "Comme pour les listes, le premier élément de la liste est numéroté avec l'indice `0`, le deuxième élement avec l'indice `1`, et ainsi de suite.\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# sélection d'une tranche du tableau\n",
+    "tranche = A[2:5]\n",
+    "\n",
+    "# affichage\n",
+    "print(tranche)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-warning\">\n",
+    "\n",
+    "**Attention**\n",
+    "\n",
+    "Comme pour les listes, l'élément de fin de la tranche est exclu.\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Avec l'opérateur tranche, on peut décider de sauter des éléments, en écrivant `[m:n:step]`. Par exemple, si on ne veut prendre qu'un élément sur deux :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# création du tableau\n",
+    "A = np.array([4, 6, 1, 23, 3, 8, 9])\n",
+    "\n",
+    "# sélection d'un élément sur deux\n",
+    "tranche = A[0:7:2]\n",
+    "\n",
+    "# affichage\n",
+    "print(tranche)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ou de manière équivalente :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# sélection d'un élément sur deux\n",
+    "tranche = A[::2]\n",
+    "\n",
+    "# affichage\n",
+    "print(tranche)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "En effet, si on ne spécifie pas de valeur pour `m` et `n` dans l'opérateur tranche `[m:n:step]`, par défaut `m` est l'indice du premier élément du tableau, et `n` est l'indice du dernier élément du tableau."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Tableau à 2 dimensions"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Un tableau Numpy peut avoir autant de dimensions que l'on veut. Nous avons manipulé jusqu'ici des tableaux à une dimension, généralement utilisés pour contenir un type d'information. Nous avons introduit 2 tableaux Numpy :\n",
+    "- `np_nombre_habitants` qui contient le nombre d'habitants des 8 villes de France les plus peuplées\n",
+    "- `np_superficie` qui contient les superficies de ces 8 villes\n",
+    "\n",
+    "Nous allons maintenant structurer ces informations en utilisant un tableau à 2 dimensions :\n",
+    "- la première dimension (lignes) donne pour une ville donnée son nombre d'habitants et sa superficie\n",
+    "- la deuxième dimension (colonnes) donne pour toutes les villes une information donnée (son nombre d'habitants *ou* sa superficie)\n",
+    "\n",
+    "Nous allons créer le tableau Numpy à deux dimensions à partir d'une liste de liste :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création de liste contenant les informations: nombre d'habitants et superficie (km**2)\n",
+    "villes = [[2240621, 105.40],    # Paris\n",
+    "        [852516, 240.62],       # Marseille\n",
+    "        [496343, 47.87],        # Lyon\n",
+    "        [453317, 118.30],       # Toulouse\n",
+    "        [343629, 71.92],        # Nice\n",
+    "        [291604, 65.19],        # Nantes\n",
+    "        [274394, 78.26],        # Strasbourg\n",
+    "        [268456, 56.88]]        # Montpellier\n",
+    "\n",
+    "# Création du tableau Numpy à 2 dimensions\n",
+    "np_villes = np.array(villes)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Afficher les quatres attributs du tableau Numpy `np_villes` : nombre de dimensions, taille du tableau dans chaque dimension, nombre total d'éléments, type des éléments du tableau."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Affichage des attributs du tableau\n",
+    "print(np_villes.ndim)   # nombre de dimensions\n",
+    "print(np_villes.shape)  # taille du tableau dans chaque dimension\n",
+    "print(np_villes.size)   # nombre total d'éléments\n",
+    "print(np_villes.dtype)  # type des éléments du tableau"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Le tableau Numpy est de dimension 2, contient 8 lignes et 2 colonnes, pour 16 éléments.\n",
+    "\n",
+    "Nous remarquons qu'il est de type `float64`, alors que le nombre d'habitants est un entier. En effet, nous avons vu qu'un tableau Numpy ne peut contenir qu'un seul type de données. Par défaut, il transforme tous les nombres en réel `float64`, selon le principe de l'*upcasting* vu plus haut."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Indexation et tranche 2D"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les opérateurs d'indexation et de tranche s'utilisent de la même façon que pour un tableau à une dimension, mais il faut les spécifier pour chaque dimension :\n",
+    "- le premier opérateur agit sur la première dimension (lignes)\n",
+    "- le deuxième opérateur agit sur la deuxième dimension (colonnes)\n",
+    "\n",
+    "L'avantage du tableau Numpy 2D sur une liste de listes est qu'il devient très facile d'extraire une information donnée pour toutes les villes. Par exemple :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire les superficies pour toutes les villes à partir du tableau Numpy 2D\n",
+    "print(np_villes[:, 1])\n",
+    "\n",
+    "# Extraire les superficies pour toutes les villes à partir de la liste de liste\n",
+    "print([villes[0][1], villes[1][1], villes[2][1], villes[3][1], villes[4][1], villes[5][1], villes[6][1], villes[7][1]])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "À partir du tableau Numpy `np_villes` :\n",
+    "- Afficher le nombre d'habitants de la ville de Toulouse\n",
+    "- Afficher les superficies des 4 dernières villes du tableau"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Nombre d'habitants de la ville de Toulouse\n",
+    "print(np_villes[3, 0])\n",
+    "\n",
+    "# Superficies des 4 dernières villes du tableau\n",
+    "print(np_villes[-4:, 1])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Opérations sur tableaux 2D"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Comme pour les tableaux 1D, il est possible d'utiliser les tableaux 2D dans des expressions avec des opérateurs arithmétiques. Les opérateurs arithmétiques s'appliquent **terme à terme** sur des tableaux de même forme (*shape*).\n",
+    "\n",
+    "Cependant, il est possible de former des expressions avec des tableaux de formes différentes. Il faut alors que la taille du tableau 1D soit de la même taille que les tableaux à l'intérieur du tableau 2D (deuxième dimension, ou nombre de colonnes) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = np.array([[-1, 6, 3],\n",
+    "            [4, 2, 8]])\n",
+    "\n",
+    "B = np.array([3, 6, 0])\n",
+    "\n",
+    "print('A * B = ', A * B)\n",
+    "print('A + B = ', A + B)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est aussi possible de former des expressions à l'aide des opérateurs de tranche et d'indexage :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(A[0,:] + B)\n",
+    "print(A[:,0] + B[0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Le tableau suivant donne l'évolution de la population entre 2012 et 2017 :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "evolution = [-53095, 10794, 19749, 26236, -3612, 17742, 6572, 16665]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. Créer un tableau Numpy `np_evolution` à partir du tableau `evolution`.\n",
+    "2. Copier le tableau `np_villes` dans un tableau `np_villes_2017` avec la fonction Numpy `copy()` (pour éviter l'aliasing, voir cours sur les listes).\n",
+    "3. Ajouter le tableau `evolution` à la première colonne du tableau `np_villes_2017`.\n",
+    "4. Afficher les populations des villes en 2012 et en 2017 : le classement des villes les plus peuplées de France a-t-il changé ?"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Création du tableau Numpy\n",
+    "np_evolution = np.array(evolution)\n",
+    "\n",
+    "# Copie du tableau en évitant l'aliasing\n",
+    "np_villes_2017 = np.copy(np_villes)\n",
+    "\n",
+    "# Evolution de la population\n",
+    "np_villes_2017[:,0] = np_villes_2017[:,0] + np_evolution\n",
+    "\n",
+    "# Comparaison des populations\n",
+    "print(np_villes[:,0])\n",
+    "print(np_villes_2017[:,0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Statistiques\n",
+    "\n",
+    "Il est très facile de faire des statistiques simples avec Numpy. Voyons quelques fonctions :\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`median()` | médiane\n",
+    "`mean()` | moyenne arithmétique\n",
+    "`sum()` | somme des éléments du tableau\n",
+    "`std()` | écart-type\n",
+    "`correlate()` | coefficient de correlation\n",
+    "\n",
+    "La [liste complète des fonctions](https://numpy.org/doc/stable/reference/routines.statistics.html) et de leurs arguments optionnels est dans l'aide Numpy."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Comparer la moyenne et la médiane du nombre d'habitants pour les villes du tableau `np_villes`\n",
+    "2. Calculer l'écart-type des superficies des villes du tableau `np_villes`\n",
+    "3. Calculer le coefficient de corrélation entre le nombre d'habitants et la superficie. [On rappele que](https://fr.wikipedia.org/wiki/Corr%C3%A9lation_(statistiques)#Estimation) :\n",
+    "\n",
+    "$$\\hat{r}_p = \\dfrac{\\hat{\\sigma}_{XY}}{\\hat{\\sigma}_X \\hat{\\sigma}_Y}$$\n",
+    "\n",
+    "avec\n",
+    "\n",
+    "$$\\hat{\\sigma}_{XY} =\\frac{1}{N}{\\sum_{i=1}^N (x_i - \\bar x)\\cdot(y_i - \\bar y)}$$\n",
+    "\n",
+    "et $\\hat{\\sigma}_X$ et $\\hat{\\sigma}_Y$ sont les écart-types des variables $X$ et $Y$."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Moyenne\n",
+    "mean_villes = np.mean(np_villes, axis=0) # axis=0 signifie de faire la moyenne sur la 1ère dimension (lignes)\n",
+    "mean_hab = mean_villes[0]\n",
+    "# ou bien\n",
+    "mean_hab = np.mean(np_villes[:,0])\n",
+    "\n",
+    "# Médiane\n",
+    "med_villes = np.median(np_villes, axis=0) # axis=0 signifie de faire la médiane sur la 1ère dimension (lignes)\n",
+    "med_hab = med_villes[0]\n",
+    "# ou bien\n",
+    "med_hab = np.median(np_villes[:,0])\n",
+    "\n",
+    "# Ecart-type\n",
+    "std_villes = np.std(np_villes, axis=0)\n",
+    "std_sup = std_villes[1]\n",
+    "# ou bien\n",
+    "std_sup = np.std(np_villes[:,1])\n",
+    "\n",
+    "# Coefficient de corrélation\n",
+    "shape_ville = np_villes.shape\n",
+    "N = shape_ville[0] # nombre de villes\n",
+    "mean_sup = mean_villes[1] # moyenne de la superficie des villes\n",
+    "sigma_XY = 1/N * (np_villes[:,0] - mean_hab) * (np_villes[:,1] - mean_sup)\n",
+    "cor_villes = np.sum(sigma_XY) / std_villes[0] / std_villes[1]\n",
+    "\n",
+    "# Affichage des résultats\n",
+    "print(\"Moyenne du nombre d'habitants = \", mean_hab)\n",
+    "print(\"Médiane du nombre d'habitants = \", med_hab)\n",
+    "print('Ecart-type des superficies = ', std_sup, \"km**2\")\n",
+    "print('Coefficient de corrélation = ', cor_villes)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

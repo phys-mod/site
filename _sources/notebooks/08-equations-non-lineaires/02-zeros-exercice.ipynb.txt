@@ -1,0 +1,287 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "\n",
+    "## Modes propres de vibration d’un diapason\n",
+    "\n",
+    "En première approximation, on peut modéliser un diapason comme l’assemblage de deux poutres, chacune de ces poutres possédant une extrémité fixe et une extrémité libre. Les vibrations $y(x)$ transverses le long de chaque barre vérifient l’équation suivante :\n",
+    "$$\n",
+    "\\dfrac{\\partial^{4}y}{\\partial x^{4}}=-\\dfrac{\\rho}{E\\kappa^{2}}\\dfrac{\\partial^{2}y}{\\partial t^{2}}\n",
+    "$$\n",
+    "\n",
+    "Avec les conditions limites suivantes où la barre est fixe à l'extrémité $x=0$ et libre en $x=L$ qui sont: \n",
+    "\n",
+    "\\begin{eqnarray*}\n",
+    "y(x=0)=0 \\quad & \\quad\\left.\\dfrac{\\partial^{2}y}{\\partial x^{2}}\\right|_{x=L}\\!\\!=0 \\\\\n",
+    "\\left.\\dfrac{\\partial y}{\\partial x}\\right|_{x=0}\\!\\!=0\\quad & \\quad\\left.\\dfrac{\\partial^{3}y}{\\partial x^{3}}\\right|_{x=L}\\!\\!=0, \n",
+    "\\end{eqnarray*}\n",
+    "\n",
+    "on peut montrer que les fréquences $\\nu_{i}$ des modes propres sont déterminées par l'équation suivante : \n",
+    "\n",
+    "\\begin{equation}\n",
+    "\\nu_{i}=\\dfrac{\\pi}{2\\ell^{2}}\\sqrt{\\dfrac{E\\kappa^{2}}{\\rho}}\\,\\beta_{i}^{2}\n",
+    "\\end{equation}\n",
+    "\n",
+    "où $\\beta_{i}$ est solution de \n",
+    "\n",
+    "\\begin{equation}\n",
+    "\\cosh{(\\pi\\beta_{i})}\\cos{(\\pi\\beta_{i})}=-1\n",
+    "\\end{equation}\n",
+    "\n",
+    "et $E$ est le module d'Young du matériau, $\\rho$ sa masse volumique, $\\ell$ la longueur du diapason et $\\kappa$ \n",
+    "une constante caractéristique de la section du diapason. Les caractéristiques d'un diapason en fer sont listées dans la table ci-dessous :\n",
+    "\n",
+    "Nom      | Valeur      &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  |\n",
+    "------|------|\n",
+    "densité | $\\rho= 7874\\,\\text{kg}/\\text{m}^{3}$ |\n",
+    "**Module d'Young** | $E=196\\,\\text{GPa}$ |\n",
+    "Section circulaire | $r=5\\,\\text{mm}$ |\n",
+    "constante | $\\kappa=r/2=2.5\\,\\text{mm}$| \n",
+    "longueur |  $\\ell=12.6\\,\\text{cm}$ | \n",
+    "\n",
+    "\n",
+    "1. Pour trouver les fréquences propres du diapason, il faut trouver les zéros de la fonction $f(\\beta)=\\cosh(\\pi\\beta)\\cos(\\pi\\beta)+1$.\n",
+    "On notera $\\beta_{1}$,  $\\beta_{2}$, …les racines positives par ordre croissant. Cette fonction ayant des variations très importantes autour du zéro, on cherchera plutôt les zéros de la fonction \n",
+    "\\begin{equation}\n",
+    "g(\\beta)= f(\\beta) \\exp^{-\\beta}.\n",
+    "\\end{equation} \n",
+    "\n",
+    "Pourquoi est-ce que les zéros de $g$ sont les mêmes que ceux de $f$? Tracez les fonctions $f(\\beta)$ et $g(\\beta)$, et proposez l'expression analytique vers laquelle tend $\\beta_{i}$ pour les grandes valeurs de $i$.\n",
+    "\n",
+    "2.  Recherchez les premières solutions $\\beta_{1}$, $\\beta_{2}$, $\\beta_{3}$ de l'équation (\\ref{eq:diapason}) à l'aide de la méthode de la dichotomie. Déduisez-en la fréquence $\\nu_{1}$ du fondamental et les fréquences $\\nu_{2}$, $\\nu_{3}$, $\\ldots$ des premiers harmoniques du diapason considéré.\n",
+    "\n",
+    "3.  Essayez d'appliquer la méthode de Newton-Raphson à ce problème. Commentez."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "source": [
+    "## Solution"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "def newton_raphson(f,fprime,x,eps,cmax):\n",
+    "# Newton_Raphson amélioré avec la prise en compte du compteur.\n",
+    "    compteur = 0\n",
+    "    y = f(x)    \n",
+    "    while ( abs(y) > eps and compteur < cmax):\n",
+    "        compteur=compteur+1\n",
+    "        x = x - y/fprime(x);\n",
+    "        y = f(x)\n",
+    "    return x, compteur;\n",
+    "\n",
+    "def dichotomie (f,a,b,epsilon,cmax): \n",
+    "# Méthode de dichotomie améliorée avec la prise en compte d'un compteur \n",
+    "# et un critère de convergence sur x\n",
+    "    \n",
+    "    if f(a)*f(b) >= 0:\n",
+    "        print(\"Pas de 0 dans l'intervalle [\",a,\";\",b,\"]\")\n",
+    "        return float('NaN')  # None #\n",
+    "    else:\n",
+    "        compteur = 0\n",
+    "\n",
+    "        x1 = a\n",
+    "        x2 = b\n",
+    "        x = 0.5*(x1+x2)\n",
+    "        while x2-x1>epsilon:\n",
+    "            compteur=compteur+1\n",
+    "            if compteur > cmax:\n",
+    "                print(\"Limite du compteur atteinte\")\n",
+    "                break\n",
+    "            if f(x1)*f(x) < 0:\n",
+    "                x2 = x\n",
+    "            else:\n",
+    "                x1 = x\n",
+    "            x = 0.5*(x1+x2)    \n",
+    "        #print(f\"Résultat obtenu en {compteur:3d} itérations (cmax={cmax:3d}).\")\n",
+    "    return x, compteur"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "def fdiapason(x):\n",
+    "    f = np.cosh(np.pi*x)*np.cos(np.pi*x)+1\n",
+    "    return f\n",
+    "\n",
+    "def fdiapason2(x):\n",
+    "    f = np.cosh(np.pi*x)*np.cos(np.pi*x)+1\n",
+    "    f = f*np.exp(-np.pi*x)\n",
+    "    return f\n",
+    "\n",
+    "\n",
+    "x =  np.linspace(0,7, num=500)\n",
+    "y = fdiapason(x)\n",
+    "y2 = fdiapason2(x)\n",
+    "\n",
+    "Nor=1.618\n",
+    "fig, ax = plt.subplots(nrows=1, ncols=2,figsize=(12,12/Nor))\n",
+    "\n",
+    "ax[0].set_xlabel(\"x\")\n",
+    "ax[0].set_ylabel(\"fonction f\")\n",
+    "ax[1].set_xlabel(\"x\")\n",
+    "ax[1].set_ylabel(\"fonction f\")\n",
+    "\n",
+    "ax[0].plot(x,y,'-', label=r'$f(x)$')\n",
+    "ax[0].set_xlim(min(x), max(x))\n",
+    "ax[0].set_ylim(min(y), max(y))\n",
+    "idx = np.argwhere(np.diff(np.sign(y - 0))).flatten()\n",
+    "ax[0].plot(x[idx], y2[idx], '*y',markersize=24)\n",
+    "\n",
+    "ax[1].set_xticks(np.arange(0, 15, step=1))\n",
+    "\n",
+    "ax[1].plot(x,y,'-', label=r'$f(x)$')\n",
+    "ax[1].plot(x,y2,'-', label=r'$e^{-x}f(x)$')\n",
+    "ax[1].plot(x,0*y,'-r')\n",
+    "ax[1].grid(True)\n",
+    "ax[1].set_xlim(min(x), max(x))\n",
+    "ax[1].set_ylim(min(y2), max(y2))\n",
+    "\n",
+    "idx = np.argwhere(np.diff(np.sign(y - 0))).flatten()\n",
+    "ax[1].plot(x[idx], y2[idx], '*y',markersize=24)\n",
+    "\n",
+    "idx2 = np.argwhere(np.diff(np.sign(y2 - 0))).flatten()\n",
+    "ax[1].plot(x[idx2], y2[idx2], 'og')\n",
+    "\n",
+    "ax[1].legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "print(x[idx2])\n",
+    "for i in range(len(x[idx2])):\n",
+    "    print(x[idx2[i]] - (0.5+i))\n",
+    "\n",
+    "print(\"\")    \n",
+    "print(\"La relation est donc 1/2 + n\")\n",
+    "print(\"Les zéros de cos(pi x) cosh(pi x) sont n + 1/2 avec n entier. L'effet du +1 est de décaler ces zéros une fois à gauche, une fois à droite. On pourra chercher les solutions dans les intervalles [n; n + 1].\")"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Fonctions tests\n",
+    "eps = 1.e-8\n",
+    "cmax=100\n",
+    "\n",
+    "rho=7874;\n",
+    "E=196e9;\n",
+    "r=5e-3;\n",
+    "kappa=r/2.;\n",
+    "L=12.6e-2;\n",
+    "fact=np.pi*kappa/(2.*L*L)*np.sqrt(E/rho); \n",
+    "\n",
+    "imax = 6\n",
+    "for i in range(imax):\n",
+    "    a = i; b = i+1\n",
+    "    beta0, compteur = dichotomie(fdiapason,a,b,eps,cmax)\n",
+    "    freq = beta0*beta0*fact\n",
+    "    if freq < 1000:\n",
+    "        print(f\"Fréquences du diapason (Hz): {freq:6.1f}\")\n",
+    "    else:     \n",
+    "        print(f\"Fréquences du diapason (kHz): {freq/1000:6.3f}\")\n",
+    "\n",
+    "\n",
+    "print(\"L'oreille humaine perçoit les sons de 20 Hz à 20 000 Hz (approximativement)\"+\\\n",
+    "      \" et le la a une fréquence de 440 Hz, ce qui est notre premier résultat et le seul audible !\")    "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "def df(x):\n",
+    "    pix=np.pi*x;\n",
+    "    y = np.pi*(-np.pi*np.sin(pix)*np.cosh(pix)+np.cos(pix)*np.sinh(pix));\n",
+    "    return y\n",
+    "\n",
+    "print(\"La méthode de Newton ne marche pas bien avec un point au hasard car les variations de la dérivée sont fortes. Par contre, si l'on part de π/2 + n (-1), cela converge bien.\")\n",
+    "\n",
+    "x0 = 1.8 ; print(\"Valeur initiale\", x0*x0*fact)\n",
+    "beta0, compteur = newton_raphson(fdiapason,df,x0,eps,cmax)\n",
+    "freq = beta0*beta0*fact\n",
+    "print(f\"convergence de newton pour x0=1, {freq:12.6f}\")\n",
+    "\n",
+    "for i in range(imax):\n",
+    "    x0 = -1+np.pi/2+i\n",
+    "    beta0, compteur = newton_raphson(fdiapason,df,x0,eps,cmax)\n",
+    "    freq = beta0*beta0*fact\n",
+    "    if freq < 1000:\n",
+    "        print(f\"Fréquences du diapason (Hz): {freq:6.1f}\")\n",
+    "    else:     \n",
+    "        print(f\"Fréquences du diapason (kHz): {freq/1000:6.3f}\")\n",
+    "\n"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

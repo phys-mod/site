@@ -1,0 +1,116 @@
+{
+ "metadata": {
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.6.9-final"
+  },
+  "orig_nbformat": 2,
+  "kernelspec": {
+   "name": "python3",
+   "display_name": "Python 3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 2,
+ "cells": [
+  {
+   "source": [
+    "# Mini-projet: le pendule"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "source": [
+    "![\"Schema du Pendule\"](SchemaPendule.png)"
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "source": [
+    "## Approximation des petits angles\n",
+    "\n",
+    "On considère le pendule simple de la figure ci-dessus, dont l'équation du mouvement libre s'écrit: \n",
+    "\n",
+    "$$\n",
+    "\\frac{d^{2}\\theta}{dt^{2}}+q\\frac{d\\theta}{dt}+\\Omega^{2}\\sin\\theta=0\\quad\\mathrm{\\quad avec\\,\\,}\\sin\\theta\\simeq\\theta\\quad\\rightarrow\\quad\\frac{d^{2}\\theta}{dt^{2}}+q\\frac{d\\theta}{dt}+\\Omega^{2}\\theta=0\n",
+    "$$\n",
+    "\n",
+    "où $\\theta$ est l'angle que fait le pendule par rapport à la verticale,\n",
+    "$\\Omega=\\sqrt{{g/l}}$ est la pulsation propre et $q$ est le terme\n",
+    "de frottement fluide. On utilisera par commodité la valeur suivante:\n",
+    "$\\Omega=1$ $\\mathrm{{rad.}}\\mathrm{{s}^{-1}}$. \n",
+    "\n",
+    "Résolvez cette équation linéarisée ($\\frac{d^{2}\\theta}{dt^{2}}+q\\frac{d\\theta}{dt}+\\Omega^{2}\\theta=0$ avec la méthode RK4 pour différentes valeurs de l'amortissement: $q=1$, $q=2$, $q=5$ $s^{-1}$ et tracez **sur un même graphe** l'évolution de $\\theta(t)$ dans ces régimes respectivement pseudo-périodique,\n",
+    "critique et apériodique. On prendra comme conditions initiales $\\theta(t=0)=10^{\\circ}$\n",
+    "(à convertir en radian) et $\\frac{d\\theta}{dt}(t=0)=0$ et un pas\n",
+    "de temps $dt=0.05$s pour $t$ allant de $0$ à $20$s."
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "source": [
+    "## Force d'excitation\n",
+    "\n",
+    "On ajoute maintenant une force d'excitation au pendule de sorte que l'équation du mouvement s'écrive: \n",
+    "\n",
+    "$$\n",
+    "\\frac{d^{2}\\theta}{dt^{2}}+q\\frac{d\\theta}{dt}+\\Omega^{2}\\theta=F_{e}\\sin(\\Omega_{e}t).\n",
+    "$$\n",
+    "\n",
+    "Résolvez cette nouvelle équation avec la méthode RK4 pour une\n",
+    "force excitatrice d'intensité $F_{e}=1$ $\\mathrm{rad.{s}^{-2}}$ et de\n",
+    "pulsation $\\Omega_{e}=2\\Omega/3$. Tracez **sur un même graphe**\n",
+    "la trajectoire dans l'espace des phase $(\\theta,\\frac{d\\theta}{dt})$\n",
+    "pour le pendule libre ($q=0$ et $F_{e}=0$), amorti ($\\text{q=1 et }F_{e}=0)$,\n",
+    "et amorti avec excitation $(\\text{q=1 et }F_{e}=1)$. On prendra toujours\n",
+    "comme conditions initiales $\\theta(t=0)=10^{\\circ}$ (à convertir\n",
+    "en radian) et $\\frac{d\\theta}{dt}(t=0)=0$. Commentez la forme des\n",
+    "trajectoires que vous observez."
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  },
+  {
+   "source": [
+    "## Mouvement chaotique\n",
+    "\n",
+    "Lorsque l'on ne fait plus l'hypothèse des petits angles ($\\sin\\theta\\simeq\\theta$),\n",
+    "on obtient une équation différentielle d'ordre 2 qui n'est pas linéaire:\n",
+    "$$\n",
+    "\\frac{d^{2}\\theta}{dt^{2}}+q\\frac{d\\theta}{dt}+\\Omega^{2}\\sin\\theta=F_{e}\\sin(\\Omega_{e}t).\n",
+    "$$\n",
+    "\n",
+    "Pour certaines valeurs des paramètres physiques, le comportement du\n",
+    "pendule sera chaotique. Afin d'illustrer ce comportement, on se placera\n",
+    "dans les conditions suivantes: $\\theta(t=0)=10^{\\circ}$ (à convertir\n",
+    "en radian) et $\\frac{d\\theta}{dt}(t=0)=0$, $\\Omega_{e}=2\\Omega/3$,\n",
+    "$q=0.5$ $s^{-1}$. \n",
+    "\n",
+    "Résolvez l'équation du mouvement non-linéaire avec la méthode\n",
+    "RK4 pour les valeurs suivantes de l'amplitude d'excitation $F_{e}=\\{1.4,1.44,1.465,1.5\\}$ rad.s$^{-2}$ et tracez $\\theta(t)$ sur un temps de $100$s. Ajouter\n",
+    "deux tests `if` dans la boucle après l'appel à rk4 pour maintenir\n",
+    "l'angle $\\theta$ dans l'intervalle $[-\\pi;\\pi]$. Que constatez-vous\n",
+    "au sujet de la période du pendule? (attention, périodique$\\neq$sinusoïdal...)\n",
+    "\n",
+    "Dans le cas $F_{e}=1.5$ rad.s$^{-2}$,\n",
+    "calculez l'évolution de $\\theta(t)$ pour deux conditions initiales\n",
+    "très proches l'une de l'autre: $\\theta(t=0)=10^{\\circ}$ et $\\theta(t=0)=9.999^{\\circ}$.\n",
+    "Tracez la valeur absolue de la différence entre les deux solutions\n",
+    "en fonctions du temps en échelle semi-logarithmique."
+   ],
+   "cell_type": "markdown",
+   "metadata": {}
+  }
+ ]
+}

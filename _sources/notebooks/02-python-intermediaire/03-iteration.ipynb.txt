@@ -1,0 +1,659 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Itération\n",
+    "L'itération est la capacité d'exécuter à plusieurs reprises un bloc d'instructions."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Mise à jour d'une variable\n",
+    "On parle de **mise à jour** de la variable lorsque la valeur de ré-affectation d'une variable dépend de son ancienne valeur. Par exemple :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création et affectation de la variable x (initialisation)\n",
+    "x = 0\n",
+    "\n",
+    "# Mise à jour de la variable x\n",
+    "x = x + 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Si on ajoute 1 à la valeur de la variable, on appelle cela une **incrémentation**. Si on enlève 1, c'est une **décrémentation**."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## L'instruction `while`\n",
+    "L'instruction `while` signifie *tant que*. Elle est suivie d'une condition. C'est une façon de répéter une instruction `if`. Voici un exemple de compte à rebours :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Initialisation\n",
+    "n = 3\n",
+    "\n",
+    "# Compte à rebours\n",
+    "while n > 0:\n",
+    "    print(n)\n",
+    "    n = n - 1\n",
+    "print(\"Partez !\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La variable `n` est initialisée à 3. Lors de la première exécution de l'instruction `while`, `n` vaut 3 et donc la condition `n > 0` est vraie. Le bloc d'instructions (indenté) est alors exécuté : on affiche 3 à l'écran, et `n` est incrémenté. C'est la première **itération**. Lors de la deuxième itération, `n` vaut 2. La condition est toujours vraie donc le bloc d'instructions est exécuté une deuxième fois. Idem pour la troisième itération où `n` vaut 1. Lors de la quatrième itération, `n` vaut 0 donc la condition est fausse : le bloc d'instructions n'est pas exécuté et on passe à la première instruction qui n'est pas indentée après le `while`.\n",
+    "\n",
+    "Le *flux d'exécution* pour une instruction `while` est :\n",
+    "\n",
+    "1. Déterminer si la condition est vraie ou fausse ;\n",
+    "2. Si elle est fausse, passer le bloc d'instructions (indenté) suivant l'instruction `while`, et poursuivre l'exécution à l'instruction suivante ;\n",
+    "3. Si la condition est vraie, exécuter le bloc d'instructions, puis retourner à l'étape 1.\n",
+    "\n",
+    "Ce type de flux est une **boucle** car l'étape 3 *reboucle* à l'étape 1. Le bloc d'instructions doit changer la valeur d'au moins une variable pour que la condition finisse par devenir fausse au bout d'un certain nombre d'itérations. Si ce n'est pas le cas, on aura alors une **boucle infinie**, car le bloc d'instructions sera répété à l'infini. Il faudra alors interrompre le programme d'une manière ou d'une autre."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Initialisez une variable appelée `x` à 40. Créer une boucle `while` qui, tant que `x` est supérieur à 1, divise `x` par 4. À la sortie de la boucle, afficher à l'écran la valeur de `x`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Initialisation\n",
+    "x = 40\n",
+    "\n",
+    "# Boucle while\n",
+    "while x > 1:\n",
+    "    x = x / 4.0\n",
+    "\n",
+    "# Afficher le résultat\n",
+    "print(x) "
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## L'instruction `break`\n",
+    "Il arrive que nous voulions arrêter la boucle `while` à l'intérieur du bloc d'instructions, si une certaine condition est vraie. Dans ce cas on ne laisse pas la boucle aller jusqu'au bout. Pour cela on peut utiliser l'instruction `break` pour forcer à sortir de la boucle.\n",
+    "\n",
+    "Reprenons l'exemple du compte à rebours :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Initialisation\n",
+    "n = 5.8\n",
+    "\n",
+    "# Compte à rebours\n",
+    "while n > 0:\n",
+    "    if n % 1 != 0:\n",
+    "        print(\"n doit être entier\")\n",
+    "        break\n",
+    "    print(n)\n",
+    "    n = n - 1"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Dans cet exemple on vérifie si le compteur du compte à rebours est bien un entier, à l'intérieur de la boucle. Si ce n'est pas le cas, alors on n'exécute pas la boucle et on affiche un message d'erreur à l'utilisateur."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Reprendre l'exercice précédent. Dans la boucle, ajouter une condition qui vérifie que `x` est un nombre pair. Si ce n'est pas le cas, afficher le message d'erreur `\"x doit être pair\"` et sortir de la boucle."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Initialisation\n",
+    "x = 41\n",
+    "\n",
+    "# Boucle while\n",
+    "while x > 1:\n",
+    "    # Vérification que x est pair\n",
+    "    if x % 2 != 0:\n",
+    "        print(\"x doit être pair\")\n",
+    "        break\n",
+    "    x = x / 4.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-info\">\n",
+    "\n",
+    "**Bon usage**\n",
+    "\n",
+    "Bien que l'instruction `break` puisse être pratique, il est souvent recommandé de l'utiliser le moins possible. Cette instruction peut être la source d'erreurs difficiles à trouver. En effet, normalement, si on sort d'une boucle `while`, c'est parce que la condition n'est plus satisfaite ; et s'il y a plusieurs points où il est possible de sortir de la boucle `while`, il peut être (très) difficile de savoir quelle est la condition qui doit être vérifiée pour sortir, et donc de continuer à programmer. L'usage excessif de l'instruction `break` (ainsi que `continue`, ou le fameux `goto` qui n'existe pas en Python) est qualifié de [programmation spaghetti](https://fr.wikipedia.org/wiki/Programmation_spaghetti).\n",
+    "\n",
+    "Une meilleure solution de l'exercice précédent, sans `break`, est donc ceci :\n",
+    "\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Initialisation\n",
+    "x = 41\n",
+    "\n",
+    "# Vérification que x est pair\n",
+    "if x % 2 != 0:\n",
+    "    print(\"x doit être pair\")\n",
+    "else:\n",
+    "    # Boucle while\n",
+    "    while x > 1:\n",
+    "        x = x / 4.0"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## L'instruction `for`\n",
+    "L'instruction `for` est utilisée lorsque le nombre d'itérations est connu à l'avance. Voici par exemple une version du compte à rebours utilisant une boucle `for` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "n = 3\n",
+    "for i in range(n):\n",
+    "    print(n - i)\n",
+    "print(\"Partez !\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "L'instruction `range()` est un [type de Python](https://docs.python.org/fr/3/library/stdtypes.html?highlight=range#range) qui représente une séquence immuable de nombres. Il s'utilise de la façon suivante :\n",
+    "\n",
+    "```\n",
+    "range(start, stop, step)\n",
+    "```\n",
+    "\n",
+    "où `start`, `stop` et `step` sont des entiers. La séquence créée contient alors des entiers dans l'intervalle `[start, stop[` (stop est exclu), avec un pas égal à `step`. Pour transformer l'objet de type `range` en objet de type `list`, on peut utiliser la fonction `list()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "list(range(2, 14, 3))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Créer une boucle `for` qui affiche les multiples de 4 compris entre 1 et 20 (inclus)."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "for i in range(1, 6):\n",
+    "    print(4 * i)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Ou bien\n",
+    "for i in range(1, 21):\n",
+    "    if i % 4 == 0:\n",
+    "        print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Itérer sur une liste\n",
+    "Une particularité de Python est de pouvoir itérer sur de nombreux objets composés. En particulier, il est possible d'itérer sur les éléments d'une liste :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création d'une liste\n",
+    "L = ['b', 2, True, 5.897]\n",
+    "\n",
+    "# Iteration sur les éléments de la liste\n",
+    "for x in L:\n",
+    "    print(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est possible d'accéder aussi à l'indice de l'élément avec la fonction `enumerate()` : "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Iteration sur les indices et les elements de la liste\n",
+    "for i, x in enumerate(L):\n",
+    "    print('indice', i, ':', x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "ou bien encore d'itérer sur une liste de listes :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création d'une liste de listes\n",
+    "taille_plantes = [[\"gentiane\",  7.5 ], \n",
+    "                  [\"campanule\", 5.8 ],\n",
+    "                  [\"pensée\",    11.4]]\n",
+    "\n",
+    "# Iteration\n",
+    "for L in taille_plantes:\n",
+    "    print('taille', L[0], ':', L[1], 'cm')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Créons la liste de listes donnant les superficie en $\\mathrm{m}^2$ des pièces d'une maison :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "maison = [[\"cuisine\", 18.0], \n",
+    "          [\"salon\", 20.0], \n",
+    "          [\"chambre\", 10.75], \n",
+    "          [\"salle de bains\", 9.50]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "En utilisant une boucle `for`, afficher pour chaque pièce le numéro de la pièce (en commençant par 1), le nom de la pièce et sa superficie, sous la forme `Pièce n : nom (superficie)`. Par exemple, pour la première itération : `Pièce 1 : cuisine (18.0 m**2)`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "for i, L in enumerate(maison):\n",
+    "    print(\"Pièce \" + str(i + 1) + \" : \" + L[0] + \" (\" + str(L[1]) + \" m**2)\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Itérer sur un dictionnaire\n",
+    "Il est très simple d'itérer sur un dictionnaire avec la méthode `.items()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création d'un dictionnaire\n",
+    "dic_taille_plantes = {\"gentiane\"  : 7.5, \n",
+    "                      \"campanule\" : 5.8,\n",
+    "                      \"pensée\"    : 11.4}\n",
+    "\n",
+    "# Itérer sur le dictionnaire\n",
+    "for key, values in dic_taille_plantes.items():\n",
+    "    print(key + \" -- \" + str(values) + \" cm\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Itérer sur un tableau Numpy\n",
+    "Pour itérer sur un tableau 1D c'est aussi simple qu e:"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Importation du module numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "# Création du tableau Numpy\n",
+    "A = np.array([4, 6, 1])\n",
+    "\n",
+    "# Itérer sur le tableau Numpy\n",
+    "for i in A:\n",
+    "    print(i)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Si on veut itérer sur tous les éléments d'un tableau 2D, on peut utiliser la fonction Numpy `nditer()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création du tableau Numpy à 2 dimensions\n",
+    "B = np.array([[1, 7],\n",
+    "              [8, 0]])\n",
+    "\n",
+    "# Itérer sur tous les éléments du tableau 2D\n",
+    "for x in np.nditer(B):\n",
+    "    print(x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Itérer sur un `DataFrame`\n",
+    "Il est possible d'itérer sur les différentes observations d'un DataFrame en utilisant la méthode `.iterrows()`.\n",
+    "\n",
+    "Par exemple, créons un DataFrame à partir d'un dictionnaire donnant les tailles de 3 de nos plantes pendant 4 jours, avec une observation par jour :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Importation du module Pandas\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Création d'un dictionnaire\n",
+    "dic_taille_plantes = {\"gentiane\"  : [7.5, 7.8, 8.3, 8.4], \n",
+    "                      \"campanule\" : [5.8, 6.6, 7.4, 8.3],\n",
+    "                      \"pensée\"    : [11.4, 11.6, 11.7, 11.7]}\n",
+    "\n",
+    "# Création du DataFrame\n",
+    "df_taille_plantes = pd.DataFrame(data = dic_taille_plantes, index = range(1, 5))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voici notre DataFrame :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_taille_plantes"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "sur lequel nous itérons chaque observation (une observation par jour, en commençant par le jour 1) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "for label, row in df_taille_plantes.iterrows():\n",
+    "    print(\"jour\", label)\n",
+    "    print(row)\n",
+    "    print()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Dans la boucle, la variable `row` extrait avec la méthode `.iterrows()` est un objet de type `Series`. Cet objet est construit avec comme Index le nom des colonnes, et comme nom l'Index de la ligne correspondante du DataFrame. Le tableau est en quelque sorte renversé pour produire une série d'observations pour chaque jour.\n",
+    "\n",
+    "Il est alors facile d'extraire les observations correspondant seulement à une plante donnée :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "for label, row in df_taille_plantes.iterrows():\n",
+    "    print(\"jour \" + str(label) + \" : \" + str(row[\"gentiane\"]))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est aussi possible d'itérer sur les colonnes de l'objet DataFrame avec la méthode `.iteritems()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "for label, col in df_taille_plantes.iteritems():\n",
+    "    print(\"Plante : \" + label)\n",
+    "    print(col)\n",
+    "    print()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit que la variable `col` est un objet `Series` contenant toutes les observations correspondant à une colonne donnée, c'est-à-dire à une plante donnée."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Importons les données sauvées dans le fichier pickle contenant l'objet DataFrame sur les pays de l'Union Européenne :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_europe = pd.read_pickle('europe.pkl')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "1. Créer une copie de cet objet appelée `df_europe_cp` avec [la méthode](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html?highlight=copy#pandas.DataFrame.copy) `.copy()`\n",
+    "2. À l'aide d'une boucle `for`, écrire chaque pays et capitale sous la forme `Pays : Capitale` (avec une majuscule pour la première lettre, on peut utliser la méthode `.capitalize()`). Par exemple pour la première itération : `Allemagne : Berlin`."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 1. Copie du DataFrame\n",
+    "df_europe_cp = df_europe.copy(deep = True) # deep = True est optionnel mais c'est toujours mieux de faire une copie profonde plutôt qu'une copie superficielle\n",
+    "\n",
+    "# 2. Liste des pays et de leur capitale\n",
+    "for lab, row in df_europe_cp.iterrows():\n",
+    "    print(row[\"pays\"].capitalize() + \" : \" + row[\"capitale\"].capitalize())"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}
