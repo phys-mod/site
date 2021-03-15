@@ -9,13 +9,13 @@ Dans le mini-projet vous calculerez la forme optimale d'une digue.
 À faire à la maison
 -------------------
 
-Avant la première séance de la semaine:
+Avant la première séance de la semaine :
 
   - Faire le calepin de cours *Dérivation et intégration numérique* (`correction du calepin`__)
 
 __ ../../notebooks/06-derivation-integration/01-derivation-integration-cours.ipynb
 
-Avant la deuxième séance de la semaine:
+Avant la deuxième séance de la semaine :
 
   - préparer le `mini-projet sur les digues`__.
 

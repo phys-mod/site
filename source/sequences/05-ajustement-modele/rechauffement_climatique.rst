@@ -20,7 +20,7 @@ La seconde problématique sera de montrer que l'effet observé est significatif,
 
 **Suggestion n°1 :** les fluctuations à court terme (moins de quelques jours) devraient pouvoir être fortement atténuées en calculant les moyennes de température par tranches mensuelles.
 
-**Suggestion n°2 :** ces valeurs mensuelles devraient alors logiquement suivre une variation saisonnière, qu'on doit pouvoir modéliser par une sinusoïde. On pourra par exemple essayer d'appliquer un ajustement sinusoïdal pour chaque décennie. On gardera aussi en tête (cf exercice de la séance précédente) que l'ajustement par la fonction curve_fit permet de calculer assez facilement l'incertitude sur les paramètres de l'ajustement... qui pourrait probablement permettre de mettre en évidence le caractère **significatif** du réchauffement !
+**Suggestion n°2 :** ces valeurs mensuelles devraient alors logiquement suivre une variation saisonnière, qu'on doit pouvoir modéliser par une sinusoïde. On pourra par exemple essayer d'appliquer un ajustement sinusoïdal pour chaque décennie. On gardera aussi en tête (cf exercice de la séance précédente) que l'ajustement par la fonction curve_fit permet de calculer assez facilement l'incertitude sur les paramètres de l'ajustement... qui permettrait probablement de mettre en évidence le caractère **significatif** du réchauffement !
 
 **2. Lien avec l'activité solaire**
 
