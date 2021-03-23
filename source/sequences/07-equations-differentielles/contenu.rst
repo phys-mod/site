@@ -2,14 +2,14 @@
 Déroulement de la séquence
 ==========================
 
-La septième séquence est une introduction à la résolution des équation différentielles ordinaires (EDO). Vous commencerez par faire
+La septième séquence est une introduction à la résolution des équations différentielles ordinaires (EDO). Vous commencerez par faire
 le cours sur la méthode d'Euler, puis vous ferez les exercices.
 Dans le mini-projet vous travaillerez sur le pendule.
 
 À faire à la maison
 -------------------
 
-Avant la première séance de la semaine:
+Avant la première séance de la semaine :
 
   - Faire le calepin de cours *Équations différentielles ordinaires* (`correction du calepin`__)
 
