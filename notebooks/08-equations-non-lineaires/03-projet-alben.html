@@ -1,0 +1,1191 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Mini-Projet : modèle de bifurcation d’Alben &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Description du projet" href="../../sequences/09-projet-equipe/contenu.html" />
+    <link rel="prev" title="Modes propres de vibration d’un diapason" href="02-zeros-exercice.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="01-zeros-cours.html">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01-zeros-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-zeros-cours.html#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-zeros-cours.html#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01-zeros-cours.html#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-zeros-cours.html#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-zeros-cours.html#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01-zeros-cours.html#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-zeros-cours.html#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Mini-Projet : modèle de bifurcation d’Alben</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/08-equations-non-lineaires/03-projet-alben.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Numbering the equations</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-javascript notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%</span><span class="nx">javascript</span>
+<span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+    <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span> <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="output_javascript"></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+
+</script></div>
+</div>
+<div class="section" id="Mini-Projet-:-modèle-de-bifurcation-d'Alben">
+<h1>Mini-Projet : modèle de bifurcation d’Alben<a class="headerlink" href="#Mini-Projet-:-modèle-de-bifurcation-d'Alben" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="Préparation-sur-la-physique-du-problème-(à-la-maison)">
+<h2>Préparation sur la physique du problème (à la maison)<a class="headerlink" href="#Préparation-sur-la-physique-du-problème-(à-la-maison)" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="Introduction">
+<h3>Introduction<a class="headerlink" href="#Introduction" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les transitions de phase (c’est-à-dire des changements d’état : fusion, changement de structure de la matière) seront étudiées en détail en thermodynamique. L’un des modèles les plus importants de transitions de phase est celui de Landau dans lequel l’énergie d’un système est exprimée comme un polynôme :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+E = A (T − T_c) X^2 + B X^4
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(A\)</span> et <span class="math notranslate nohighlight">\(B\)</span> sont des coefficients positifs, <span class="math notranslate nohighlight">\(T_c\)</span> la température de transition et <span class="math notranslate nohighlight">\(X\)</span> le paramètre pertinent pour cette transition, par exemple l’aimantation d’un système magnétique.</p>
+<p>Il est aisé de voir que si <span class="math notranslate nohighlight">\(T &gt; T_c\)</span>, on obtient pour l’équilibre une solution unique <span class="math notranslate nohighlight">\(X = 0\)</span>, mais si <span class="math notranslate nohighlight">\(T &lt; Tc\)</span>, on a deux solutions stables</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+    X = \pm X_0 \sqrt{1-\frac{T}{T_c}}
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(X_0 = \sqrt{\frac{A T_c}{2 B}}\)</span>.</p>
+<p>Ainsi, à <span class="math notranslate nohighlight">\(T_c\)</span> une transition est obtenue en dessous de laquelle <span class="math notranslate nohighlight">\(X\)</span> est non nul (si <span class="math notranslate nohighlight">\(X\)</span> est l’aimantation, cela signifie que le matériau a une aimantation permanente : c’est un aimant) et au-dessus de laquelle <span class="math notranslate nohighlight">\(X\)</span> est nul (ainsi, un aimant peut perdre son aimantation au-dessus d’une certaine température). C’est un comportement très général et le modèle mécanique proposé ci-dessous vise à produire un comportement similaire dans un système simple. Dans l’approche des
+systèmes dynamiques cette transition s’appelle une bifurcation.</p>
+<p>La figure ci-dessous illustre le modèle mécanique :</p>
+<p><img alt="&quot;figure modele d'Alben&quot;" src="../../_images/fig_alben.png" /></p>
+<p><em>Figure : modèle mécanique d’Alben de la transition de phase de Landau.</em></p>
+</div>
+<div class="section" id="Un-modèle-mécanique-de-bifurcation">
+<h3>Un modèle mécanique de bifurcation<a class="headerlink" href="#Un-modèle-mécanique-de-bifurcation" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Le modèle mécanique proposé consiste en une bille de masse <span class="math notranslate nohighlight">\(m\)</span> astreinte à se déplacer dans un tube en verre recourbé vers le bas et de rayon de courbure <span class="math notranslate nohighlight">\(\ell\)</span>. La bille sépare de façon étanche le tube en deux parties qui contiennent chacune <span class="math notranslate nohighlight">\(x\)</span> moles d’un gaz parfait. La section du tube est <span class="math notranslate nohighlight">\(S\)</span>, la température <span class="math notranslate nohighlight">\(T\)</span> est considérée comme uniforme et constante. Le segment qui lie le centre du cercle à la bille fait un angle <span class="math notranslate nohighlight">\(\theta\)</span> avec la verticale ce qui
+permet de repérer la position de la bille. L’ouverture totale du tube est <span class="math notranslate nohighlight">\(2 \theta_0 \;\; (−\theta_0 &lt; \theta &lt; \theta_0)\)</span>.</p>
+<ol class="arabic">
+<li><p>Montrer que l’équation du mouvement de ce système s’écrit :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+m \ell \ddot{\theta} = m g \sin{\theta} + \frac{x R T}{\ell} \left( \frac{1}{\theta_0+\theta} -\frac{1}{\theta_0-\theta} \right)
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(R\)</span> est la constante des gaz parfaits.</p>
+</li>
+<li><p>Montrer que la condition d’équilibre peut s’écrire :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\sin{\theta} = \frac{2 x R T}{ m g \ell} \frac{\theta}{\theta_0^2-\theta^2}
+\end{equation}</div></li>
+<li><p>Étudier graphiquement l’équation ci-dessus ; expliquer qualitativement ce qu’il se passe lorsque la température augmente. Déterminer la température <span class="math notranslate nohighlight">\(T_c\)</span> en dessous de laquelle il existe des positions d’équilibre pour <span class="math notranslate nohighlight">\(\theta \neq 0\)</span>.</p></li>
+<li><p>Peut-on résoudre analytiquement ce problème dans le cas général afin d’obtenir une solution du type <span class="math notranslate nohighlight">\(θ_{eq}(T) =\)</span> une expression ? Déterminer <span class="math notranslate nohighlight">\(θ_{eq}\)</span> lorsque <span class="math notranslate nohighlight">\(T \rightarrow 0\)</span>. Montrer que lorsque T est inférieur mais proche de <span class="math notranslate nohighlight">\(T_c\)</span> alors :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\theta_{eq} \sim \theta_0 \sqrt{ \left( \frac{1}{ 1+\frac{\theta_0^2}{6}} \right) \left( 1- \frac{T}{T_c} \right)}
+\end{equation}</div></div>
+</div>
+<div class="section" id="Modélisation-numérique-du-problème">
+<h2>Modélisation numérique du problème<a class="headerlink" href="#Modélisation-numérique-du-problème" title="Lien permanent vers ce titre">¶</a></h2>
+<ol class="arabic simple" start="5">
+<li><p>Dans ce qui suit, on se propose de résoudre numériquement ce problème dans le cas général à l’aide d’une méthode de recherche de zéro. On posera :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\omega_0^2 = \frac{g}{\ell} \;\; \textrm{et} \;\; \gamma = \frac{2 x R}{m \ell^2}
+\end{equation}</div><p>Pourquoi est-il préférable de chercher les zéros de la fonction <strong>suivante</strong> ?</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+f(\theta) = \frac{\sin{\theta}}{\theta} \left(\theta_0^2 - \theta^2\right) - \frac{\gamma T}{\omega_0^2}
+\end{equation}</div><ol class="arabic simple" start="6">
+<li><p>Adapter le programme pour résoudre l’équation (1) à une température donnée, par exemple, <span class="math notranslate nohighlight">\(T = T_c/2\)</span>. Enfin, modifier le programme afin de tracer la courbe <span class="math notranslate nohighlight">\(θ_{eq}(T)\)</span>. Comparer ces résultats avec ceux du 4). Valeurs numériques : <span class="math notranslate nohighlight">\(g = 9,81\mathrm{~m/s^2}\)</span>, <span class="math notranslate nohighlight">\(l = 0,1\mathrm{~m}\)</span>, <span class="math notranslate nohighlight">\(m = 6\cdot 10^{−3}\mathrm{~kg}\)</span>, <span class="math notranslate nohighlight">\(R = 8,32 \mathrm{~J/K}\)</span>, <span class="math notranslate nohighlight">\(\theta_0 = 1 \mathrm{~rad}\)</span>, <span class="math notranslate nohighlight">\(S = 1 \mathrm{~cm^2}\)</span>. Le nombre de moles <span class="math notranslate nohighlight">\(x\)</span> est donné par le fait que
+le tube est rempli à une pression de <span class="math notranslate nohighlight">\(200 \mathrm{~Pa}\)</span> et à une température de <span class="math notranslate nohighlight">\(300 \mathrm{~K}\)</span>.</p></li>
+<li><p>À partir de l’équation du mouvement, il est intéressant de chercher des solutions périodiques de pulsation <span class="math notranslate nohighlight">\(\omega\)</span> pour des mouvements de petite amplitude <span class="math notranslate nohighlight">\(\delta\)</span> :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\theta =\theta_{eq} + \delta = \theta_{eq} + \delta_0 e^{i\omega t}
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(\theta_{eq}\)</span> dépend de la température et non du temps. On obtient après quelques calculs un peu laborieux mais sans difficulté :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\omega^2 = \frac{\gamma T}{\theta_0^2 - \theta_{eq}^2} \left( \frac{2 \theta_{eq}^2}{\theta_0^2 - \theta_{eq}^2} +1 \right) - \frac{\gamma T_c}{\theta_0^2} \cos{\theta_{eq}}
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(\omega\)</span>, la pulsation de résonance, dépend de la température <span class="math notranslate nohighlight">\(T\)</span>. Montrer que si <span class="math notranslate nohighlight">\(T &gt; T_c\)</span>, alors :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\omega^2(T)= \frac{\gamma}{\theta_0^2} (T−T_c)
+\end{equation}</div><p>et que si <span class="math notranslate nohighlight">\(T &lt; T_c\)</span> en restant proche de <span class="math notranslate nohighlight">\(T_c\)</span>, alors, en posant</p>
+<div class="math notranslate nohighlight">
+\[\theta_{eq}^2=\theta_{0}^2 \left(1- \frac{T}{T_c}\right) = \theta_{0}^2 \frac{\Delta}{T_c}\]</div>
+<p>soit <span class="math notranslate nohighlight">\(\Delta = T_c - T\)</span> :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\omega^2(T) = \frac{ \gamma \Delta }{\theta_0^2} \left(2 + \frac{\theta_0^2}{2} \right)
+\end{equation}</div><p>Que se passe-t-il quand <span class="math notranslate nohighlight">\(T = T_c\)</span> ? Comparer les valeurs données par les expressions analytiques ci-dessus avec le résultat du calcul numérique obtenu à partir de l’équation (2) en prenant les valeurs de <span class="math notranslate nohighlight">\(\theta_{eq}\)</span> données par le calcul numérique.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../../sequences/09-projet-equipe/contenu.html" class="btn btn-neutral float-right" title="Description du projet" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="02-zeros-exercice.html" class="btn btn-neutral float-left" title="Modes propres de vibration d’un diapason" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

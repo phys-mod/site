@@ -1,0 +1,1963 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Recherche des zéros d’une fonction &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Modes propres de vibration d’un diapason" href="02-zeros-exercice.html" />
+    <link rel="prev" title="Déroulement de la séquence" href="../../sequences/08-equations-non-lineaires/contenu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03-projet-alben.html">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-projet-alben.html#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-projet-alben.html#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03-projet-alben.html#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-projet-alben.html#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Recherche des zéros d’une fonction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/08-equations-non-lineaires/01-zeros-cours.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Recherche-des-zéros-d'une-fonction">
+<h1>Recherche des zéros d’une fonction<a class="headerlink" href="#Recherche-des-zéros-d'une-fonction" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Numbering the equations</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-javascript notranslate"><div class="highlight"><pre>
+<span></span><span class="o">%%</span><span class="nx">javascript</span>
+<span class="nx">MathJax</span><span class="p">.</span><span class="nx">Hub</span><span class="p">.</span><span class="nx">Config</span><span class="p">({</span>
+    <span class="nx">TeX</span><span class="o">:</span> <span class="p">{</span> <span class="nx">equationNumbers</span><span class="o">:</span> <span class="p">{</span> <span class="nx">autoNumber</span><span class="o">:</span> <span class="s2">&quot;AMS&quot;</span> <span class="p">}</span> <span class="p">}</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="output_javascript"></div>
+<script type="text/javascript">
+var element = document.currentScript.previousSibling.previousSibling;
+MathJax.Hub.Config({
+    TeX: { equationNumbers: { autoNumber: "AMS" } }
+});
+
+</script></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Cosmétique</span>
+<span class="kn">import</span> <span class="nn">matplotlib.cm</span> <span class="k">as</span> <span class="nn">cm</span>
+<span class="kn">from</span> <span class="nn">matplotlib.ticker</span> <span class="kn">import</span> <span class="n">NullFormatter</span> <span class="c1"># useful for `logit` scale</span>
+<span class="c1"># Set common figure parameters:</span>
+<span class="n">newparams</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;figure.figsize&#39;</span><span class="p">:</span> <span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">8</span><span class="p">),</span>
+             <span class="s1">&#39;lines.linewidth&#39;</span><span class="p">:</span> <span class="mf">1.5</span><span class="p">,</span> <span class="s1">&#39;lines.markersize&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+             <span class="s1">&#39;font.size&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">}</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">newparams</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Ce chapitre aborde le problème général qui consiste à trouver les solutions d’une équation numériquement. Cette classe de méthodes numériques apparaît souvent en physique dans les problèmes d’optimisation ou bien de calcul d’équilibre physique et dans certains algorithmes numériques tels que la méthode implicite pour la résolution d’une équation différentielle ordinaire. À une dimension, le problème peut toujours se mettre sous la forme suivante :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+f(x) = 0
+\end{equation}</div><p>où <span class="math notranslate nohighlight">\(f\)</span> est une fonction et <span class="math notranslate nohighlight">\(x\)</span> est la (ou les) valeur(s) que l’on recherche. Ce sont les « racines » ou « zéros » de la fonction <span class="math notranslate nohighlight">\(f\)</span>. Il existe plusieurs méthodes numériques pour résoudre ce problème et ce chapitre traitera de deux méthodes classiques : la méthode de dichotomie et la méthode de Newton-Raphson.</p>
+<p>Ce problème se généralise à N-dimensions avec <span class="math notranslate nohighlight">\(n\)</span> fonctions de <span class="math notranslate nohighlight">\(n\)</span> variables sous la forme suivante :</p>
+<div class="math notranslate nohighlight">
+\begin{eqnarray}
+f_0(x_0, x_1, ..., x_n) =  0 \nonumber \\
+f_1(x_0, x_1, ..., x_n) =  0 \nonumber  \\
+...  = 0 \\
+f_n(x_0, x_1, ..., x_n) =  0 \nonumber  \\
+\end{eqnarray}</div><p>ou sous forme vectorielle</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+\vec{f}\left(\vec{x}\right) = \vec{0}.
+\end{equation}</div><p>Cependant, le problème devient alors bien plus compliqué à résoudre qu’à une seule dimension car il n’est plus possible d’encadrer la solution de manière efficace comme pour la méthode de dichotomie. Cependant, la méthode de Newton-Raphson se généralise facilement à <span class="math notranslate nohighlight">\(N\)</span> dimensions.</p>
+</div>
+<div class="section" id="La-méthode-de-dichotomie-(à-la-maison)">
+<h2>La méthode de dichotomie (à la maison)<a class="headerlink" href="#La-méthode-de-dichotomie-(à-la-maison)" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="Présentation-de-la-méthode">
+<h3>Présentation de la méthode<a class="headerlink" href="#Présentation-de-la-méthode" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La méthode de dichotomie consiste à choisir un intervalle qui contient une solution unique, puis à encadrer cette solution en divisant l’intervalle en deux parties égales (d’où le nom de la méthode) et en sélectionnant l’intervalle contenant la solution. Ces étapes sont répétées jusqu’à atteindre la solution suivant un critère de convergence. L’avantage de cette méthode est que l’algorithme converge toujours vers la solution, à condition qu’il n’y ait qu’une seule et unique solution dans
+l’intervalle de départ.</p>
+<p>Cette méthode repose sur le principe que la fonction change de signe au passage par la racine. Ainsi, pour un intervalle <span class="math notranslate nohighlight">\([a,b]\)</span> contenant la racine, le produit <span class="math notranslate nohighlight">\(f(a)f(b)\)</span> est négatif. On divise l’intervalle en deux parties égales en posant <span class="math notranslate nohighlight">\(c = \frac{a+b}{2}\)</span>. Si le produit <span class="math notranslate nohighlight">\(f(a)f(c)\)</span> est négatif alors la racine est dans l’intervalle <span class="math notranslate nohighlight">\([a,c]\)</span>, sinon la racine est dans l’intervalle <span class="math notranslate nohighlight">\([c,b]\)</span>. Puis, on itére le processus jusqu’à un seuil de précision défini
+préalablement. Cette précision peut être soit sur la valeur de <span class="math notranslate nohighlight">\(x\)</span>, la racine, et les itérations stoppent lorsque la longueur de l’intervalle est inférieure à la précision <span class="math notranslate nohighlight">\(\varepsilon\)</span> : $(b-a) &lt; <span class="math">\varepsilon `$ ; soit sur la proximité de :math:`|f(x)|</span> du zéro et le critère est de la forme <span class="math notranslate nohighlight">\(|f(x)| &lt; \varepsilon\)</span>.</p>
+<div class="line-block">
+<div class="line">L’algorithme pourra s’écrire ainsi :</div>
+<div class="line">- Soit un intervalle initial <span class="math notranslate nohighlight">\([a,b]\)</span> contenant une unique racine de la fonction <span class="math notranslate nohighlight">\(f\)</span>. - On divise l’intervalle en deux : <span class="math notranslate nohighlight">\(c = \frac{a+b}{2}\)</span>.</div>
+<div class="line">- On calcule <span class="math notranslate nohighlight">\(f(a)f(c)\)</span> et on détermine son signe. Si il est négatif alors l’intervalle suivant est <span class="math notranslate nohighlight">\([a,c]\)</span> sinon se sera <span class="math notranslate nohighlight">\([c,b]\)</span>. - On itère le processus et le critère de sortie est défini par $(b-a) &lt; <span class="math">\varepsilon `$ ou :math:`|f(x)| < \varepsilon</span>.</div>
+</div>
+<p>Pour s’assurer que l’intervalle initial contient une seule et unique solution, on peut par exemple tracer la courbe. Il faut alors se méfier de la représentation graphique et notamment de la discrétisation utilisée pour tracer la courbe, surtout si celle-ci présente un gradient fort.</p>
+<p>La figure ci-dessous illustre la méthode :</p>
+<p><img alt="&quot;figure dichotomie&quot;" src="../../_images/newton.png" /></p>
+<p><em>Fig. 1 : Méthode de dichotomie</em></p>
+</div>
+<div class="section" id="Exercices">
+<h3>Exercices<a class="headerlink" href="#Exercices" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On prendra comme critère de convergence une précision de <span class="math notranslate nohighlight">\(\varepsilon = 10^{-8}\)</span> sur la détermination de la racine.</p>
+<p><strong>1)</strong> Écrire une fonction <em>dichotomie</em> qui contient l’algorithme de dichotomie et dont les paramètres d’entrée sont une fonction, a, b (les bornes de l’intervalle) et eps pour <span class="math notranslate nohighlight">\(\varepsilon\)</span>. La fonction retourne la valeur de la racine.</p>
+<p><strong>2)</strong> Nous allons nous assurer que l’algorithme est écrit correctement en résolvant des équations dont on connaît les solutions. Vous pouvez tester par exemple :</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \cos{x}\]</div>
+<div class="math notranslate nohighlight">
+\[f(x) = x^2 - 4\]</div>
+<p><strong>3)</strong> Introduire un compteur dans la fonction <em>dichotomie</em>.</p>
+<p><strong>4)</strong> Maintenant, nous pouvons résoudre l’équation suivante dont nous ne connaissons pas la solution a priori</p>
+<div class="math notranslate nohighlight">
+\[\cos{x} = x \;\;\; \textrm{soit} \;\;\;  f (x) = x − \cos{x} =0\]</div>
+<p>Tracer la fonction <span class="math notranslate nohighlight">\(f\)</span> sur l’intervalle <code class="docutils literal notranslate"><span class="pre">[0;</span> <span class="pre">3]</span></code> et sur une feuille de papier, dessiner quelques-unes des étapes successives de l’algorithme de dichotomie.</p>
+<p>Donner le résultat et le nombre d’itérations pour la fonction <span class="math notranslate nohighlight">\(f\)</span> avec une précision de <span class="math notranslate nohighlight">\(10^{-8}\)</span>.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1</span>
+
+<span class="c1"># Version la plus simple de la méthode de dichotomie</span>
+<span class="k">def</span> <span class="nf">dichotomie0</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de dichotomie avec un critère de convergence sur f(x) &quot;&quot;&quot;</span>
+    <span class="c1"># Dichotomie</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">c</span>
+
+<span class="c1"># On l&#39;améliore très vite pour prendre en compte certains cas spécifiques</span>
+<span class="k">def</span> <span class="nf">dichotomie0</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de dichotomie avec un critère de convergence sur f(x) &quot;&quot;&quot;</span>
+    <span class="c1"># Vérification initiales</span>
+    <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de zéro unique dans l&#39;intervalle [&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">)</span> <span class="c1"># None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Dichotomie</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">c</span>
+            <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 2</span>
+
+<span class="c1"># Fonctions tests</span>
+<span class="k">def</span> <span class="nf">f1</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">f2</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">4</span>
+
+<span class="k">def</span> <span class="nf">f3</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Représentation graphique des fonctions</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">y1</span> <span class="o">=</span> <span class="n">f1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y2</span> <span class="o">=</span> <span class="n">f2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">f3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y1</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$\cos{(x)}=0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y2</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x^2-2=0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;$x - \cos{(x)}=0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;-r&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y3</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_9_0.png" src="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_9_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Application aux fonctions de test</span>
+<span class="c1"># On commence par l&#39;application au cosinus</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-8</span>
+
+<span class="c1"># Test sans particularité</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une autre racine</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et 3π/2 =&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test sans solution car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec deux solutions car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne inférieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne supérieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est au milieu de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Entre 0 et 2 la racine avec la méthode de dichotomie est 1.570796325802803 et π/2 = 1.5707963267948966
+
+Entre 2 et 5 la racine avec la méthode de dichotomie est 4.71238898485899 et 3π/2 = 4.71238898038469
+
+Pas de zéro unique dans l&#39;intervalle [ 0.1 ; 0.4 ]
+Entre 0.1 et 0.4 la racine avec la méthode de dichotomie est nan
+
+Pas de zéro unique dans l&#39;intervalle [ -2 ; 2 ]
+Entre -2 et 2 la racine avec la méthode de dichotomie est nan
+
+Entre 1.5707963267948966 et 2 la racine avec la méthode de dichotomie est 1.5707963331905297 et π/2 = 1.5707963267948966
+
+Pas de zéro unique dans l&#39;intervalle [ 0 ; 1.5707963267948966 ]
+Entre 0 et 1.5707963267948966 la racine avec la méthode de dichotomie est nan et π/2 = 1.5707963267948966
+
+Entre 0 et 3.141592653589793 la racine avec la méthode de dichotomie est 1.5707963267948966 et π/2 = 1.5707963267948966
+</pre></div></div>
+</div>
+<p>Certains résultats observés semblent surprenants. Pourquoi certaines valeurs exactes ne sont pas trouvées par <code class="docutils literal notranslate"><span class="pre">dichotomie0()</span></code> ? Pourquoi même la fonction ne trouve-t-elle pas de valeur dans l’intervalle <span class="math notranslate nohighlight">\(\left[0, \frac{\pi}{2}\right]\)</span> ? C’est normal, il y a la précision numérique qui rentre en compte. Au lieu de tester des égalités, il faudrait vérifier si les nombres sont « proches » à <span class="math notranslate nohighlight">\(\varepsilon\)</span> près. Ça tombe bien, il y a une fonction qui fait ça :
+<code class="docutils literal notranslate"><span class="pre">math.isclose(nb1,</span> <span class="pre">nb2,</span> <span class="pre">eps)</span></code>, aussi présente dans le module numpy.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">def</span> <span class="nf">dichotomie0</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de dichotomie avec un critère de convergence sur f(x) &quot;&quot;&quot;</span>
+    <span class="c1"># Vérification initiales</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span>
+    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">b</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de zéro unique dans l&#39;intervalle [&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">)</span> <span class="c1"># None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Dichotomie</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">c</span>
+            <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+        <span class="k">return</span> <span class="n">c</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Application aux fonctions de test</span>
+<span class="c1"># On refait l&#39;application au cosinus après l&#39;amélioration de la fonction dichotomie0</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-8</span>
+
+<span class="c1"># Test sans particularité</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une autre racine</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et 3π/2 =&quot;</span><span class="p">,</span> <span class="mi">3</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test sans solution car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec deux solutions car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne inférieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne supérieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est au milieu de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;et π/2 =&quot;</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Entre 0 et 2 la racine avec la méthode de dichotomie est 1.570796325802803 et π/2 = 1.5707963267948966
+
+Entre 2 et 5 la racine avec la méthode de dichotomie est 4.71238898485899 et 3π/2 = 4.71238898038469
+
+Pas de zéro unique dans l&#39;intervalle [ 0.1 ; 0.4 ]
+Entre 0.1 et 0.4 la racine avec la méthode de dichotomie est nan
+
+Pas de zéro unique dans l&#39;intervalle [ -2 ; 2 ]
+Entre -2 et 2 la racine avec la méthode de dichotomie est nan
+
+Entre 1.5707963267948966 et 2 la racine avec la méthode de dichotomie est 1.5707963267948966 et π/2 = 1.5707963267948966
+
+Entre 0 et 1.5707963267948966 la racine avec la méthode de dichotomie est 1.5707963267948966 et π/2 = 1.5707963267948966
+
+Entre 0 et 3.141592653589793 la racine avec la méthode de dichotomie est 1.5707963267948966 et π/2 = 1.5707963267948966
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Application aux fonctions de test</span>
+<span class="c1"># On applique x^2 - 4</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-8</span>
+
+<span class="c1"># Test sans particularité</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une autre racine</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test sans solution car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">0.4</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec deux solutions car mauvais choix d&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mi">5</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">5</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne inférieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est la borne supérieure de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">),</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># Test avec une solution qui est au milieu de l&#39;intervalle</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Entre&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;la racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">dichotomie0</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Entre 0.3 et 5 la racine avec la méthode de dichotomie est 1.9999999986961483
+
+Entre -5 et 0.3 la racine avec la méthode de dichotomie est -1.9999999997206026
+
+Pas de zéro unique dans l&#39;intervalle [ 0.1 ; 0.4 ]
+Entre 0.1 et 0.4 la racine avec la méthode de dichotomie est nan
+
+Pas de zéro unique dans l&#39;intervalle [ -5 ; 5 ]
+Entre -5 et 5 la racine avec la méthode de dichotomie est nan
+
+Entre 2 et 3 la racine avec la méthode de dichotomie est 2
+
+Entre 1 et 2 la racine avec la méthode de dichotomie est 2
+
+Entre 1 et 3 la racine avec la méthode de dichotomie est 2.0
+</pre></div></div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 3</span>
+
+<span class="k">def</span> <span class="nf">dichotomie</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de dichotomie améliorée avec la prise en compte d&#39;un compteur et un critère de convergence sur x &quot;&quot;&quot;</span>
+    <span class="c1"># Vérification initiales</span>
+    <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">a</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">),</span> <span class="mi">0</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+        <span class="k">return</span> <span class="n">b</span><span class="p">,</span> <span class="mi">0</span>
+    <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pas de zéro unique dans l&#39;intervalle [&quot;</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="s2">&quot;;&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="nb">float</span><span class="p">(</span><span class="s1">&#39;NaN&#39;</span><span class="p">),</span> <span class="mi">0</span> <span class="c1"># None</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># Dichotomie</span>
+        <span class="n">compteur</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">while</span> <span class="n">b</span> <span class="o">-</span> <span class="n">a</span> <span class="o">&gt;</span> <span class="n">eps</span> <span class="ow">and</span> <span class="n">compteur</span> <span class="o">&lt;=</span> <span class="n">cmax</span><span class="p">:</span>
+            <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+            <span class="k">if</span> <span class="n">np</span><span class="o">.</span><span class="n">isclose</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">),</span> <span class="mi">0</span><span class="p">):</span>
+                <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">compteur</span>
+            <span class="k">elif</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+            <span class="n">compteur</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">compteur</span> <span class="o">&gt;</span> <span class="n">cmax</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Limite du compteur atteinte&quot;</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">c</span><span class="p">,</span> <span class="n">compteur</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 4</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Représentation graphique de f3</span>
+<span class="n">x</span> <span class="o">=</span>  <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">y3</span> <span class="o">=</span> <span class="n">f3</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y3</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y1</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajout de quelques points pour illuster la méthode de dichotomie</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">c</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">c</span><span class="p">,</span> <span class="n">c</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">f3</span><span class="p">(</span><span class="n">c</span><span class="p">)],</span> <span class="s1">&#39;o-g&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;.r&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">f3</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f3</span><span class="p">(</span><span class="n">c</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">b</span> <span class="o">=</span> <span class="n">c</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">a</span> <span class="o">=</span> <span class="n">c</span>
+
+<span class="c1"># Cosmétique</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$x - \cos{(x)}=0$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y3</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">y3</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_16_0.png" src="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Application aux fonctions de test</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1.e-8</span>
+<span class="n">cmax</span> <span class="o">=</span> <span class="mi">100</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine obtenue en&quot;</span><span class="p">,</span> <span class="n">compteur</span><span class="p">,</span> <span class="s2">&quot;itérations par la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.6</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine obtenue en&quot;</span><span class="p">,</span> <span class="n">compteur</span><span class="p">,</span> <span class="s2">&quot;itérations par la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">f3</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine obtenue en&quot;</span><span class="p">,</span> <span class="n">compteur</span><span class="p">,</span> <span class="s2">&quot;itérations par la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+La racine obtenue en 27 itérations par la méthode de dichotomie est 1.570796325802803
+La racine obtenue en 28 itérations par la méthode de dichotomie est 2.000000001490116
+La racine obtenue en 27 itérations par la méthode de dichotomie est 0.7390851303935051
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="La-méthode-de-Newton-Raphson">
+<h2>La méthode de Newton-Raphson<a class="headerlink" href="#La-méthode-de-Newton-Raphson" title="Lien permanent vers ce titre">¶</a></h2>
+<div class="section" id="id1">
+<h3>Présentation de la méthode<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>La méthode de Newton-Raphson est une méthode classique à une dimension qui se généralise très bien à <span class="math notranslate nohighlight">\(N\)</span> dimensions. D’un point de vue géométrique, cette méthode consiste à prolonger la tangente de la fonction <span class="math notranslate nohighlight">\(f\)</span> à un point <span class="math notranslate nohighlight">\(x_i\)</span> et à chercher son intersection avec l’axe des ordonnées en zéro. Ce point d’intersection est alors pris comme nouveau point de départ de la recherche <span class="math notranslate nohighlight">\(x_{i+1}\)</span> et ainsi de suite jusqu’à ce que la fonction se rapproche suffisament du zéro. D’un
+point de vue algébrique, cette méthode repose sur le développement de Taylor. La fonction est approximée autour de <span class="math notranslate nohighlight">\(x_0\)</span> au premier ordre par</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+f(x) = f(x_0) + f'(x_0)(x-x_0)
+\end{equation}</div><p>et donc $ f(x) =0$ implique que</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+x = x_0 - \frac{f(x_0)}{f'(x_0)}
+\end{equation}</div><p>comme la fonction n’est a priori pas linéaire, il faut alors itérer le processus :</p>
+<div class="math notranslate nohighlight">
+\begin{equation}
+ x_{i+1} = x_i - \frac{f(x_i)}{f'(x_i)}.
+\end{equation}</div><p>Comme précédemment, la condition d’arrêt porte soit sur la solution <span class="math notranslate nohighlight">\(x\)</span> soit sur la fonction <span class="math notranslate nohighlight">\(f\)</span>. Cependant, contrairement au cas de la méthode de dichotomie, cette méthode recquiert le calcul de la dérivée de la fonction <span class="math notranslate nohighlight">\(f\)</span>, <span class="math notranslate nohighlight">\(f'\)</span> (et donc d’avoir une fonction différentiable), et une seule condition de départ, <span class="math notranslate nohighlight">\(x_0\)</span>.</p>
+<div class="line-block">
+<div class="line">Cette méthode, bien qu’elle soit très efficace car sa convergence est plus rapide que la méthode de dichotomie, recèle de nombreux pièges qu’il faut connaître et reconnaître : - le cas où la dérivée est très petite ou bien s’annulle. Le point itéré sera alors projeté loin du point de départ et l’approximation linéaire ne sera plus valide,</div>
+<div class="line">- l’existence de plusieurs zéros. Dans ce cas, cette méthode ne permet pas de choisir le zéro désiré à moins de contraindre la solution sur un intervalle pré-défini, - un cas où la fonction présente une courbure bien particulière et qui implique que l’algorithme se retrouve dans un cycle et donc ne converge pas.</div>
+</div>
+<p>Pour éviter ces différents problèmes, il est conseillé de - stopper l’algorithme lorsque celui-ci diverge, le plus simple est d’imposer un nombre maximum d’itérations. - préparer le problème par une analyse graphique et en calculant le comportement de la fonction aux asymptotes, - parfois il est judicieux de reformuler le problème pour éliminer une racine.</p>
+<p>Si la dérivée analytique n’est pas calculable, on peut toujours la calculer numériquement par la méthode des différences finies. Cependant, dans ce cas la méthode converge beaucoup moins rapidement.</p>
+<p>La figure ci-dessous illustre la méthode :</p>
+<p><img alt="&quot;figure dichotomie&quot;" src="../../_images/newton.png" /></p>
+<p><em>Fig. 2: Méthode de Newton-Raphson</em></p>
+</div>
+<div class="section" id="id2">
+<h3>Exercices<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<p>On prendra comme critère de convergence une précision de <span class="math notranslate nohighlight">\(10^{-8}\)</span> sur la détermination de la racine <span class="math notranslate nohighlight">\((x^*)\)</span>.</p>
+<p><strong>1)</strong> Tester la méthode de Newton-Raphson avec la fonction <span class="math notranslate nohighlight">\(f (x) = \sin{x}\)</span> et le point de départ <span class="math notranslate nohighlight">\(x_0 = 0.1\)</span>. Faire de même avec <span class="math notranslate nohighlight">\(x_0 = 1.55\)</span>, constater et expliquer.</p>
+<p><strong>2)</strong> Maintenant, on compare la vitesse de convergence entre la méthode de dichotomie et la méthode de Newton-Raphson pour la fonction :</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \sin{x}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(x_0=0.1\)</span>.</p>
+<p><strong>3)</strong> Tester la méthode de Newton-Raphson sur</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1}{2} - \tanh{(x-1)}\]</div>
+<p>avec <span class="math notranslate nohighlight">\(x_0=2\)</span> et <span class="math notranslate nohighlight">\(x_0=3\)</span>. Expliquer ces comportements</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1 et 2</span>
+
+<span class="c1"># Fonction test</span>
+<span class="k">def</span> <span class="nf">sinf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">cosf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="c1"># Affichage graphique de la fonction étudiée</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Ajout des points de départ</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.55</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="mf">1.55</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+
+<span class="c1"># Affichage des points les plus proches des zéros</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;og&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_20_0.png" src="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_20_0.png" />
+</div>
+</div>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># La méthode de Newton-Raphson la plus simple possible</span>
+<span class="k">def</span> <span class="nf">newton_raphson0</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fprime</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de Newton-Raphson &quot;&quot;&quot;</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">eps</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span>
+
+<span class="c1"># On l&#39;améliore un peu avec un compteur</span>
+<span class="k">def</span> <span class="nf">newton_raphson</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fprime</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot; Méthode de Newton-Raphson améliorée avec la prise en compte du compteur. &quot;&quot;&quot;</span>
+    <span class="n">compteur</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">while</span> <span class="nb">abs</span><span class="p">(</span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">))</span> <span class="o">&gt;</span> <span class="n">eps</span> <span class="ow">and</span> <span class="n">compteur</span> <span class="o">&lt;</span> <span class="n">cmax</span><span class="p">:</span>
+        <span class="n">compteur</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">compteur</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Application aux fonctions test</span>
+
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-4</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.2</span>
+<span class="n">b</span> <span class="o">=</span>  <span class="mf">0.1</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur_d</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">sinf</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">compteur_n</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">sinf</span><span class="p">,</span> <span class="n">cosf</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;avec la méthode de Newton-Raphson.&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Compteur pour la méthode de dichotomie :&quot;</span><span class="p">,</span> <span class="n">compteur_d</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Itération pour la méthode de newton    :&quot;</span><span class="p">,</span> <span class="n">compteur_n</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="n">a</span> <span class="o">=</span> <span class="o">-</span><span class="mf">0.1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">1.55</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur_d</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">sinf</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">compteur_n</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">sinf</span><span class="p">,</span> <span class="n">cosf</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;avec la méthode de Newton-Raphson. La racine&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;est un multiple de π. Le rapport vaut&quot;</span><span class="p">,</span> <span class="n">x1</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+La racine avec la méthode de dichotomie est 2.44140625e-05 et 1.249502806993999e-11 avec la méthode de Newton-Raphson.
+Compteur pour la méthode de dichotomie : 13
+Itération pour la méthode de newton    : 2
+
+La racine avec la méthode de dichotomie est -4.730224609375442e-05 et -47.12388980384899 avec la méthode de Newton-Raphson. La racine -47.12388980384899 est un multiple de π. Le rapport vaut -15.000000000000666
+</pre></div></div>
+</div>
+<p>La méthode de Newton-Raphson converge bien plus vite que la dichotomie vers la solution.</p>
+<p>Mais si on se place proche d’un point pour lequel la dérivée est presque nulle, celle-ci croise l’axe des abscisses très loin, et on se retrouve avec un zéro, mais pas forcément le zéro le plus proche du point initial.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Affichage graphique de la fonction étudiée</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span> <span class="o">=</span> <span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span> <span class="c1"># Cosmétique</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+
+<span class="c1"># Cosmétique</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Affichage des points les plus proches des zéros</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;og&#39;</span><span class="p">)</span>
+
+<span class="c1"># Ajout des points de départ</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="mf">0.1</span><span class="p">),</span> <span class="s1">&#39;ob&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mf">1.55</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="mf">1.55</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tracé de la méthode pour x0 = 0.1</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">0.1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">+</span> <span class="n">cosf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)],</span> <span class="s1">&#39;--b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;.b&#39;</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">cosf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Tracé de la méthode pour x0 = 1.55</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mf">1.55</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">+</span> <span class="n">cosf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)],</span> <span class="s1">&#39;--r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;.r&#39;</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">sinf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">cosf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_24_0.png" src="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_24_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 3</span>
+
+<span class="c1"># Fonction test f(x) = sin(x)</span>
+<span class="k">def</span> <span class="nf">tanhf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="mf">0.5</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="k">def</span> <span class="nf">dtanhf</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="o">-</span><span class="mf">1.</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">cosh</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+    <span class="k">return</span> <span class="n">y</span>
+
+<span class="c1"># Affichage graphique de la fonction étudiée</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">&quot;Axe des X&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">&quot;Y&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span> <span class="o">*</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;-k&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">-</span> <span class="mf">0.1</span><span class="p">,</span> <span class="nb">max</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> <span class="o">+</span> <span class="mf">0.1</span><span class="p">)</span>
+
+<span class="c1"># Ajout des points de départ</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="mi">2</span><span class="p">),</span> <span class="s1">&#39;ob&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span> <span class="s1">&#39;or&#39;</span><span class="p">)</span>
+
+<span class="c1"># Tracé de la méthode pour x0 = 2</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">+</span> <span class="n">dtanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)],</span> <span class="s1">&#39;--b&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;.b&#39;</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">dtanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Tracé de la méthode pour x0 = 3</span>
+<span class="n">x0</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">+</span> <span class="n">dtanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x0</span><span class="p">),</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">x0</span><span class="p">,</span> <span class="n">x0</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)],</span> <span class="s1">&#39;--r&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;.r&#39;</span><span class="p">)</span>
+    <span class="n">x0</span> <span class="o">=</span> <span class="n">x0</span> <span class="o">-</span> <span class="n">tanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span> <span class="o">/</span> <span class="n">dtanhf</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
+
+<span class="c1"># Affichage du point le plus proche du zéro</span>
+<span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argwhere</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">diff</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sign</span><span class="p">(</span><span class="n">y</span><span class="p">)))</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">],</span> <span class="s1">&#39;og&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&lt;ipython-input-18-ae1b643898c4&gt;:9: RuntimeWarning: overflow encountered in cosh
+  y = -1. / np.cosh(x - 1) ** 2
+&lt;ipython-input-18-ae1b643898c4&gt;:9: RuntimeWarning: overflow encountered in cosh
+  y = -1. / np.cosh(x - 1) ** 2
+&lt;ipython-input-18-ae1b643898c4&gt;:42: RuntimeWarning: divide by zero encountered in double_scalars
+  x0 = x0 - tanhf(x0) / dtanhf(x0)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_25_1.png" src="../../_images/notebooks_08-equations-non-lineaires_01-zeros-cours_25_1.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">x0</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">dichotomie</span><span class="p">(</span><span class="n">tanhf</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">tanhf</span><span class="p">,</span> <span class="n">dtanhf</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;avec la méthode de Newton.&quot;</span><span class="p">)</span>
+
+<span class="n">b</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">x1</span><span class="p">,</span> <span class="n">compteur</span> <span class="o">=</span> <span class="n">newton_raphson</span><span class="p">(</span><span class="n">tanhf</span><span class="p">,</span> <span class="n">dtanhf</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">eps</span><span class="p">,</span> <span class="n">cmax</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;La racine avec la méthode de dichotomie est&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">,</span> <span class="s2">&quot;et&quot;</span><span class="p">,</span> <span class="n">x1</span><span class="p">,</span> <span class="s2">&quot;avec la méthode de Newton.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+La racine avec la méthode de dichotomie est 1.54925537109375 et 1.5492404932704658 avec la méthode de Newton.
+La racine avec la méthode de dichotomie est 1.54925537109375 et nan avec la méthode de Newton.
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area stderr docutils container">
+<div class="highlight"><pre>
+&lt;ipython-input-18-ae1b643898c4&gt;:9: RuntimeWarning: overflow encountered in cosh
+  y = -1. / np.cosh(x - 1) ** 2
+&lt;ipython-input-15-87187ca66592&gt;:14: RuntimeWarning: divide by zero encountered in double_scalars
+  x = x - f(x) / fprime(x)
+&lt;ipython-input-15-87187ca66592&gt;:14: RuntimeWarning: invalid value encountered in double_scalars
+  x = x - f(x) / fprime(x)
+</pre></div></div>
+</div>
+<p>Ici avec la dérivée en <span class="math notranslate nohighlight">\(2\)</span> il y a convergence, mais la dérivée en <span class="math notranslate nohighlight">\(3\)</span> éloigne l’algorithme de la racine, et la dérivée suivante est très proche de <span class="math notranslate nohighlight">\(0\)</span>. On finit par s’éloigner de plus en plus de la racine, jusqu’à ce que la dérivée soit trop proche de <span class="math notranslate nohighlight">\(0\)</span>, et alors il y a division par <span class="math notranslate nohighlight">\(0\)</span>, d’où l’erreur affichée.</p>
+</div>
+</div>
+<div class="section" id="Références">
+<h2>Références<a class="headerlink" href="#Références" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Depondt, <em>Physique Numérique</em></p>
+<p>Press <em>et al.</em>, <em>Numerical Recipes</em></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="02-zeros-exercice.html" class="btn btn-neutral float-right" title="Modes propres de vibration d’un diapason" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../sequences/08-equations-non-lineaires/contenu.html" class="btn btn-neutral float-left" title="Déroulement de la séquence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

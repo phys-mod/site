@@ -1,0 +1,1827 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Itération &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Fonctions" href="04-fonctions.html" />
+    <link rel="prev" title="Logique, structures de contrôle et filtrage" href="02-logique-filtrage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="01-dictionnaires-pandas.html">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02-logique-filtrage.html">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Itération</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/02-python-intermediaire/03-iteration.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Itération">
+<h1>Itération<a class="headerlink" href="#Itération" title="Lien permanent vers ce titre">¶</a></h1>
+<p>L’itération est la capacité d’exécuter à plusieurs reprises un bloc d’instructions.</p>
+<div class="section" id="Mise-à-jour-d'une-variable">
+<h2>Mise à jour d’une variable<a class="headerlink" href="#Mise-à-jour-d'une-variable" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On parle de <strong>mise à jour</strong> de la variable lorsque la valeur de ré-affectation d’une variable dépend de son ancienne valeur. Par exemple :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création et affectation de la variable x (initialisation)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Mise à jour de la variable x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<p>Si on ajoute 1 à la valeur de la variable, on appelle cela une <strong>incrémentation</strong>. Si on enlève 1, c’est une <strong>décrémentation</strong>.</p>
+</div>
+<div class="section" id="L'instruction-while">
+<h2>L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code><a class="headerlink" href="#L'instruction-while" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code> signifie <em>tant que</em>. Elle est suivie d’une condition. C’est une façon de répéter une instruction <code class="docutils literal notranslate"><span class="pre">if</span></code>. Voici un exemple de compte à rebours :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Initialisation</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Compte à rebours</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Partez !&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+2
+1
+Partez !
+</pre></div></div>
+</div>
+<p>La variable <code class="docutils literal notranslate"><span class="pre">n</span></code> est initialisée à 3. Lors de la première exécution de l’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code>, <code class="docutils literal notranslate"><span class="pre">n</span></code> vaut 3 et donc la condition <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">&gt;</span> <span class="pre">0</span></code> est vraie. Le bloc d’instructions (indenté) est alors exécuté : on affiche 3 à l’écran, et <code class="docutils literal notranslate"><span class="pre">n</span></code> est incrémenté. C’est la première <strong>itération</strong>. Lors de la deuxième itération, <code class="docutils literal notranslate"><span class="pre">n</span></code> vaut 2. La condition est toujours vraie donc le bloc d’instructions est exécuté une deuxième fois. Idem pour la troisième itération où <code class="docutils literal notranslate"><span class="pre">n</span></code> vaut 1. Lors de la quatrième
+itération, <code class="docutils literal notranslate"><span class="pre">n</span></code> vaut 0 donc la condition est fausse : le bloc d’instructions n’est pas exécuté et on passe à la première instruction qui n’est pas indentée après le <code class="docutils literal notranslate"><span class="pre">while</span></code>.</p>
+<p>Le <em>flux d’exécution</em> pour une instruction <code class="docutils literal notranslate"><span class="pre">while</span></code> est :</p>
+<ol class="arabic simple">
+<li><p>Déterminer si la condition est vraie ou fausse ;</p></li>
+<li><p>Si elle est fausse, passer le bloc d’instructions (indenté) suivant l’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code>, et poursuivre l’exécution à l’instruction suivante ;</p></li>
+<li><p>Si la condition est vraie, exécuter le bloc d’instructions, puis retourner à l’étape 1.</p></li>
+</ol>
+<p>Ce type de flux est une <strong>boucle</strong> car l’étape 3 <em>reboucle</em> à l’étape 1. Le bloc d’instructions doit changer la valeur d’au moins une variable pour que la condition finisse par devenir fausse au bout d’un certain nombre d’itérations. Si ce n’est pas le cas, on aura alors une <strong>boucle infinie</strong>, car le bloc d’instructions sera répété à l’infini. Il faudra alors interrompre le programme d’une manière ou d’une autre.</p>
+<div class="section" id="Exercice">
+<h3>Exercice<a class="headerlink" href="#Exercice" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Initialisez une variable appelée <code class="docutils literal notranslate"><span class="pre">x</span></code> à 40. Créer une boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> qui, tant que <code class="docutils literal notranslate"><span class="pre">x</span></code> est supérieur à 1, divise <code class="docutils literal notranslate"><span class="pre">x</span></code> par 4. À la sortie de la boucle, afficher à l’écran la valeur de <code class="docutils literal notranslate"><span class="pre">x</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Initialisation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">40</span>
+
+<span class="c1"># Boucle while</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">4.0</span>
+
+<span class="c1"># Afficher le résultat</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0.625
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="L'instruction-break">
+<h2>L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code><a class="headerlink" href="#L'instruction-break" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il arrive que nous voulions arrêter la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code> à l’intérieur du bloc d’instructions, si une certaine condition est vraie. Dans ce cas on ne laisse pas la boucle aller jusqu’au bout. Pour cela on peut utiliser l’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code> pour forcer à sortir de la boucle.</p>
+<p>Reprenons l’exemple du compte à rebours :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Initialisation</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mf">5.8</span>
+
+<span class="c1"># Compte à rebours</span>
+<span class="k">while</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">%</span> <span class="mi">1</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n doit être entier&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">n</span> <span class="o">-</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+n doit être entier
+</pre></div></div>
+</div>
+<p>Dans cet exemple on vérifie si le compteur du compte à rebours est bien un entier, à l’intérieur de la boucle. Si ce n’est pas le cas, alors on n’exécute pas la boucle et on affiche un message d’erreur à l’utilisateur.</p>
+<div class="section" id="id1">
+<h3>Exercice<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Reprendre l’exercice précédent. Dans la boucle, ajouter une condition qui vérifie que <code class="docutils literal notranslate"><span class="pre">x</span></code> est un nombre pair. Si ce n’est pas le cas, afficher le message d’erreur <code class="docutils literal notranslate"><span class="pre">&quot;x</span> <span class="pre">doit</span> <span class="pre">être</span> <span class="pre">pair&quot;</span></code> et sortir de la boucle.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Initialisation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">41</span>
+
+<span class="c1"># Boucle while</span>
+<span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+    <span class="c1"># Vérification que x est pair</span>
+    <span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x doit être pair&quot;</span><span class="p">)</span>
+        <span class="k">break</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x doit être pair
+</pre></div></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Bon usage</strong></p>
+<p>Bien que l’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code> puisse être pratique, il est souvent recommandé de l’utiliser le moins possible. Cette instruction peut être la source d’erreurs difficiles à trouver. En effet, normalement, si on sort d’une boucle <code class="docutils literal notranslate"><span class="pre">while</span></code>, c’est parce que la condition n’est plus satisfaite ; et s’il y a plusieurs points où il est possible de sortir de la boucle <code class="docutils literal notranslate"><span class="pre">while</span></code>, il peut être (très) difficile de savoir quelle est la condition qui doit être vérifiée pour sortir, et donc de continuer à
+programmer. L’usage excessif de l’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code> (ainsi que <code class="docutils literal notranslate"><span class="pre">continue</span></code>, ou le fameux <code class="docutils literal notranslate"><span class="pre">goto</span></code> qui n’existe pas en Python) est qualifié de <a class="reference external" href="https://fr.wikipedia.org/wiki/Programmation_spaghetti">programmation spaghetti</a>.</p>
+<p>Une meilleure solution de l’exercice précédent, sans <code class="docutils literal notranslate"><span class="pre">break</span></code>, est donc ceci :</p>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Initialisation</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">41</span>
+
+<span class="c1"># Vérification que x est pair</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x doit être pair&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Boucle while</span>
+    <span class="k">while</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">/</span> <span class="mf">4.0</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x doit être pair
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="L'instruction-for">
+<h2>L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code><a class="headerlink" href="#L'instruction-for" title="Lien permanent vers ce titre">¶</a></h2>
+<p>L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code> est utilisée lorsque le nombre d’itérations est connu à l’avance. Voici par exemple une version du compte à rebours utilisant une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">i</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Partez !&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+3
+2
+1
+Partez !
+</pre></div></div>
+</div>
+<p>L’instruction <code class="docutils literal notranslate"><span class="pre">range()</span></code> est un <a class="reference external" href="https://docs.python.org/fr/3/library/stdtypes.html?highlight=range#range">type de Python</a> qui représente une séquence immuable de nombres. Il s’utilise de la façon suivante :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>range(start, stop, step)
+</pre></div>
+</div>
+<p>où <code class="docutils literal notranslate"><span class="pre">start</span></code>, <code class="docutils literal notranslate"><span class="pre">stop</span></code> et <code class="docutils literal notranslate"><span class="pre">step</span></code> sont des entiers. La séquence créée contient alors des entiers dans l’intervalle <code class="docutils literal notranslate"><span class="pre">[start,</span> <span class="pre">stop[</span></code> (stop est exclu), avec un pas égal à <code class="docutils literal notranslate"><span class="pre">step</span></code>. Pour transformer l’objet de type <code class="docutils literal notranslate"><span class="pre">range</span></code> en objet de type <code class="docutils literal notranslate"><span class="pre">list</span></code>, on peut utiliser la fonction <code class="docutils literal notranslate"><span class="pre">list()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[2, 5, 8, 11]
+</pre></div></div>
+</div>
+<div class="section" id="id2">
+<h3>Exercice<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Créer une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> qui affiche les multiples de 4 compris entre 1 et 20 (inclus).</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="mi">4</span> <span class="o">*</span> <span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+8
+12
+16
+20
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Ou bien</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">4</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+8
+12
+16
+20
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Itérer-sur-une-liste">
+<h2>Itérer sur une liste<a class="headerlink" href="#Itérer-sur-une-liste" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une particularité de Python est de pouvoir itérer sur de nombreux objets composés. En particulier, il est possible d’itérer sur les éléments d’une liste :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création d&#39;une liste</span>
+<span class="n">L</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="kc">True</span><span class="p">,</span> <span class="mf">5.897</span><span class="p">]</span>
+
+<span class="c1"># Iteration sur les éléments de la liste</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">L</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+b
+2
+True
+5.897
+</pre></div></div>
+</div>
+<p>Il est possible d’accéder aussi à l’indice de l’élément avec la fonction <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Iteration sur les indices et les elements de la liste</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">L</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;indice&#39;</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+indice 0 : b
+indice 1 : 2
+indice 2 : True
+indice 3 : 5.897
+</pre></div></div>
+</div>
+<p>ou bien encore d’itérer sur une liste de listes :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création d&#39;une liste de listes</span>
+<span class="n">taille_plantes</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;gentiane&quot;</span><span class="p">,</span>  <span class="mf">7.5</span> <span class="p">],</span>
+                  <span class="p">[</span><span class="s2">&quot;campanule&quot;</span><span class="p">,</span> <span class="mf">5.8</span> <span class="p">],</span>
+                  <span class="p">[</span><span class="s2">&quot;pensée&quot;</span><span class="p">,</span>    <span class="mf">11.4</span><span class="p">]]</span>
+
+<span class="c1"># Iteration</span>
+<span class="k">for</span> <span class="n">L</span> <span class="ow">in</span> <span class="n">taille_plantes</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;taille&#39;</span><span class="p">,</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="s1">&#39;:&#39;</span><span class="p">,</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;cm&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+taille gentiane : 7.5 cm
+taille campanule : 5.8 cm
+taille pensée : 11.4 cm
+</pre></div></div>
+</div>
+<div class="section" id="id3">
+<h3>Exercice<a class="headerlink" href="#id3" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Créons la liste de listes donnant les superficie en <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span> des pièces d’une maison :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">maison</span> <span class="o">=</span> <span class="p">[[</span><span class="s2">&quot;cuisine&quot;</span><span class="p">,</span> <span class="mf">18.0</span><span class="p">],</span>
+          <span class="p">[</span><span class="s2">&quot;salon&quot;</span><span class="p">,</span> <span class="mf">20.0</span><span class="p">],</span>
+          <span class="p">[</span><span class="s2">&quot;chambre&quot;</span><span class="p">,</span> <span class="mf">10.75</span><span class="p">],</span>
+          <span class="p">[</span><span class="s2">&quot;salle de bains&quot;</span><span class="p">,</span> <span class="mf">9.50</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<p>En utilisant une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>, afficher pour chaque pièce le numéro de la pièce (en commençant par 1), le nom de la pièce et sa superficie, sous la forme <code class="docutils literal notranslate"><span class="pre">Pièce</span> <span class="pre">n</span> <span class="pre">:</span> <span class="pre">nom</span> <span class="pre">(superficie)</span></code>. Par exemple, pour la première itération : <code class="docutils literal notranslate"><span class="pre">Pièce</span> <span class="pre">1</span> <span class="pre">:</span> <span class="pre">cuisine</span> <span class="pre">(18.0</span> <span class="pre">m**2)</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">L</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">maison</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Pièce &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">L</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot; (&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; m**2)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Pièce 1 : cuisine (18.0 m**2)
+Pièce 2 : salon (20.0 m**2)
+Pièce 3 : chambre (10.75 m**2)
+Pièce 4 : salle de bains (9.5 m**2)
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Itérer-sur-un-dictionnaire">
+<h2>Itérer sur un dictionnaire<a class="headerlink" href="#Itérer-sur-un-dictionnaire" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est très simple d’itérer sur un dictionnaire avec la méthode <code class="docutils literal notranslate"><span class="pre">.items()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création d&#39;un dictionnaire</span>
+<span class="n">dic_taille_plantes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gentiane&quot;</span>  <span class="p">:</span> <span class="mf">7.5</span><span class="p">,</span>
+                      <span class="s2">&quot;campanule&quot;</span> <span class="p">:</span> <span class="mf">5.8</span><span class="p">,</span>
+                      <span class="s2">&quot;pensée&quot;</span>    <span class="p">:</span> <span class="mf">11.4</span><span class="p">}</span>
+
+<span class="c1"># Itérer sur le dictionnaire</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">values</span> <span class="ow">in</span> <span class="n">dic_taille_plantes</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span> <span class="o">+</span> <span class="s2">&quot; -- &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">values</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; cm&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+gentiane -- 7.5 cm
+campanule -- 5.8 cm
+pensée -- 11.4 cm
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Itérer-sur-un-tableau-Numpy">
+<h2>Itérer sur un tableau Numpy<a class="headerlink" href="#Itérer-sur-un-tableau-Numpy" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour itérer sur un tableau 1D c’est aussi simple qu e:</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Importation du module numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Création du tableau Numpy</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># Itérer sur le tableau Numpy</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">A</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4
+6
+1
+</pre></div></div>
+</div>
+<p>Si on veut itérer sur tous les éléments d’un tableau 2D, on peut utiliser la fonction Numpy <code class="docutils literal notranslate"><span class="pre">nditer()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création du tableau Numpy à 2 dimensions</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">0</span><span class="p">]])</span>
+
+<span class="c1"># Itérer sur tous les éléments du tableau 2D</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">np</span><span class="o">.</span><span class="n">nditer</span><span class="p">(</span><span class="n">B</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1
+7
+8
+0
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Itérer-sur-un-DataFrame">
+<h2>Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code><a class="headerlink" href="#Itérer-sur-un-DataFrame" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible d’itérer sur les différentes observations d’un DataFrame en utilisant la méthode <code class="docutils literal notranslate"><span class="pre">.iterrows()</span></code>.</p>
+<p>Par exemple, créons un DataFrame à partir d’un dictionnaire donnant les tailles de 3 de nos plantes pendant 4 jours, avec une observation par jour :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Importation du module Pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Création d&#39;un dictionnaire</span>
+<span class="n">dic_taille_plantes</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;gentiane&quot;</span>  <span class="p">:</span> <span class="p">[</span><span class="mf">7.5</span><span class="p">,</span> <span class="mf">7.8</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">,</span> <span class="mf">8.4</span><span class="p">],</span>
+                      <span class="s2">&quot;campanule&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mf">5.8</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">7.4</span><span class="p">,</span> <span class="mf">8.3</span><span class="p">],</span>
+                      <span class="s2">&quot;pensée&quot;</span>    <span class="p">:</span> <span class="p">[</span><span class="mf">11.4</span><span class="p">,</span> <span class="mf">11.6</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">,</span> <span class="mf">11.7</span><span class="p">]}</span>
+
+<span class="c1"># Création du DataFrame</span>
+<span class="n">df_taille_plantes</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">dic_taille_plantes</span><span class="p">,</span> <span class="n">index</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<p>Voici notre DataFrame :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_taille_plantes</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>gentiane</th>
+      <th>campanule</th>
+      <th>pensée</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>7.5</td>
+      <td>5.8</td>
+      <td>11.4</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>7.8</td>
+      <td>6.6</td>
+      <td>11.6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>8.3</td>
+      <td>7.4</td>
+      <td>11.7</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>8.4</td>
+      <td>8.3</td>
+      <td>11.7</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>sur lequel nous itérons chaque observation (une observation par jour, en commençant par le jour 1) :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_taille_plantes</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jour&quot;</span><span class="p">,</span> <span class="n">label</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+jour 1
+gentiane      7.5
+campanule     5.8
+pensée       11.4
+Name: 1, dtype: float64
+
+jour 2
+gentiane      7.8
+campanule     6.6
+pensée       11.6
+Name: 2, dtype: float64
+
+jour 3
+gentiane      8.3
+campanule     7.4
+pensée       11.7
+Name: 3, dtype: float64
+
+jour 4
+gentiane      8.4
+campanule     8.3
+pensée       11.7
+Name: 4, dtype: float64
+
+</pre></div></div>
+</div>
+<p>Dans la boucle, la variable <code class="docutils literal notranslate"><span class="pre">row</span></code> extrait avec la méthode <code class="docutils literal notranslate"><span class="pre">.iterrows()</span></code> est un objet de type <code class="docutils literal notranslate"><span class="pre">Series</span></code>. Cet objet est construit avec comme Index le nom des colonnes, et comme nom l’Index de la ligne correspondante du DataFrame. Le tableau est en quelque sorte renversé pour produire une série d’observations pour chaque jour.</p>
+<p>Il est alors facile d’extraire les observations correspondant seulement à une plante donnée :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_taille_plantes</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;jour &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">label</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;gentiane&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+jour 1 : 7.5
+jour 2 : 7.8
+jour 3 : 8.3
+jour 4 : 8.4
+</pre></div></div>
+</div>
+<p>Il est aussi possible d’itérer sur les colonnes de l’objet DataFrame avec la méthode <code class="docutils literal notranslate"><span class="pre">.iteritems()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">col</span> <span class="ow">in</span> <span class="n">df_taille_plantes</span><span class="o">.</span><span class="n">iteritems</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Plante : &quot;</span> <span class="o">+</span> <span class="n">label</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">col</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Plante : gentiane
+1    7.5
+2    7.8
+3    8.3
+4    8.4
+Name: gentiane, dtype: float64
+
+Plante : campanule
+1    5.8
+2    6.6
+3    7.4
+4    8.3
+Name: campanule, dtype: float64
+
+Plante : pensée
+1    11.4
+2    11.6
+3    11.7
+4    11.7
+Name: pensée, dtype: float64
+
+</pre></div></div>
+</div>
+<p>On voit que la variable <code class="docutils literal notranslate"><span class="pre">col</span></code> est un objet <code class="docutils literal notranslate"><span class="pre">Series</span></code> contenant toutes les observations correspondant à une colonne donnée, c’est-à-dire à une plante donnée.</p>
+<div class="section" id="id4">
+<h3>Exercice<a class="headerlink" href="#id4" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Importons les données sauvées dans le fichier pickle contenant l’objet DataFrame sur les pays de l’Union Européenne :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;europe.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<ol class="arabic simple">
+<li><p>Créer une copie de cet objet appelée <code class="docutils literal notranslate"><span class="pre">df_europe_cp</span></code> avec <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.DataFrame.copy.html?highlight=copy#pandas.DataFrame.copy">la méthode</a> <code class="docutils literal notranslate"><span class="pre">.copy()</span></code></p></li>
+<li><p>À l’aide d’une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code>, écrire chaque pays et capitale sous la forme <code class="docutils literal notranslate"><span class="pre">Pays</span> <span class="pre">:</span> <span class="pre">Capitale</span></code> (avec une majuscule pour la première lettre, on peut utliser la méthode <code class="docutils literal notranslate"><span class="pre">.capitalize()</span></code>). Par exemple pour la première itération : <code class="docutils literal notranslate"><span class="pre">Allemagne</span> <span class="pre">:</span> <span class="pre">Berlin</span></code>.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1. Copie du DataFrame</span>
+<span class="n">df_europe_cp</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">deep</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> <span class="c1"># deep = True est optionnel mais c&#39;est toujours mieux de faire une copie profonde plutôt qu&#39;une copie superficielle</span>
+
+<span class="c1"># 2. Liste des pays et de leur capitale</span>
+<span class="k">for</span> <span class="n">lab</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">df_europe_cp</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s2">&quot;pays&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; : &quot;</span> <span class="o">+</span> <span class="n">row</span><span class="p">[</span><span class="s2">&quot;capitale&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Allemagne : Berlin
+Autriche : Vienne
+Belgique : Bruxelles
+Bulgarie : Sofia
+Chypre : Nicosie
+Croatie : Zagreb
+Danemark : Copenhague
+Espagne : Madrid
+Estonie : Tallinn
+Finlande : Helsinki
+France : Paris
+Grèce : Athènes
+Hongrie : Budapest
+Irlande : Dublin
+Italie : Rome
+Lettonie : Riga
+Lituanie : Vilnius
+Luxembourg : Luxembourg
+Malte : La valette
+Pays-bas : Amsterdam
+Pologne : Varsovie
+Portugal : Lisbonne
+République tchèque : Prague
+Roumanie : Bucarest
+Slovaquie : Bratislava
+Slovénie : Ljubljana
+Suède : Stockholm
+</pre></div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="04-fonctions.html" class="btn btn-neutral float-right" title="Fonctions" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="02-logique-filtrage.html" class="btn btn-neutral float-left" title="Logique, structures de contrôle et filtrage" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

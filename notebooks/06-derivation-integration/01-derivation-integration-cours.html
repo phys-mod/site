@@ -1,0 +1,1440 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dérivation et intégration numérique &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Exercices" href="02-derivation-integration-exercices.html" />
+    <link rel="prev" title="Déroulement de la séquence" href="../../sequences/06-derivation-integration/contenu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/01-dictionnaires-pandas.html#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/02-logique-filtrage.html#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/03-iteration.html#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../02-python-intermediaire/05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dérivation et intégration numérique</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/06-derivation-integration/01-derivation-integration-cours.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Dérivation-et-intégration-numérique">
+<h1>Dérivation et intégration numérique<a class="headerlink" href="#Dérivation-et-intégration-numérique" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="Introduction">
+<h2>Introduction<a class="headerlink" href="#Introduction" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Cette séquence aborde le thème des dérivations et intégrations numériques, outils essentiels en physique. Il n’est pas toujours possible d’obtenir une fonction analytique pour représenter un phénomène physique. Il est donc souvent nécessaire de calculer dérivées et intégrales approximativement, par des méthodes numériques.</p>
+<p>Pour rappel, on définit mathématiquement la dérivée d’une fonction dérivable par :</p>
+<div class="math notranslate nohighlight">
+\[f'(x) = \lim_{h \to 0} \frac{f(x+h)-f(x)}{h}\]</div>
+<p>On définit également l’intégrale d’une fonction intégrable sur un intervalle <span class="math notranslate nohighlight">\([a,b]\)</span> par :</p>
+<div class="math notranslate nohighlight">
+\[I(f) = \int_{a}^{b} f(x)\mathrm{d}x = F(b)-F(a)\]</div>
+<p>où <span class="math notranslate nohighlight">\(F\)</span> est une primitive de <span class="math notranslate nohighlight">\(f\)</span>.</p>
+</div>
+<div class="section" id="Dérivation-numérique">
+<h2>Dérivation numérique<a class="headerlink" href="#Dérivation-numérique" title="Lien permanent vers ce titre">¶</a></h2>
+<p>En physique numérique, les données sont en général sous forme de listes de points ayant une ou plusieurs coordonnées, par exemple des points de coordonnées <span class="math notranslate nohighlight">\(\{(x_i,y_i)\}\)</span>, <span class="math notranslate nohighlight">\(x\)</span> et <span class="math notranslate nohighlight">\(y\)</span> pouvant représenter deux grandeurs physiques (temps, position, vitesse, courant, tension, etc.) On ne peut donc pas faire tendre l’intervalle entre deux points vers zéro comme on le fait conceptuellement en mathématique.</p>
+<p>Nous allons donc faire des approximations. Une première approximation est d’associer la dérivée d’une courbe représentée par un ensemble de points par la pente entre deux points.</p>
+<div class="math notranslate nohighlight">
+\[y'_i = \frac{y_{i+1}-y_{i}}{x_{i+1}-x_{i}}\]</div>
+<p>Nous allons ci-dessous calculer cette approximation en un point précis d’une courbe.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1">## Exemple</span>
+<span class="c1"># On commence par créer des points de données</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span> <span class="c1"># Pour faire joli</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_3_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_3_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># On prend un point (x_i, y_i) de la liste, par exemple i = 3</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">derivee</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Point de coordonnées x =&#39;</span><span class="p">,</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;, y= cos(x) =&#39;</span><span class="p">,</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Dérivée approximative dy/dx =&#39;</span><span class="p">,</span> <span class="n">derivee</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Dérivée analytique -sin(x) =&quot;</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Point de coordonnées x = 1.5 , y= cos(x) = 0.0707372016677029
+Dérivée approximative dy/dx = -0.9737680764296907
+Dérivée analytique -sin(x) = -0.9974949866040544
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># En bonus, on peut tracer la droite ayant comme pente la dérivée calculée</span>
+<span class="c1"># passant par le point de coordonées (x_i, y_i)</span>
+<span class="c1"># et la comparer à la tangente calculée analytiquement</span>
+
+<span class="n">i</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">derivee</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># On crée la droite donnée par la dérivée approximative, à partir des points {x}</span>
+<span class="n">tangente_appro</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="n">derivee</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="c1"># On crée la droite donnée par la dérivée analytique au point (x[i], y[i])</span>
+<span class="n">tangente_vraie</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span> <span class="o">+</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="s1">&#39;o&#39;</span><span class="p">)</span> <span class="c1"># Juste pour mettre en valeur le point considéré</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tangente_appro</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;tangente approx&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">tangente_vraie</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;tangente analytique&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span> <span class="c1"># Restreint l&#39;échelle des ordonnées autour des données de cos(x)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_5_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_5_0.png" />
+</div>
+</div>
+<div class="section" id="Exercice">
+<h3>Exercice<a class="headerlink" href="#Exercice" title="Lien permanent vers ce titre">¶</a></h3>
+<ul class="simple">
+<li><p>Dans le programme ci-dessus, essayez de changer la valeur de i entre 0 et 11</p></li>
+<li><p>Est-ce que ça marche aussi bien pour tous les points ? Pourquoi ?</p></li>
+</ul>
+<p>Pour calculer la dérivée pour tous les points (ou presque), on utilise une boucle <code class="docutils literal notranslate"><span class="pre">for</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># On commence par initialiser le tableau</span>
+<span class="c1"># Attention ! La boucle for ne peut calculer que n - 1 points car x[n] n&#39;existe pas !</span>
+<span class="n">derivee</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">derivee</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">y</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+
+<span class="c1"># On trace la fonction</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;cos(x)&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;y&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span> <span class="c1"># Pour faire joli</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">)</span> <span class="c1"># Pour faire joli</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Puis on trace sa dérivée sur un autre graphe</span>
+<span class="n">xn</span> <span class="o">=</span> <span class="n">x</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">derivee</span><span class="p">,</span> <span class="s1">&#39;+&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;dérivée numérique&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;x&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;dy/dx&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">1.25</span><span class="p">,</span> <span class="mf">1.25</span><span class="p">)</span> <span class="c1"># Pour faire joli</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.25</span><span class="p">,</span> <span class="mf">5.25</span><span class="p">)</span> <span class="c1"># Pour faire joli</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">()</span>
+
+<span class="c1"># On peut comparer à la solution analytique de la dérivée</span>
+<span class="n">xa</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">0.01</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xa</span><span class="p">,</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xa</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;dérivée analytique&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">derivee</span> <span class="o">-</span> <span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">xn</span><span class="p">)),</span> <span class="s1">&#39;o--&#39;</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;erreur&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Notez que le graphe de la dérivée numérique a bien un point de moins que la fonction, en x = 5.</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_8_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_8_0.png" />
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_8_1.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_8_1.png" />
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="Integration-numérique">
+<h2>Integration numérique<a class="headerlink" href="#Integration-numérique" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Rappelons tout d’abord que l’intégrale d’une courbe entre deux bornes <span class="math notranslate nohighlight">\([a,b]\)</span> est égale à l’aire <em>sous</em> la courbe (en grisé dans le schéma ci-dessous), c’est-à-dire l’aire de la forme délimitée par l’axe des abscisses en bas, la courbe en haut, et les droites verticales passant par les bornes <span class="math notranslate nohighlight">\(a\)</span> et <span class="math notranslate nohighlight">\(b\)</span> à gauche et à droite. Cette aire est considérée comme <em>positive</em> si la fonction est positive, et <em>négative</em> si la fonction est négative dans les bornes considérées.</p>
+<p>Il existe plusieurs méthodes numériques pour calculer approximativement une intégrale. Nous allons en présenter une ici, vous en verrez d’autres dans les exercices.</p>
+<div class="section" id="Méthode-des-rectangles">
+<h3>Méthode des rectangles<a class="headerlink" href="#Méthode-des-rectangles" title="Lien permanent vers ce titre">¶</a></h3>
+<p>L’approximation la plus simple est appelée « méthode des rectangles » elle est illustrée dans la figure suivante. Pour une fonction intégrable <span class="math notranslate nohighlight">\(f\)</span>, on cherche à calculer l’intégrale suivante :</p>
+<div class="math notranslate nohighlight">
+\[I(f) = \int_{a}^{b} f(x)\mathrm{d}x\]</div>
+<p>on choisit de discrétiser l’intervalle <span class="math notranslate nohighlight">\([a,b]\)</span> en <span class="math notranslate nohighlight">\(n\)</span> intervalles de même longueur, repérés par les points <span class="math notranslate nohighlight">\(x_i = a+i\times\Delta x\)</span> avec <span class="math notranslate nohighlight">\(\Delta x=\frac{b-a}{n}\)</span> . Une approximation de l’intégrale <span class="math notranslate nohighlight">\(I(f)\)</span> est donnée par :</p>
+<div class="math notranslate nohighlight">
+\[I(f) \approx  I_n(f) = \sum_{i=0}^{n-1} f(x_i)\Delta x\]</div>
+<p><img alt="IntRect.png" src="data:image/png;base64,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" /></p>
+<p>En exemple, nous allons calculer l’intégrale de <span class="math notranslate nohighlight">\(f(x) = \cos(x)\)</span> entre <span class="math notranslate nohighlight">\(0\)</span> et <span class="math notranslate nohighlight">\(\frac{\pi}{4}\)</span>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Bornes d&#39;intégration [a, b]</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">b</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">4</span>
+
+<span class="c1"># Calcul du pas d&#39;intégration</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">1000</span> <span class="c1"># Nombre de pas</span>
+<span class="n">Delta_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">/</span> <span class="n">n</span>
+
+<span class="c1"># Initialisation de la somme à zéro</span>
+<span class="n">integrale</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># On ajoute ensuite chaque terme de la somme par une boucle for</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+    <span class="c1"># Valeur de la fonction en (a + i * Delta_x)</span>
+    <span class="n">f_xi</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">i</span> <span class="o">*</span> <span class="n">Delta_x</span><span class="p">)</span>
+    <span class="c1"># Aire approximative sous la courbe entre (a + i * Delta_x) et (a + (i + 1) * Delta_x)</span>
+    <span class="n">aire</span> <span class="o">=</span> <span class="n">f_xi</span> <span class="o">*</span> <span class="n">Delta_x</span>
+    <span class="c1"># Somme des aires</span>
+    <span class="n">integrale</span> <span class="o">=</span> <span class="n">integrale</span> <span class="o">+</span> <span class="n">aire</span>
+
+<span class="c1"># Calculons aussi le résultat analytique pour comparer</span>
+<span class="n">integralevraie</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;approximation </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">integrale</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;analytique </span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">integralevraie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+approximation    0.7072217637363588
+analytique       0.7071067811865475
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Exercice<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Faites varier le nombre de pas dans le code ci-dessus. Que remarquez-vous ?</p>
+</div>
+</div>
+<div class="section" id="Travail-préparatoire">
+<h2>Travail préparatoire<a class="headerlink" href="#Travail-préparatoire" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour préparer la séance en présentiel, vous dériverez analytiquement et trouverez les primitives des fonctions suivantes, en précisant leurs intervalles de définition :</p>
+<div class="math notranslate nohighlight">
+\[f(x) = \frac{1-x^2}{x^4+2x^2+1}\]</div>
+<div class="math notranslate nohighlight">
+\[g(x) = \tan(x)\]</div>
+<div class="math notranslate nohighlight">
+\[h(x) = \frac{1}{1+e^{-x}} = \frac{e^x}{e^{x} + 1}\]</div>
+<p>Puis utilisez les modules <code class="docutils literal notranslate"><span class="pre">numpy</span></code> et <code class="docutils literal notranslate"><span class="pre">matplotlib.pyplot</span></code> pour tracer ces fonctions sur un intervalle approprié.</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Fonctions demandées</span>
+
+<span class="k">def</span> <span class="nf">f</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># Intervalle R</span>
+    <span class="k">return</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">4</span> <span class="o">+</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">g</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># Intervalle -pi / 2, +pi / 2</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">h</span><span class="p">(</span><span class="n">x</span><span class="p">):</span> <span class="c1"># Intervalle R</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="c1"># Dérivées</span>
+
+<span class="k">def</span> <span class="nf">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">-</span> <span class="mi">3</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">**</span> <span class="mi">3</span>
+
+<span class="k">def</span> <span class="nf">gprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">tan</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">def</span> <span class="nf">hprime</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">))</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="c1"># Primitives</span>
+
+<span class="k">def</span> <span class="nf">F</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="n">x</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">x</span> <span class="o">**</span> <span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">G</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+
+<span class="k">def</span> <span class="nf">H</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Plot des f, f&#39; et F</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$f$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">fprime</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$f&#39;$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">F</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$F$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_16_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_16_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Plot des g, g&#39; et G</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">+</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">pi</span> <span class="o">/</span> <span class="mi">2</span> <span class="o">-</span> <span class="mf">0.0001</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">g</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$g$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">gprime</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$g&#39;$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">G</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$G$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_17_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_17_0.png" />
+</div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Plot des h, h&#39; et H</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">h</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$h$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">hprime</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s2">&quot;$h&#39;$&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">H</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">&#39;$H$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;$x$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$y$&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">(</span><span class="o">-</span><span class="mf">0.5</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<img alt="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_18_0.png" src="../../_images/notebooks_06-derivation-integration_01-derivation-integration-cours_18_0.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="02-derivation-integration-exercices.html" class="btn btn-neutral float-right" title="Exercices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../sequences/06-derivation-integration/contenu.html" class="btn btn-neutral float-left" title="Déroulement de la séquence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

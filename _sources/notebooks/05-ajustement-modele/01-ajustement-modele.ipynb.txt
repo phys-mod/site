@@ -1,0 +1,471 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Ajuster un modèle aux données"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons vu jusqu'ici plusieurs exemples de modèles en physique, et leur représentation numérique. Ces modèles sont construits pour réprésenter des données expérimentales ou des observations.\n",
+    "\n",
+    "Les modèles dépendent d'un certain nombre de paramètres qu'il faut choisir afin de représenter au mieux les données. Une méthode possible est d'utiliser les données expérimentales ou les observations afin de trouver le meilleur jeu de paramètres qui les représente à l'aide d'un modèle donné. On dit que l'on fait un **ajustement du modèle aux données**. En anglais on appelle cela un ***fit***, terme qui est souvent repris par les physiciens, même en français.\n",
+    "\n",
+    "Une méthode pour trouver le meilleur ajustement d'un modèle aux données est la méthode des moindres carrés, ce que nous allons voir ici."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Paramètres d'un modèle"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Reprenons le modèle de l'accéleration constante vu dans la séquence sur la démarche de modélisation. Nous avons mesuré la vitesse $v_i$ d'un objet pour des temps $t_i$. L'objet est lâché avec une vitesse initiale vers le bas d'environ 1,6 m/s. Voici le résultat des mesures :\n",
+    "\n",
+    "|$i$|0|1|2|3|4|5|6|7|8|9|10|\n",
+    "|--|--|--|--|--|--|--|--|--|--|--|--|\n",
+    "|$t_i$|0.0|0.1|0.2|0.3|0.4|0.5|0.6|0.7|0.8|0.9|1.0|\n",
+    "|$v_i$|0.338|   -1.509|  -5.301|  -4.404|  -6.967|  -6.229|  -5.279|  -9.266|  -8.847| -11.260| -12.040|\n",
+    "\n",
+    "Le modèle est :\n",
+    "\n",
+    "$$\n",
+    "v(t;v_0,g) = v_0 - gt\n",
+    "$$\n",
+    "\n",
+    "Nous déclarons que $v_0$ et $g$ sont les paramètres du modèle. Il est d'usage en physique de noter les paramètres après un point-virgule dans la fonction : $v(t;v_0,g)$, pour les distinguer de la variable libre $t$.\n",
+    "\n",
+    "Nous supposons que les paramètres du modèle, $v_0$ et $g$, ne sont pas connus *a priori*. Nous allons utiliser les données expérimentales pour trouver les meilleures valeurs des paramètres possibles, d'après ces données.\n",
+    "\n",
+    "Représentons graphiquement les données et le modèle :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation des modules\n",
+    "import numpy as np\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# Données experimentales\n",
+    "N = 11\n",
+    "t_exp = np.linspace(0, 1, N)\n",
+    "v_exp = np.array([0.338, -1.509, -5.301, -4.404, -6.967, -6.229, -5.279, -9.266, -8.847, -11.260, -12.040])\n",
+    "\n",
+    "# Paramètres du modèle\n",
+    "g = 5\n",
+    "v0 = 0\n",
+    "\n",
+    "# Discrétisation du modèle\n",
+    "t_mod = np.linspace(0, 1, N)\n",
+    "v_mod = v0 - g * t_exp\n",
+    "\n",
+    "# Représentation graphique du modèle et des données\n",
+    "plt.plot(t_exp, v_exp, '+k', label = 'données expérimentales')\n",
+    "plt.plot(t_mod, v_mod, '-b', label = 'modèle')\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Ajuster la valeur des paramètres $v_0$ et $g$ *à la main*, c'est-à-dire en changeant directement leur valeur dans le script ci-dessus, afin que le modèle représente au mieux les données.\n",
+    "\n",
+    "Quel est le critère qui vous permet de dire que le modèle représente mieux les données ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "##  La méthode des moindres-carrés"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La méthode des moindres carrés permet d'utiliser un critère quantitatif afin de trouver le meilleur ajustement d'un modèle d'après des données expérimentales. Calculons la somme quadratique des écarts entre le modèle et les données du problème : \n",
+    "\n",
+    "$$\n",
+    "S = \\sum_{i=0}^{N-1} (y_i - P(x_i))^2 \n",
+    "$$\n",
+    "\n",
+    "Les couples $(x_i,y_i)$ sont les données expérimentales, alors que $y=P(x)$ est le modèle. Le but pour trouver le modèle le mieux ajusté aux données expérimentales est de minimiser la somme $S$. On minimise les carrés des écarts, d'où le nom de la méthode des « moindres carrés ».\n",
+    "\n",
+    "Si on applique cela au problème de l'accéleration constante, on a :\n",
+    "\n",
+    "$$\n",
+    "S(v_0,g) = \\sum_{i=0}^{N-1} (v_i - (v_0 - g t_i))^2 \n",
+    "$$\n",
+    "\n",
+    "$S$ est une fonction des paramètres du problème, qui doit avoir un minimum pour le meilleur ajustement du modèle au données (*best fit* en anglais).\n",
+    "\n",
+    "Représentons graphiquement cette somme :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Paramètres du modèle\n",
+    "g = 5\n",
+    "v0 = 0\n",
+    "\n",
+    "# Discrétisation du modèle\n",
+    "t_mod = np.linspace(0, 1, N)\n",
+    "v_mod = v0 - g * t_exp\n",
+    "print(v_mod)\n",
+    "\n",
+    "# Calcul de la somme S\n",
+    "Si = (v_exp - v_mod) ** 2\n",
+    "S = np.sum(Si)\n",
+    "\n",
+    "# Représentation graphique du modèle et des données\n",
+    "plt.plot(t_exp, v_exp, '+k', label = 'données expérimentales')\n",
+    "plt.plot(t_mod, v_mod, '-b', label = 'modèle')\n",
+    "\n",
+    "# représentation des écarts entre le modèle et les données\n",
+    "for i in range(N - 1):\n",
+    "    plt.plot((t_exp[i], t_exp[i]), (v_exp[i], v_mod[i]), '-r')\n",
+    "\n",
+    "plt.title('S = ' + str(S))\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Dans la cellule ci-dessus, calculer $S$ pour les paramètres trouvés à l'exercice précedent. Pouvez-vous améliorer la valeur des paramètres en vous basant sur la valeur de $S$ ?\n",
+    "\n",
+    "Pourquoi les éléments de la somme des écarts entre les données et le modèle sont-ils mis au carré ?"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Régression linéaire\n",
+    "Pour un modèle linéaire tel que celui de l'accélération constante, il est possible de trouver le minimum de la fonction $S$ de façon analytique.\n",
+    "\n",
+    "Le modèle linéaire est de la forme $P(x; a, b) = a + b x$. La somme $S$ s'écrit alors\n",
+    "\n",
+    "$$\n",
+    "S(a,b) = \\sum_{i=0}^{N-1} [y_i - (a + b x_i)]^2\n",
+    "$$\n",
+    "\n",
+    "Le polynôme $S$ obtenu est du second degré en $a$ et $b$. Il peut s'écrire\n",
+    "\n",
+    "$$\n",
+    "S(a,b) = b^2 \\sum_{i=0}^{N-1} x_i^2 + 2 a b \\sum_{i=0}^{N-1} x_i + N a^2 - 2 b \\sum_{i=0}^{N-1} x_i y_i - 2 a \\sum_{i=0}^{N-1} y_i + \\sum_{i=0}^{N-1} y_i^2\n",
+    "$$\n",
+    "\n",
+    "Une condition nécessaire pour que $S$ ait un minimum en $(a_m,b_m)$ est que le gradient de $S$ s'annule au point $(a_m,b_m)$ :\n",
+    "\n",
+    "\\begin{eqnarray*}\n",
+    "\\frac{\\partial S}{\\partial a} (a_m,b_m) & = & 0 \\;\\;\\;\\; \\Rightarrow \\;\\;\\;\\; N a_m + b_m \\sum_{i=0}^{N-1} x_i = \\sum_{i=0}^{N-1} y_i\\\\\n",
+    "\\frac{\\partial S}{\\partial b} (a_m,b_m) & = & 0 \\;\\;\\;\\; \\Rightarrow \\;\\;\\;\\; a_m \\sum_{i=0}^{N-1} x_i + b_m \\sum_{i=0}^{N-1} x_i^2 = \\sum_{i=0}^{N-1} x_i y_i\n",
+    "\\end{eqnarray*}\n",
+    "\n",
+    "On obtient alors :\n",
+    "\n",
+    "\\begin{eqnarray*}\n",
+    "a_m &=& \\bar{y}-b_m \\bar{x}\\\\\n",
+    "b_m &=& \\frac{\\mathrm{cov}(x,y)}{\\mathrm{var}(x)}\n",
+    "\\end{eqnarray*}\n",
+    "\n",
+    "\n",
+    "où\n",
+    "\n",
+    "\\begin{eqnarray*}\n",
+    "            & \\bar{x} = \\frac{1}{N} \\sum_{i=0}^{N-1} x_{i} \\\\\n",
+    "            & \\bar{y} = \\frac{1}{N} \\sum_{i=0}^{N-1} y_{i} \\\\\n",
+    "            & \\mathrm{cov}(x,y) = \\frac{1}{N} \\sum_{i=0}^{N-1} (x_{i} - \\bar{x}) (y_{i} - \\bar{y_i}) = \\left( \\frac{1}{N} \\sum_{i=0}^{N-1} x_{i} y_{i} \\right) - \\bar{x}\\bar{y} \\\\\n",
+    "            & \\mathrm{var}(x) = \\frac{1}{N} \\sum_{i=0}^{N-1} (x_{i} - \\bar{x})^2 = \\left( \\frac{1}{N} \\sum_{i=0}^{N-1} x_{i}^2 \\right) - \\bar{x}^2\n",
+    "\\end{eqnarray*}\n",
+    "\n",
+    "La fonction suivante renvoie les paramètres $a$ et $b$ de la régression linéaire pour un jeu de données expérimentales :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Fonction régression linéaire\n",
+    "def reglin(xi, yi):\n",
+    "    '''\n",
+    "        Calcule les paramètres a et b du meilleur ajustement d'un modèle linéaire\n",
+    "        y = ax + b sur un jeu de données (xi, yi)\n",
+    "    '''\n",
+    "    N = np.size(xi)\n",
+    "    \n",
+    "    xm = np.mean(xi)\n",
+    "    ym = np.mean(yi)\n",
+    "    cov = 1 / N * np.sum(xi * yi) - xm * ym\n",
+    "    var = 1 / N * np.sum(xi ** 2) - xm ** 2\n",
+    "    \n",
+    "    b = cov / var\n",
+    "    a = ym - b * xm\n",
+    "    \n",
+    "    return (a, b)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "1. Faire une régression linéaire sur les données temps, vitesse : $(t_{\\mathrm{exp}},v_{\\mathrm{exp}})$ en utilisant la fonction `reglin()`.\n",
+    "2. Comparer le résultat obtenu avec les valeurs des paramètres trouvés « à la main » dans l'exercice précédent.\n",
+    "3. Calculer $S$ et le comparer à celui obtenu à l'exercice précédent\n",
+    "3. Tracer les données et le modèle trouvé avec la régression linéaire"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Régression linéaire\n",
+    "a, b = reglin(t_exp, v_exp)\n",
+    "\n",
+    "# Paramètre du modèle \n",
+    "# y(x) = a + bx\n",
+    "# v(t) = v0 - gt\n",
+    "v0 = a\n",
+    "g = -b\n",
+    "\n",
+    "# Affichage du résultat\n",
+    "print('v0 = {:4.2f} m.s**-1'.format(v0))\n",
+    "print('g = {:4.2f} m.s**-2'.format(g))\n",
+    "\n",
+    "# Calcul du modèle\n",
+    "t_mod = np.linspace(0, 1, N)\n",
+    "v_mod = v0 - g * t_mod\n",
+    "\n",
+    "# Calcul de la somme S\n",
+    "Si = (v_exp - (v0 - g * t_exp)) ** 2\n",
+    "S = np.sum(Si)\n",
+    "\n",
+    "# Représentation graphique du modèle et des données\n",
+    "plt.plot(t_exp, v_exp, '+k', label = 'données expérimentales')\n",
+    "plt.plot(t_mod, v_mod, '-b', label = 'modèle')\n",
+    "plt.title('S = ' + str(S))\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## La fonction `curve_fit`"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La fonction `curve_fit` du module `optimize` de `scipy` permet d'ajuster n'importe quel modèle à des données expérimentales.\n",
+    "\n",
+    "Voyons comment elle fonctionne avec les données de vitesse. Il faut d'abord définir la fonction python qui représente le modèle :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "def modlin(x, a, b):\n",
+    "    '''\n",
+    "        Fonction qui représente le modèle linéaire\n",
+    "        y(x; a, b) = a + bx\n",
+    "    '''\n",
+    "    return a + b * x"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "<div class=\"alert alert-warning\">\n",
+    "\n",
+    "**Attention**\n",
+    "\n",
+    "Dans la fonction python qui représente le modèle, il faut absolument que **la variable libre soit le premier argument** de la fonction. Suivent ensuite les paramètres du problème.\n",
+    "</div>"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous importons ensuite la fonction `curve_fit` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "from scipy.optimize import curve_fit"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les arguments de la fonction `curve_fit` sont :\n",
+    "\n",
+    "1. La fonction python qui représente le modèle\n",
+    "2. Le tableau qui représente les données $x_i$\n",
+    "3. Le tableau qui représente les données $y_i$"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ajustement du modèle linéaire\n",
+    "solution = curve_fit(modlin, t_exp, v_exp)\n",
+    "\n",
+    "# Identification des paramètres du modèle\n",
+    "a, b = solution[0]\n",
+    "v0 = a\n",
+    "g = -b\n",
+    "\n",
+    "# Affichage du résultat\n",
+    "print('v0 = {:4.2f} m.s**-1'.format(v0))\n",
+    "print('g = {:4.2f} m.s**-2'.format(g))\n",
+    "\n",
+    "# Calcul du modèle\n",
+    "t_mod = np.linspace(0, 1, N)\n",
+    "v_mod = modlin(t_mod, a, b)\n",
+    "\n",
+    "# Calcul de la somme S\n",
+    "Si = (v_exp - v_mod) ** 2\n",
+    "S = np.sum(Si)\n",
+    "\n",
+    "# Représentation graphique du modèle et des données\n",
+    "plt.plot(t_exp, v_exp, '+k', label = 'données expérimentales')\n",
+    "plt.plot(t_mod, v_mod, '-b', label = 'modèle')\n",
+    "plt.title('S = ' + str(S))\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit que l'on obtient le même résultat qu'avec la régression linéaire. Ce ne sont pourtant pas les mêmes méthodes numériques qui sont employées. En augmentant le nombre de chiffres après la virgule utilisés pour afficher les paramètres trouvés avec chaque méthode, vous verrez que les résultats finissent par différer. On appelle cela la précision numérique de la méthode numérique. On le voit aussi sur les sommes $S$ qui sont différentes, certes pas de beaucoup !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "Grâce à la fonction `curve_fit`, on peut facilement changer de modèle. Définir un modèle quadratique de la forme $y(x;a,b,c) = a + bx + cx^2$, et ajuster les paramètres sur les données de vitesse. Calculer la somme $S$ et représenter le modèle et les données."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "def modquad(x, a, b, c):\n",
+    "    '''\n",
+    "        Fonction qui représente le modèle quadratique\n",
+    "        y(x; a,b,c) = a + bx + cx**2\n",
+    "    '''\n",
+    "    return a + b * x + c * x ** 2\n",
+    "\n",
+    "# Ajustement du modèle quadratique\n",
+    "solution = curve_fit(modquad, t_exp, v_exp)\n",
+    "\n",
+    "# Paramètres du modèle\n",
+    "a, b, c = solution[0]\n",
+    "v0 = a\n",
+    "g = -b\n",
+    "\n",
+    "# Affichage du résultat\n",
+    "print('v0 = {:4.2f} m.s**-1'.format(v0))\n",
+    "print('g = {:4.2f} m.s**-2'.format(g))\n",
+    "print('c = {:4.2f} m.s**-3'.format(c))\n",
+    "\n",
+    "# Calcul du modèle\n",
+    "t_mod = np.linspace(0, 1, N)\n",
+    "v_mod = modquad(t_mod, a, b, c)\n",
+    "\n",
+    "# Calcul de la somme S\n",
+    "Si = (v_exp - v_mod) ** 2\n",
+    "S = np.sum(Si)\n",
+    "\n",
+    "# Représentation graphique du modèle et des données\n",
+    "plt.plot(t_exp, v_exp, '+k', label = 'données expérimentales')\n",
+    "plt.plot(t_mod, v_mod, '-b', label = 'modèle')\n",
+    "plt.title('S = ' + str(S))\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

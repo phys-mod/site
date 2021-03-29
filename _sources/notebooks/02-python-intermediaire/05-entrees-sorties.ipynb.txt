@@ -1,0 +1,665 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Entrées-sorties"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Commencer une ligne avec `!` vous donne accès aux commandes du shell. Par exemple, `! ls` (pour Linux ou Mac) ou `! dir` (pour Windows) permet d'afficher les fichiers présents dans votre répertoire de travail :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 2,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "banksy.txt\t\t    exoplanets.csv     iteration.ipynb\n",
+      "dictionnaires-pandas.ipynb  exoplanets.dat     logique-filtrage.ipynb\n",
+      "entrees-sorties.ipynb\t    exoplanets-SI.dat  test.txt\n",
+      "europe.csv\t\t    exo-write.txt      verne-lune.txt\n",
+      "europe.pkl\t\t    fonctions.ipynb\n"
+     ]
+    }
+   ],
+   "source": [
+    "! ls"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Lire un fichier texte\n",
+    "Nous avons extrait un passage du livre *De la Terre à la Lune, trajet direct en 97 heures 20 minutes*, paru en 1865 et écrit par Jules Verne (1828-1905). Il est [disponible librement](https://www.gutenberg.org/ebooks/799) sur le site du Projet Gutenberg. Cet extrait est enregistré dans le fichier nommé *verne-lune.txt*.\n",
+    "\n",
+    "Pour pouvoir importer le texte dans Python, il faut d'abord ouvrir le fichier avec la fonction `open()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 3,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ouverture du fichier texte\n",
+    "file = open('verne-lune.txt', mode = 'r', encoding = 'utf-8')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons donné à l'argument `mode` la valeur `r` pour ouvrir le fichier seulement en lecture et pas en écriture (*read-only*). Cela permet d'empêcher toute modification du fichier. Afin de lire tout le fichier, on peut utiliser la méthode `.read()` sur la variable `file` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 4,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "                                  _Longs's-Peak, 12 décembre._\n",
+      "\n",
+      "A MM. LES MEMBRES DU BUREAU DE L'OBSERVATOIRE DE CAMBRIDGE.\n",
+      "\n",
+      "_Le projectile lancé par la Columbiad de Stone's-Hill a été aperçu par\n",
+      "MM. Belfast et J.-T. Maston, le 12 décembre, à huit heures\n",
+      "quarante-sept minutes du soir, la Lune étant entrée dans son dernier\n",
+      "quartier.\n",
+      "\n",
+      "Ce projectile n'est point arrivé à son but.  Il a passé à côté, mais\n",
+      "assez près, cependant, pour être retenu par l'attraction lunaire.\n",
+      "\n",
+      "Là, son mouvement rectiligne s'est changé en un mouvement circulaire\n",
+      "d'une rapidité vertigineuse, et il a été entraîné suivant une orbite\n",
+      "elliptique autour de la Lune, dont il est devenu le véritable\n",
+      "satellite.\n",
+      "\n",
+      "Les éléments de ce nouvel astre n'ont pas encore pu être déterminés.\n",
+      "On ne connaît ni sa vitesse de translation, ni sa vitesse de rotation.\n",
+      "La distance qui le sépare de la surface de la Lune peut être évaluée à\n",
+      "deux mille huit cent trente-trois milles environ (-- 4,500 lieues).\n",
+      "\n",
+      "Maintenant, deux hypothèses peuvent se produire et amener une\n",
+      "modification dans l'état des choses:\n",
+      "\n",
+      "Ou l'attraction de la Lune finira par l'emporter, et les voyageurs\n",
+      "atteindront le but de leur voyage;\n",
+      "\n",
+      "Ou, maintenu dans un ordre immutable, le projectile gravitera autour\n",
+      "du disque lunaire jusqu'à la fin des siècles.\n",
+      "\n",
+      "C'est ce que les observations apprendront un jour, mais jusqu'ici la\n",
+      "tentative du Gun-Club n'a eu d'autre résultat que de doter d'un nouvel\n",
+      "astre notre système solaire._\n",
+      "\n",
+      "                                                    J.-M. BELFAST.\n",
+      "\n",
+      "\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Lecture du fichier\n",
+    "print(file.read())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Une fois fini, il faut libérer la mémoire en fermant le fichier. On peut vérifier si le fichier est ouvert ou fermé en affichant l'attribut `closed` de l'objet `file` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 5,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "False\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Vérifie si le fichier est fermé\n",
+    "print(file.closed)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Le fichier n'est pas fermé. On peut le fermer avec la méthode `.close()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": 6,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [
+    {
+     "name": "stdout",
+     "output_type": "stream",
+     "text": [
+      "True\n"
+     ]
+    }
+   ],
+   "source": [
+    "# Fermeture du fichier\n",
+    "file.close()\n",
+    "\n",
+    "# Vérifie si le fichier est fermé\n",
+    "print(file.closed)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut aussi ne lire qu'une seule ligne avec la méthode `.readline()`. Si on utilise de nouveau cette méthode, alors Python lit la ligne suivante :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Ouverture du fichier texte\n",
+    "file = open('verne-lune.txt', mode = 'r', encoding = 'utf-8')\n",
+    "\n",
+    "# Lecture des 3 premières lignes\n",
+    "print(file.readline())\n",
+    "print(file.readline())\n",
+    "print(file.readline())\n",
+    "\n",
+    "# Fermeture du fichier\n",
+    "file.close()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Ouvrir le fichier *banksy.txt* en lecture seul\n",
+    "2. Afficher le fichier\n",
+    "3. Fermer le fichier"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Ouverture du fichier texte\n",
+    "file = open('banksy.txt', mode = 'r', encoding = 'utf-8')\n",
+    "\n",
+    "# Lecture du fichier\n",
+    "print(file.read())\n",
+    "\n",
+    "# Fermeture du fichier\n",
+    "file.close()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Gestionnaire de contexte\n",
+    "Le flux d'instructions introduit précédemment peut poser problème : si une erreur intervient avant la fermeture du fichier (avec la méthode `.close()`), celui-ci ne sera pas fermé et des données pourraient être perdues.\n",
+    "\n",
+    "La meilleure manière de faire est d'utiliser un **gestionnaire de contexte**, que l'on utilise avec l'instruction `with` de la façon suivante :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Ouverture et lecture du fichier avec un gestionnaire de contexte\n",
+    "with open('verne-lune.txt', mode = 'r', encoding = 'utf-8') as file:\n",
+    "    print(file.readline())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "La fermeture du fichier est alors implicite. On peut aussi écrire dans un fichier avec la méthode `.write()`. Pour cela, il faut ouvrir le fichier avec le mode `'w'` (*write*) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ouverture et écriture dans un fichier avec un gestionnaire de contexte\n",
+    "with open('test.txt', mode = 'w') as file:\n",
+    "    file.write('Je sais écrire dans un fichier !\\nSuper !')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Le caractère spécial `\\n` dans la chaîne de caractères permet le retour à la ligne.\n",
+    "\n",
+    "Il existe de nombreux [modes d'ouverture d'un fichier](https://docs.python.org/fr/3/library/functions.html#open), les principaux étant :\n",
+    "\n",
+    "| Caractère | Signification\n",
+    "|--|--\n",
+    "| `'r'` | ouvre en lecture (par défaut)\n",
+    "| `'w'` | ouvre en écriture, tronquant le fichier\n",
+    "| `'x'` | ouvre pour une création exclusive, échouant si le fichier existe déjà\n",
+    "| `'a'` | ouvre en écriture, ajoutant à la fin du fichier s'il existe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "En utilisant un gestionnaire de contexte et une boucle `for` :\n",
+    "\n",
+    "1. Afficher la ligne 13 du fichier *verne-lune.txt*. Pour cela il faut exécuter 12 fois la méthode `.readline()` sans `print()`, puis une treizième fois avec `print()`\n",
+    "2. Créez un fichier nommé *exo-write.txt* dans lequel vous écrirez tous les entiers entre 1 et 100 (avec un entier par ligne)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 1. Ouverture et lecture du fichier avec un gestionnaire de contexte\n",
+    "with open('verne-lune.txt', mode = 'r', encoding = 'utf-8') as file:\n",
+    "    for i in range(12):\n",
+    "        file.readline()\n",
+    "    print(file.readline())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 2. Ouverture et écriture dans un fichier avec un gestionnaire de contexte\n",
+    "with open('exo-write.txt', mode = 'w') as file:\n",
+    "    for i in range(1, 101):\n",
+    "        file.write(str(i) + '\\n')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Lire le clavier\n",
+    "La fonction `input()` lit tout ce qui est écrit au clavier comme une chaîne de caractères :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Lire qui est écrit au clavier (finir avec la touche entrée)\n",
+    "chaine = input(\"Entrez votre message avec input:\\n\")\n",
+    "\n",
+    "# Afficher ce qui a été écrit\n",
+    "print(\"vous avez entré :\", chaine)\n",
+    "print(type(chaine))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Avec la fonction `input()`, demander à l'utilisateur d'entrer un entier au clavier et affecter la valeur à une variable `sn`\n",
+    "2. Convertir la variable `sn` en entier avec la fonction `int()`, et affecter la valeur à une variable `n`\n",
+    "3. Afficher le carré de `n` à l'écran"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Entrée au clavier\n",
+    "sn = input(\"Entrer un entier :\\n\")\n",
+    "\n",
+    "# Conversion en entier\n",
+    "n = int(sn)\n",
+    "\n",
+    "# Afficher le carré de n\n",
+    "print(n * n)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Format défini\n",
+    "Dans l'exemple suivant nous affichons les valeurs des variables `x` et `n` avec un format défini. La syntaxe est similaire à celle d'autres langages comme Matlab ou C :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création des variables\n",
+    "x = 45.9876\n",
+    "n = 6\n",
+    "\n",
+    "# Affichage avec un format défini\n",
+    "print('x = %5.3f, n = %d' % (x, n))\n",
+    "print('x = %5.3e, n = %5d' % (x, n))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "`%5d`\n",
+    "\n",
+    "- `5` est le nombre de caractères imprimés, y compris les espaces blancs\n",
+    "- `d` indique un entier\n",
+    "\n",
+    "`%5.3f`\n",
+    "\n",
+    "- `5` est le nombre total de caractères imprimés, y compris le signe - si le chiffre est négatif, ou tout autre caractère. Cependant le nombre de caractères imprimés sera supérieur à ce chiffre si il est trop petit pour pouvoir atteindre la pécision recquise dans l'affichage : dans l'exemple donné, le nombre total de caractères imprimés est 6\n",
+    "- `3` est le nombre de chiffres après le point décimal (6 par défaut)\n",
+    "- `f` donne le type, ici le format fixe pour un réel\n",
+    "\n",
+    "`%5.3e`\n",
+    "\n",
+    "- la seule différence est `e` qui donne le type d'affichage exponentiel\n",
+    "\n",
+    "Une syntaxe alternative a été introduite depuis Python 2.6 avec la méthode `.format()` des chaînes de caractères :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print('x = {:f}, n = {}'.format(x, n))\n",
+    "print('x = {:8.3f}, n = {:d}'.format(x, n))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Un bon endroit pour découvrir toutes les possibilités offertes par le formatage en Python, dans les deux styles d'écriture, est le [site pyformat](https://pyformat.info)."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Lire et écrire des tableaux Numpy\n",
+    "Pour importer les données d'un fichier texte dans un tableau Numpy on peut utiliser la fonction `loadtxt()`. Chaque ligne du fichier doit avoir le même nombre de valeurs. Par défaut les lignes commençant par # ne sont pas lues. Elles sont généralement utilisées pour décrire les données dans l'en-tête du fichier.\n",
+    "\n",
+    "Nous disposons d'un fichier *exoplanets.dat* qui décrit les caractéristiques de 256 [exoplanètes](https://fr.wikipedia.org/wiki/Exoplan%C3%A8te). Ces données sont tirées du site internet [exoplanets.org](http://exoplanets.org). Chaque ligne du fichier caractérise une exoplanète et l'étoile autour de laquelle elle gravite. Les quatre colonnes donnent :\n",
+    "\n",
+    "1. le demi-grand axe de l'orbite parcourue par la planète en [unités astronomiques](https://fr.wikipedia.org/wiki/Unit%C3%A9_astronomique) ;\n",
+    "2. la période orbitale en jours ;\n",
+    "3. la masse de la planète en unités de masse de Jupiter ;\n",
+    "4. la masse de l'étoile autour de laquelle la planète gravite en unités de masse solaire.\n",
+    "\n",
+    "Importons les données dans la variable `data` grâce à la fonction `loadtxt()` de Numpy :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "# Importation des données\n",
+    "data = np.loadtxt('exoplanets.dat')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous vérifions que `data` est bien un tableau Numpy de forme (256, 4) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(type(data))\n",
+    "print(data.shape)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Plutôt que de créer un tableau 2D, il est possible de créer 4 tableaux 1D contenant les données de chaque colonne directement avec l'argument `unpack` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "a, p, mp, me = np.loadtxt('exoplanets.dat', unpack = True)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous voulons changer les unités des données en [unités S.I.](https://fr.wikipedia.org/wiki/Syst%C3%A8me_international_d%27unit%C3%A9s) et sauvegarder les nouvelles données dans un nouveau fichier. D'abord, changeons les unités :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Set constants\n",
+    "au2m = 149597870700. # Conversion from astronomical units to m\n",
+    "day2seconds = 24. * 60. * 60. # Conversion from day to seconds\n",
+    "M_jupiter = 1.898e27 # Jupiter mass in kg\n",
+    "M_sun = 1.9891e30 # Solar mass in kg\n",
+    "\n",
+    "# Change units to SI\n",
+    "a_SI = a * au2m\n",
+    "p_SI = p * day2seconds\n",
+    "mp_SI = mp * M_jupiter\n",
+    "me_SI = me * M_sun"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut ensuite sauvegarder les nouvelles données dans le fichier *exoplanets-SI.dat* avec la fonction Numpy `savetxt()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "np.savetxt('exoplanets-SI.dat', np.c_[a_SI, p_SI, mp_SI, me_SI], fmt = '%10.3e')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On a utilisé la commande Numpy `c_[]` pour concaténer en colonnes les tableaux 1D. L'argument `fmt` permet de spécifier le format d'écriture, avec la même syntaxe vue plus haut pour `print`."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Importer des données mixtes avec Pandas\n",
+    "Il arrive souvent que les données à importer soient de types différents. Il n'est pas très pratique de les importer avec Numpy. On peut alors utiliser le module Pandas. Nous avons sauvegardé un fichier plus complet contenant les informations de 3236 exoplanètes, sous la forme d'un fichier csv. La signification des différentes colonnes est expliquée sur le site [exoplanets.org](http://exoplanets.org/table). Ces colonnes contiennent à la fois des données numériques et du texte. On ne peut pas utiliser la fonction `loadtxt()`.\n",
+    "\n",
+    "Comme expliqué dans le module *Dictionnaires et Pandas*, on utilise la fonction `read_csv()` pour importer et créer un DataFrame :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importer le module pandas\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Importer les données dans un DataFrame\n",
+    "data = pd.read_csv('exoplanets.csv')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous vérifions que les données ont bien été importées :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Affichage des 3 premières lignes\n",
+    "data.head(n = 3)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit que les données manquantes ont été remplacées par NaN ([Not-a-Number](https://fr.wikipedia.org/wiki/NaN)).\n",
+    "\n",
+    "On peut maintenant utiliser ces données, par exemple pour savoir combien de planètes ont été reportées pour la première fois dans la référence *Morton 2016* :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Nombre de planètes dans Morton 2016\n",
+    "print(np.sum(data['FIRSTREF'] == 'Morton 2016'))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Remarquez que dans cette commande on a sommé les éléments d'un objet Series contenant des booléens. Dans ce cas, la valeur `True` est considérée comme un `1`, et la valeur `False` comme un `0`."
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

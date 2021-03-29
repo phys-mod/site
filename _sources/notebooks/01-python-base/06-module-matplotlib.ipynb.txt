@@ -1,0 +1,606 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Le module Matplotlib"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Afficher des points\n",
+    "\n",
+    "Les représentations graphiques sont très importantes en science, à la fois pour la compréhension et l'interprétation d'un problème. Pour cela nous allons utiliser le [module Matplotlib](http://matplotlib.org/).\n",
+    "\n",
+    "La fonction `plot()` du module *pyplot* de Matplotlib permet d'afficher des points sur un graphique à 2 dimensions. Pour cela il faut donner comme arguments à la fonction `plot()` :\n",
+    "- argument 1 : liste des abscisses des points à afficher (x)\n",
+    "- argument 2 : liste des ordonnées des points à afficher (y)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module pyplot de Matplotlib, renommé plt\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# listes des coordonnées des points à afficher\n",
+    "x = [2, -9, -5, 6, 1] # abscisses\n",
+    "y = [6, -3, 6, 0, -6] # ordonnées\n",
+    "\n",
+    "# Graphique\n",
+    "plt.plot(x, y)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Par défaut, la fonction `plot()` relie chaque point par une droite. Cependant, il est possible d'afficher seulement les points avec :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.plot(x, y, 'o')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Dessiner un losange grâce à la fonction `plot()`. Pour cela, il faut déterminer les coordonnées des coins du losange."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Dessiner un losange\n",
+    "x = [-1, 0, 1, 0, -1]\n",
+    "y = [0, -1, 0, 1,  0]\n",
+    "plt.plot(x, y)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation graphique d'une fonction mathématique\n",
+    "\n",
+    "Pour une fonction réelle d'une variable réelle $f:\\mathbb{R}\\rightarrow\\mathbb{R}$, l'ensemble des points de coordonnées $(x,f(x))$ définit le **graphe** de la fonction $f$. Ce graphe est contenu dans le plan $\\mathbb{R}^2$ et se présente sous la forme d'une courbe appelée **courbe représentative**. Nous allons tracer cette courbe représentative à l'aide de Matplotlib.\n",
+    "\n",
+    "Cependant la courbe représentative contient une infinité de points (courbe continue), alors que Matplotlib nous permet seulement d'afficher un nombre fini de points. Il faut alors **discrétiser** cette courbe, c'est-à-dire choisir un nombre fini de points pour la représenter. Voici un exemple avec la fonction sinus :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module Numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "# Choix de l'intervalle de représentation\n",
+    "intervalle_min = 0\n",
+    "intervalle_max = 10 * np.pi\n",
+    "\n",
+    "# Choix du pas de discrétisation\n",
+    "pas = 0.1\n",
+    "\n",
+    "# Calcul du nombre de points\n",
+    "intervalle = intervalle_max - intervalle_min\n",
+    "num_points = int(intervalle / pas) + 1\n",
+    "\n",
+    "# Création du tableau contenant les abscisses des points\n",
+    "x = np.linspace(intervalle_min, intervalle_max, num_points)\n",
+    "\n",
+    "# Création du tableau contenant l'image du tableau x par la fonction sinus\n",
+    "y = np.sin(x)\n",
+    "\n",
+    "# Courbe représentative\n",
+    "plt.plot(x, y)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Comme on a choisi un pas petit devant la période de la fonction sinus, on a l'illusion d'avoir tracé une courbe continue. Cependant, ce n'est qu'un nombre fini de points reliés par des droites. On peut s'en persuader en traçant les points sans les relier :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "plt.plot(x, y, '.')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ainsi, si le pas de discrétisation n'est pas adapté, la représentation de la courbe sera mauvaise. Par exemple, un pas de 1.2 ne permet par de bien représenter la fonction sinus :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Choix du pas de discrétisation\n",
+    "pas = 1.2\n",
+    "\n",
+    "# Calcul du nombre de points\n",
+    "intervalle = intervalle_max - intervalle_min\n",
+    "num_points = int(intervalle / pas) + 1\n",
+    "\n",
+    "# Création du tableau contenant les abscisses des points\n",
+    "x = np.linspace(intervalle_min, intervalle_max, num_points)\n",
+    "\n",
+    "# Création du tableau contenant l'image du tableau x par la fonction sinus\n",
+    "y = np.sin(x)\n",
+    "\n",
+    "# Courbe représentative\n",
+    "plt.plot(x, y, '-o')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Représenter graphiquement la fonction tangente hyperbolique en choisissant un intervalle et un pas de discrétisation appropriés. La fonction se nomme `tanh()` dans le module Numpy."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Choix de l'intervalle de représentation\n",
+    "intervalle_min = -5\n",
+    "intervalle_max = 5\n",
+    "\n",
+    "# Choix du pas de discrétisation\n",
+    "pas = 0.1\n",
+    "\n",
+    "# Calcul du nombre de points\n",
+    "intervalle = intervalle_max - intervalle_min\n",
+    "num_points = int(intervalle / pas) + 1\n",
+    "\n",
+    "# Création du tableau contenant les abscisses des points\n",
+    "x = np.linspace(intervalle_min, intervalle_max, num_points)\n",
+    "\n",
+    "# Création du tableau contenant l'image du tableau x par la fonction tanh\n",
+    "y = np.tanh(x)\n",
+    "\n",
+    "# Courbe représentative\n",
+    "plt.plot(x, y)\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation de données\n",
+    "\n",
+    "Il est bien sûr possible de représenter graphiquement des données. Généralement les données sont écrites dans un fichier ou sous la forme d'un tableau. Par exemple, prenons l'[évolution de la population mondiale](https://fr.wikipedia.org/w/index.php?title=Population_mondiale&action=edit&section=3) telle que donnée sur la page Wikipédia sous forme d'un tableau :\n",
+    "\n",
+    "| Année | Population\n",
+    "|--|--\n",
+    "| 1950 | 2536431\n",
+    "| 1955 | 2773020\n",
+    "| 1960 | 3034950\n",
+    "| 1965 | 3339584\n",
+    "| 1970 | 3700437\n",
+    "| 1975 | 4079480\n",
+    "| 1980 | 4458003\n",
+    "| 1985 | 4870922\n",
+    "| 1990 | 5327231\n",
+    "| 1995 | 5744213\n",
+    "| 2000 | 6143494\n",
+    "| 2005 | 6541907\n",
+    "| 2010 | 6956824\n",
+    "| 2015 | 7379797\n",
+    "| 2020 | 7794799"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons vu que Matplotlib est compatible avec les tableaux Numpy. Créons les tableaux suivant :\n",
+    "\n",
+    "- en abscisse : l'année, avec le type `datetime64`\n",
+    "- en ordonnée : la population, avec le type `int64`"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création des tableaux\n",
+    "x = np.arange('1950', '2021', step = '5', dtype = 'datetime64[Y]')\n",
+    "y = np.array([2536431, 2773020, 3034950, 3339584, 3700437, 4079480, \n",
+    "              4458003, 4870922, 5327231, 5744213, 6143494, 6541907,\n",
+    "              6956824, 7379797, 7794799], dtype = 'int64')\n",
+    "\n",
+    "# Représentation des données\n",
+    "plt.plot(x, y, 'o')\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Cependant, il est d'usage d'ajouter des informations au graphe afin qu'une personne puisse correctement interpréter la signification des différentes données. Voici les commandes usuelles utilisées pour rendre un graphe plus lisible :\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`title()`  | titre du graphique\n",
+    "`xlabel()` | titre de l'axe des abscisses\n",
+    "`ylabel()` | titre de l'axe des ordonnées\n",
+    "`grid()`   | affichage d'une grille de coordonnées\n",
+    "`xlim(xmin, xmax)` | limites de l'axe des abscisses\n",
+    "`ylim(ymin, ymax)` | limites de l'axe des ordonnées"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Reprendre le graphe précédent et utiliser les commandes ci-dessus pour:\n",
+    "\n",
+    "- mettre un titre au graphe,\n",
+    "- aux axes des abscisses et des ordonnées, \n",
+    "- choisir l'intervalle pour l'abscisse entre 1950 et 2030,\n",
+    "- pour l'ordonnée entre 0 et 10 milliards,\n",
+    "- afficher une grille de coordonnées, \n",
+    "- de plus, on affichera la population en milliards.\n",
+    "\n",
+    "*Note : pour créer un objet `datetime64` il faut écrire `np.datetime64('1950','Y')`*"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "plt.plot(x, y / 1e6, 'o')\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (milliard)')\n",
+    "plt.xlim(np.datetime64('1950', 'Y'), np.datetime64('2030', 'Y'))\n",
+    "plt.ylim(0, 10)\n",
+    "plt.grid()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Afficher plusieurs courbes\n",
+    "\n",
+    "Il est très simple d'afficher plusieurs courbes sur le même graphe : il suffit d'appeler successivement la commande `plot()`, ou bien de mettre les tableaux à la suite dans la même fonction `plot()`.\n",
+    "\n",
+    "Prenons par exemple l'évolution de la population mondiale selon les calculs de l'Organisation des Nations unies (ONU) jusqu'à 2100. L'ONU définit [3 scénarios possibles](https://fr.wikipedia.org/wiki/Population_mondiale#Projections_de_la_population_mondiale_jusqu'en_2100), dont les chiffres sont donnés dans le tableau suivant :\n",
+    "\n",
+    "| Année | Variante basse | Variante moyenne | Variante haute\n",
+    "|--|--|--|--\n",
+    "| 2020 | 7 794 779 | 7 794 799 | 7 794 799\n",
+    "| 2030 | 8 363 453 | 8 548 487 | 8 733 522\n",
+    "| 2040 | 8 716 310 | 9 198 847 | 9 682 332\n",
+    "| 2050 | 8 906 797 | 9 735 034 | 10 587 774\n",
+    "| 2060 | 8 882 880 | 10 151 470 | 11 529 222\n",
+    "| 2070 | 8 675 770 | 10 459 240 | 12 495 987\n",
+    "| 2080 | 8 331 397 | 10 673 904 | 13 478 079\n",
+    "| 2090 | 7 869 840 | 10 809 892 | 14 515 851\n",
+    "| 2100 | 7 322 116 | 10 875 394 | 15 600 369\n",
+    "\n",
+    "Reprenons la courbe de l'évolution de la population entre 1950 et 2020, et ajoutons les différentes projections faites par l'ONU :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# tableau des abscisses pour les projections\n",
+    "xp = np.arange('2020', '2101', step = '10', dtype = 'datetime64[Y]')\n",
+    "\n",
+    "# tableau des différentes projections\n",
+    "proj1 = np.array([7794779, 8363453, 8716310, 8906797, 8882880, 8675770, 8331397, 7869840, 7322116])\n",
+    "proj2 = np.array([7794799, 8548487, 9198847, 9735034, 10151470, 10459240, 10673904, 10809892, 10875394])\n",
+    "proj3 = np.array([7794799, 8733522, 9682332, 10587774, 11529222, 12495987, 13478079, 14515851, 15600369])\n",
+    "\n",
+    "# tracé des différentes courbes\n",
+    "plt.plot(x, y / 1e6, label = 'entre 1950 et 2020')\n",
+    "plt.plot(xp, proj1 / 1e6, label = 'variante basse')\n",
+    "plt.plot(xp, proj2 / 1e6, label = 'variante moyenne')\n",
+    "plt.plot(xp, proj3 / 1e6, label = 'variante haute')\n",
+    "\n",
+    "# titres et autres\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (milliard)')\n",
+    "plt.xlim(np.datetime64('1950', 'Y'), np.datetime64('2100', 'Y'))\n",
+    "plt.ylim(0, 16)\n",
+    "plt.grid()\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On a utilisé l'option `label` de la fonction `plot()` pour nommer chaque courbe, puis la fonction `legend()` afin d'afficher la légende. De manière alternative et plus compacte, on aurait pu écrire :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# tracé des différentes courbes\n",
+    "plt.plot(x, y / 1e6, xp, proj1 / 1e6, xp, proj2 / 1e6, xp, proj3 / 1e6)\n",
+    "\n",
+    "# titres et autres\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (milliard)')\n",
+    "plt.xlim(np.datetime64('1950', 'Y'), np.datetime64('2100', 'Y'))\n",
+    "plt.ylim(0, 16)\n",
+    "plt.grid()\n",
+    "plt.legend(['entre 1950 et 2020', 'variante basse', 'variante moyenne', 'variante haute'])\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Une question de style\n",
+    "\n",
+    "Plusieurs options de la fonction `plot()` sont utiles pour contrôler le style de la courbe représentée. Voici quelques options parmi les plus utilisées :\n",
+    "\n",
+    "option | description | valeurs\n",
+    "--|--|--\n",
+    "`color`  | couleur de la courbe | 'b', 'g', 'r', 'c', 'm', 'y', 'k', 'w'\n",
+    "`linewidth` | épaisseur du trait | nombre réel\n",
+    "`linestyle` | style du trait | '-', '--', '-.', ':'\n",
+    "`marker` | style des points | '+', '*', ',', '.', '1', '2', '3', '4', '<', '>'"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Reprenons la courbe précédente et traçons une courbe plus lisible et plus adaptée pour l'impression en noir et blanc :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# tracé des différentes courbes\n",
+    "plt.plot(x, y / 1e6, label = 'entre 1950 et 2020',    color = 'k', linestyle = '-',  linewidth = 3)\n",
+    "plt.plot(xp, proj1 / 1e6, label = 'variante basse',   color = 'k', linestyle = '--', linewidth = 3)\n",
+    "plt.plot(xp, proj2 / 1e6, label = 'variante moyenne', color = 'k', linestyle = '-.', linewidth = 3)\n",
+    "plt.plot(xp, proj3 / 1e6, label = 'variante haute',   color = 'k', linestyle = ':',  linewidth = 3)\n",
+    "\n",
+    "# titres et autres\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (milliard)')\n",
+    "plt.xlim(np.datetime64('1950', 'Y'), np.datetime64('2100', 'Y'))\n",
+    "plt.ylim(0, 16)\n",
+    "plt.grid()\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "On donne une estimation de la population entre 1700 et 1950 :\n",
+    "\n",
+    "| Année | population (milliards)\n",
+    "|--|--\n",
+    "| 1700 | 0,640\n",
+    "| 1750 | 0,655\n",
+    "| 1800 | 0,950\n",
+    "| 1850 | 1,270\n",
+    "| 1900 | 1,650\n",
+    "| 1910 | 1,750\n",
+    "| 1920 | 1,860\n",
+    "| 1930 | 2,07\n",
+    "| 1940 | 2,3\n",
+    "| 1950 | 2,5\n",
+    "\n",
+    "En reprenant les tableaux définis précédemment et en créant de nouveaux tableaux, tracer la population estimée entre 1700 et 1950, et la population récente entre 1950 et 2020, sur le même graphe. Mettre des titres et une légende."
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# tableau des dates pour l'estimation\n",
+    "test1 = np.arange('1700', '1900', step = '50', dtype = 'datetime64[Y]')\n",
+    "test2 = np.arange('1900', '1951', step = '10', dtype = 'datetime64[Y]')\n",
+    "test = np.append(test1, test2)\n",
+    "\n",
+    "# population estimée\n",
+    "popest = np.array([0.64, 0.655, 0.95, 1.27, 1.65, 1.75, 1.86, 2.07, 2.3, 2.5])\n",
+    "\n",
+    "# tracé des différentes courbes\n",
+    "plt.plot(test, popest, label = 'estimations', color = 'k', linestyle = '--', linewidth = 3)\n",
+    "plt.plot(x, y / 1e6, label = 'passé récent',  color = 'k', linestyle = '-',  linewidth = 3)\n",
+    "\n",
+    "# titres et autres\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (milliard)')\n",
+    "plt.xlim(np.datetime64('1700', 'Y'), np.datetime64('2020', 'Y'))\n",
+    "plt.ylim(0, 8)\n",
+    "plt.grid()\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Échelle logarithmique\n",
+    "\n",
+    "Il arrive souvent que des quantités varient sur plusieurs ordres de grandeur. Il peut être pratique alors de tracer le graphe en *échelle logarithmique*. Voici les différentes fonctions qui permettent de tracer en échelle logarithmique :\n",
+    "\n",
+    "fonction | description\n",
+    "--|--\n",
+    "`loglog()`  | échelle log pour les deux axes\n",
+    "`semilogx()`  | échelle log pour l'axe des abscisses\n",
+    "`semilogy()`  | échelle log pour l'axe des ordonnées\n",
+    "\n",
+    "Prenons par exemple l'évolution estimée de la population depuis l'année -100 000 jusqu'à 1950 :\n",
+    "\n",
+    "| Année | population (millions)\n",
+    "|--|--\n",
+    "| -100 000 | 0,5\n",
+    "| -10 000 | 5\n",
+    "| -6 500 | 8\n",
+    "| -5 000 | 12\n",
+    "| 400 | 200\n",
+    "| 1000 | 300\n",
+    "| 1250 | 410\n",
+    "| 1500 | 485 \n",
+    "| 1700 | 640\n",
+    "| 1750 | 655\n",
+    "| 1800 | 950\n",
+    "| 1850 | 1 270\n",
+    "| 1900 | 1 650\n",
+    "| 1910 | 1 750\n",
+    "| 1920 | 1 860\n",
+    "| 1930 | 2 070\n",
+    "| 1940 | 2 300\n",
+    "| 1950 | 2 500\n",
+    "\n",
+    "Le type `datetime64` ne peut pas être utilisé pour représenter des dates trop anciennes. Nous allons alors utiliser le type `integer` pour les tableaux de dates :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# tableau des dates pour l'estimation\n",
+    "test1 = np.array([-100000, -10000, -6500, -5000, 400,\n",
+    "                  1000, 1250, 1500], dtype = 'int64')\n",
+    "test2 = np.arange(1700, 1900, step = 50, dtype = 'int64')\n",
+    "test3 = np.arange(1900, 1951, step = 10, dtype = 'int64')\n",
+    "test = np.concatenate((test1, test2, test3))\n",
+    "\n",
+    "# population estimée\n",
+    "popest = np.array([5e-1, 5, 8, 12, 200, 300, 410, 485, \n",
+    "                   640, 655, 950, 1270, 1650, 1750, 1860, 2070, 2300, 2500])\n",
+    "\n",
+    "# tracé des estimations\n",
+    "plt.semilogy(test, popest, label = 'estimations', color = 'k', linestyle = '--', linewidth = 3)\n",
+    "\n",
+    "# tracé du passé récent\n",
+    "xint = x.astype(int) + 1970 # conversion de datetime64 vers integer\n",
+    "plt.semilogy(xint, y / 1e3, label = 'passé récent', color = 'k', linestyle = '-', linewidth=3)\n",
+    "\n",
+    "# titres et autres\n",
+    "plt.title('Évolution de la population mondiale')\n",
+    "plt.xlabel('Année')\n",
+    "plt.ylabel('Population (millions)')\n",
+    "#plt.xlim(-1e5, 2020)\n",
+    "#plt.ylim(1e-4, 10)\n",
+    "plt.grid()\n",
+    "plt.legend()\n",
+    "plt.show()"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

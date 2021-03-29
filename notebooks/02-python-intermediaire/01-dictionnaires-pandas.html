@@ -1,0 +1,3126 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Dictionnaires et Pandas &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Logique, structures de contrôle et filtrage" href="02-logique-filtrage.html" />
+    <link rel="prev" title="Déroulement de la séquence" href="../../sequences/02-python-intermediaire/contenu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="02-logique-filtrage.html">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02-logique-filtrage.html#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02-logique-filtrage.html#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03-iteration.html">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Dictionnaires et Pandas</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/02-python-intermediaire/01-dictionnaires-pandas.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Dictionnaires-et-Pandas">
+<h1>Dictionnaires et Pandas<a class="headerlink" href="#Dictionnaires-et-Pandas" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="Les-dictionnaires">
+<h2>Les dictionnaires<a class="headerlink" href="#Les-dictionnaires" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Un dictionnaire ressemble à une liste mais il est plus général. Alors que les indices d’une liste doivent être des entiers, dans un dictionnaire, les indices peuvent être de types différents.</p>
+<p>Un dictionnaire contient une collection d’indices, appelés <strong>clés</strong>, et une collection de valeurs. À chaque <em>clé</em> correspond une <em>valeur</em>, ce que l’on appelle une <strong>paire clé-valeur</strong>, ou <strong>item</strong>.</p>
+<p>La syntaxe pour définir une liste est :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span>
+   <span class="s2">&quot;key1&quot;</span><span class="p">:</span> <span class="s2">&quot;value1&quot;</span><span class="p">,</span>
+   <span class="s2">&quot;key2&quot;</span><span class="p">:</span> <span class="s2">&quot;value2&quot;</span><span class="p">,</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Définissons 2 listes nous donnant les pays européens et leur capitale :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">pays</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;allemagne&#39;</span><span class="p">,</span> <span class="s1">&#39;autriche&#39;</span><span class="p">,</span> <span class="s1">&#39;belgique&#39;</span><span class="p">,</span> <span class="s1">&#39;bulgarie&#39;</span><span class="p">,</span> <span class="s1">&#39;chypre&#39;</span><span class="p">,</span> <span class="s1">&#39;croatie&#39;</span><span class="p">,</span> <span class="s1">&#39;danemark&#39;</span><span class="p">,</span> <span class="s1">&#39;espagne&#39;</span><span class="p">,</span> <span class="s1">&#39;estonie&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;finlande&#39;</span><span class="p">,</span> <span class="s1">&#39;france&#39;</span><span class="p">,</span> <span class="s1">&#39;grèce&#39;</span><span class="p">,</span> <span class="s1">&#39;hongrie&#39;</span><span class="p">,</span> <span class="s1">&#39;irlande&#39;</span><span class="p">,</span> <span class="s1">&#39;italie&#39;</span><span class="p">,</span> <span class="s1">&#39;lettonie&#39;</span><span class="p">,</span> <span class="s1">&#39;lituanie&#39;</span><span class="p">,</span> <span class="s1">&#39;luxembourg&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;malte&#39;</span><span class="p">,</span> <span class="s1">&#39;pays-bas&#39;</span><span class="p">,</span> <span class="s1">&#39;pologne&#39;</span><span class="p">,</span> <span class="s1">&#39;portugal&#39;</span><span class="p">,</span> <span class="s1">&#39;république tchèque&#39;</span><span class="p">,</span> <span class="s1">&#39;roumanie&#39;</span><span class="p">,</span> <span class="s1">&#39;slovaquie&#39;</span><span class="p">,</span> <span class="s1">&#39;slovénie&#39;</span><span class="p">,</span> <span class="s1">&#39;suède&#39;</span><span class="p">]</span>
+<span class="n">capitales</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;berlin&#39;</span><span class="p">,</span> <span class="s1">&#39;vienne&#39;</span><span class="p">,</span> <span class="s1">&#39;bruxelles&#39;</span><span class="p">,</span> <span class="s1">&#39;sofia&#39;</span><span class="p">,</span> <span class="s1">&#39;nicosie&#39;</span><span class="p">,</span> <span class="s1">&#39;zagreb&#39;</span><span class="p">,</span> <span class="s1">&#39;copenhague&#39;</span><span class="p">,</span> <span class="s1">&#39;madrid&#39;</span><span class="p">,</span> <span class="s1">&#39;tallinn&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;helsinki&#39;</span><span class="p">,</span> <span class="s1">&#39;paris&#39;</span><span class="p">,</span> <span class="s1">&#39;athènes&#39;</span><span class="p">,</span> <span class="s1">&#39;budapest&#39;</span><span class="p">,</span> <span class="s1">&#39;dublin&#39;</span><span class="p">,</span> <span class="s1">&#39;rome&#39;</span><span class="p">,</span> <span class="s1">&#39;riga&#39;</span><span class="p">,</span> <span class="s1">&#39;vilnius&#39;</span><span class="p">,</span> <span class="s1">&#39;luxembourg&#39;</span><span class="p">,</span> <span class="s1">&#39;la valette&#39;</span><span class="p">,</span>
+             <span class="s1">&#39;amsterdam&#39;</span><span class="p">,</span> <span class="s1">&#39;varsovie&#39;</span><span class="p">,</span> <span class="s1">&#39;lisbonne&#39;</span><span class="p">,</span> <span class="s1">&#39;prague&#39;</span><span class="p">,</span> <span class="s1">&#39;bucarest&#39;</span><span class="p">,</span> <span class="s1">&#39;bratislava&#39;</span><span class="p">,</span> <span class="s1">&#39;ljubljana&#39;</span><span class="p">,</span> <span class="s1">&#39;stockholm&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<p>Nous voulons trouver la capitale de la Hongrie. Nous pouvons utiliser la méthode de liste <code class="docutils literal notranslate"><span class="pre">index()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Trouver l&#39;indice de &#39;hongrie&#39;</span>
+<span class="n">ind_hongrie</span> <span class="o">=</span> <span class="n">pays</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;hongrie&#39;</span><span class="p">)</span>
+
+<span class="c1"># Afficher la capitale de la Hongrie</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">capitales</span><span class="p">[</span><span class="n">ind_hongrie</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Budapest
+</pre></div></div>
+</div>
+<p>Maintenant, définissons un dictionnaire contenant les même informations :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">europe</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;allemagne&#39;</span> <span class="p">:</span> <span class="s1">&#39;berlin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;autriche&#39;</span> <span class="p">:</span> <span class="s1">&#39;vienne&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;belgique&#39;</span> <span class="p">:</span> <span class="s1">&#39;bruxelles&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;bulgarie&#39;</span> <span class="p">:</span> <span class="s1">&#39;sofia&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;chypre&#39;</span> <span class="p">:</span> <span class="s1">&#39;nicosie&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;croatie&#39;</span> <span class="p">:</span> <span class="s1">&#39;zagreb&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;danemark&#39;</span> <span class="p">:</span> <span class="s1">&#39;copenhague&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;espagne&#39;</span> <span class="p">:</span> <span class="s1">&#39;madrid&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;estonie&#39;</span> <span class="p">:</span> <span class="s1">&#39;tallinn&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;finlande&#39;</span> <span class="p">:</span> <span class="s1">&#39;helsinki&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;france&#39;</span> <span class="p">:</span> <span class="s1">&#39;paris&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;grèce&#39;</span> <span class="p">:</span> <span class="s1">&#39;athènes&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;hongrie&#39;</span> <span class="p">:</span> <span class="s1">&#39;budapest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;irlande&#39;</span> <span class="p">:</span> <span class="s1">&#39;dublin&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;italie&#39;</span> <span class="p">:</span> <span class="s1">&#39;rome&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lettonie&#39;</span> <span class="p">:</span> <span class="s1">&#39;riga&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lituanie&#39;</span> <span class="p">:</span> <span class="s1">&#39;vilnius&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;luxembourg&#39;</span> <span class="p">:</span> <span class="s1">&#39;luxembourg&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;malte&#39;</span> <span class="p">:</span> <span class="s1">&#39;la valette&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pays-bas&#39;</span> <span class="p">:</span> <span class="s1">&#39;amsterdam&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;pologne&#39;</span> <span class="p">:</span> <span class="s1">&#39;varsovie&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;portugal&#39;</span> <span class="p">:</span> <span class="s1">&#39;lisbonne&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;république tchèque&#39;</span> <span class="p">:</span> <span class="s1">&#39;prague&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;roumanie&#39;</span> <span class="p">:</span> <span class="s1">&#39;bucarest&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slovaquie&#39;</span> <span class="p">:</span> <span class="s1">&#39;bratislava&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;slovénie&#39;</span> <span class="p">:</span> <span class="s1">&#39;ljubljana&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;suède&#39;</span> <span class="p">:</span> <span class="s1">&#39;stockholm&#39;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Pour accéder à la <em>valeur</em> associée à la une <em>clé</em> donnée, il suffit alors d’utiliser la clé en indice du dictionnaire. Ainsi, pour afficher la capitale de la Hongrie :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">europe</span><span class="p">[</span><span class="s1">&#39;hongrie&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&#39;budapest&#39;
+</pre></div></div>
+</div>
+<p>Il est facile avec un dictionnaire d’ajouter ou enlever une paire clé-valeur, ou bien de changer une valeur :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Ajouter la Turqie au dictionnaire</span>
+<span class="n">europe</span><span class="p">[</span><span class="s1">&#39;turquie&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;istanbul&#39;</span>
+
+<span class="c1"># Vérifier que le pays est bien contenu dans le dictionnaire</span>
+<span class="s1">&#39;turquie&#39;</span> <span class="ow">in</span> <span class="n">europe</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Changer le nom de la capitale de la Turquie (et oui ce n&#39;est pas Istanbul...)</span>
+<span class="n">europe</span><span class="p">[</span><span class="s1">&#39;turquie&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;ankara&#39;</span>
+
+<span class="c1"># Afficher la capitale de la Turquie</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">europe</span><span class="p">[</span><span class="s1">&#39;turquie&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">capitalize</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Ankara
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Enlever la paire clé-valeur du dictionnaire</span>
+<span class="k">del</span><span class="p">(</span><span class="n">europe</span><span class="p">[</span><span class="s1">&#39;turquie&#39;</span><span class="p">])</span>
+
+<span class="c1"># Vérifier que le pays n&#39;est pas contenu dans le dictionnaire</span>
+<span class="s1">&#39;turquie&#39;</span> <span class="ow">in</span> <span class="n">europe</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+</pre></div></div>
+</div>
+</div>
+<div class="section" id="Pandas-DataFrames">
+<h2>Pandas DataFrames<a class="headerlink" href="#Pandas-DataFrames" title="Lien permanent vers ce titre">¶</a></h2>
+<p><a class="reference external" href="https://pandas.pydata.org/">Pandas</a> est un module de Python pour l’analyse et la manipulation de données. L’objet de base de Pandas est le <em>DataFrame</em>, qui est un tableau similaire aux feuilles Excel ou LibreOffice que vous devez connaître. Le module Pandas fonctionne en harmonie avec les modules <a class="reference external" href="https://numpy.org/">Numpy</a> et <a class="reference external" href="https://matplotlib.org/">Matplotlib</a> vus dans les cours précédents.</p>
+<p>Voyons comment créer un DataFrame à partir d’un dictionnaire. Nous allons reprendre les listes créées plus haut sur les pays et capitales européennes, les transformer en tableaux Numpy, et y ajouter d’autres informations :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Importation du module Numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Importation du module Pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Création des tableaux Numpy à partir des listes des pays et des capitales : type string</span>
+<span class="n">np_pays</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">pays</span><span class="p">)</span>
+<span class="n">np_capitales</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">capitales</span><span class="p">)</span>
+
+<span class="c1"># Liste avec les populations des pays européens : type integer</span>
+<span class="n">np_population</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">82162000</span><span class="p">,</span> <span class="mi">8700471</span><span class="p">,</span> <span class="mi">11289853</span><span class="p">,</span> <span class="mi">7153784</span><span class="p">,</span> <span class="mi">848319</span><span class="p">,</span> <span class="mi">4190669</span><span class="p">,</span> <span class="mi">5659715</span><span class="p">,</span> <span class="mi">46438422</span><span class="p">,</span> <span class="mi">1315944</span><span class="p">,</span>
+                       <span class="mi">5401267</span><span class="p">,</span> <span class="mi">66661621</span><span class="p">,</span> <span class="mi">10793526</span><span class="p">,</span> <span class="mi">9830485</span><span class="p">,</span> <span class="mi">4658530</span><span class="p">,</span> <span class="mi">60665551</span><span class="p">,</span> <span class="mi">1968957</span><span class="p">,</span> <span class="mi">2888558</span><span class="p">,</span> <span class="mi">576249</span><span class="p">,</span>
+                       <span class="mi">434403</span><span class="p">,</span> <span class="mi">16979120</span><span class="p">,</span> <span class="mi">37967209</span><span class="p">,</span> <span class="mi">10341330</span><span class="p">,</span> <span class="mi">10553853</span><span class="p">,</span> <span class="mi">19759968</span><span class="p">,</span> <span class="mi">5426252</span><span class="p">,</span> <span class="mi">2064188</span><span class="p">,</span> <span class="mi">9851017</span><span class="p">],</span>
+                       <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;int64&#39;</span><span class="p">)</span>
+
+<span class="c1"># Liste avec les dates d&#39;adhésion des pays à l&#39;UE : type datetime</span>
+<span class="n">np_date</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="s1">&#39;1957&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">,</span> <span class="s1">&#39;1957&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2013&#39;</span><span class="p">,</span> <span class="s1">&#39;1973&#39;</span><span class="p">,</span> <span class="s1">&#39;1986&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;1957&#39;</span><span class="p">,</span> <span class="s1">&#39;1981&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1973&#39;</span><span class="p">,</span> <span class="s1">&#39;1957&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1957&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1957&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1986&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2007&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;1995&#39;</span><span class="p">],</span>
+                    <span class="n">dtype</span> <span class="o">=</span> <span class="s1">&#39;datetime64[Y]&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Maintenant, créons un dictionnaire en utilisant les tableaux Numpy dans les paires clé-valeur :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">dic_europe</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;pays&quot;</span> <span class="p">:</span> <span class="n">np_pays</span><span class="p">,</span>
+    <span class="s2">&quot;capitale&quot;</span> <span class="p">:</span> <span class="n">np_capitales</span><span class="p">,</span>
+    <span class="s2">&quot;population&quot;</span> <span class="p">:</span> <span class="n">np_population</span><span class="p">,</span>
+    <span class="s2">&quot;date d&#39;adhésion&quot;</span> <span class="p">:</span> <span class="n">np_date</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<p>Pour créer le <em>DataFrame</em> à partir du dictionnaire il suffit d’utiliser la fonction <code class="docutils literal notranslate"><span class="pre">DataFrame()</span></code> de Pandas :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création du DataFrame</span>
+<span class="n">df_europe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="n">dic_europe</span><span class="p">)</span>
+
+<span class="c1"># Affichage du DataFrame</span>
+<span class="n">df_europe</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>autriche</td>
+      <td>vienne</td>
+      <td>8700471</td>
+      <td>1995-01-01</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>belgique</td>
+      <td>bruxelles</td>
+      <td>11289853</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>bulgarie</td>
+      <td>sofia</td>
+      <td>7153784</td>
+      <td>2007-01-01</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>chypre</td>
+      <td>nicosie</td>
+      <td>848319</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>croatie</td>
+      <td>zagreb</td>
+      <td>4190669</td>
+      <td>2013-01-01</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>danemark</td>
+      <td>copenhague</td>
+      <td>5659715</td>
+      <td>1973-01-01</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>espagne</td>
+      <td>madrid</td>
+      <td>46438422</td>
+      <td>1986-01-01</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>estonie</td>
+      <td>tallinn</td>
+      <td>1315944</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>finlande</td>
+      <td>helsinki</td>
+      <td>5401267</td>
+      <td>1995-01-01</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>france</td>
+      <td>paris</td>
+      <td>66661621</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>grèce</td>
+      <td>athènes</td>
+      <td>10793526</td>
+      <td>1981-01-01</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>hongrie</td>
+      <td>budapest</td>
+      <td>9830485</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>irlande</td>
+      <td>dublin</td>
+      <td>4658530</td>
+      <td>1973-01-01</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>italie</td>
+      <td>rome</td>
+      <td>60665551</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>lettonie</td>
+      <td>riga</td>
+      <td>1968957</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>lituanie</td>
+      <td>vilnius</td>
+      <td>2888558</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>luxembourg</td>
+      <td>luxembourg</td>
+      <td>576249</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>malte</td>
+      <td>la valette</td>
+      <td>434403</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>pays-bas</td>
+      <td>amsterdam</td>
+      <td>16979120</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>pologne</td>
+      <td>varsovie</td>
+      <td>37967209</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>portugal</td>
+      <td>lisbonne</td>
+      <td>10341330</td>
+      <td>1986-01-01</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>république tchèque</td>
+      <td>prague</td>
+      <td>10553853</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>roumanie</td>
+      <td>bucarest</td>
+      <td>19759968</td>
+      <td>2007-01-01</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>slovaquie</td>
+      <td>bratislava</td>
+      <td>5426252</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>slovénie</td>
+      <td>ljubljana</td>
+      <td>2064188</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>suède</td>
+      <td>stockholm</td>
+      <td>9851017</td>
+      <td>1995-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>On voit que :</p>
+<ul class="simple">
+<li><p>les clés du dictionnaire ont été utilisées pour nommer les colonnes du DataFrame,</p></li>
+<li><p>les listes ont été utilisées pour remplir chaque colonne</p></li>
+<li><p>les lignes sont étiquetées, par défaut avec des entiers à partir de l’indice 0, mais il est possible d’utiliser d’autres types pour les étiquettes, comme pour les clés d’un dictionnaire</p></li>
+</ul>
+<p>Nous pouvons vérifier le type du DataFrame avec la fonction <code class="docutils literal notranslate"><span class="pre">type()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Affichage du type</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df_europe</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div></div>
+</div>
+<p>Les attributs de DataFrame sont :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 21%" />
+<col style="width: 79%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Attributs</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">ndim</span></code></p></td>
+<td><p>nombre de dimensions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">shape</span></code></p></td>
+<td><p>forme, nombre d’éléments dans chaque dimension</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">size</span></code></p></td>
+<td><p>nombre d’éléments</p></td>
+</tr>
+</tbody>
+</table>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;ndim :&#39;</span><span class="p">,</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">ndim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;shape :&#39;</span><span class="p">,</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;size :&#39;</span><span class="p">,</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">size</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+ndim : 2
+shape : (27, 4)
+size : 108
+</pre></div></div>
+</div>
+<p>Les DataFrame contiennent parfois beaucoup de lignes. On peut afficher seulement les premières ou dernières lignes avec les méthodes <code class="docutils literal notranslate"><span class="pre">head()</span></code> et <code class="docutils literal notranslate"><span class="pre">tail()</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Afficher les 2 premieres lignes</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>autriche</td>
+      <td>vienne</td>
+      <td>8700471</td>
+      <td>1995-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Afficher les 2 dernieres lignes</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>25</th>
+      <td>slovénie</td>
+      <td>ljubljana</td>
+      <td>2064188</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>suède</td>
+      <td>stockholm</td>
+      <td>9851017</td>
+      <td>1995-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="L'objet-Series">
+<h2>L’objet <em>Series</em><a class="headerlink" href="#L'objet-Series" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible d’extraire une colonne en mettant en indice le nom de la colonne :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire la colonne pays du DataFrame</span>
+<span class="n">col_pays</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;pays&#39;</span><span class="p">]</span>
+
+<span class="c1"># Ou de manière similaire</span>
+<span class="n">col_pays</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">pays</span>
+
+<span class="c1"># Affichage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col_pays</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+0              allemagne
+1               autriche
+2               belgique
+3               bulgarie
+4                 chypre
+5                croatie
+6               danemark
+7                espagne
+8                estonie
+9               finlande
+10                france
+11                 grèce
+12               hongrie
+13               irlande
+14                italie
+15              lettonie
+16              lituanie
+17            luxembourg
+18                 malte
+19              pays-bas
+20               pologne
+21              portugal
+22    république tchèque
+23              roumanie
+24             slovaquie
+25              slovénie
+26                 suède
+Name: pays, dtype: object
+</pre></div></div>
+</div>
+<p>On voit que l’on a extrait la colonne mais aussi les étiquettes des lignes et d’autres informations telles que l’étiquette de la colonne. Une colonne extraite de cette manière est un objet <strong>Series</strong> de Pandas :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">col_pays</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;pandas.core.series.Series&#39;&gt;
+</pre></div></div>
+</div>
+<p>On accède aux valeurs d’un objet <em>Series</em> de la même manière qu’un dictionnaire, c’est-à-dire en écrivant l’étiquette en indice de l’objet :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Afficher la valeur de la &quot;Series&quot; col_pays correspondant a l&#39;étiquette 23</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">col_pays</span><span class="p">[</span><span class="mi">23</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+roumanie
+</pre></div></div>
+</div>
+<p>Pour accéder à une ligne, il faut utiliser un <em>accesseur</em> <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire la ligne 23 du DataFrame</span>
+<span class="n">ligne_23</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">23</span><span class="p">]</span>
+
+<span class="c1"># Affichage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ligne_23</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pays                          roumanie
+capitale                      bucarest
+population                    19759968
+date d&#39;adhésion    2007-01-01 00:00:00
+Name: 23, dtype: object
+</pre></div></div>
+</div>
+<p>Une ligne extraite de cette façon est aussi un objet <em>Series</em> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">type</span><span class="p">(</span><span class="n">ligne_23</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pandas.core.series.Series
+</pre></div></div>
+</div>
+<p>Les noms des colonnes ont été utilisés pour étiqueter les lignes de ce nouvel objet, et l’étiquette de la ligne a été utilisée pour nommer l’objet.</p>
+<div class="section" id="Exercice">
+<h3>Exercice<a class="headerlink" href="#Exercice" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Créer un objet <em>Series</em> contenant la colonne date d’adhésion</p></li>
+<li><p>Créer un objet <em>Series</em> contenant la ligne 12</p></li>
+</ol>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1</span>
+<span class="n">col_adhesion</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">]</span>
+
+<span class="c1"># 2</span>
+<span class="n">ligne_12</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">12</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="L'objet-Index">
+<h2>L’objet <em>Index</em><a class="headerlink" href="#L'objet-Index" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On peut extraire les étiquettes des lignes et des colonnes avec <code class="docutils literal notranslate"><span class="pre">.index</span></code> et <code class="docutils literal notranslate"><span class="pre">.columns</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Étiquettes des lignes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">index</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+RangeIndex(start=0, stop=27, step=1)
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Étiquette des lignes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;pays&#39;, &#39;capitale&#39;, &#39;population&#39;, &#39;date d&#39;adhésion&#39;], dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<p>Ces étiquettes sont des objet Pandas appelés <strong>Index</strong>. Ce sont des tableaux Numpy <em>immuables</em>, c’est-à-dire qu’on ne peut pas modifier leurs éléments.</p>
+<p>On peut par contre changer un <em>index</em> entier :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Modifier les étiquettes des lignes du DataFrame en les faisant commencer à 1</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">28</span><span class="p">)</span>
+
+<span class="c1"># Afficher la premiere ligne</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Accéder-et-modifier-les-données">
+<h2>Accéder et modifier les données<a class="headerlink" href="#Accéder-et-modifier-les-données" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On peut accéder aux données du DataFrame pour les extraire ou les modifier grâce à des <strong>accesseurs</strong> :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Accesseur</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.loc[]</span></code></p></td>
+<td><p>accepte les
+étiquettes des
+lignes ou colonnes
+et retourne un objet
+<em>Series</em> ou
+<em>DataFrame</em></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.iloc[]</span></code></p></td>
+<td><p>accepte les indices
+des lignes ou
+colonnes et retourne
+un objet <em>Series</em> ou
+<em>DataFrame</em></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.at[]</span></code></p></td>
+<td><p>accepte les
+étiquettes des
+lignes ou colonnes
+et retourne une
+valeur unique</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.iat[]</span></code></p></td>
+<td><p>accepte les indices
+des lignes ou
+colonnes et retourne
+une valeur unique</p></td>
+</tr>
+</tbody>
+</table>
+<p>Comme pour les tableaux Numpy, les accesseurs supportent l’indexation et le tranchage. Voyons quelques exemples :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire les capitales des 3 premiers pays</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;capitale&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1       berlin
+2       vienne
+3    bruxelles
+4        sofia
+Name: capitale, dtype: object
+</pre></div></div>
+</div>
+<p>Attention, avec <code class="docutils literal notranslate"><span class="pre">.loc[]</span></code> on a utilisé les étiquettes des lignes, décalées de 1 par rapport à leur indice. Pour extraire le même objet <em>Series</em> avec <code class="docutils literal notranslate"><span class="pre">iloc[]</span></code>, on écrira :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire les capitales des 3 premiers pays</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1       berlin
+2       vienne
+3    bruxelles
+4        sofia
+Name: capitale, dtype: object
+</pre></div></div>
+</div>
+<p>Note : - lorsqu’on accède par étiquettes, la notation m:n signifie <span class="math notranslate nohighlight">\([m,n]\)</span>, - lorsqu’on accède par indices, la notation m:n signifie <span class="math notranslate nohighlight">\([m,n[\)</span>.</p>
+<p>Attention aux erreurs !</p>
+<p>Comme pour les tableaux Numpy, on peut trancher en fournissant une liste :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire les noms et les populations des pays 3 à 7</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pays&#39;</span><span class="p">,</span> <span class="s1">&#39;population&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>belgique</td>
+      <td>11289853</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bulgarie</td>
+      <td>7153784</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>chypre</td>
+      <td>848319</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>croatie</td>
+      <td>4190669</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>danemark</td>
+      <td>5659715</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Avec l’accesseur <code class="docutils literal notranslate"><span class="pre">iloc[]</span></code> on écrira :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Extraire les noms et les populations des pays 3 à 7</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">7</span><span class="p">,</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>population</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>belgique</td>
+      <td>11289853</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bulgarie</td>
+      <td>7153784</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>chypre</td>
+      <td>848319</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>croatie</td>
+      <td>4190669</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>danemark</td>
+      <td>5659715</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Pour accéder à une valeur en particulier :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Nom du pays 23</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">23</span><span class="p">,</span> <span class="s1">&#39;pays&#39;</span><span class="p">])</span>
+
+<span class="c1"># Ou avec les indices</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">iat</span><span class="p">[</span><span class="mi">22</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+république tchèque
+république tchèque
+</pre></div></div>
+</div>
+<div class="section" id="id1">
+<h3>Exercice<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Extraire les date d’adhésion des pays avec les étiquettes 12 et 25</p></li>
+<li><p>Extraire la population du pays avec l’étiquette 6</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[[</span><span class="mi">12</span><span class="p">,</span><span class="mi">25</span><span class="p">],</span> <span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+12   1981-01-01
+25   2004-01-01
+Name: date d&#39;adhésion, dtype: datetime64[ns]
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 2</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">at</span><span class="p">[</span><span class="mi">6</span><span class="p">,</span> <span class="s2">&quot;population&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+4190669
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Insérer-et-supprimer-des-données">
+<h2>Insérer et supprimer des données<a class="headerlink" href="#Insérer-et-supprimer-des-données" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour insérer une nouvelle ligne, on peut créer un objet <em>Series</em> et l’ajouter au DataFrame avec la méthode <code class="docutils literal notranslate"><span class="pre">.append()</span></code>. Supposons que la Turquie joigne l’Union Européenne en 2026 :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création de l&#39;objet Series</span>
+<span class="n">ligne_turquie</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;turquie&#39;</span><span class="p">,</span> <span class="s1">&#39;ankara&#39;</span><span class="p">,</span> <span class="mi">83154997</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2026&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)],</span>
+                          <span class="n">index</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span> <span class="n">name</span> <span class="o">=</span> <span class="mi">28</span><span class="p">)</span>
+
+<span class="c1"># Affichage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">ligne_turquie</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+pays                turquie
+capitale             ankara
+population         83154997
+date d&#39;adhésion        2026
+Name: 28, dtype: object
+</pre></div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Ajout de la ligne à l&#39;objet DataFrame</span>
+<span class="n">df_europe</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">ligne_turquie</span><span class="p">)</span>
+
+<span class="c1"># Affichage des 2 dernières lignes</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>27</th>
+      <td>suède</td>
+      <td>stockholm</td>
+      <td>9851017</td>
+      <td>1995-01-01</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>turquie</td>
+      <td>ankara</td>
+      <td>83154997</td>
+      <td>2026-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Plusieurs remarques : - Pour créer l’objet <em>Series</em> on a utilisé l’option <code class="docutils literal notranslate"><span class="pre">index</span></code> pour nommer les colonnes, et l’option <code class="docutils literal notranslate"><span class="pre">name</span></code> pour lui donner un nom - L’étiquette de la nouvelle ligne de l’objet DataFrame est le nom de l’objet Series - On aurait pu ignorer ce nom en utilisant l’option de la méthode <code class="docutils literal notranslate"><span class="pre">append()</span></code> : <code class="docutils literal notranslate"><span class="pre">ignore_index</span> <span class="pre">=</span> <span class="pre">True</span></code></p>
+<p>La méthode <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> permet de supprimer des lignes :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Supprimer la ligne avec l&#39;étiquette 28</span>
+<span class="n">df_europe</span> <span class="o">=</span> <span class="n">df_europe</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">28</span><span class="p">])</span>
+
+<span class="c1"># Affichage des 2 dernieres lignes</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">tail</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[34]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>26</th>
+      <td>slovénie</td>
+      <td>ljubljana</td>
+      <td>2064188</td>
+      <td>2004-01-01</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>suède</td>
+      <td>stockholm</td>
+      <td>9851017</td>
+      <td>1995-01-01</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Il est beaucoup plus simple d’ajouter une colonne à un DataFrame. On peut le faire de la même manière que l’on ajoute une paire clé-valeur à un dictionnaire. Par exemple, ajoutons la colonne qui donne le nombre de sièges au parlement européen pour chaque pays de l’UE :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Nombre de sieges au parlement</span>
+<span class="n">np_sieges</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">96</span><span class="p">,</span> <span class="mi">18</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">54</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">20</span><span class="p">])</span>
+
+<span class="c1"># Ajout de la colonne</span>
+<span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;sièges&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">np_sieges</span>
+
+<span class="c1"># Affichage des 2 premieres lignes</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[35]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+      <td>96</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>autriche</td>
+      <td>vienne</td>
+      <td>8700471</td>
+      <td>1995-01-01</td>
+      <td>18</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Opérateurs-arithmétiques-et-fonctions">
+<h2>Opérateurs arithmétiques et fonctions<a class="headerlink" href="#Opérateurs-arithmétiques-et-fonctions" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible d’utiliser les opérateurs arithmétiques usuels et les fonctions Numpy sur les colonnes d’un objet DataFrame. Par exemple, calculons le pourcentage de la population dans chaque pays par rapport à la population totale :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[36]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Population totale</span>
+<span class="n">pop_tot</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+
+<span class="c1"># Pourcentage de la population</span>
+<span class="n">pop_pourcentage</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">pop_tot</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Affichage</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pop_pourcentage</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1     18.480761
+2      1.957004
+3      2.539435
+4      1.609106
+5      0.190813
+6      0.942610
+7      1.273044
+8     10.445429
+9      0.295996
+10     1.214911
+11    14.994249
+12     2.427796
+13     2.211178
+14     1.047847
+15    13.645548
+16     0.442879
+17     0.649726
+18     0.129616
+19     0.097711
+20     3.819126
+21     8.539993
+22     2.326083
+23     2.373886
+24     4.444625
+25     1.220531
+26     0.464299
+27     2.215797
+Name: population, dtype: float64
+</pre></div></div>
+</div>
+<div class="section" id="id2">
+<h3>Exercice<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Nous voulons connaître le poids de chaque pays au parlement par rapport à son nombre d’habitants.</p>
+<ol class="arabic simple">
+<li><p>Calculer le nombre de sièges au parlement par habitants dans chaque pays, c’est-à-dire :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[N_i = \frac{\text{nombre de sièges}}{\text{nombre d'habitants}}\]</div>
+<ol class="arabic simple" start="2">
+<li><p>Normaliser le résultat et l’exprimer en pourcentage, c’est-à-dire :</p></li>
+</ol>
+<div class="math notranslate nohighlight">
+\[\bar{N}_i = \frac{N_i}{\sum_i N_i}\times 100\]</div>
+<ol class="arabic simple" start="3">
+<li><p>Ajouter une nouvelle colonne au DataFrame <code class="docutils literal notranslate"><span class="pre">df_europe</span></code> avec le nom <code class="docutils literal notranslate"><span class="pre">'poids'</span></code> qui contient <span class="math notranslate nohighlight">\(\bar{N}_i\)</span></p></li>
+<li><p>Afficher les colonnes <code class="docutils literal notranslate"><span class="pre">'pays'</span></code> et <code class="docutils literal notranslate"><span class="pre">'poids'</span></code> du DataFrame <code class="docutils literal notranslate"><span class="pre">df_europe</span></code> pour les 20 premières lignes</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Nombre de siège par habitant</span>
+<span class="n">siege_pour</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;sièges&#39;</span><span class="p">]</span> <span class="o">/</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span>
+
+<span class="c1"># Normalisation</span>
+<span class="n">siege_pour</span> <span class="o">=</span> <span class="n">siege_pour</span> <span class="o">/</span> <span class="n">siege_pour</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span> <span class="o">*</span> <span class="mi">100</span>
+
+<span class="c1"># Ajout d&#39;une colonne poids</span>
+<span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;poids&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">siege_pour</span>
+
+<span class="c1"># Affichage</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">20</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;pays&#39;</span><span class="p">,</span> <span class="s1">&#39;poids&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[37]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>1.370336</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>autriche</td>
+      <td>2.426367</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>belgique</td>
+      <td>2.181513</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bulgarie</td>
+      <td>2.787018</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>chypre</td>
+      <td>8.295046</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>croatie</td>
+      <td>3.078478</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>danemark</td>
+      <td>2.693863</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>espagne</td>
+      <td>1.363776</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>estonie</td>
+      <td>5.347374</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>finlande</td>
+      <td>2.822763</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>france</td>
+      <td>1.301915</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>grèce</td>
+      <td>2.281827</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>hongrie</td>
+      <td>2.505365</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>irlande</td>
+      <td>2.769303</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>italie</td>
+      <td>1.411261</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>lettonie</td>
+      <td>4.765193</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>lituanie</td>
+      <td>4.466202</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>luxembourg</td>
+      <td>12.211466</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>malte</td>
+      <td>16.198887</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>pays-bas</td>
+      <td>1.795911</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Trier-un-DataFrame">
+<h2>Trier un <em>DataFrame</em><a class="headerlink" href="#Trier-un-DataFrame" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est très facile de trier un objet DataFrame avec la méthode <code class="docutils literal notranslate"><span class="pre">.sort_values()</span></code>. Par exemple, on voit qu’en classant les pays d’abord par nombre de sièges croissant, puis, pour un même nombre de sièges, par poids décroissant, on déduit que plus le nombre de sièges et la population augmentent, plus le poids d’un pays au parlement diminue :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sièges&#39;</span><span class="p">,</span> <span class="s1">&#39;poids&#39;</span><span class="p">],</span> <span class="n">ascending</span> <span class="o">=</span> <span class="p">[</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[38]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>19</th>
+      <td>malte</td>
+      <td>la valette</td>
+      <td>434403</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>16.198887</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>luxembourg</td>
+      <td>luxembourg</td>
+      <td>576249</td>
+      <td>1957-01-01</td>
+      <td>6</td>
+      <td>12.211466</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>chypre</td>
+      <td>nicosie</td>
+      <td>848319</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>8.295046</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>estonie</td>
+      <td>tallinn</td>
+      <td>1315944</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>5.347374</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>lettonie</td>
+      <td>riga</td>
+      <td>1968957</td>
+      <td>2004-01-01</td>
+      <td>8</td>
+      <td>4.765193</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>slovénie</td>
+      <td>ljubljana</td>
+      <td>2064188</td>
+      <td>2004-01-01</td>
+      <td>8</td>
+      <td>4.545352</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>lituanie</td>
+      <td>vilnius</td>
+      <td>2888558</td>
+      <td>2004-01-01</td>
+      <td>11</td>
+      <td>4.466202</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>croatie</td>
+      <td>zagreb</td>
+      <td>4190669</td>
+      <td>2013-01-01</td>
+      <td>11</td>
+      <td>3.078478</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>irlande</td>
+      <td>dublin</td>
+      <td>4658530</td>
+      <td>1973-01-01</td>
+      <td>11</td>
+      <td>2.769303</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>finlande</td>
+      <td>helsinki</td>
+      <td>5401267</td>
+      <td>1995-01-01</td>
+      <td>13</td>
+      <td>2.822763</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>slovaquie</td>
+      <td>bratislava</td>
+      <td>5426252</td>
+      <td>2004-01-01</td>
+      <td>13</td>
+      <td>2.809766</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>danemark</td>
+      <td>copenhague</td>
+      <td>5659715</td>
+      <td>1973-01-01</td>
+      <td>13</td>
+      <td>2.693863</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>bulgarie</td>
+      <td>sofia</td>
+      <td>7153784</td>
+      <td>2007-01-01</td>
+      <td>17</td>
+      <td>2.787018</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>autriche</td>
+      <td>vienne</td>
+      <td>8700471</td>
+      <td>1995-01-01</td>
+      <td>18</td>
+      <td>2.426367</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>suède</td>
+      <td>stockholm</td>
+      <td>9851017</td>
+      <td>1995-01-01</td>
+      <td>20</td>
+      <td>2.381089</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>hongrie</td>
+      <td>budapest</td>
+      <td>9830485</td>
+      <td>2004-01-01</td>
+      <td>21</td>
+      <td>2.505365</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>portugal</td>
+      <td>lisbonne</td>
+      <td>10341330</td>
+      <td>1986-01-01</td>
+      <td>21</td>
+      <td>2.381604</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>république tchèque</td>
+      <td>prague</td>
+      <td>10553853</td>
+      <td>2004-01-01</td>
+      <td>21</td>
+      <td>2.333646</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>grèce</td>
+      <td>athènes</td>
+      <td>10793526</td>
+      <td>1981-01-01</td>
+      <td>21</td>
+      <td>2.281827</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>belgique</td>
+      <td>bruxelles</td>
+      <td>11289853</td>
+      <td>1957-01-01</td>
+      <td>21</td>
+      <td>2.181513</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>pays-bas</td>
+      <td>amsterdam</td>
+      <td>16979120</td>
+      <td>1957-01-01</td>
+      <td>26</td>
+      <td>1.795911</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>roumanie</td>
+      <td>bucarest</td>
+      <td>19759968</td>
+      <td>2007-01-01</td>
+      <td>32</td>
+      <td>1.899287</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>pologne</td>
+      <td>varsovie</td>
+      <td>37967209</td>
+      <td>2004-01-01</td>
+      <td>51</td>
+      <td>1.575391</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>espagne</td>
+      <td>madrid</td>
+      <td>46438422</td>
+      <td>1986-01-01</td>
+      <td>54</td>
+      <td>1.363776</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>italie</td>
+      <td>rome</td>
+      <td>60665551</td>
+      <td>1957-01-01</td>
+      <td>73</td>
+      <td>1.411261</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>france</td>
+      <td>paris</td>
+      <td>66661621</td>
+      <td>1957-01-01</td>
+      <td>74</td>
+      <td>1.301915</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+      <td>96</td>
+      <td>1.370336</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+<div class="section" id="Sauver-un-DataFrame">
+<h2>Sauver un DataFrame<a class="headerlink" href="#Sauver-un-DataFrame" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible de sauver un objet DataFrame sous la forme d’un <a class="reference external" href="https://fr.wikipedia.org/wiki/Comma-separated_values">fichier csv</a>. C’est un format pratique qui peut être lu par la plupart des tableurs comme LibreOffice Calc ou Microsoft Excel. Il faut utiliser la métode <code class="docutils literal notranslate"><span class="pre">.to_csv()</span></code> :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[39]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">&quot;europe.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Cette méthode crée un fichier nommé <em>data.csv</em> dans le répertoire de travail (allez vérifier !), avec le contenu du DataFrame :</p>
+<div class="highlight-none notranslate"><div class="highlight"><pre><span></span>,pays,capitale,population,date d&#39;adhésion,sièges,poids
+1,allemagne,berlin,82162000,1957-01-01,96,1.3703356988657123
+2,autriche,vienne,8700471,1995-01-01,18,2.4263669538020842
+3,belgique,bruxelles,11289853,1957-01-01,21,2.1815127149779783
+4,bulgarie,sofia,7153784,2007-01-01,17,2.7870184226008328
+5,chypre,nicosie,848319,2004-01-01,6,8.295045974023676
+6,croatie,zagreb,4190669,2013-01-01,11,3.078478088741746
+7,danemark,copenhague,5659715,1973-01-01,13,2.6938631589897866
+8,espagne,madrid,46438422,1986-01-01,54,1.363776011827881
+9,estonie,tallinn,1315944,2004-01-01,6,5.347374284648732
+10,finlande,helsinki,5401267,1995-01-01,13,2.822763201464005
+11,france,paris,66661621,1957-01-01,74,1.301914879970682
+12,grèce,athènes,10793526,1981-01-01,21,2.28182689046492
+13,hongrie,budapest,9830485,2004-01-01,21,2.5053654900782893
+14,irlande,dublin,4658530,1973-01-01,11,2.7693033411117423
+15,italie,rome,60665551,1957-01-01,73,1.4112613727889787
+16,lettonie,riga,1968957,2004-01-01,8,4.765193013788716
+17,lituanie,vilnius,2888558,2004-01-01,11,4.466201715066578
+18,luxembourg,luxembourg,576249,1957-01-01,6,12.211466060050068
+19,malte,la valette,434403,2004-01-01,6,16.198886991198936
+20,pays-bas,amsterdam,16979120,1957-01-01,26,1.7959114169499812
+21,pologne,varsovie,37967209,2004-01-01,51,1.5753905797479404
+22,portugal,lisbonne,10341330,1986-01-01,21,2.381604481215885
+23,république tchèque,prague,10553853,2004-01-01,21,2.3336460977552242
+24,roumanie,bucarest,19759968,2007-01-01,32,1.8992865050895604
+25,slovaquie,bratislava,5426252,2004-01-01,13,2.8097658805528902
+26,slovénie,ljubljana,2064188,2004-01-01,8,4.545351557537583
+27,suède,stockholm,9851017,1995-01-01,20,2.381089216689604
+</pre></div>
+</div>
+<p>Il est alors possible, plus tard, de charger le contenu du fichier csv avec la méthode <code class="docutils literal notranslate"><span class="pre">.read_csv()</span></code> :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[40]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe_from_csv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;europe.csv&quot;</span><span class="p">,</span> <span class="n">index_col</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="n">encoding</span> <span class="o">=</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>L’option <code class="docutils literal notranslate"><span class="pre">encoding</span></code> peut être nécessaire sur certains ordinateurs, pas sur d’autres.</p>
+<p>Un problème de sauvegarder en csv est que si une des colonnes contient des objets python, il peuvent être convertit en un autre type au moment de l’écriture et de la lecture. Dans l’exemple ci-dessus, la colonne <code class="docutils literal notranslate"><span class="pre">date</span> <span class="pre">d'adhésion</span></code> n’est plus un objet <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> au moment de la lecture : il a été converti en objet <code class="docutils literal notranslate"><span class="pre">str</span></code>.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[41]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">A</span> <span class="o">=</span> <span class="n">df_europe_from_csv</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">][</span><span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1957-01-01
+&lt;class &#39;str&#39;&gt;
+</pre></div></div>
+</div>
+<p>Une façon de garder toutes les propriétés des objets python est de les sauver dans un format que l’on appelle <em>pickle</em> :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[42]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Sauvegarde d&#39;un DataFrame dans un fichier pickle</span>
+<span class="n">df_europe</span><span class="o">.</span><span class="n">to_pickle</span><span class="p">(</span><span class="s1">&#39;europe.pkl&#39;</span><span class="p">)</span>
+
+<span class="c1"># Lecture du fichier pickle</span>
+<span class="n">df_europe_from_pickle</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;europe.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>On voit alors que les dates sont restées des objets <code class="docutils literal notranslate"><span class="pre">datetime64</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe_from_pickle</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[43]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1   1957-01-01
+2   1995-01-01
+Name: date d&#39;adhésion, dtype: datetime64[ns]
+</pre></div></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="02-logique-filtrage.html" class="btn btn-neutral float-right" title="Logique, structures de contrôle et filtrage" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../sequences/02-python-intermediaire/contenu.html" class="btn btn-neutral float-left" title="Déroulement de la séquence" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

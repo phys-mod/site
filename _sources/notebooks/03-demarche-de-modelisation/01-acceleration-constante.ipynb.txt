@@ -1,0 +1,564 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Modèle de l'accélération constante"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "![alt text](fl971126.jpg \"Title\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Expérience de chute libre\n",
+    "\n",
+    "\n",
+    "Nous allons illustrer le processus de modélisation avec une expérience simple : la **chute libre à une dimension**. Prenons un objet et laissons-le tomber d'une certaine hauteur, sans lui donner de vitesse initiale.\n",
+    "\n",
+    "Afin de modéliser cette expérience, il faut d'abord choisir un système de référence. Nous choisissons un axe vertical, dirigé dans le sens du mouvement de l'objet qui tombe. Appelons-le l'axe $z$. Nous choisissons l'origine de ce repère à l'endroit où on lâche l'objet, à $z=0$. L'objet est modélisé comme une particule ponctuelle.\n",
+    "\n",
+    "Nous savons que l'objet est soumis au champ de pesanteur terrestre, $g \\approx 9.81 \\mathrm{~m.s^{-2}}$. D'après les relations fondamentales de la dynamique et la loi de la gravitation universelle, il est donc soumis à une accélération constante :\n",
+    "\\begin{equation}\n",
+    "a(t) = \\frac{dv}{dt}(t) = g\n",
+    "\\end{equation}\n",
+    "\n",
+    "En intégrant cette équation, on obtient la vitesse du corps en fonction du temps :\n",
+    "\\begin{equation}\n",
+    "v(t) = g t\n",
+    "\\end{equation}\n",
+    "avec la constante d'intégration égale à $0$ car la vitesse initiale est nulle.\n",
+    "\n",
+    "Le modèle mathématique de la vitesse physique du corps est une fonction à une variable $v:\\mathbb{R}\\to\\mathbb{R}$. Nous pouvons représenter numériquement cette fonction de nombreuses façons différentes. Par exemple avec :\n",
+    "\n",
+    "- deux tableaux Numpy à 1 dimension qui représentent la vitesse et le temps ;\n",
+    "- un tableau Numpy à 2 dimension dont une colonne représente le temps, et l'autre colonne la vitesse ;\n",
+    "- un DataFrame Pandas dont l'index représente le temps, et une colonne représente la vitesse ;\n",
+    "- une fonction Python dont l'argument représente le temps, et la sortie de la fonction représente la vitesse.\n",
+    "\n",
+    "Nous allons illustrer ces différentes possibilités."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation discrète de la vitesse\n",
+    "\n",
+    "Alors que la fonction $v$ est une fonction mathématique continue de $\\mathbb{R}$ dans $\\mathbb{R}$, c'est-à-dire dont le domaine de définition contient un nombre infini de valeurs, un tableau Numpy ne peut contenir qu'un nombre fini de valeurs. Il faut donc choisir un nombre fini de valeurs du temps $t$ pour lesquelles nous allons calculer la vitesse $v$. On appelle cela une **représentation discrète**.\n",
+    "\n",
+    "Choisissons de représenter la fonction $v$ entre $t=0 \\mathrm{~s}$ et $t = 10 \\mathrm{~s}$, avec un pas de $1 \\mathrm{~s}$. Pour remplir le tableau Numpy, on peut utiliser la fonction `linspace()` du module Numpy (voir *les fonctions de Numpy - Intervalles et pas*) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "# Paramètres de la discrétisation\n",
+    "temps_initial = 0 # s\n",
+    "temps_final = 10 # s\n",
+    "pas_temps = 1 # s\n",
+    "\n",
+    "# Création du tableau temps\n",
+    "intervalle = temps_final - temps_initial\n",
+    "num_points = int(intervalle / pas_temps) + 1 # nombre d'éléments\n",
+    "temps = np.linspace(temps_initial, temps_final, num_points)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voyons ce que contient le tableau `temps` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(temps)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il contient bien les valeurs du temps entre $0$ et $10 \\mathrm{~s}$ avec un pas de $1 \\mathrm{~s}$. Afin de calculer la vitesse pour ces temps il suffit d'appliquer la formule $v = gt$ au tableau Numpy `temps`, pour créer le tableau Numpy `vitesse`. Cependant, pour que cela soit possible, il faut aussi créer une variable `pesanteur` qui contient la valeur de la pesanteur :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création de la variable pesanteur\n",
+    "pesanteur = 9.81 # m.s**-2\n",
+    "\n",
+    "# Calcul du tableau vitesse\n",
+    "vitesse = pesanteur * temps"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voyons ce que contient le tableau `vitesse` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(vitesse)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Le tableau `vitesse` contient les valeurs de la vitesse aux temps correspondant aux valeurs du tableau `temps`."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation graphique de la vitesse\n",
+    "\n",
+    "À partir des 2 tableaux Numpy `temps` et `vitesse`, qui sont une représentation numérique possible du temps et de la vitesse de l'objet qui chute, il est facile grâce au module Matplotlib d'obtenir une représentation graphique (voir *le module Matplotlib - Représentation graphique d'une fonction mathématique*) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module pyplot de matplotlib\n",
+    "import matplotlib.pyplot as plt\n",
+    "\n",
+    "# Création de la figure\n",
+    "plt.plot(temps, vitesse, '-*')\n",
+    "\n",
+    "# Style\n",
+    "plt.xlabel('temps [s]')\n",
+    "plt.ylabel('vitesse [m.s$^{-1}$]')\n",
+    "plt.grid()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Sur la figure nous avons explicitement mis des points pour montrer la discrétisation de la fonction $v$.\n",
+    "\n",
+    "Voyons maintenant comment modéliser le temps et la vitesse numériquement avec un objet `DataFrame` du module Pandas (voir le module *Dictionnaires et Pandas*). Nous allons d'abord créer un *index* contenant les temps du tableau `temps`. Pour cela, nous utilisons la fonction `to_datetime` de Pandas ([voir l'aide de cette fonction](https://pandas.pydata.org/pandas-docs/stable/reference/api/pandas.to_datetime.html)) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module pandas\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Création de l'index contenant les dates de la discrétisation\n",
+    "index_temps = pd.to_datetime(temps, unit = 's', origin = '2020-03-14 13:45:00')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons spécifié l'unité de temps avec l'option `unit`, et la date correspondant au temps $t=0$ s avec l'option `origin`. Nous pouvons alors créer le DataFrame `df_vitesse` avec la commande :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_vitesse = pd.DataFrame(data = vitesse, index = index_temps, columns = ['vitesse'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut afficher les premières lignes du DataFrame :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_vitesse.head(n = 6)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Cette représentation numérique a l'avantage d'être située dans le temps de façon non ambiguë, avec des dates. Cela peut être très utile lorsque l'on veut représenter ou modéliser les données d'une expérience. Il suffit alors pour la représentation graphique d'écrire :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création de la figure\n",
+    "plt.plot(df_vitesse)\n",
+    "\n",
+    "# Style\n",
+    "plt.ylabel('vitesse [m.s$^{-1}$]')\n",
+    "plt.grid()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation sous la forme d'une fonction\n",
+    "\n",
+    "Il est possible de représenter la vitesse du corps en chute libre sous la forme d'une fonction Python (voir le module *fonction*) :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création de la fonction\n",
+    "def func_vitesse(temps):\n",
+    "    return pesanteur * temps"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Avec cette représentation nous pouvons alors calculer la vitesse pour n'importe quel temps. Cela est un avantage certain par rapport à la représentation discrète, où nous n'avons accès à la vitesse que pour des temps donnés. Cependant, il n'est possible de représenter une grandeur physique de cette façon *seulement* si on connaît sa forme analytique.\n",
+    "\n",
+    "Par exemple, la vitesse au temps $t = 34.76$ s est :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(func_vitesse(34.76))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On peut aussi obtenir facilement un tableau Numpy des vitesses correspondant au tableau `temps` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(func_vitesse(temps))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ainsi, grâce à la fonction, on n'est pas obligé de définir un tableau `vitesse` intermédiaire pour représenter graphiquement la fonction. On peut écrire simplement :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création de la figure\n",
+    "plt.plot(temps, func_vitesse(temps))\n",
+    "\n",
+    "# Style\n",
+    "plt.xlabel('temps [s]')\n",
+    "plt.ylabel('vitesse [m.s$^{-1}$]')\n",
+    "plt.grid()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation de la position\n",
+    "\n",
+    "En intégrant la vitesse de l'objet en chute par rapport au temps\n",
+    "$$ v(t) = \\frac{dz}{dt}(t) = g t$$\n",
+    "\n",
+    "on obtient une nouvelle représentation du mouvement de la particule, sa position par rapport au temps :\n",
+    "$$z(t) = \\frac{1}{2}gt^2$$\n",
+    "\n",
+    "Afin de représenter numériquement cette nouvelle fonction du temps, il suffit de créer un nouveau tableau Numpy `position_z` avec :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Création du tableau position_z\n",
+    "position_z = 1 / 2 * pesanteur * temps ** 2"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Voyons ce que contient ce tableau :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(position_z)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Représentons graphiquement les trois représentations du mouvement de l'objet en chute libre : accélération, vitesse et position. Afin de représenter numériquement l'accélération en fonction du temps, on crée un tableau Numpy constant `acceleration`, de la même taille que le tableau `temps`, avec la fonction `ones()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création du tableau acceleration\n",
+    "acceleration = np.ones(temps.shape) * pesanteur\n",
+    "\n",
+    "# Affichage du tableau\n",
+    "print(acceleration)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "En affichant le tableau, nous vérifions que nous n'avons pas fait d'erreur. En effet, il est très important quand nous programmons de bien vérifier que chaque étape, chaque ligne qu'on écrit fait bien ce que l'on attend.\n",
+    "\n",
+    "Ensuite, mettons les trois représentations graphiques l'une en dessous de l'autre grâce à la fonction `subplot` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Représentation de l'accélération\n",
+    "plt.subplot(3, 1, 1)\n",
+    "plt.plot(temps, acceleration)\n",
+    "plt.ylabel('acceleration [m.s$^{-2}$]')\n",
+    "plt.grid()\n",
+    "plt.tick_params(axis = 'x', labelbottom = False) # Retire les labels de l'axe x\n",
+    "plt.title(\"Modèle de l'accélération constante à 1D\")\n",
+    "\n",
+    "# Représentation de la vitesse\n",
+    "plt.subplot(3, 1, 2)\n",
+    "plt.plot(temps, vitesse)\n",
+    "plt.ylabel('vitesse [m.s$^{-1}$]')\n",
+    "plt.grid()\n",
+    "plt.tick_params(axis = 'x', labelbottom = False) # Retire les labels de l'axe x\n",
+    "\n",
+    "# Représentation de la position z\n",
+    "plt.subplot(3, 1, 3)\n",
+    "plt.plot(temps, position_z)\n",
+    "plt.ylabel('position z [m]')\n",
+    "plt.xlabel('temps [s]')\n",
+    "plt.grid()\n",
+    "\n",
+    "plt.subplots_adjust(top = 1.5) # Agrandit l'espace entre les figures"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représentation du mouvement\n",
+    "\n",
+    "La pesanteur est dirigée le long de l'axe $z$. Nous savons donc que suivant les deux autres axes $x$ et $y$, dans un référentiel inertiel, il n'y a pas de mouvement. Supposons qu'initialement $x=2$ m. Nous voulons représenter le mouvement du corps en chute libre dans le plan $(xOz)$. Nous allons d'abord créer le tableau constant représentant la position suivant l'axe $x$ :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Position suivant l'axe x\n",
+    "position_x = np.ones(temps.shape) * 2 # m\n",
+    "\n",
+    "# Vérification du tableau\n",
+    "print(position_x)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous pouvons maintenant représenter graphiquement le mouvement de la particule grâce aux deux tableaux position :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Représentation graphique du mouvement\n",
+    "plt.plot(position_x, -position_z, 'x-')\n",
+    "\n",
+    "# Style\n",
+    "plt.xlabel(\"position x [m]\")\n",
+    "plt.ylabel(\"position -z [m]\")\n",
+    "plt.grid()"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous avons sur la représentation graphique renversé l'axe $z$ car nous avons plutôt l'habitude de voir les objets tomber de haut en bas plutôt que de bas en haut. La représentation discrète du mouvement, avec un pas de temps constant, nous permet de bien voir (avec les croix) l'effet de l'accéleration sur la position."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Représenter des données\n",
+    "Des étudiants ont effectué une expérience de chute libre dans l'Atrium : ils ont fait tomber un objet de chaque étage de l'Atrium, sans vitesse initiale, et ont mesuré à chaque fois le temps de chute $T$ de l'objet ainsi que la hauteur de l'étage $H$. On reporte dans le tableau ci-dessous le résultat des mesures pour 4 groupes différents :\n",
+    "\n",
+    "| Étage | 1 | 2 | 3 | 4 | 5\n",
+    "|--|--|--|--|--|--\n",
+    "| Hauteur de l'étage (m) | 7.40 | 10.80 | 14.20 | 17.60 | 20.95\n",
+    "| Temps de chute (s) - groupe 1 | 1.09 | 1.39 | 1.70 | 2.05 | 2.25\n",
+    "| Temps de chute (s) - groupe 2 | 1.17 | 1.54 | 1.72 | 2.18 | 2.40\n",
+    "| Temps de chute (s) - groupe 3 | 1.33 | 1.68 | 1.56 | 2.19 | 2.40\n",
+    "| Temps de chute (s) - groupe 4 | 0.95 | 1.61 | 1.49 | 2.16 | 2.18\n",
+    "\n",
+    "Selon le modèle de l'accélération constante, la relation entre la hauteur de l'étage *H* et le temps de chute *T* est :\n",
+    "$$ H = \\frac{1}{2} g T^2 $$\n",
+    "\n",
+    "Représentons graphiquement le modèle (en ligne continue) et les données (avec des croix), grâce à des tableaux Numpy :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Modèle\n",
+    "temps_chute_modele = np.linspace(0.0, 3.0) # s\n",
+    "hauteur_etage_modele = 1 / 2 * pesanteur * temps_chute_modele ** 2\n",
+    "\n",
+    "# Mesures de la hauteur des étages\n",
+    "hauteur_etage_mesure = np.array([7.40, 10.80, 14.20, 17.60, 20.95]) # m\n",
+    "\n",
+    "# Mesures des temps de chute pour les 4 groupes\n",
+    "temps_chute_groupe1 = np.array([1.09, 1.39, 1.70, 2.05, 2.25]) # s\n",
+    "temps_chute_groupe2 = np.array([1.17, 1.54, 1.72, 2.18, 2.40]) # s\n",
+    "temps_chute_groupe3 = np.array([1.33, 1.68, 1.56, 2.19, 2.40]) # s\n",
+    "temps_chute_groupe4 = np.array([0.95, 1.61, 1.49, 2.16, 2.18]) # s\n",
+    "\n",
+    "# Représentation graphique du modèle\n",
+    "plt.plot(temps_chute_modele, hauteur_etage_modele)\n",
+    "\n",
+    "# Représentation graphique des données\n",
+    "plt.plot(temps_chute_groupe1, hauteur_etage_mesure, 'x')\n",
+    "plt.plot(temps_chute_groupe2, hauteur_etage_mesure, 'x')\n",
+    "plt.plot(temps_chute_groupe3, hauteur_etage_mesure, 'x')\n",
+    "plt.plot(temps_chute_groupe4, hauteur_etage_mesure, 'x')\n",
+    "\n",
+    "# Style\n",
+    "plt.title(\"Expérience de chute libre\")\n",
+    "plt.xlabel(\"Temps de chute [s]\")\n",
+    "plt.ylabel(\"Hauteur de l'étage [m]\")\n",
+    "plt.grid()\n",
+    "plt.legend((\"Mesures\", \"Données groupe 1\", \"Données groupe 2\", \"Données groupe 3\", \"Données groupe 4\"))"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

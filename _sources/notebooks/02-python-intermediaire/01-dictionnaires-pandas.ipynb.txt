@@ -1,0 +1,1042 @@
+{
+ "cells": [
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "# Dictionnaires et Pandas"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Les dictionnaires\n",
+    "\n",
+    "Un dictionnaire ressemble à une liste mais il est plus général. Alors que les indices d'une liste doivent être des entiers, dans un dictionnaire, les indices peuvent être de types différents.\n",
+    "\n",
+    "Un dictionnaire contient une collection d'indices, appelés **clés**, et une collection de valeurs. À chaque *clé* correspond une *valeur*, ce que l'on appelle une **paire clé-valeur**, ou **item**.\n",
+    "\n",
+    "La syntaxe pour définir une liste est :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "my_dict = {\n",
+    "   \"key1\": \"value1\",\n",
+    "   \"key2\": \"value2\",\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Définissons 2 listes nous donnant les pays européens et leur capitale :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "pays = ['allemagne', 'autriche', 'belgique', 'bulgarie', 'chypre', 'croatie', 'danemark', 'espagne', 'estonie', \n",
+    "        'finlande', 'france', 'grèce', 'hongrie', 'irlande', 'italie', 'lettonie', 'lituanie', 'luxembourg', \n",
+    "        'malte', 'pays-bas', 'pologne', 'portugal', 'république tchèque', 'roumanie', 'slovaquie', 'slovénie', 'suède']\n",
+    "capitales = ['berlin', 'vienne', 'bruxelles', 'sofia', 'nicosie', 'zagreb', 'copenhague', 'madrid', 'tallinn', \n",
+    "             'helsinki', 'paris', 'athènes', 'budapest', 'dublin', 'rome', 'riga', 'vilnius', 'luxembourg', 'la valette',\n",
+    "             'amsterdam', 'varsovie', 'lisbonne', 'prague', 'bucarest', 'bratislava', 'ljubljana', 'stockholm']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Nous voulons trouver la capitale de la Hongrie. Nous pouvons utiliser la méthode de liste `index()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Trouver l'indice de 'hongrie'\n",
+    "ind_hongrie = pays.index('hongrie')\n",
+    "\n",
+    "# Afficher la capitale de la Hongrie\n",
+    "print(capitales[ind_hongrie].capitalize())"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Maintenant, définissons un dictionnaire contenant les même informations :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "europe = {\n",
+    "    'allemagne' : 'berlin',\n",
+    "    'autriche' : 'vienne',\n",
+    "    'belgique' : 'bruxelles',\n",
+    "    'bulgarie' : 'sofia',\n",
+    "    'chypre' : 'nicosie',\n",
+    "    'croatie' : 'zagreb',\n",
+    "    'danemark' : 'copenhague',\n",
+    "    'espagne' : 'madrid',\n",
+    "    'estonie' : 'tallinn',\n",
+    "    'finlande' : 'helsinki',\n",
+    "    'france' : 'paris',\n",
+    "    'grèce' : 'athènes',\n",
+    "    'hongrie' : 'budapest',\n",
+    "    'irlande' : 'dublin',\n",
+    "    'italie' : 'rome',\n",
+    "    'lettonie' : 'riga',\n",
+    "    'lituanie' : 'vilnius',\n",
+    "    'luxembourg' : 'luxembourg',\n",
+    "    'malte' : 'la valette',\n",
+    "    'pays-bas' : 'amsterdam',\n",
+    "    'pologne' : 'varsovie',\n",
+    "    'portugal' : 'lisbonne',\n",
+    "    'république tchèque' : 'prague',\n",
+    "    'roumanie' : 'bucarest',\n",
+    "    'slovaquie' : 'bratislava',\n",
+    "    'slovénie' : 'ljubljana',\n",
+    "    'suède' : 'stockholm'\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {
+    "tags": []
+   },
+   "source": [
+    "Pour accéder à la *valeur* associée à la une *clé* donnée, il suffit alors d'utiliser la clé en indice du dictionnaire. Ainsi, pour afficher la capitale de la Hongrie :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "europe['hongrie']"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est facile avec un dictionnaire d'ajouter ou enlever une paire clé-valeur, ou bien de changer une valeur :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Ajouter la Turqie au dictionnaire\n",
+    "europe['turquie'] = 'istanbul'\n",
+    "\n",
+    "# Vérifier que le pays est bien contenu dans le dictionnaire\n",
+    "'turquie' in europe"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Changer le nom de la capitale de la Turquie (et oui ce n'est pas Istanbul...)\n",
+    "europe['turquie'] = 'ankara'\n",
+    "\n",
+    "# Afficher la capitale de la Turquie\n",
+    "print(europe['turquie'].capitalize())"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Enlever la paire clé-valeur du dictionnaire\n",
+    "del(europe['turquie'])\n",
+    "\n",
+    "# Vérifier que le pays n'est pas contenu dans le dictionnaire\n",
+    "'turquie' in europe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Pandas DataFrames\n",
+    "\n",
+    "[Pandas](https://pandas.pydata.org/) est un module de Python pour l'analyse et la manipulation de données. L'objet de base de Pandas est le *DataFrame*, qui est un tableau similaire aux feuilles Excel ou LibreOffice que vous devez connaître. Le module Pandas fonctionne en harmonie avec les modules [Numpy](https://numpy.org/) et [Matplotlib](https://matplotlib.org/) vus dans les cours précédents.\n",
+    "\n",
+    "Voyons comment créer un DataFrame à partir d'un dictionnaire. Nous allons reprendre les listes créées plus haut sur les pays et capitales européennes, les transformer en tableaux Numpy, et y ajouter d'autres informations :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Importation du module Numpy\n",
+    "import numpy as np\n",
+    "\n",
+    "# Importation du module Pandas\n",
+    "import pandas as pd\n",
+    "\n",
+    "# Création des tableaux Numpy à partir des listes des pays et des capitales : type string\n",
+    "np_pays = np.array(pays)\n",
+    "np_capitales = np.array(capitales)\n",
+    "\n",
+    "# Liste avec les populations des pays européens : type integer\n",
+    "np_population = np.array([82162000, 8700471, 11289853, 7153784, 848319, 4190669, 5659715, 46438422, 1315944, \n",
+    "                       5401267, 66661621, 10793526, 9830485, 4658530, 60665551, 1968957, 2888558, 576249, \n",
+    "                       434403, 16979120, 37967209, 10341330, 10553853, 19759968, 5426252, 2064188, 9851017],\n",
+    "                       dtype = 'int64')\n",
+    "\n",
+    "# Liste avec les dates d'adhésion des pays à l'UE : type datetime\n",
+    "np_date = np.array(['1957', '1995', '1957', '2007', '2004', '2013', '1973', '1986', '2004', '1995',\n",
+    "                    '1957', '1981', '2004', '1973', '1957', '2004', '2004', '1957', '2004', '1957',\n",
+    "                    '2004', '1986', '2004', '2007', '2004', '2004', '1995'],\n",
+    "                    dtype = 'datetime64[Y]')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Maintenant, créons un dictionnaire en utilisant les tableaux Numpy dans les paires clé-valeur :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "dic_europe = {\n",
+    "    \"pays\" : np_pays,\n",
+    "    \"capitale\" : np_capitales,\n",
+    "    \"population\" : np_population,\n",
+    "    \"date d'adhésion\" : np_date\n",
+    "}"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Pour créer le *DataFrame* à partir du dictionnaire il suffit d'utiliser la fonction `DataFrame()` de Pandas :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création du DataFrame\n",
+    "df_europe = pd.DataFrame(data = dic_europe)\n",
+    "\n",
+    "# Affichage du DataFrame\n",
+    "df_europe"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit que :\n",
+    "\n",
+    "- les clés du dictionnaire ont été utilisées pour nommer les colonnes du DataFrame,\n",
+    "- les listes ont été utilisées pour remplir chaque colonne\n",
+    "- les lignes sont étiquetées, par défaut avec des entiers à partir de l'indice 0, mais il est possible d'utiliser d'autres types pour les étiquettes, comme pour les clés d'un dictionnaire\n",
+    "\n",
+    "Nous pouvons vérifier le type du DataFrame avec la fonction `type()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Affichage du type\n",
+    "print(type(df_europe))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les attributs de DataFrame sont :\n",
+    "\n",
+    "| Attributs | Description\n",
+    "|--|--\n",
+    "| `ndim` | nombre de dimensions\n",
+    "| `shape` | forme, nombre d'éléments dans chaque dimension\n",
+    "| `size` | nombre d'éléments"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print('ndim :', df_europe.ndim)\n",
+    "print('shape :', df_europe.shape)\n",
+    "print('size :', df_europe.size)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les DataFrame contiennent parfois beaucoup de lignes. On peut afficher seulement les premières ou dernières lignes avec les méthodes `head()` et `tail()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Afficher les 2 premieres lignes\n",
+    "df_europe.head(n = 2)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Afficher les 2 dernieres lignes\n",
+    "df_europe.tail(n = 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## L'objet *Series*"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est possible d'extraire une colonne en mettant en indice le nom de la colonne :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire la colonne pays du DataFrame\n",
+    "col_pays = df_europe['pays']\n",
+    "\n",
+    "# Ou de manière similaire\n",
+    "col_pays = df_europe.pays\n",
+    "\n",
+    "# Affichage\n",
+    "print(col_pays)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit que l'on a extrait la colonne mais aussi les étiquettes des lignes et d'autres informations telles que l'étiquette de la colonne. Une colonne extraite de cette manière est un objet **Series** de Pandas : "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "print(type(col_pays))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On accède aux valeurs d'un objet *Series* de la même manière qu'un dictionnaire, c'est-à-dire en écrivant l'étiquette en indice de l'objet :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Afficher la valeur de la \"Series\" col_pays correspondant a l'étiquette 23\n",
+    "print(col_pays[23])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Pour accéder à une ligne, il faut utiliser un *accesseur* `.loc[]` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire la ligne 23 du DataFrame\n",
+    "ligne_23 = df_europe.loc[23]\n",
+    "\n",
+    "# Affichage\n",
+    "print(ligne_23)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Une ligne extraite de cette façon est aussi un objet *Series* :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "type(ligne_23)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Les noms des colonnes ont été utilisés pour étiqueter les lignes de ce nouvel objet, et l'étiquette de la ligne a été utilisée pour nommer l'objet."
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Créer un objet *Series* contenant la colonne date d'adhésion\n",
+    "2. Créer un objet *Series* contenant la ligne 12"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 1\n",
+    "col_adhesion = df_europe[\"date d'adhésion\"]\n",
+    "\n",
+    "# 2\n",
+    "ligne_12 = df_europe.loc[12]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## L'objet *Index*\n",
+    "\n",
+    "On peut extraire les étiquettes des lignes et des colonnes avec `.index` et `.columns` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Étiquettes des lignes\n",
+    "print(df_europe.index)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Étiquette des lignes\n",
+    "print(df_europe.columns)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Ces étiquettes sont des objet Pandas appelés **Index**. Ce sont des tableaux Numpy *immuables*, c'est-à-dire qu'on ne peut pas modifier leurs éléments.\n",
+    "\n",
+    "On peut par contre changer un *index* entier :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Modifier les étiquettes des lignes du DataFrame en les faisant commencer à 1\n",
+    "df_europe.index = np.arange(1, 28)\n",
+    "\n",
+    "# Afficher la premiere ligne\n",
+    "df_europe.head(n = 1)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Accéder et modifier les données\n",
+    "\n",
+    "On peut accéder aux données du DataFrame pour les extraire ou les modifier grâce à des **accesseurs** :\n",
+    "\n",
+    "| Accesseur | Description\n",
+    "|--|--\n",
+    "| `.loc[]`  | accepte les étiquettes des lignes ou colonnes et retourne un objet *Series* ou *DataFrame*\n",
+    "| `.iloc[]` | accepte les indices des lignes ou colonnes et retourne un objet *Series* ou *DataFrame*\n",
+    "| `.at[]`   | accepte les étiquettes des lignes ou colonnes et retourne une valeur unique\n",
+    "| `.iat[]`  | accepte les indices des lignes ou colonnes et retourne une valeur unique\n",
+    "\n",
+    "Comme pour les tableaux Numpy, les accesseurs supportent l'indexation et le tranchage. Voyons quelques exemples :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire les capitales des 3 premiers pays\n",
+    "print(df_europe.loc[1:4, 'capitale'])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Attention, avec `.loc[]` on a utilisé les étiquettes des lignes, décalées de 1 par rapport à leur indice. Pour extraire le  même objet *Series* avec `iloc[]`, on écrira :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire les capitales des 3 premiers pays\n",
+    "print(df_europe.iloc[0:4, 1])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Note :\n",
+    "- lorsqu'on accède par étiquettes, la notation m:n signifie $[m,n]$,\n",
+    "- lorsqu'on accède par indices, la notation m:n signifie $[m,n[$.\n",
+    "\n",
+    "Attention aux erreurs !"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Comme pour les tableaux Numpy, on peut trancher en fournissant une liste : "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire les noms et les populations des pays 3 à 7\n",
+    "df_europe.loc[3:7, ['pays', 'population']]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Avec l'accesseur `iloc[]` on écrira :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Extraire les noms et les populations des pays 3 à 7\n",
+    "df_europe.iloc[2:7, [0, 2]]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Pour accéder à une valeur en particulier :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Nom du pays 23\n",
+    "print(df_europe.at[23, 'pays'])\n",
+    "\n",
+    "# Ou avec les indices\n",
+    "print(df_europe.iat[22, 0])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "1. Extraire les date d'adhésion des pays avec les étiquettes 12 et 25\n",
+    "2. Extraire la population du pays avec l'étiquette 6"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 1\n",
+    "print(df_europe.loc[[12,25], \"date d'adhésion\"])"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# 2\n",
+    "print(df_europe.at[6, \"population\"])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Insérer et supprimer des données\n",
+    "\n",
+    "Pour insérer une nouvelle ligne, on peut créer un objet *Series* et l'ajouter au DataFrame avec la méthode `.append()`. Supposons que la Turquie joigne l'Union Européenne en 2026 :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Création de l'objet Series\n",
+    "ligne_turquie = pd.Series(data = ['turquie', 'ankara', 83154997, np.datetime64('2026', 'Y')], \n",
+    "                          index = df_europe.columns, name = 28)\n",
+    "\n",
+    "# Affichage\n",
+    "print(ligne_turquie)"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Ajout de la ligne à l'objet DataFrame\n",
+    "df_europe = df_europe.append(ligne_turquie)\n",
+    "\n",
+    "# Affichage des 2 dernières lignes\n",
+    "df_europe.tail(n = 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Plusieurs remarques :\n",
+    "- Pour créer l'objet *Series* on a utilisé l'option `index` pour nommer les colonnes, et l'option `name` pour lui donner un nom\n",
+    "- L'étiquette de la nouvelle ligne de l'objet DataFrame est le nom de l'objet Series\n",
+    "- On aurait pu ignorer ce nom en utilisant l'option de la méthode `append()` : `ignore_index = True`\n",
+    "\n",
+    "La méthode `.drop()` permet de supprimer des lignes :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Supprimer la ligne avec l'étiquette 28\n",
+    "df_europe = df_europe.drop([28])\n",
+    "\n",
+    "# Affichage des 2 dernieres lignes\n",
+    "df_europe.tail(n = 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est beaucoup plus simple d'ajouter une colonne à un DataFrame. On peut le faire de la même manière que l'on ajoute une paire clé-valeur à un dictionnaire. Par exemple, ajoutons la colonne qui donne le nombre de sièges au parlement européen pour chaque pays de l'UE :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Nombre de sieges au parlement\n",
+    "np_sieges = np.array([96, 18, 21, 17, 6, 11, 13, 54, 6, 13, 74, 21, 21, 11, 73, 8, 11, 6, 6, 26, 51, 21, 21, 32, 13, 8, 20])\n",
+    "\n",
+    "# Ajout de la colonne\n",
+    "df_europe['sièges'] = np_sieges\n",
+    "\n",
+    "# Affichage des 2 premieres lignes\n",
+    "df_europe.head(n = 2)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Opérateurs arithmétiques et fonctions\n",
+    "\n",
+    "Il est possible d'utiliser les opérateurs arithmétiques usuels et les fonctions Numpy sur les colonnes d'un objet DataFrame. Par exemple, calculons le pourcentage de la population dans chaque pays par rapport à la population totale :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "# Population totale\n",
+    "pop_tot = df_europe['population'].sum()\n",
+    "\n",
+    "# Pourcentage de la population\n",
+    "pop_pourcentage = df_europe['population'] / pop_tot * 100\n",
+    "\n",
+    "# Affichage\n",
+    "print(pop_pourcentage)"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "### Exercice\n",
+    "\n",
+    "Nous voulons connaître le poids de chaque pays au parlement par rapport à son nombre d'habitants.\n",
+    "\n",
+    "1. Calculer le nombre de sièges au parlement par habitants dans chaque pays, c'est-à-dire :\n",
+    "\n",
+    "$$N_i = \\frac{\\text{nombre de sièges}}{\\text{nombre d'habitants}}$$\n",
+    "\n",
+    "2. Normaliser le résultat et l'exprimer en pourcentage, c'est-à-dire :\n",
+    "\n",
+    "$$\\bar{N}_i = \\frac{N_i}{\\sum_i N_i}\\times 100$$\n",
+    "\n",
+    "3. Ajouter une nouvelle colonne au DataFrame `df_europe` avec le nom `'poids'` qui contient $\\bar{N}_i$\n",
+    "4. Afficher les colonnes `'pays'` et `'poids'` du DataFrame `df_europe` pour les 20 premières lignes"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": [
+     "solution"
+    ]
+   },
+   "outputs": [],
+   "source": [
+    "# Nombre de siège par habitant\n",
+    "siege_pour = df_europe['sièges'] / df_europe['population']\n",
+    "\n",
+    "# Normalisation\n",
+    "siege_pour = siege_pour / siege_pour.sum() * 100\n",
+    "\n",
+    "# Ajout d'une colonne poids\n",
+    "df_europe['poids'] = siege_pour\n",
+    "\n",
+    "# Affichage\n",
+    "df_europe.loc[1:20, ['pays', 'poids']]"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Trier un *DataFrame*\n",
+    "\n",
+    "Il est très facile de trier un objet DataFrame avec la méthode `.sort_values()`. Par exemple, on voit qu'en classant les pays d'abord par nombre de sièges croissant, puis, pour un même nombre de sièges, par poids décroissant, on déduit que plus le nombre de sièges et la population augmentent, plus le poids d'un pays au parlement diminue :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "df_europe.sort_values(by = ['sièges', 'poids'], ascending = [True, False])"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "## Sauver un DataFrame\n",
+    "Il est possible de sauver un objet DataFrame sous la forme d'un [fichier csv](https://fr.wikipedia.org/wiki/Comma-separated_values). C'est un format pratique qui peut être lu par la plupart des tableurs comme LibreOffice Calc ou Microsoft Excel. Il faut utiliser la métode `.to_csv()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_europe.to_csv(\"europe.csv\")"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Cette méthode crée un fichier nommé *data.csv* dans le répertoire de travail (allez vérifier !), avec le contenu du DataFrame :\n",
+    "\n",
+    "```\n",
+    ",pays,capitale,population,date d'adhésion,sièges,poids\n",
+    "1,allemagne,berlin,82162000,1957-01-01,96,1.3703356988657123\n",
+    "2,autriche,vienne,8700471,1995-01-01,18,2.4263669538020842\n",
+    "3,belgique,bruxelles,11289853,1957-01-01,21,2.1815127149779783\n",
+    "4,bulgarie,sofia,7153784,2007-01-01,17,2.7870184226008328\n",
+    "5,chypre,nicosie,848319,2004-01-01,6,8.295045974023676\n",
+    "6,croatie,zagreb,4190669,2013-01-01,11,3.078478088741746\n",
+    "7,danemark,copenhague,5659715,1973-01-01,13,2.6938631589897866\n",
+    "8,espagne,madrid,46438422,1986-01-01,54,1.363776011827881\n",
+    "9,estonie,tallinn,1315944,2004-01-01,6,5.347374284648732\n",
+    "10,finlande,helsinki,5401267,1995-01-01,13,2.822763201464005\n",
+    "11,france,paris,66661621,1957-01-01,74,1.301914879970682\n",
+    "12,grèce,athènes,10793526,1981-01-01,21,2.28182689046492\n",
+    "13,hongrie,budapest,9830485,2004-01-01,21,2.5053654900782893\n",
+    "14,irlande,dublin,4658530,1973-01-01,11,2.7693033411117423\n",
+    "15,italie,rome,60665551,1957-01-01,73,1.4112613727889787\n",
+    "16,lettonie,riga,1968957,2004-01-01,8,4.765193013788716\n",
+    "17,lituanie,vilnius,2888558,2004-01-01,11,4.466201715066578\n",
+    "18,luxembourg,luxembourg,576249,1957-01-01,6,12.211466060050068\n",
+    "19,malte,la valette,434403,2004-01-01,6,16.198886991198936\n",
+    "20,pays-bas,amsterdam,16979120,1957-01-01,26,1.7959114169499812\n",
+    "21,pologne,varsovie,37967209,2004-01-01,51,1.5753905797479404\n",
+    "22,portugal,lisbonne,10341330,1986-01-01,21,2.381604481215885\n",
+    "23,république tchèque,prague,10553853,2004-01-01,21,2.3336460977552242\n",
+    "24,roumanie,bucarest,19759968,2007-01-01,32,1.8992865050895604\n",
+    "25,slovaquie,bratislava,5426252,2004-01-01,13,2.8097658805528902\n",
+    "26,slovénie,ljubljana,2064188,2004-01-01,8,4.545351557537583\n",
+    "27,suède,stockholm,9851017,1995-01-01,20,2.381089216689604\n",
+    "```"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Il est alors possible, plus tard, de charger le contenu du fichier csv avec la méthode `.read_csv()` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "df_europe_from_csv = pd.read_csv(\"europe.csv\", index_col = 0, encoding = 'utf-8')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "L'option `encoding` peut être nécessaire sur certains ordinateurs, pas sur d'autres.\n",
+    "\n",
+    "Un problème de sauvegarder en csv est que si une des colonnes contient des objets python, il peuvent être convertit en un autre type au moment de l'écriture et de la lecture. Dans l'exemple ci-dessus, la colonne `date d'adhésion` n'est plus un objet `datetime64` au moment de la lecture : il a été converti en objet `str`. "
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "A = df_europe_from_csv[\"date d'adhésion\"][1]\n",
+    "print(A)\n",
+    "print(type(A))"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "Une façon de garder toutes les propriétés des objets python est de les sauver dans un format que l'on appelle *pickle* :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {},
+   "outputs": [],
+   "source": [
+    "# Sauvegarde d'un DataFrame dans un fichier pickle\n",
+    "df_europe.to_pickle('europe.pkl')\n",
+    "\n",
+    "# Lecture du fichier pickle\n",
+    "df_europe_from_pickle = pd.read_pickle('europe.pkl')"
+   ]
+  },
+  {
+   "cell_type": "markdown",
+   "metadata": {},
+   "source": [
+    "On voit alors que les dates sont restées des objets `datetime64` :"
+   ]
+  },
+  {
+   "cell_type": "code",
+   "execution_count": null,
+   "metadata": {
+    "tags": []
+   },
+   "outputs": [],
+   "source": [
+    "df_europe_from_pickle[\"date d'adhésion\"].head(n = 2)"
+   ]
+  }
+ ],
+ "metadata": {
+  "kernelspec": {
+   "display_name": "Python 3",
+   "language": "python",
+   "name": "python3"
+  },
+  "language_info": {
+   "codemirror_mode": {
+    "name": "ipython",
+    "version": 3
+   },
+   "file_extension": ".py",
+   "mimetype": "text/x-python",
+   "name": "python",
+   "nbconvert_exporter": "python",
+   "pygments_lexer": "ipython3",
+   "version": "3.8.3"
+  }
+ },
+ "nbformat": 4,
+ "nbformat_minor": 4
+}

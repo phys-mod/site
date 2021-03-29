@@ -1,0 +1,2386 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Logique, structures de contrôle et filtrage &mdash; Documentation phys-mod 0.1</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script src="../../_static/jquery.js"></script>
+        <script src="../../_static/underscore.js"></script>
+        <script src="../../_static/doctools.js"></script>
+        <script src="../../_static/translations.js"></script>
+        <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js"></script>
+        <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["$", "$"], ["\\(", "\\)"]], "processEscapes": true, "ignoreClass": "document", "processClass": "math|output_area"}})</script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Recherche" href="../../search.html" />
+    <link rel="next" title="Itération" href="03-iteration.html" />
+    <link rel="prev" title="Dictionnaires et Pandas" href="01-dictionnaires-pandas.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> phys-mod
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Informations générales</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/pedagogie.html">Pédagogie</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/competences.html">Objectifs d’apprentissage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/deroulement.html">Déroulement du cours</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/evaluation.html">Évaluations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#gestion-de-l-apprentissage">Gestion de l’apprentissage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#mini-projets-individuels">Mini-projets individuels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#projet-en-equipe">Projet en équipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/evaluation.html#seconde-chance">Seconde chance</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/installation.html">Outils numériques</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#jupyter-notebooks">Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#moodle">Moodle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/installation.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../cours-info/licence.html">Crédits et licence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#credits">Crédits</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#references">Références</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../cours-info/licence.html#licence">Licence</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#vous-etes-autorise-a">Vous êtes autorisé à</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#selon-les-conditions-suivantes">Selon les conditions suivantes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../cours-info/licence.html#notes">Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Les bases de Python</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/01-python-base/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/01-python-base/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/01-prise-en-main.html">Première prise en main de Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#L'interface-Jupyter-Notebook">L’interface Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Commentaires">Commentaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#La-calculatrice-Python">La calculatrice Python</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-bouillon-de-culture">Exercice : bouillon de culture</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Affectation-d'une-variable">Affectation d’une variable</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice-:-masse-de-la-Terre">Exercice : masse de la Terre</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Calculer-avec-des-variables">Calculer avec des variables</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Les-types">Les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Opérations-sur-les-types">Opérations sur les types</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#Conversion-de-type">Conversion de type</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/01-prise-en-main.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/02-listes-python.html">Les listes Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Créer-une-liste">Créer une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Liste-de-listes">Liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Modifier-une-liste">Modifier une liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Opérations-sur-listes">Opérations sur listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Tranches-de-liste">Tranches de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Indexation-et-tranche-de-liste-de-listes">Indexation et tranche de liste de listes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/02-listes-python.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Supprimer-un-élément">Supprimer un élément</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Les-chaînes">Les chaînes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Objets-et-valeurs">Objets et valeurs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/02-listes-python.html#Aliasing">Aliasing</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html">Fonctions et modules</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Fonctions-natives">Fonctions natives</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Aide">Aide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-chaînes">Méthodes de chaînes</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Méthodes-de-liste">Méthodes de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Importer-un-module">Importer un module</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#Import-sélectif">Import sélectif</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/03-fonctions-modules.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/04-module-numpy.html">Le module NumPy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Le-tableau-NumPy">Le tableau NumPy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-les-tableaux">Opérations sur les tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche">Indexation et tranche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Tableau-à-2-dimensions">Tableau à 2 dimensions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Indexation-et-tranche-2D">Indexation et tranche 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Opérations-sur-tableaux-2D">Opérations sur tableaux 2D</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/04-module-numpy.html#Statistiques">Statistiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/04-module-numpy.html#id5">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html">Les fonctions de Numpy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Créer-des-tableaux-Numpy">Créer des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#La-fonction-arrayInfo">La fonction <code class="docutils literal notranslate"><span class="pre">arrayInfo</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Uns-et-zeros">Uns et zeros</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Intervalles-et-pas">Intervalles et pas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id1">Exercice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Manipulation-de-tableau">Manipulation de tableau</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Un-peu-de-tri">Un peu de tri</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Quelle-est-la-date-?">Quelle est la date ?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#Les-fonctions-mathématiques">Les fonctions mathématiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/05-fonctions-numpy.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html">Le module Matplotlib</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-des-points">Afficher des points</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-graphique-d'une-fonction-mathématique">Représentation graphique d’une fonction mathématique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Représentation-de-données">Représentation de données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Afficher-plusieurs-courbes">Afficher plusieurs courbes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Une-question-de-style">Une question de style</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../01-python-base/06-module-matplotlib.html#Échelle-logarithmique">Échelle logarithmique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Python intermédiaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-telecharger">À télécharger</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#a-faire-en-seance">À faire en séance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#trello">Trello</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/02-python-intermediaire/contenu.html#objectifs-d-apprentissage">Objectifs d’apprentissage</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="01-dictionnaires-pandas.html">Dictionnaires et Pandas</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Les-dictionnaires">Les dictionnaires</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Pandas-DataFrames">Pandas DataFrames</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#L'objet-Series">L’objet <em>Series</em></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#L'objet-Index">L’objet <em>Index</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Accéder-et-modifier-les-données">Accéder et modifier les données</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Insérer-et-supprimer-des-données">Insérer et supprimer des données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Opérateurs-arithmétiques-et-fonctions">Opérateurs arithmétiques et fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01-dictionnaires-pandas.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Trier-un-DataFrame">Trier un <em>DataFrame</em></a></li>
+<li class="toctree-l2"><a class="reference internal" href="01-dictionnaires-pandas.html#Sauver-un-DataFrame">Sauver un DataFrame</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Logique, structures de contrôle et filtrage</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#Opérateurs-de-comparaison">Opérateurs de comparaison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#Égalité">Égalité</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Supérieur-et-inférieur">Supérieur et inférieur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Comparer-des-tableaux">Comparer des tableaux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Opérateurs-logiques">Opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Numpy-et-les-opérateurs-logiques">Numpy et les opérateurs logiques</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Instructions-conditionnelles">Instructions conditionnelles</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Filtrer-un-tableau-Numpy">Filtrer un tableau Numpy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#Filtrer-un-DataFrame">Filtrer un DataFrame</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="03-iteration.html">Itération</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Mise-à-jour-d'une-variable">Mise à jour d’une variable</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-while">L’instruction <code class="docutils literal notranslate"><span class="pre">while</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-break">L’instruction <code class="docutils literal notranslate"><span class="pre">break</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#L'instruction-for">L’instruction <code class="docutils literal notranslate"><span class="pre">for</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-une-liste">Itérer sur une liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-dictionnaire">Itérer sur un dictionnaire</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-tableau-Numpy">Itérer sur un tableau Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03-iteration.html#Itérer-sur-un-DataFrame">Itérer sur un <code class="docutils literal notranslate"><span class="pre">DataFrame</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03-iteration.html#id4">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="04-fonctions.html">Fonctions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Créer-de-nouvelles-fonctions">Créer de nouvelles fonctions</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-et-arguments">Paramètres et arguments</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retourner-une-valeur">Retourner une valeur</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Docstrings">Docstrings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Paramètres-multiples">Paramètres multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id4">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Retours-multiples">Retours multiples</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id5">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04-fonctions.html#Forme-Lambda">Forme Lambda</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04-fonctions.html#id6">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="05-entrees-sorties.html">Entrées-sorties</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-un-fichier-texte">Lire un fichier texte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Gestionnaire-de-contexte">Gestionnaire de contexte</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-le-clavier">Lire le clavier</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05-entrees-sorties.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Format-défini">Format défini</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Lire-et-écrire-des-tableaux-Numpy">Lire et écrire des tableaux Numpy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05-entrees-sorties.html#Importer-des-données-mixtes-avec-Pandas">Importer des données mixtes avec Pandas</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">La démarche de modélisation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html">Modèle de l’accélération constante</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Expérience-de-chute-libre">Expérience de chute libre</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-discrète-de-la-vitesse">Représentation discrète de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-graphique-de-la-vitesse">Représentation graphique de la vitesse</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-sous-la-forme-d'une-fonction">Représentation sous la forme d’une fonction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-de-la-position">Représentation de la position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représentation-du-mouvement">Représentation du mouvement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/01-acceleration-constante.html#Représenter-des-données">Représenter des données</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Pile-ou-face">Pile ou face</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Tir-à-l'arc">Tir à l’arc</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../03-demarche-de-modelisation/02-exercices.html#Première-détection-d'onde-gravitationnelle">Première détection d’onde gravitationnelle</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html">Mini-projet : exoplanètes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#a-la-maison">À la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#modele">Modèle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#donnees">Données</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#methode">Méthode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/03-demarche-de-modelisation/exoplanetes-kepler.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Suites et relations de récurrence</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html">Compréhensions de listes et récursion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-construction">Schéma de construction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-de-liste">Compréhension de liste</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-transformation">Schéma de transformation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#La-fonction-map()">La fonction <code class="docutils literal notranslate"><span class="pre">map()</span></code></a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Schéma-de-filtrage">Schéma de filtrage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#id3">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Compréhension-multiple">Compréhension multiple</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/01-comprehension-listes-recursion.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Compréhension-de-liste">Compréhension de liste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Suite-de-Fibonacci">Suite de Fibonacci</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../04-suites-relations-recurrence/02-exercices.html#Récursion">Récursion</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../04-suites-relations-recurrence/03-suite-graphique.html">Représentation graphique d’une suite mathématique</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html">Mini-projet : un exemple de système chaotique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#presentation-mathematique-du-probleme">Présentation mathématique du problème</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#comportement-de-la-suite">Comportement de la suite</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#diagramme-de-bifurcation">Diagramme de bifurcation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#exposant-de-lyapunov">Exposant de Lyapunov</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/04-suites-relations-recurrence/logistique.html#compte-rendu">Compte-rendu</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Ajuster un modèle</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/05-ajustement-modele/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html">Ajuster un modèle aux données</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Paramètres-d'un-modèle">Paramètres d’un modèle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-méthode-des-moindres-carrés">La méthode des moindres-carrés</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#Régression-linéaire">Régression linéaire</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id2">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#La-fonction-curve_fit">La fonction <code class="docutils literal notranslate"><span class="pre">curve_fit</span></code></a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/01-ajustement-modele.html#id3">Exercice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Chute-libre">Chute libre</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Correction">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Loi-de-puissance">Loi de puissance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id1">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Décroissance-exponentielle">Décroissance exponentielle</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id2">Correction</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#Ajustement-sinusoïdal">Ajustement sinusoïdal</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../05-ajustement-modele/02-exercices.html#id3">Correction</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/05-ajustement-modele/rechauffement_climatique.html">Mini-projet : le réchauffement climatique</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Dérivation et intégration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/06-derivation-integration/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html">Dérivation et intégration numérique</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Dérivation-numérique">Dérivation numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Integration-numérique">Integration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#id1">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/01-derivation-integration-cours.html#Travail-préparatoire">Travail préparatoire</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-numérique-décentrée">Dérivée numérique décentrée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Dérivée-d'une-courbe-expérimentale">Dérivée d’une courbe expérimentale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Intégration-numérique">Intégration numérique</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-rectangles">Méthode des rectangles</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-du-point-milieu">Méthode du point milieu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Méthode-des-trapèzes">Méthode des trapèzes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/02-derivation-integration-exercices.html#Pour-aller-plus-loin">Pour aller plus loin</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../06-derivation-integration/03-Digue.html">Mini-projet : calcul des forces de pression sur une digue</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-à-la-maison">Travail à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Travail-en-séance">Travail en séance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-en-pentes-droites">Cas des digues en pentes droites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Cas-des-digues-concaves">Cas des digues concaves</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../06-derivation-integration/03-Digue.html#Parenthèse">Parenthèse</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations différentielles linéaire</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/07-equations-differentielles/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html">Équations différentielles ordinaires (EDO)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#L'épaisseur-de-mousse-de-bière">L’épaisseur de mousse de bière</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-formule-de-Taylor">La formule de Taylor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Exercice">Exercice</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#La-méthode-d'Euler">La méthode d’Euler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Erreur-d'intégration">Erreur d’intégration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Particule-chargée">Particule chargée</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/01-edo_cours.html#Le-pendule-simple">Le pendule simple</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html">Exercices</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#La-tasse-de-café">La tasse de café</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Méthodes-de-Runge-Kutta">Méthodes de Runge-Kutta</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methodes-de-Runge-Kutta-(explicite)-d'ordre-2-(méthodes-RK2) :">Methodes de Runge-Kutta (explicite) d’ordre 2 (méthodes RK2) :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/02-edo_exercices.html#Methode-de-Runge-Kutta-(explicite)-d'ordre-4-(méthode-RK4)">Methode de Runge-Kutta (explicite) d’ordre 4 (méthode RK4)</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html">Mini-projet : le pendule</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Approximation-des-petits-angles">Approximation des petits angles</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Force-d'excitation">Force d’excitation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../07-equations-differentielles/03-pendule.html#Mouvement-chaotique">Mouvement chaotique</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Équations non-linéaires</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html">Déroulement de la séquence</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#a-faire-a-la-maison">À faire à la maison</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-1">Séance 1</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#seance-2">Séance 2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/08-equations-non-lineaires/contenu.html#trello">Trello</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html">Recherche des zéros d’une fonction</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Introduction">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-dichotomie-(à-la-maison)">La méthode de dichotomie (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Présentation-de-la-méthode">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Exercices">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#La-méthode-de-Newton-Raphson">La méthode de Newton-Raphson</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id1">Présentation de la méthode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#id2">Exercices</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/01-zeros-cours.html#Références">Références</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html">Modes propres de vibration d’un diapason</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/02-zeros-exercice.html#Solution">Solution</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html">Mini-Projet : modèle de bifurcation d’Alben</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Préparation-sur-la-physique-du-problème-(à-la-maison)">Préparation sur la physique du problème (à la maison)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Un-modèle-mécanique-de-bifurcation">Un modèle mécanique de bifurcation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../08-equations-non-lineaires/03-projet-alben.html#Modélisation-numérique-du-problème">Modélisation numérique du problème</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Projet en équipe</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html">Description du projet</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#les-trois-phases-du-projet">Les trois phases du projet</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#suivi-de-l-enseignant">Suivi de l’enseignant</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#planification-du-projet-s1">Planification du projet (S1)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#mise-en-oeuvre-du-projet-s2-3">Mise en œuvre du projet (S2-3)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#synthese-et-evaluation-du-projet-s4-5">Synthèse et évaluation du projet (S4-5)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../sequences/09-projet-equipe/contenu.html#exemples-de-sujets">Exemples de sujets</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">phys-mod</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Logique, structures de contrôle et filtrage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="../../_sources/notebooks/02-python-intermediaire/02-logique-filtrage.ipynb.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  
+<style>
+/* CSS for nbsphinx extension */
+
+/* remove conflicting styling from Sphinx themes */
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt *,
+div.nbinput.container div.input_area pre,
+div.nboutput.container div.output_area pre,
+div.nbinput.container div.input_area .highlight,
+div.nboutput.container div.output_area .highlight {
+    border: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: none;
+}
+
+div.nbinput.container > div[class*=highlight],
+div.nboutput.container > div[class*=highlight] {
+    margin: 0;
+}
+
+div.nbinput.container div.prompt *,
+div.nboutput.container div.prompt * {
+    background: none;
+}
+
+div.nboutput.container div.output_area .highlight,
+div.nboutput.container div.output_area pre {
+    background: unset;
+}
+
+div.nboutput.container div.output_area div.highlight {
+    color: unset;  /* override Pygments text color */
+}
+
+/* avoid gaps between output lines */
+div.nboutput.container div[class*=highlight] pre {
+    line-height: normal;
+}
+
+/* input/output containers */
+div.nbinput.container,
+div.nboutput.container {
+    display: -webkit-flex;
+    display: flex;
+    align-items: flex-start;
+    margin: 0;
+    width: 100%;
+}
+@media (max-width: 540px) {
+    div.nbinput.container,
+    div.nboutput.container {
+        flex-direction: column;
+    }
+}
+
+/* input container */
+div.nbinput.container {
+    padding-top: 5px;
+}
+
+/* last container */
+div.nblast.container {
+    padding-bottom: 5px;
+}
+
+/* input prompt */
+div.nbinput.container div.prompt pre {
+    color: #307FC1;
+}
+
+/* output prompt */
+div.nboutput.container div.prompt pre {
+    color: #BF5B3D;
+}
+
+/* all prompts */
+div.nbinput.container div.prompt,
+div.nboutput.container div.prompt {
+    width: 4.5ex;
+    padding-top: 5px;
+    position: relative;
+    user-select: none;
+}
+
+div.nbinput.container div.prompt > div,
+div.nboutput.container div.prompt > div {
+    position: absolute;
+    right: 0;
+    margin-right: 0.3ex;
+}
+
+@media (max-width: 540px) {
+    div.nbinput.container div.prompt,
+    div.nboutput.container div.prompt {
+        width: unset;
+        text-align: left;
+        padding: 0.4em;
+    }
+    div.nboutput.container div.prompt.empty {
+        padding: 0;
+    }
+
+    div.nbinput.container div.prompt > div,
+    div.nboutput.container div.prompt > div {
+        position: unset;
+    }
+}
+
+/* disable scrollbars on prompts */
+div.nbinput.container div.prompt pre,
+div.nboutput.container div.prompt pre {
+    overflow: hidden;
+}
+
+/* input/output area */
+div.nbinput.container div.input_area,
+div.nboutput.container div.output_area {
+    -webkit-flex: 1;
+    flex: 1;
+    overflow: auto;
+}
+@media (max-width: 540px) {
+    div.nbinput.container div.input_area,
+    div.nboutput.container div.output_area {
+        width: 100%;
+    }
+}
+
+/* input area */
+div.nbinput.container div.input_area {
+    border: 1px solid #e0e0e0;
+    border-radius: 2px;
+    /*background: #f5f5f5;*/
+}
+
+/* override MathJax center alignment in output cells */
+div.nboutput.container div[class*=MathJax] {
+    text-align: left !important;
+}
+
+/* override sphinx.ext.imgmath center alignment in output cells */
+div.nboutput.container div.math p {
+    text-align: left;
+}
+
+/* standard error */
+div.nboutput.container div.output_area.stderr {
+    background: #fdd;
+}
+
+/* ANSI colors */
+.ansi-black-fg { color: #3E424D; }
+.ansi-black-bg { background-color: #3E424D; }
+.ansi-black-intense-fg { color: #282C36; }
+.ansi-black-intense-bg { background-color: #282C36; }
+.ansi-red-fg { color: #E75C58; }
+.ansi-red-bg { background-color: #E75C58; }
+.ansi-red-intense-fg { color: #B22B31; }
+.ansi-red-intense-bg { background-color: #B22B31; }
+.ansi-green-fg { color: #00A250; }
+.ansi-green-bg { background-color: #00A250; }
+.ansi-green-intense-fg { color: #007427; }
+.ansi-green-intense-bg { background-color: #007427; }
+.ansi-yellow-fg { color: #DDB62B; }
+.ansi-yellow-bg { background-color: #DDB62B; }
+.ansi-yellow-intense-fg { color: #B27D12; }
+.ansi-yellow-intense-bg { background-color: #B27D12; }
+.ansi-blue-fg { color: #208FFB; }
+.ansi-blue-bg { background-color: #208FFB; }
+.ansi-blue-intense-fg { color: #0065CA; }
+.ansi-blue-intense-bg { background-color: #0065CA; }
+.ansi-magenta-fg { color: #D160C4; }
+.ansi-magenta-bg { background-color: #D160C4; }
+.ansi-magenta-intense-fg { color: #A03196; }
+.ansi-magenta-intense-bg { background-color: #A03196; }
+.ansi-cyan-fg { color: #60C6C8; }
+.ansi-cyan-bg { background-color: #60C6C8; }
+.ansi-cyan-intense-fg { color: #258F8F; }
+.ansi-cyan-intense-bg { background-color: #258F8F; }
+.ansi-white-fg { color: #C5C1B4; }
+.ansi-white-bg { background-color: #C5C1B4; }
+.ansi-white-intense-fg { color: #A1A6B2; }
+.ansi-white-intense-bg { background-color: #A1A6B2; }
+
+.ansi-default-inverse-fg { color: #FFFFFF; }
+.ansi-default-inverse-bg { background-color: #000000; }
+
+.ansi-bold { font-weight: bold; }
+.ansi-underline { text-decoration: underline; }
+
+
+div.nbinput.container div.input_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight] > pre,
+div.nboutput.container div.output_area div[class*=highlight].math,
+div.nboutput.container div.output_area.rendered_html,
+div.nboutput.container div.output_area > div.output_javascript,
+div.nboutput.container div.output_area:not(.rendered_html) > img{
+    padding: 5px;
+    margin: 0;
+}
+
+/* fix copybtn overflow problem in chromium (needed for 'sphinx_copybutton') */
+div.nbinput.container div.input_area > div[class^='highlight'],
+div.nboutput.container div.output_area > div[class^='highlight']{
+    overflow-y: hidden;
+}
+
+/* hide copybtn icon on prompts (needed for 'sphinx_copybutton') */
+.prompt a.copybtn {
+    display: none;
+}
+
+/* Some additional styling taken form the Jupyter notebook CSS */
+div.rendered_html table {
+  border: none;
+  border-collapse: collapse;
+  border-spacing: 0;
+  color: black;
+  font-size: 12px;
+  table-layout: fixed;
+}
+div.rendered_html thead {
+  border-bottom: 1px solid black;
+  vertical-align: bottom;
+}
+div.rendered_html tr,
+div.rendered_html th,
+div.rendered_html td {
+  text-align: right;
+  vertical-align: middle;
+  padding: 0.5em 0.5em;
+  line-height: normal;
+  white-space: normal;
+  max-width: none;
+  border: none;
+}
+div.rendered_html th {
+  font-weight: bold;
+}
+div.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+div.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
+
+/* CSS overrides for sphinx_rtd_theme */
+
+/* 24px margin */
+.nbinput.nblast.container,
+.nboutput.nblast.container {
+    margin-bottom: 19px;  /* padding has already 5px */
+}
+
+/* ... except between code cells! */
+.nblast.container + .nbinput.container {
+    margin-top: -19px;
+}
+
+.admonition > p:before {
+    margin-right: 4px;  /* make room for the exclamation icon */
+}
+
+/* Fix math alignment, see https://github.com/rtfd/sphinx_rtd_theme/pull/686 */
+.math {
+    text-align: unset;
+}
+</style>
+<div class="section" id="Logique,-structures-de-contrôle-et-filtrage">
+<h1>Logique, structures de contrôle et filtrage<a class="headerlink" href="#Logique,-structures-de-contrôle-et-filtrage" title="Lien permanent vers ce titre">¶</a></h1>
+<div class="section" id="Opérateurs-de-comparaison">
+<h2>Opérateurs de comparaison<a class="headerlink" href="#Opérateurs-de-comparaison" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Une <strong>expression booléenne</strong> est une expression qui est soit vraie, soit fausse. Par exemple, l’opérateur <code class="docutils literal notranslate"><span class="pre">==</span></code> compare les expressions de chaque côté de l’opérateur et renvoie la valeur <code class="docutils literal notranslate"><span class="pre">True</span></code> (vrai) s’ils sont égaux et <code class="docutils literal notranslate"><span class="pre">False</span></code> (faux) sinon.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[1]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Opérateur égalité</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">5</span> <span class="o">==</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">2</span> <span class="o">==</span> <span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+False
+</pre></div></div>
+</div>
+<p>Les valeurs <code class="docutils literal notranslate"><span class="pre">True</span></code> et <code class="docutils literal notranslate"><span class="pre">False</span></code> appartiennent au type <code class="docutils literal notranslate"><span class="pre">bool</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[2]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+</pre></div></div>
+</div>
+<p>La liste des opérateurs de comparaison est la suivante:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 29%" />
+<col style="width: 71%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>opérateur</p></th>
+<th class="head"><p>description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">==</span> <span class="pre">y</span></code></p></td>
+<td><p>x est égal à y</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">!=</span> <span class="pre">y</span></code></p></td>
+<td><p>x n’est pas égal à y</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code></p></td>
+<td><p>x est strictement supérieur à y</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;</span> <span class="pre">y</span></code></p></td>
+<td><p>x est strictement inférieur à y</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;=</span> <span class="pre">y</span></code></p></td>
+<td><p>x est supérieur ou égal à y</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">y</span></code></p></td>
+<td><p>x est inférieur ou égal à y</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition warning">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Attention</strong></p>
+<p>Ces opérateurs semblent familiers. Cependant, les symboles de Python sont différents des symboles mathématiques. En particulier, le signe = des mathématiques n’est pas le symbole <code class="docutils literal notranslate"><span class="pre">=</span></code> de Python, qui est l’opérateur d’affectation, alors que le symbole <code class="docutils literal notranslate"><span class="pre">==</span></code> est un opérateur relationnel en Python.</p>
+</div>
+</div>
+<div class="section" id="Égalité">
+<h2>Égalité<a class="headerlink" href="#Égalité" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour vérifier l’égalité entre 2 expressions on utilise le symbole <code class="docutils literal notranslate"><span class="pre">==</span></code>. Les expressions de chaque côté de l’opérateur sont évaluées et comparées. Pour vérifier que 2 expressions ne sont pas égales on utilise l’opérateur <code class="docutils literal notranslate"><span class="pre">!=</span></code>.</p>
+<p>Les exemples suivants renvoient tous le booléen <code class="docutils literal notranslate"><span class="pre">True</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[3]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">((</span><span class="mi">7</span> <span class="o">+</span> <span class="mi">2</span><span class="p">)</span> <span class="o">==</span> <span class="mi">9</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;bonjour&quot;</span> <span class="o">!=</span> <span class="s2">&quot;au revoir&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">5</span> <span class="o">==</span> <span class="mf">5.</span> <span class="o">+</span> <span class="mf">5.</span> <span class="o">+</span> <span class="mf">5.</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+True
+True
+True
+</pre></div></div>
+</div>
+<div class="section" id="Exercice">
+<h3>Exercice<a class="headerlink" href="#Exercice" title="Lien permanent vers ce titre">¶</a></h3>
+<p>D’après vous, quels sont les résultats des comparaisons suivantes. Vérifiez dans la console :</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> est <em>égal</em> à <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">43</span></code> n’est <em>pas égal</em> à <code class="docutils literal notranslate"><span class="pre">3</span> <span class="pre">*</span> <span class="pre">15</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;Paris&quot;</span></code> est <em>égal</em> à <code class="docutils literal notranslate"><span class="pre">&quot;paris&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> est <em>égal</em> à <code class="docutils literal notranslate"><span class="pre">&quot;Paris&quot;</span></code></p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[4]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="kc">False</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">43</span> <span class="o">!=</span> <span class="p">(</span><span class="mi">3</span> <span class="o">*</span> <span class="mi">15</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Paris&quot;</span> <span class="o">==</span> <span class="s2">&quot;paris&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">==</span> <span class="s2">&quot;Paris&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+True
+False
+False
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Supérieur-et-inférieur">
+<h2>Supérieur et inférieur<a class="headerlink" href="#Supérieur-et-inférieur" title="Lien permanent vers ce titre">¶</a></h2>
+<p>On peut utiliser les opérateurs de comparaison <em>inférieur à</em> <code class="docutils literal notranslate"><span class="pre">&lt;</span></code> et <em>supérieur à</em> <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>. On peut aussi les combiner au symbole <code class="docutils literal notranslate"><span class="pre">=</span></code> pour former les opérateurs <em>inférieur ou égal</em> <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code> et <em>supérieur ou égal</em> <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>. Le signe égal est toujours après le chevron (la flèche <em>inférieur à</em> ou la flèche <em>supérieur à</em>).</p>
+<p>Voici quelques exemples qui renvoient tous le booléen <code class="docutils literal notranslate"><span class="pre">True</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[5]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="mi">6</span> <span class="o">&lt;</span> <span class="mi">23</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">8</span> <span class="o">-</span> <span class="mi">3</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;beta&quot;</span> <span class="o">&lt;</span> <span class="s2">&quot;theta&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+True
+True
+</pre></div></div>
+</div>
+<p>Comme on l’a vu précédemment, pour une valeur de type <code class="docutils literal notranslate"><span class="pre">string</span></code> (chaîne de charactères), l’ordre croissant est l’ordre alphabétique.</p>
+<div class="section" id="id1">
+<h3>Exercice<a class="headerlink" href="#id1" title="Lien permanent vers ce titre">¶</a></h3>
+<p>D’après vous, quels sont les résultats des comparaisons suivantes. Vérifiez dans la console :</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">10</span> <span class="pre">/</span> <span class="pre">3</span></code> est <em>supérieur</em> à <code class="docutils literal notranslate"><span class="pre">3.33333</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">&quot;chateau&quot;</span></code> est <em>supérieur ou égal</em> à <code class="docutils literal notranslate"><span class="pre">&quot;chien&quot;</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">True</span></code> est <em>supérieur</em> à <code class="docutils literal notranslate"><span class="pre">False</span></code></p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[6]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span><span class="mi">10</span> <span class="o">/</span> <span class="mi">3</span> <span class="o">&gt;</span> <span class="mf">3.33333</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;chateau&quot;</span> <span class="o">&gt;=</span> <span class="s2">&quot;chien&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span> <span class="o">&gt;</span> <span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+False
+True
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Comparer-des-tableaux">
+<h2>Comparer des tableaux<a class="headerlink" href="#Comparer-des-tableaux" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est possible d’utiliser les opérateurs de comparaison directement avec des tableaux Numpy. Les comparaisons sont effectuées pour chaque élément du tableau. Le résultat est un tableau Numpy contenant les résultats de chacune des comparaisons, c’est-à-dire un tableau de valeurs de type booléen.</p>
+<p>Par exemple :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[7]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Importer le module Numpy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Créer des tableaux Numpy</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span>  <span class="mf">7.1</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.6</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.7</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span>  <span class="mf">5.8</span><span class="p">])</span>
+
+<span class="c1"># Comparaisons</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mf">5.</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span> <span class="o">&gt;</span> <span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[False  True  True False False]
+[ True False False False  True]
+</pre></div></div>
+</div>
+<p>Vérifions que le résultat de la comparaison entre des tableaux Numpy est bien un tableau Numpy contenant des booléens :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[8]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Comparaison entre 2 tableaux Numpy A et B</span>
+<span class="n">C</span> <span class="o">=</span> <span class="n">B</span> <span class="o">&gt;</span> <span class="n">A</span>
+
+<span class="c1"># Type du résultat : tableau Numpy</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">C</span><span class="p">))</span>
+
+<span class="c1"># Type des éléments du tableau : booléens</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">C</span><span class="o">.</span><span class="n">dtype</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+&lt;class &#39;numpy.ndarray&#39;&gt;
+bool
+</pre></div></div>
+</div>
+<div class="section" id="id2">
+<h3>Exercice<a class="headerlink" href="#id2" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Les tableaux Numpy suivants contiennent les surfaces (en <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span>) des pièces de 2 maisons différentes, A et B, dans le même ordre : une chambre, le salon, la cuisine et la salle de bain :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[9]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">maison_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">15.5</span><span class="p">,</span> <span class="mf">22.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">])</span>  <span class="c1"># m**2</span>
+<span class="n">maison_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">12.3</span><span class="p">,</span> <span class="mf">28.8</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span> <span class="c1"># m**2</span>
+</pre></div>
+</div>
+</div>
+<p>En utilisant des opérateurs de comparaison, déterminer :</p>
+<ol class="arabic simple">
+<li><p>quelles sont les pièces de la maison A dont la superficie est supérieure ou égal à 10.0 <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span> ?</p></li>
+<li><p>quelles sont les pièces de la maison B dont les surfaces sont plus grandes que celles de la maison A ?</p></li>
+<li><p>la surface totale de la maison A est-elle plus grande que celle de la maison B ? Note : on pourra utiliser l’opérateur Numpy <code class="docutils literal notranslate"><span class="pre">sum()</span></code>.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[10]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1 : Chambre, salon et cuisine</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maison_A</span> <span class="o">&gt;=</span> <span class="mf">10.0</span><span class="p">)</span>
+
+<span class="c1"># 2 : Salon et cuisine</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">maison_B</span> <span class="o">&gt;</span> <span class="n">maison_A</span><span class="p">)</span>
+
+<span class="c1"># 3 : Non</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">maison_A</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">maison_B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True  True False False]
+[False  True  True False]
+False
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Opérateurs-logiques">
+<h2>Opérateurs logiques<a class="headerlink" href="#Opérateurs-logiques" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il existe trois opérateurs logiques : <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> et <code class="docutils literal notranslate"><span class="pre">not</span></code>. Il ont le même sens que leur traduction, respectivement : <em>et</em>, <em>ou</em> et <em>non</em>. On peut les utiliser pour combiner des expressions booléennes. Par exemple, l’expression <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">10</span> <span class="pre">and</span> <span class="pre">x</span> <span class="pre">&lt;=</span> <span class="pre">14</span></code> est vraie seulement si <code class="docutils literal notranslate"><span class="pre">x</span></code> est strictement supérieur à <code class="docutils literal notranslate"><span class="pre">10</span></code> <strong>et</strong> <code class="docutils literal notranslate"><span class="pre">x</span></code> est inférieur ou égal à <code class="docutils literal notranslate"><span class="pre">14</span></code>.</p>
+<p>L’expression <code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">%</span> <span class="pre">5</span> <span class="pre">==</span> <span class="pre">0</span> <span class="pre">or</span> <span class="pre">n</span> <span class="pre">%</span> <span class="pre">6</span> <span class="pre">==</span> <span class="pre">0</span></code> est vraie si <code class="docutils literal notranslate"><span class="pre">n</span></code> est divisible par <code class="docutils literal notranslate"><span class="pre">5</span></code> <strong>ou</strong> si <code class="docutils literal notranslate"><span class="pre">n</span></code> est divisible par <code class="docutils literal notranslate"><span class="pre">6</span></code>.</p>
+<p>Finalement, l’opérateur <code class="docutils literal notranslate"><span class="pre">not</span></code> <em>nie</em> une expression. Par exemple <code class="docutils literal notranslate"><span class="pre">not</span> <span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> est vraie si <code class="docutils literal notranslate"><span class="pre">x</span> <span class="pre">&gt;</span> <span class="pre">y</span></code> est faux, c’est-à-dire si <code class="docutils literal notranslate"><span class="pre">x</span></code> est inférieur ou égal à <code class="docutils literal notranslate"><span class="pre">y</span></code>.</p>
+<div class="section" id="id3">
+<h3>Exercice<a class="headerlink" href="#id3" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Créons les variables <code class="docutils literal notranslate"><span class="pre">masse_terre</span></code> et <code class="docutils literal notranslate"><span class="pre">masse_mars</span></code> contenant les masses de la Terre et de Mars en kg :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[11]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">masse_terre</span> <span class="o">=</span> <span class="mf">5.9736e24</span> <span class="c1"># kg</span>
+<span class="n">masse_mars</span>  <span class="o">=</span> <span class="mf">6.4185e23</span> <span class="c1"># kg</span>
+</pre></div>
+</div>
+</div>
+<p>En utilisant des opérateurs logiques et des expressions booléennes, déterminer :</p>
+<ol class="arabic simple">
+<li><p>si la masse de la Terre est strictement comprise entre <span class="math notranslate nohighlight">\(10^{23}\)</span> et <span class="math notranslate nohighlight">\(10^{24}\)</span> kg</p></li>
+<li><p>si la masse de Mars est supérieure ou égale à <span class="math notranslate nohighlight">\(10^{25}\)</span> kg <em>ou</em> si elle est inférieure ou égale à la masse de la Terre</p></li>
+<li><p>si la masse de la Terre est strictement comprise entre 1 et 10 fois la masse de Mars</p></li>
+</ol>
+<p>Finalement, déterminer sans l’écrire <em>a priori</em> le résultat de l’expression <code class="docutils literal notranslate"><span class="pre">not(not(masse_terre</span> <span class="pre">&gt;</span> <span class="pre">1e23)</span> <span class="pre">or</span> <span class="pre">not(masse_terre</span> <span class="pre">&gt;=</span> <span class="pre">masse_mars</span> <span class="pre">and</span> <span class="pre">masse_mars</span> <span class="pre">&gt;</span> <span class="pre">1e25))</span></code></p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[12]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1: faux</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1e23</span> <span class="o">&lt;</span> <span class="n">masse_terre</span> <span class="ow">and</span> <span class="n">masse_terre</span> <span class="o">&lt;</span> <span class="mf">1e24</span><span class="p">)</span>
+
+<span class="c1"># 2: vrai</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">1e25</span> <span class="o">&lt;=</span> <span class="n">masse_mars</span> <span class="ow">or</span> <span class="n">masse_mars</span> <span class="o">&lt;=</span> <span class="n">masse_terre</span><span class="p">)</span>
+
+<span class="c1"># 3: vrai</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">masse_mars</span> <span class="o">&lt;</span> <span class="n">masse_terre</span> <span class="ow">and</span> <span class="n">masse_terre</span> <span class="o">&lt;</span> <span class="mi">10</span> <span class="o">*</span> <span class="n">masse_mars</span><span class="p">)</span>
+
+<span class="c1"># 4: faux</span>
+<span class="nb">print</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="ow">not</span><span class="p">(</span><span class="n">masse_terre</span> <span class="o">&gt;</span> <span class="mf">1e23</span><span class="p">)</span> <span class="ow">or</span> <span class="ow">not</span><span class="p">(</span><span class="n">masse_terre</span> <span class="o">&gt;=</span> <span class="n">masse_mars</span> <span class="ow">and</span> <span class="n">masse_mars</span> <span class="o">&gt;</span> <span class="mf">1e25</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+False
+True
+True
+False
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Numpy-et-les-opérateurs-logiques">
+<h2>Numpy et les opérateurs logiques<a class="headerlink" href="#Numpy-et-les-opérateurs-logiques" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Les opérateurs logiques <code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code> et <code class="docutils literal notranslate"><span class="pre">not</span></code> ne fonctionnent pas avec les tableaux Numpy. Nous avons vu que le résultat de la comparaison de 2 tableaux Numpy est un tableau Numpy contenant des booléens. Pour effectuer des opérations logiques entre les éléments de 2 tableaux Numpy <code class="docutils literal notranslate"><span class="pre">bool_1</span></code> et <code class="docutils literal notranslate"><span class="pre">bool_2</span></code> contenant des booléens, il faut utiliser les fonctions Numpy suivantes :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 63%" />
+<col style="width: 38%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>fonction Numpy</p></th>
+<th class="head"><p>opérateur logique</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logical_and(bool_1,</span> <span class="pre">bool_2)</span></code></p></td>
+<td><p>et</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">logical_or(bool_1,</span> <span class="pre">bool_2)</span></code></p></td>
+<td><p>ou</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">logical_not(bool_1,</span> <span class="pre">bool_2)</span></code></p></td>
+<td><p>non</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">bool_1</span></code> et <code class="docutils literal notranslate"><span class="pre">bool_2</span></code> peuvent être le résultat d’une comparaison entre des tableaux Numpy. Reprenons les tableaux <code class="docutils literal notranslate"><span class="pre">A</span></code> et <code class="docutils literal notranslate"><span class="pre">B</span></code> créés plus haut :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[13]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Créer des tableaux Numpy</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span>  <span class="mf">7.1</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.6</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.7</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span>  <span class="mf">5.8</span><span class="p">])</span>
+
+<span class="c1"># Création des tableaux de booléens, résultats de comparaisons</span>
+<span class="c1"># Ici on cherche tous les éléments de A qui sont strictement inférieurs à ceux de B et à 5.0</span>
+<span class="n">bool_1</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&lt;</span> <span class="n">B</span>
+<span class="n">bool_2</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&lt;</span> <span class="mf">5.0</span>
+
+<span class="c1"># Opération logique sur les tableaux de booléens</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bool_1</span><span class="p">,</span> <span class="n">bool_2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True False False False  True]
+</pre></div></div>
+</div>
+<p>On voit que seuls les premier et dernier éléments de A sont à la fois strictement inférieurs à ceux de B et à 5.0.</p>
+<p>Il existe de nombreuses fonctions logiques dans le module Numpy, <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.logic.html">la liste est disponible</a> sur le site du module. Parmi les fonctions utiles, on note :</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">all()</span></code> : test si tous les éléments d’un tableau sont vrais</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">any()</span></code> : test si au moins un des éléments d’un tableau est vrai</p></li>
+</ul>
+<p>Par exemple :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[14]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># test si au moins un des éléments de A est strictement supérieur à 8 :</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">np</span><span class="o">.</span><span class="n">any</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mf">8.0</span><span class="p">)</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+True
+</pre></div></div>
+</div>
+<div class="section" id="id4">
+<h3>Exercice<a class="headerlink" href="#id4" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Reprenons les tableaux <code class="docutils literal notranslate"><span class="pre">A</span></code>et <code class="docutils literal notranslate"><span class="pre">B</span></code> définis plus haut, contenant les surfaces en <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span> des pièces de 2 maisons :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[15]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Superficie des pièces : chambre, salon, cuisine, salle de bain</span>
+<span class="n">maison_A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">15.5</span><span class="p">,</span> <span class="mf">22.3</span><span class="p">,</span> <span class="mf">6.6</span><span class="p">,</span> <span class="mf">8.5</span><span class="p">])</span>  <span class="c1"># m**2</span>
+<span class="n">maison_B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">12.3</span><span class="p">,</span> <span class="mf">28.8</span><span class="p">,</span> <span class="mf">12.7</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">])</span> <span class="c1"># m**2</span>
+</pre></div>
+</div>
+</div>
+<p>Déterminer, grâce aux fonctions logiques de Numpy :</p>
+<ol class="arabic simple">
+<li><p>quelles sont les pièces de la maison A dont la surface est strictement comprise entre 8 et 16 <span class="math notranslate nohighlight">\(\mathrm{m}^2\)</span> ?</p></li>
+<li><p>quelles sont les pièces dont la surface n’est pas strictement inférieure à 10 dans les 2 maisons A et B ?</p></li>
+<li><p>est-ce qu’au moins une des pièces de la maison A est plus grande que les pièces correspondantes de la maison B ?</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[16]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1 : Chambre et salle de bains</span>
+<span class="n">bool_1</span> <span class="o">=</span> <span class="n">maison_A</span> <span class="o">&gt;</span> <span class="mi">8</span>
+<span class="n">bool_2</span> <span class="o">=</span> <span class="n">maison_A</span> <span class="o">&lt;</span> <span class="mi">16</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bool_1</span><span class="p">,</span> <span class="n">bool_2</span><span class="p">))</span>
+
+<span class="c1"># 2 : Chambre et salon</span>
+<span class="n">bool_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">maison_A</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">bool_2</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_not</span><span class="p">(</span><span class="n">maison_B</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">bool_1</span><span class="p">,</span> <span class="n">bool_2</span><span class="p">))</span>
+
+<span class="c1"># 3 : Oui</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">any</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="n">B</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[ True False False  True]
+[ True  True False False]
+True
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Instructions-conditionnelles">
+<h2>Instructions conditionnelles<a class="headerlink" href="#Instructions-conditionnelles" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Il est très fréquent dans un programme que l’on veuille exécuter une instruction seulement si certaines conditions sont remplies. Pour cela, on utilise l’instruction <code class="docutils literal notranslate"><span class="pre">if</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[17]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création et affectation de la variable x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># Test si x est positif</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est strictement positif&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x est strictement positif
+</pre></div></div>
+</div>
+<p>L’expression booléenne après l’instruction <code class="docutils literal notranslate"><span class="pre">if</span></code> est appelée <strong>condition</strong>.</p>
+<p>Dans le code ci-dessus, vérifiez ce qu’il se passe si vous changez la valeur de la variable <code class="docutils literal notranslate"><span class="pre">x</span></code> pour une valeur négative.</p>
+<div class="admonition note">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Instructions composées</strong></p>
+<p>Les instructions <code class="docutils literal notranslate"><span class="pre">if</span></code>, comme d’autres que nous verrons par la suite, sont des <em>instructions composées</em> : un <em>en-tête</em>, suivi d’un corps <em>indenté</em> contenant une instruction par ligne. Il n’y a pas de limite au nombre d’instructions contenues dans le corps indenté, mais il doit y en avoir <em>au moins une</em>.</p>
+</div>
+<p>Si la condition après l’instruction <code class="docutils literal notranslate"><span class="pre">if</span></code> n’est pas vérifiée, il est possible d’exécuter une <strong>instruction alternative</strong> avec l’instruction <code class="docutils literal notranslate"><span class="pre">else</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[18]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Ré-affectation de la variable x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">3</span>
+
+<span class="c1"># Test si x est pair ou impair</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est pair&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est impair&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x est impair
+</pre></div></div>
+</div>
+<p>La condition est soit vraie soit fausse, une des 2 instructions est donc forcément exécutée. Ces 2 alternatives sont appelées des <strong>branchements</strong>.</p>
+<p>Il est possible d’avoir besoin de plus de 2 branches. On écrit alors un <strong>enchaînement de conditions</strong> avec l’instruction <code class="docutils literal notranslate"><span class="pre">elif</span></code> :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[19]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Ré-affectation de la variable x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">0</span>
+
+<span class="c1"># Test si x positif, négatif ou nul</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est positif&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est négatif&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est nul&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x est nul
+</pre></div></div>
+</div>
+<p>Il n’y a pas de limite au nombre de conditions qui peuvent être enchaînées, c’est-à-dire que l’on peut mettre autant d’instructions <code class="docutils literal notranslate"><span class="pre">elif</span></code> que l’on veut. L’instruction <code class="docutils literal notranslate"><span class="pre">else</span></code> sera toujours à la fin. Même si plusieurs des conditions sont vérifiées, seulement la première qui est vérifiée sera exécutée. Par exemple :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[20]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">bouton_1</span> <span class="o">=</span> <span class="kc">False</span>
+<span class="n">bouton_2</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="k">if</span> <span class="n">bouton_1</span> <span class="ow">and</span> <span class="n">bouton_2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Les 2 boutons sont allumés&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bouton_1</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le bouton 1 est allumé&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bouton_2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Le bouton 2 est allumé&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">bouton_1</span> <span class="ow">or</span> <span class="n">bouton_2</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Un des 2 boutons est allumé&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Aucun des 2 boutons n&#39;est allumé&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Le bouton 2 est allumé
+</pre></div></div>
+</div>
+<p>Dans l’exemple ci-dessus, l’instruction correspondant à la condition <code class="docutils literal notranslate"><span class="pre">bouton_1</span> <span class="pre">or</span> <span class="pre">bouton_2</span></code> ne sera jamais exécutée, car si elle est vraie alors il y aura forcément une des 2 conditions <code class="docutils literal notranslate"><span class="pre">bouton_1</span></code> ou <code class="docutils literal notranslate"><span class="pre">bouton_2</span></code> qui est vraie et dont l’instruction sera exécutée plus tôt.</p>
+<div class="section" id="id5">
+<h3>Exercice<a class="headerlink" href="#id5" title="Lien permanent vers ce titre">¶</a></h3>
+<p>Écrire l’instruction conditionnelle avec les branchements suivant :</p>
+<ol class="arabic simple">
+<li><p>si <code class="docutils literal notranslate"><span class="pre">x</span></code> est un multiple de 5 et de 6 afficher à l’écran « x est un multiple de 5 et de 6 »</p></li>
+<li><p>si <code class="docutils literal notranslate"><span class="pre">x</span></code> est un multiple de 5 et pas de 6 afficher à l’écran « x est un multiple de 5 mais pas de 6 »</p></li>
+<li><p>si <code class="docutils literal notranslate"><span class="pre">x</span></code> est un multiple de 6 et pas de 5 afficher à l’écran « x est un multiple de 6 mais pas de 5 »</p></li>
+<li><p>si <code class="docutils literal notranslate"><span class="pre">x</span></code> n’est un multiple ni de 5 ni de 6 afficher à l’écran « x n’est un multiple ni de 5 ni de 6 »</p></li>
+</ol>
+<p>Testez vos conditions avec les chiffres 8, 10, 12, et 30.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[21]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Création et affectation de la variable x</span>
+<span class="n">x</span> <span class="o">=</span> <span class="mi">30</span>
+
+<span class="c1"># Instruction conditionnelle</span>
+<span class="k">if</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">6</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est un multiple de 5 et de 6&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">6</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est un multiple de 5 mais pas de 6&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">5</span> <span class="o">!=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">x</span> <span class="o">%</span> <span class="mi">6</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est un multiple de 6 mais pas de 5&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;x est un multiple ni de 5 ni de 6&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+x est un multiple de 5 et de 6
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Filtrer-un-tableau-Numpy">
+<h2>Filtrer un tableau Numpy<a class="headerlink" href="#Filtrer-un-tableau-Numpy" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Pour extraire un sous-tableau Numpy qui vérifie certaines conditions, il est possible d’utiliser un tableau de booléens en indice d’un autre tableau :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[22]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Créer des tableaux Numpy</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">1.4</span><span class="p">,</span>  <span class="mf">7.1</span><span class="p">,</span> <span class="mf">9.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span> <span class="o">-</span><span class="mf">4.6</span><span class="p">])</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mf">2.6</span><span class="p">,</span> <span class="o">-</span><span class="mf">5.7</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.5</span><span class="p">,</span>  <span class="mf">5.8</span><span class="p">])</span>
+
+<span class="c1"># cond est un tableau Numpy de booléens</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">A</span> <span class="o">&gt;</span> <span class="mi">4</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cond</span><span class="p">)</span>
+
+<span class="c1"># Filtrer le tableau A avec le tableau cond</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">cond</span><span class="p">])</span>
+
+<span class="c1"># Il est possible de filtrer le tableau B avec la condition sur A</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">cond</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[False  True  True False False]
+[7.1 9. ]
+[-5.7  4. ]
+</pre></div></div>
+</div>
+<p>On voit que les éléments filtrés sont ceux qui correspondent aux valeurs <code class="docutils literal notranslate"><span class="pre">True</span></code> du tableau <code class="docutils literal notranslate"><span class="pre">cond</span></code>. On peut filtrer les 2 tableaux sans créer le tableau <code class="docutils literal notranslate"><span class="pre">cond</span></code> intermédiaire :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[23]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="nb">print</span><span class="p">(</span> <span class="n">A</span><span class="p">[</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">B</span><span class="p">[</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">4</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[7.1 9. ]
+[-5.7  4. ]
+</pre></div></div>
+</div>
+<p>Finalement, on peut utiliser les fonctions logiques de Numpy pour combiner les conditions :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[24]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">cond</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">A</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">,</span> <span class="n">A</span> <span class="o">&lt;</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span> <span class="n">A</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span> <span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[1.4 2.5]
+</pre></div></div>
+</div>
+<div class="section" id="id6">
+<h3>Exercice<a class="headerlink" href="#id6" title="Lien permanent vers ce titre">¶</a></h3>
+<ol class="arabic simple">
+<li><p>Extraire du tableau <code class="docutils literal notranslate"><span class="pre">A</span></code> toutes les valeurs négatives</p></li>
+<li><p>Extraire du tableau <code class="docutils literal notranslate"><span class="pre">B</span></code> toutes les valeurs strictement comprises entre 1 et 3</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[25]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">[</span><span class="n">A</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">])</span>
+
+<span class="c1"># 2.</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">B</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">B</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+[-4.6]
+[2.6 2.5]
+</pre></div></div>
+</div>
+</div>
+</div>
+<div class="section" id="Filtrer-un-DataFrame">
+<h2>Filtrer un DataFrame<a class="headerlink" href="#Filtrer-un-DataFrame" title="Lien permanent vers ce titre">¶</a></h2>
+<p>Filtrer un objet DataFrame fonctionne de façon similaire au filtrage d’un tableau Numpy. Pour cela il faut extraire un objet Series de l’objet DataFrame, et lui appliquer une condition. On obtient alors un objet Series contenant des booléens, avec lequel on peut filtrer l’objet DataFrame.</p>
+<p>Reprenons la liste des pays de l’union européenne sauvée dans le module précédent :</p>
+<div class="nbinput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[26]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Import du module pandas</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="c1"># Lecture du fichier pickle contenant les données</span>
+<span class="n">df_europe</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_pickle</span><span class="p">(</span><span class="s1">&#39;europe.pkl&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<p>Nous voulons extraire la liste des pays contenant plus de 50 millions d’habitants :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># Afficher les noms des colonnes</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_europe</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># On extrait l&#39;objet Series correspondant à la colonne &#39;population&#39;</span>
+<span class="n">sr_population</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span>
+
+<span class="c1"># On applique la condition sur le nombre d&#39;habitants</span>
+<span class="n">cond</span> <span class="o">=</span> <span class="n">sr_population</span> <span class="o">&gt;</span> <span class="mf">50e6</span>
+
+<span class="c1"># Afficher l&#39;objet cond</span>
+<span class="n">cond</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="n">n</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput docutils container">
+<div class="prompt empty docutils container">
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+Index([&#39;pays&#39;, &#39;capitale&#39;, &#39;population&#39;, &#39;date d&#39;adhésion&#39;, &#39;sièges&#39;, &#39;poids&#39;], dtype=&#39;object&#39;)
+</pre></div></div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[27]:
+</pre></div>
+</div>
+<div class="output_area docutils container">
+<div class="highlight"><pre>
+1     True
+2    False
+Name: population, dtype: bool
+</pre></div></div>
+</div>
+<p>On voit que la variable <code class="docutils literal notranslate"><span class="pre">cond</span></code> est un objet de type Series qui contient des booléens.</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># on filtre l&#39;objet df_europe avec l&#39;objet cond</span>
+<span class="n">df_europe_big</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="n">cond</span><span class="p">]</span>
+
+<span class="c1"># on affiche le tableau filtré</span>
+<span class="n">df_europe_big</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[28]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+      <td>96</td>
+      <td>1.370336</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>france</td>
+      <td>paris</td>
+      <td>66661621</td>
+      <td>1957-01-01</td>
+      <td>74</td>
+      <td>1.301915</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>italie</td>
+      <td>rome</td>
+      <td>60665551</td>
+      <td>1957-01-01</td>
+      <td>73</td>
+      <td>1.411261</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>De façon beaucoup plus synthétique on aurait pu se passer de l’objet intermédiaire <code class="docutils literal notranslate"><span class="pre">cond</span></code> en écrivant :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe</span><span class="p">[</span> <span class="n">df_europe</span><span class="p">[</span><span class="s1">&#39;population&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">50e6</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[29]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>allemagne</td>
+      <td>berlin</td>
+      <td>82162000</td>
+      <td>1957-01-01</td>
+      <td>96</td>
+      <td>1.370336</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>france</td>
+      <td>paris</td>
+      <td>66661621</td>
+      <td>1957-01-01</td>
+      <td>74</td>
+      <td>1.301915</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>italie</td>
+      <td>rome</td>
+      <td>60665551</td>
+      <td>1957-01-01</td>
+      <td>73</td>
+      <td>1.411261</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>De la même manière que pour les tableaux Numpy, il est possible d’utiliser <a class="reference external" href="https://numpy.org/doc/stable/reference/routines.logic.html">les fonctions logiques de Numpy</a> sur les objets Series. Par exemple, cherchons les pays dont la date d’adhésion est supérieure à 1990 <em>et</em> dont la population est supérieure à 10 millions :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># conditions</span>
+<span class="n">cond1</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;population&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">10e6</span>
+<span class="n">cond2</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;1990&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+
+<span class="c1"># operation logique et</span>
+<span class="n">df_europe</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">logical_and</span><span class="p">(</span><span class="n">cond1</span><span class="p">,</span> <span class="n">cond2</span><span class="p">)]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[30]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>21</th>
+      <td>pologne</td>
+      <td>varsovie</td>
+      <td>37967209</td>
+      <td>2004-01-01</td>
+      <td>51</td>
+      <td>1.575391</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>république tchèque</td>
+      <td>prague</td>
+      <td>10553853</td>
+      <td>2004-01-01</td>
+      <td>21</td>
+      <td>2.333646</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>roumanie</td>
+      <td>bucarest</td>
+      <td>19759968</td>
+      <td>2007-01-01</td>
+      <td>32</td>
+      <td>1.899287</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<p>Le module Pandas a introduit une notation un peu plus pratique pour les opérations logiques :</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 41%" />
+<col style="width: 59%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Opération</p></th>
+<th class="head"><p>notation Pandas</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>et</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">&amp;</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ou</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">\|</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>non</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">~</span></code></p></td>
+</tr>
+</tbody>
+</table>
+<p>Par exemple, cherchons les pays dont l’année d’adhésion n’est pas 1957 et dont le nombre de sièges est supérieur à 50 :</p>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="n">df_europe</span><span class="p">[</span> <span class="o">~</span><span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;1957&#39;</span><span class="p">,</span><span class="s1">&#39;Y&#39;</span><span class="p">))</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;sièges&quot;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">50</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[31]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>8</th>
+      <td>espagne</td>
+      <td>madrid</td>
+      <td>46438422</td>
+      <td>1986-01-01</td>
+      <td>54</td>
+      <td>1.363776</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>pologne</td>
+      <td>varsovie</td>
+      <td>37967209</td>
+      <td>2004-01-01</td>
+      <td>51</td>
+      <td>1.575391</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title fa fa-exclamation-circle"><strong>Attention</strong></p>
+<p>Ces opérateurs de logique binaire (<code class="docutils literal notranslate"><span class="pre">&amp;</span></code>, <code class="docutils literal notranslate"><span class="pre">\|</span></code>, <code class="docutils literal notranslate"><span class="pre">~</span></code>) n’ont pas la même priorité des opérations que les opérateurs de logique booléenne (<code class="docutils literal notranslate"><span class="pre">and</span></code>, <code class="docutils literal notranslate"><span class="pre">or</span></code>, <code class="docutils literal notranslate"><span class="pre">not</span></code>), et en l’occurence ils sont prioritaires devant les opérateurs de comparaison (<code class="docutils literal notranslate"><span class="pre">==</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;</span></code>, <code class="docutils literal notranslate"><span class="pre">&lt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">&gt;=</span></code>, <code class="docutils literal notranslate"><span class="pre">!=</span></code>), contrairement aux opérateurs de logique booléenne, donc il est conseillé de mettre des parenthèses. La priorité des opérations peut être vérifiée
+<a class="reference external" href="https://fr.wikibooks.org/wiki/Programmation_Python/Tableau_des_op%C3%A9rateurs">ici</a>.</p>
+<p>Par exemple, <code class="docutils literal notranslate"><span class="pre">~(df_europe[&quot;date</span> <span class="pre">d'adhésion&quot;]</span> <span class="pre">==</span> <span class="pre">np.datetime64('1957','Y'))</span> <span class="pre">&amp;</span> <span class="pre">df_europe[&quot;sièges&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50</span></code> ne donne pas le bon résultat, parce que Python tente d’abord d’effectuer l’opération binaire <code class="docutils literal notranslate"><span class="pre">&amp;</span></code> entre <code class="docutils literal notranslate"><span class="pre">~(df_europe[&quot;date</span> <span class="pre">d'adhésion&quot;]</span> <span class="pre">==</span> <span class="pre">np.datetime64('1957','Y'))</span></code> et <code class="docutils literal notranslate"><span class="pre">df_europe[&quot;sièges&quot;]</span></code> (au lieu de <code class="docutils literal notranslate"><span class="pre">df_europe[&quot;sièges&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50</span></code>). Alors que <code class="docutils literal notranslate"><span class="pre">~(df_europe[&quot;date</span> <span class="pre">d'adhésion&quot;]</span> <span class="pre">==</span> <span class="pre">np.datetime64('1957','Y'))</span> <span class="pre">&amp;</span> <span class="pre">(df_europe[&quot;sièges&quot;]</span> <span class="pre">&gt;</span> <span class="pre">50)</span></code> donne le résultat souhaité (regardez bien les
+parenthèses).</p>
+</div>
+<div class="section" id="id7">
+<h3>Exercice<a class="headerlink" href="#id7" title="Lien permanent vers ce titre">¶</a></h3>
+<p>À partir du DataFrame <code class="docutils literal notranslate"><span class="pre">df_europe</span></code>, extraire :</p>
+<ol class="arabic simple">
+<li><p>Les pays dont la lettre commence par une lettre entre “c” et “g” (non inclus). On rappelle que l’ordre croissant pour les objets de type <code class="docutils literal notranslate"><span class="pre">str</span></code> est l’ordre alphabétique.</p></li>
+<li><p>Pour les pays qui ont adhérés en 2004, ceux dont le nombre de siège est 6 ou dont le poids est inférieur à 2.</p></li>
+</ol>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 1.</span>
+<span class="n">df_europe</span><span class="p">[</span> <span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;pays&quot;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="s1">&#39;d&#39;</span><span class="p">)</span> <span class="o">&amp;</span> <span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;pays&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="s1">&#39;g&#39;</span><span class="p">)</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[32]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>7</th>
+      <td>danemark</td>
+      <td>copenhague</td>
+      <td>5659715</td>
+      <td>1973-01-01</td>
+      <td>13</td>
+      <td>2.693863</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>espagne</td>
+      <td>madrid</td>
+      <td>46438422</td>
+      <td>1986-01-01</td>
+      <td>54</td>
+      <td>1.363776</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>estonie</td>
+      <td>tallinn</td>
+      <td>1315944</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>5.347374</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>finlande</td>
+      <td>helsinki</td>
+      <td>5401267</td>
+      <td>1995-01-01</td>
+      <td>13</td>
+      <td>2.822763</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>france</td>
+      <td>paris</td>
+      <td>66661621</td>
+      <td>1957-01-01</td>
+      <td>74</td>
+      <td>1.301915</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+<div class="nbinput docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="input_area highlight-ipython3 notranslate"><div class="highlight"><pre>
+<span></span><span class="c1"># 2.</span>
+<span class="n">cond1</span> <span class="o">=</span> <span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;date d&#39;adhésion&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="n">np</span><span class="o">.</span><span class="n">datetime64</span><span class="p">(</span><span class="s1">&#39;2004&#39;</span><span class="p">,</span> <span class="s1">&#39;Y&#39;</span><span class="p">)</span>
+<span class="n">cond2</span> <span class="o">=</span> <span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;sièges&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">6</span><span class="p">)</span> <span class="o">|</span> <span class="p">(</span><span class="n">df_europe</span><span class="p">[</span><span class="s2">&quot;poids&quot;</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">)</span>
+
+<span class="n">df_europe</span><span class="p">[</span> <span class="n">cond1</span> <span class="o">&amp;</span> <span class="n">cond2</span> <span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="nboutput nblast docutils container">
+<div class="prompt highlight-none notranslate"><div class="highlight"><pre><span></span>[33]:
+</pre></div>
+</div>
+<div class="output_area rendered_html docutils container">
+<div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pays</th>
+      <th>capitale</th>
+      <th>population</th>
+      <th>date d'adhésion</th>
+      <th>sièges</th>
+      <th>poids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5</th>
+      <td>chypre</td>
+      <td>nicosie</td>
+      <td>848319</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>8.295046</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>estonie</td>
+      <td>tallinn</td>
+      <td>1315944</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>5.347374</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>malte</td>
+      <td>la valette</td>
+      <td>434403</td>
+      <td>2004-01-01</td>
+      <td>6</td>
+      <td>16.198887</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>pologne</td>
+      <td>varsovie</td>
+      <td>37967209</td>
+      <td>2004-01-01</td>
+      <td>51</td>
+      <td>1.575391</td>
+    </tr>
+  </tbody>
+</table>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="03-iteration.html" class="btn btn-neutral float-right" title="Itération" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="01-dictionnaires-pandas.html" class="btn btn-neutral float-left" title="Dictionnaires et Pandas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2020, P. Delva.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
