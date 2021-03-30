@@ -7,6 +7,6 @@ ipykernel
 matplotlib
 numpy
 pandas
-pygments == 2.6.1
+pygments == 2.7.4
 simpy
 scipy
