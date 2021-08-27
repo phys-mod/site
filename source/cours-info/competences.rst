@@ -1,7 +1,7 @@
 Objectifs d'apprentissage
 =========================
 
-Le cours contient trois partie, avec des objectifs complémentaires.
+Le cours contient trois partie, avec des objectifs complémentaires. 
 
 +----------------------------+----------+----------------------------+
 |         Compétence         | Semaines |  Ojectifs d'apprentissage  |
